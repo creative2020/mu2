@@ -1,0 +1,37 @@
+1.0.0 - 2013-11-11 - Chris Jean
+	iThemes Sync launch!
+1.1.0 - 2013-11-20 - Chris Jean
+	Enhancement: Added ability to handle desync user requests from the Sync server.
+	Enhancement: Now avoids plugin conflicts that caused plugins and themes to not be properly reported and which prevented updates from being successfully applied.
+	Enhancement: Now supports update reporting for and updating of plugins with updater code that only works with pre-3.0 versions of WordPress.
+	Enhancement: Now supports sending local server status information back to the Sync server.
+1.1.1 - 2013-11-20 - Chris Jean
+	Bug Fix: Requests for the plugin settings would return the authentications data. Now, the authentications data must be explicitly requested in order to be retrieved.
+1.1.2 - 2013-11-20 - Chris Jean
+	Enhancement: By default, pulling update details will not force a flush of all the cached update data. Instead, this can now be specifically requested by the server.
+1.1.3 - 2013-11-22 - Chris Jean
+	Enhancement: The server will now receive a listing of the supported verbs with a status check. This will help the Sync Dashboard determine if the plugin needs to be upgraded in order to access specific features.
+1.1.4 - 2013-11-26 - Chris Jean
+	Bug Fix: Removed call to the mysqli_get_server_info() function when pulling server details as it would trigger errors on some systems.
+	Bug Fix: Removed the /etc/passwd check when pulling server details. This was used to try to count the number of users on the system. It was removed since it triggered hacking attempt notices in the Wordfence plugin.
+1.1.5 - 2013-12-02 - Chris Jean
+	Bug Fix: Users that are not recognized by the Sync server can now be unsynced. This prevents the issue where users that are unsynced on the server when the site cannot be communicated with (or when the plugin is inactive) cannot be removed from the site.
+1.1.6 - 2013-12-09 - Chris Jean
+	Bug Fix: Fixed issue that can cause failure to load plugin details on sites that have a different url and wpurl.
+1.1.7 - 2013-12-12 - Chris Jean
+	Enhancement: Updated the styling to work better with WordPress 3.8.
+1.1.8 - 2013-12-13 - Packaging Bot (lib/updater)
+	Enhancement: Recently updated plugins and themes no longer report that an update is available.
+	Enhancement: Added alternate line styling to the listings on the licensing page.
+	Enhancement: Products with iThemes in the name will now properly capitalize the name.
+	Enhancement: The updater and licensing system now handle iThemes server outages without causing long page delays or by reporting confusing error messages.
+1.1.9 - 2013-12-13 - Chris Jean
+	Enhancement: The Sync server can now create requests that force the iThemes updater system to refresh itself.
+1.1.10 - 2013-12-16 - Chris Jean
+	Enhancement: Added user security privileges when handling requests from the Sync server. This helps avoid issues with some security plugins.
+1.1.11 - 2013-12-18 - Packaging Bot (lib/updater)
+	Bug Fix: Removed unneeded check on package-info.ithemes.com which was causing performance issues on some sites.
+1.1.12 - 2013-12-19 - Chris Jean
+	Enhancement: Improved the get-status request so that the Sync server can request only the specific data it needs, causing less load and faster Sync responses.
+1.1.13 - 2013-12-19 - Packaging Bot (lib/updater)
+	Bug Fix: Licensing will now be universal across all sites of a multisite network. This means that you will only need to license on one site to have the license apply across the entire network.
