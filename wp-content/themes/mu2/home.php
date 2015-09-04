@@ -2,7 +2,7 @@
 
 <main>
 
-<div class="row">
+<div class="row main-slider-row">
 <?php 
     echo do_shortcode("[metaslider id=23]"); 
 ?>
