@@ -7,12 +7,12 @@
     <div class="col-xs-12 col-sm-6">
         <div class="row">
             <div class="col-xs-12">
-                <p style="background-color: #003556; font-size: 200%; color: #c79f27; text-align: center;">LEADERBOARD</p>
+                <?php echo do_shortcode('[tt_img id="123"]'); ?>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-xs-6 col-xs-offset-4">
-                <p style="text-align: right; font-size: 200%; font-family: oswald; color: #003556;">The <span style="color: #8E734E;">GOLD Standard</span> in Body Composition</p>
+                <p style="text-align: right; font-size: 200%; font-family: oswald; color: #003556;">The <span style="color: #8E734E;">GOLD Standard</span> in Body Composition Measurement</p>
             </div>
         </div>
     </div>
