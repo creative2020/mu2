@@ -20,6 +20,8 @@
 .footer-bg() when (iscolor(@footer-bg)) { background-color: @footer-bg; }
 .footer-fg() when (iscolor(@footer-fg)) { color: @footer-fg; }
 
+.faq-rollover-fg() when (iscolor(@nav-main-bg)) { color: @nav-main-bg; }
+
 /* general global stuff */
 h1, h3 {
     font-family: @headine-font;
@@ -450,5 +452,15 @@ div.row.navbar-secondary {
     .widgettitle {
         .title-fg();
         font-family: @headline-font;
+    }
+}
+
+/*
+ * faq
+ */
+.faq-button:hover {
+    cursor: pointer;
+    * {
+        .faq-rollover-fg();
     }
 }
