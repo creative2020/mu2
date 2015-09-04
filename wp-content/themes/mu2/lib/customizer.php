@@ -9,6 +9,19 @@ add_action('customize_register', function($wpc) {
     $wpc->add_section('home', ['title' => 'Home Page']);
 
     /*
+     * Content Width
+     */
+    $setting_id = 'content-max-width';
+    $wpc->add_setting($setting_id);
+    $wpc->add_control(new WP_Customize_Control(
+        $wpc, $setting_id, [
+            'section' => 'general',
+            'label' => __('Content Max Width (pixels)'),
+            'settings' => $setting_id,
+            'type' => 'number',
+    ]));
+
+    /*
      * General Colors
      */
 
