@@ -52,29 +52,39 @@ Version: 1.0
 	color:white;
 }
 /* Post list video */
-#tt-list-video h2 {
+#tt-list-video{
+	}
+.video-title h2{
 	position: relative;
-	top:10%;
-	font-size: 1.4em;
+	width:100%;
+	height:2.0em;
+	top:8%;
+	font-size: 1.3em;
 	color:white;
 	text-align: center;
+	background-color: green;
+	padding:0.2em;
 }
 .video-icon {
-	position: absolute;
+	position: relative;
 	top:25%;
 	color:white;
 	width:100%;
+	margin:0 auto;
 	opacity: .5;
+	padding:0.2em;
 }
 .video-icon i {
-	font-size: 6.0em;
+	font-size: 5.0em;
 	text-align: center;
 }
 .video-tn {
-	float:left;
+	position: absolute;
 	border:1px solid white;
 	margin:0 auto;
+	height:200px;
+	overflow: hidden;
 }
 .video-tn:hover {
-	opacity: .5;
+	opacity: .8;
 }

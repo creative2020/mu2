@@ -20,11 +20,12 @@
 	    <div id="tt-list-video" class="row">
 	        
 	        <div id="tt-list-img" class="col-sm-12">
-		        <h2><?php echo the_title(); ?></h2>
-		        <span class="video-icon text-center"><i class="fa fa-play-circle"></i></span>
-	            <span class="video-tn">
+		        <span class="video-tn">
 	            	<img src="<?php echo $post_thumbnail_url[0]; ?>" class="img-responsive">
 	            </span>
+	            <span class="video-title"><h2><?php echo the_title(); ?></h2></span>
+		        <span class="video-icon text-center"><i class="fa fa-play-circle"></i></span>
+	            
 	            
 	        </div>	        
 	    </div>
