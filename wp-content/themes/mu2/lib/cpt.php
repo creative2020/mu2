@@ -35,5 +35,6 @@ add_action('init', function() {
     //tt_register_cpt('Location', ['supports' => [ 'title', 'custom-fields', ]]);
     tt_register_cpt('Location');
     tt_register_cpt('News', ['plural' => 'News']);
+    add_post_type_support( 'news', 'post-formats' );
     tt_register_cpt('Testimonial');
 });
