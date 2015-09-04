@@ -31,6 +31,15 @@ function tt_register_cpt($single, $args = []) {
     );
 }
 
-add_action('init', function() {
+add_action('init', function()
+{
     tt_register_cpt('FAQ', ['supports' => [ 'title', 'editor' ] ]);
+
+    tt_register_cpt('Sponsor');
+    register_taxonomy('sponsor_level', 'sponsor', [
+        'hierarchical' => true,
+        'label' => 'Sponsor Level',
+        'query_var' => true,
+        'rewrite' => false
+    ]);
 });
