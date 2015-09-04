@@ -1,7 +1,8 @@
 <footer id="footer">
 
 <div class="row" id="tt-sidebar-home-row3">
-    <?php dynamic_sidebar('tt-sidebar-home-row3'); ?>
+    <?php get_template_part('section', 'row3'); ?>
+    <?php //dynamic_sidebar('tt-sidebar-home-row3'); ?>
 </div>
 
 <div class="row" id="tt-sidebar-home-row4">

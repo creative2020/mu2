@@ -12,7 +12,7 @@ class Post_Widget extends \WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-        $q = [ 'numberposts' => 1 ];
+        $q = [ 'numberposts' => 1, 'orderby' => 'rand' ];
         if ( !empty( $instance['type'] ) )
             $q['post_type'] = $instance['type'];
         if ( !empty( $instance['category'] ) )
