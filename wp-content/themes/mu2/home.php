@@ -44,14 +44,6 @@
     <?php dynamic_sidebar('tt-sidebar-home-row2'); ?>
 </div>
 
-<div class="row" id="tt-sidebar-home-row3">
-    <?php dynamic_sidebar('tt-sidebar-home-row3'); ?>
-</div>
-
-<div class="row" id="tt-sidebar-home-row4">
-    <?php dynamic_sidebar('tt-sidebar-home-row4'); ?>
-</div>
-
 
 <?php //dynamic_sidebar('tt-sidebar-home-content'); ?>
 
