@@ -1,38 +1,16 @@
 <?php /* Template Name: FAQ */ ?>
 
-<?php
-get_header();
-query_posts( [ 'posts_per_page' => -1, 'post_type' => 'faq', 'orderby' => 'title', 'order' => 'ASC' ] );
-?>
+<?php get_header(); ?>
 
-<main style="padding-top: 2rem; padding-bottom: 4rem;">
-    <?php
-        $post_seq_num = 0;
-        while ( have_posts() ) : the_post();
-        $post_seq_num++;
-        $answer_id = 'faq_' . $post_seq_num;
-    ?>
-        <div class="row faq-button" data-toggle="collapse" data-target="#<?php echo $answer_id; ?>">
-            <!--
-            <div class="col-xs-2">
-                <h3 style="text-align: right;">Q:</h3>
-            </div>
-            -->
-            <div class="col-xs-12">
-                <h3><?php the_title(); ?></h3>
-            </div>
-        </div>
-        <div id="<?php echo $answer_id; ?>" class="row collapse">
-            <!--
-            <div class="col-xs-2">
-                <h3 style="text-align: right; margin-top: initial;">A:</h3>
-            </div>
-            -->
-            <div class="col-xs-12">
-                <?php the_content(); ?>
-            </div>
-        </div>
-    <?php endwhile; ?>
-</main>
+<div class="row">
+    <div class="col-xs-12 col-sm-9" style="padding-top: 2rem;">
+        <main>
+            <?php get_template_part('section', 'faq'); ?>
+        </main>
+    </div>
+    <div class="col-xs-12 col-sm-3" style="padding-top: 2rem;">
+        <?php dynamic_sidebar('tt-sidebar-post-sidebar'); ?>
+    </div>
+</div>
 
 <?php get_footer(); ?>
