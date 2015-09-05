@@ -21,6 +21,22 @@ add_shortcode( 'events', function($args) {
     return $retval;
 });
 
+add_shortcode( 'tt_sponsor', function($args) {
+    $post = get_posts([
+        'numberposts' => 1,
+        'post_type' => 'sponsor',
+        'orderby' => 'rand',
+        'tax_query' => [ [ 'taxonomy' => 'sponsor_level', 'field' => 'slug', 'terms' => $args['level'] ] ],
+    ])[0];
+
+    $retval = "Sponsor: {$post->post_title}<br>";
+    $retval .= "Description: {$post->post_content}<br>";
+    $retval .= "URL: " . get_field('url', $post->ID) . '<br>';
+    $retval .= get_the_post_thumbnail($post->ID, 'full', [ 'class' => 'img-responsive']) . '<br>';
+
+    return $retval;
+});
+
 add_shortcode( 'page_title', function() {
     return the_title(null, null, false);
 });
