@@ -32,10 +32,13 @@
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
-        <p class="head">Newsletter Group</p>
+        <p class="head">Newsletter Signup</p>
         <div class="content">
-            <p class="headsub">Secondary Headline</p>
-            <p>test</p>
+            <p class="headsub">Muscle Matters 1x per month</p>
+            <div class="nl-form"><?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true" tabindex="88"]'); ?></div>
+            <div class="nl-bg">
+	            <?php echo do_shortcode('[tt_img id="68"]'); ?>
+            </div>
         </div>
     </div>
 </div>
