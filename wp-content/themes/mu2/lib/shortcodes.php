@@ -94,6 +94,44 @@ function tt_btn($atts, $content = null) {
 }
 ////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////// TT Image
+add_shortcode( 'tt_img', 'tt_img' ); //line
+function tt_img($atts, $content = null) {
+    extract(shortcode_atts(array(
+        'name'   => '',
+        'id' => '',
+        'size' => 'full',
+        'link' => '',
+    ), $atts ) );
+    
+    $image_path = get_template_directory_uri();
+    $attachment_id = $id; // attachment ID
+	$image_attributes = wp_get_attachment_image_src( $attachment_id, $size ); // returns an array
+    
+    if ( !empty($id) && !empty($link) ) {
+	    	    
+		return '<a href="'.$link.'"><img src="'.$image_attributes[0].'" width="'.$image_attributes[1].'" height="'.$image_attributes[2].'"></a>'; 
+		   
+    } else if ( !empty($id) ) {
+	    	    
+		return '<img src="'.$image_attributes[0].'" width="'.$image_attributes[1].'" height="'.$image_attributes[2].'">'; 
+		   
+    } else if ( !empty($name)) {
+	    
+	   return '<img src="'.$image_path.'/images/'.$name.'" class="img-responsive">'; 
+	    
+    } else {
+	    
+	    //do nothing
+	    
+    }
+    
+    
+    
+    
+}
+////////////////////////////////////////////////////////
+
 //////////////////////////////////////////////////////// TT Post Feed
 
 add_shortcode( 'tt_posts', 'tt_posts' ); // echo do_shortcode('[tt_posts limit="-1" cat_name="home"]');
