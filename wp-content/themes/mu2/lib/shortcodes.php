@@ -41,15 +41,6 @@ add_shortcode( 'page_title', function() {
     return the_title(null, null, false);
 });
 
-add_shortcode( 'tt_img', function($atts, $content = null) {
-    extract(shortcode_atts(array(
-        'name'   => '1px',
-    ), $atts ) );
-    
-    $image_path = get_template_directory_uri();
-    return '<img src="'.$image_path.'/images/'.$name.'" class="img-responsive">';
-});
-
 //////////////////////////////////////////////////////// TT rule
 
 add_shortcode( 'tt_rule', 'tt_rule' ); //line
