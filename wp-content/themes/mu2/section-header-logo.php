@@ -7,7 +7,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="row">
             <div class="col-xs-12">
-                <?php echo do_shortcode('[tt_img id="123"]'); ?>
+                <?php echo do_shortcode('[tt_img id="56" link="#"]'); ?>
             </div>
         </div>
         <div class="row">
