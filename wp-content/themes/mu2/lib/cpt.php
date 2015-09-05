@@ -35,6 +35,20 @@ add_action('init', function()
 {
     tt_register_cpt('FAQ', ['supports' => [ 'title', 'editor' ] ]);
 
+    tt_register_cpt('Ad');
+    register_taxonomy('ad_level', 'ad', [
+        'hierarchical' => true,
+        'label' => 'Ad Level',
+        'query_var' => true,
+        'rewrite' => false
+    ]);
+    register_taxonomy('ad_size', 'ad', [
+        'hierarchical' => true,
+        'label' => 'Ad Size',
+        'query_var' => true,
+        'rewrite' => false
+    ]);
+
     tt_register_cpt('Sponsor');
     register_taxonomy('sponsor_level', 'sponsor', [
         'hierarchical' => true,
