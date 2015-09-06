@@ -66,13 +66,8 @@ Version: 1.0
 	padding:0.2em;
 }
 .video-icon {
-	position: relative;
-	top:25%;
 	color:white;
-	width:100%;
-	margin:0 auto;
-	opacity: .5;
-	padding:0.2em;
+	opacity: .75;
 }
 .video-icon i {
 	font-size: 5.0em;

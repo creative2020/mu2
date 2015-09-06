@@ -5,28 +5,17 @@
         $post_thumbnail_url = wp_get_attachment_image_src( $post_thumbnail_id, 'medium' );
         $post_thumbnail_url_tn = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
         $permalink = get_permalink( $id );
-        
-        
-        
-
-	// post thumbnail or default
-        $image = get_the_post_thumbnail( $post_id, 'medium' );
-            if (empty( $image )) {
-                $image = '<img src="'.get_template_directory_uri().'/images/img-fpo.png">';
-            }
 ?>
 
-    <a href="<?php echo $permalink ?>">
-	    <div id="tt-list-video" class="row">
-	        
-	        <div id="tt-list-img" class="col-sm-12">
-		        <span class="video-tn">
-	            	<img src="<?php echo $post_thumbnail_url[0]; ?>" class="img-responsive">
-	            </span>
-	            <span class="video-title"><h2><?php echo the_title(); ?></h2></span>
-		        <span class="video-icon text-center"><i class="fa fa-play-circle"></i></span>
-	            
-	            
-	        </div>	        
-	    </div>
-    </a>
+<a href="<?php echo $permalink ?>">
+    <div style="position: relative;">
+        <img src="<?php echo $post_thumbnail_url[0]; ?>" style="max-width: 100%;">
+        <div style="position: absolute; top: 0; width: 100%; height: 100%;">
+            <div style="width: 100%; height: 100%; display: table;">
+                <div style="height: 100%; text-align: center; display: table-cell; vertical-align: middle;">
+                    <span class="video-icon"><i class="fa fa-play-circle"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
