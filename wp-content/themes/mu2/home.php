@@ -36,9 +36,6 @@
         <div class="content">
             <p class="headsub">Muscle Matters 1x per month</p>
             <div class="nl-form"><?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true" tabindex="88"]'); ?></div>
-            <div class="nl-bg">
-	            <?php echo do_shortcode('[tt_img id="68"]'); ?>
-            </div>
         </div>
     </div>
 </div>
