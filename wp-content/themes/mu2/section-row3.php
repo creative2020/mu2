@@ -3,6 +3,7 @@
     $p = get_posts($q)[0];
     $excerpt = tt_get_excerpt($p);
     $link = get_permalink($p->ID);
+    $url = wp_get_attachment_url( get_post_thumbnail_id($p->ID) );
 ?>
 <div class="col-xs-12 col-sm-6">
     <div class="tt-post">
@@ -11,5 +12,5 @@
     </div>
 </div>
 <div class="col-xs-12 col-sm-6">
-    <?php echo get_the_post_thumbnail($p->ID, 'full', [ 'class' => 'img-responsive center-block' ]); ?>
+    <img src="<?php echo $url; ?>" class="img-responsive center-block" style="max-height: 16rem;">
 </div>
