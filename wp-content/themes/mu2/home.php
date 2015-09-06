@@ -3,10 +3,7 @@
 <main>
 
 <div class="row main-slider-row">
-<?php 
-    echo do_shortcode("[metaslider id=23]"); 
-?>
-    <!--<img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/header.jpg" />-->
+    <?php echo do_shortcode("[metaslider id=23]"); ?>
 </div>
 
 <div class="row home-headlines">
@@ -43,9 +40,6 @@
 <div class="row" id="tt-sidebar-home-row2">
     <?php dynamic_sidebar('tt-sidebar-home-row2'); ?>
 </div>
-
-
-<?php //dynamic_sidebar('tt-sidebar-home-content'); ?>
 
 </main>
 
