@@ -109,33 +109,39 @@ function tt_img($atts, $content = null) {
         'id' => '',
         'size' => 'full',
         'link' => '',
+        'class' => '',
+        'responsive' => false,
     ), $atts ) );
     
     $image_path = get_template_directory_uri();
     $attachment_id = $id; // attachment ID
 	$image_attributes = wp_get_attachment_image_src( $attachment_id, $size ); // returns an array
+
+    if ( !empty($name) )
+        $responsive = true;
+    if ($responsive)
+        $class .= ' img-responsive';
+
+    $retval = '<img';
     
-    if ( !empty($id) && !empty($link) ) {
-	    	    
-		return '<a href="'.$link.'"><img src="'.$image_attributes[0].'" width="'.$image_attributes[1].'" height="'.$image_attributes[2].'"></a>'; 
-		   
-    } else if ( !empty($id) ) {
-	    	    
-		return '<img src="'.$image_attributes[0].'" width="'.$image_attributes[1].'" height="'.$image_attributes[2].'">'; 
-		   
+    if ( !empty($id) ) {
+		$retval .= ' src="'.$image_attributes[0].'"'; 
+        if ( !$responsive ) {
+            $retval .= ' width="'.$image_attributes[1].'" height="'.$image_attributes[2].'"'; 
+        }
     } else if ( !empty($name)) {
-	    
-	   return '<img src="'.$image_path.'/images/'.$name.'" class="img-responsive">'; 
-	    
-    } else {
-	    
-	    //do nothing
-	    
+        $retval .= ' src="'.$image_path.'/images/'.$name.'"'; 
     }
-    
-    
-    
-    
+
+    $retval .= ' class="' . $class . '"';
+
+    $retval .= '>';
+
+    if ( !empty($link) ) {
+        $retval = '<a href="'.$link.'">' . $retval . '</a>';
+    }
+
+    return $retval;
 }
 ////////////////////////////////////////////////////////
 
