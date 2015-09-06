@@ -7,11 +7,11 @@
     <div class="col-xs-12 col-sm-6">
         <div class="row">
             <div class="col-xs-12">
-                <?php echo do_shortcode('[tt_img id="56" link="#"]'); ?>
+                <?php echo do_shortcode('[tt_img id="56" link="#" responsive=true]'); ?>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-xs-6 col-xs-offset-4">
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-xs-8 col-xs-offset-4">
                 <p style="text-align: right; font-size: 200%; font-family: oswald; color: #003556;">The <span style="color: #8E734E;">GOLD Standard</span> in Body Composition Measurement</p>
             </div>
         </div>
