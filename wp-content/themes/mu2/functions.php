@@ -106,11 +106,16 @@ add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style('fontawesome',
         '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
-    wp_enqueue_style('theme-main',
-        get_stylesheet_directory_uri().'/main.less');
-
     wp_enqueue_style('google-fonts',
         '//fonts.googleapis.com/css?family=Oswald:400,700');
+
+    wp_enqueue_style('main',
+        get_stylesheet_directory_uri().'/main.less');
+    wp_enqueue_style('style',
+        get_stylesheet_directory_uri().'/style.css');
+
+    wp_enqueue_style('gf-formsmain-2020',
+        get_stylesheet_directory_uri().'/lib/gf-formsmain-2020.css');
 
     $setting = get_theme_mod('content-max-width');
     if(!empty($setting)) {

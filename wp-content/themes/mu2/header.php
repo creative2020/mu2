@@ -10,9 +10,6 @@
         <?php } ?>
     </script>
     <?php wp_head(); ?>
-    <link rel='stylesheet' id='2020-css'  href='/wp-content/themes/mu2/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='2020-gf-form-css'  href='/wp-content/themes/mu2/lib/gf-formsmain-2020.css' type='text/css' media='all' />
-    
 </head>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <body <?php body_class(); ?>>
