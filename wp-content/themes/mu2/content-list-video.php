@@ -7,6 +7,8 @@
         $permalink = get_permalink( $id );
 ?>
 
+<p class="headsub"><?php the_title(); ?></p>
+
 <a href="<?php echo $permalink ?>">
     <div style="position: relative;">
         <img src="<?php echo $post_thumbnail_url[0]; ?>" style="max-width: 100%;">

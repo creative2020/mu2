@@ -24,7 +24,6 @@
     <div class="col-xs-6 col-sm-3">
         <p class="head">Videos</p>
         <div class="content">
-            <p class="headsub">Watch more about the BodPod</p>
             <?php echo do_shortcode('[tt_posts limit="1" cat_name="video" layout="list-video"]'); ?>
         </div>
     </div>

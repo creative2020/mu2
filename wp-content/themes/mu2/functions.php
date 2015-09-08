@@ -75,8 +75,8 @@ add_action('widgets_init', function() {
     register_sidebar([
         'name' => 'Post Sidebar',
         'id' => 'tt-sidebar-post-sidebar',
-        'before_widget' => '<div>',
-        'after_widget' => '</div>',
+        'before_widget' => '<p class="sidebar-widget">',
+        'after_widget' => '</p>',
     ]);
 });
 
