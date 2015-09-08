@@ -1,5 +1,5 @@
 <?php
-    $q = [ 'numberposts' => 1, 'orderby' => 'rand' ];
+    $q = [ 'category_name' => 'featured-article', 'numberposts' => 1, 'orderby' => 'rand' ];
     $p = get_posts($q)[0];
     $excerpt = tt_get_excerpt($p);
     $link = get_permalink($p->ID);
@@ -12,5 +12,5 @@
     </div>
 </div>
 <div class="col-xs-12 col-sm-6">
-    <img src="<?php echo $url; ?>" class="img-responsive center-block" style="max-height: 16rem;">
+    <img src="<?php echo $url; ?>" class="img-responsive center-block" style="max-height: 24rem;">
 </div>
