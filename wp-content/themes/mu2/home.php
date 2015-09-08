@@ -1,3 +1,10 @@
+<?php
+if ( ! is_user_logged_in() ) {
+    get_template_part('page', 'coming-soon');
+    die();
+}
+?>
+
 <?php get_header(); ?>
 
 <main>
