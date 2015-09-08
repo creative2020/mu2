@@ -58,48 +58,6 @@ add_action( 'widgets_init', function() {
 	register_widget( 'com_2020creative\Post_Widget' );
 });
 
-class Locations_Widget extends \WP_Widget {
-
-	function __construct() {
-		parent::__construct(
-			'locations_widget', // Base ID
-			__( '2020 Locations', 'text_domain' ), // Name
-			array( 'description' => __( 'Displays the four most recent posts of the location type.', 'text_domain' ), ) // Args
-		);
-	}
-
-	public function widget( $args, $instance ) {
-        $q = [ 'numberposts' => 4 ];
-        $q['post_type'] = 'location';
-
-        //$p = get_posts($q);
-        //$link = get_permalink($p->ID);
-
-		echo $args['before_widget'];
-
-		echo '<span class="title">Upcoming Locations</span><br>';
-
-        foreach(get_posts($q) as $loc) {
-            echo '<a href="' . get_permalink($loc->ID) . '">' .
-                $loc->post_title . ' | ' .
-                get_field('city', $loc->ID) . ' ' .
-                get_field('state', $loc->ID) .
-                '</a><br>';
-        }
-
-		echo $args['after_widget'];
-	}
-
-/*
-	public function form( $instance ) {
-	}
-*/
-
-} // class Locations_Widget
-
-add_action( 'widgets_init', function() {
-	register_widget( 'com_2020creative\Locations_Widget' );
-});
 
 class Text_Widget extends \WP_Widget {
 

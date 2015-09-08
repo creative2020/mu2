@@ -38,7 +38,7 @@
 </div>
 
 <div class="row" id="tt-sidebar-home-row2">
-    <?php dynamic_sidebar('tt-sidebar-home-row2'); ?>
+    <?php get_template_part('section', 'row2'); ?>
 </div>
 
 </main>

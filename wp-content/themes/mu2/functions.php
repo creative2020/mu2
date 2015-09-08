@@ -25,20 +25,6 @@ add_action('after_setup_theme', function() {
 require_once('lib/widgets.php');
 add_action('widgets_init', function() {
     register_sidebar([
-        'name' => 'Home - Row 2',
-        'id' => 'tt-sidebar-home-row2',
-        'before_widget' => '<div class="col-xs-6 col-sm-3">',
-        'after_widget' => '</div>',
-    ]);
-    /*
-    register_sidebar([
-        'name' => 'Home - Row 3',
-        'id' => 'tt-sidebar-home-row3',
-        'before_widget' => '<div class="col-xs-12 col-sm-6">',
-        'after_widget' => '</div>',
-    ]);
-    */
-    register_sidebar([
         'name' => 'Home - Row 4',
         'id' => 'tt-sidebar-home-row4',
         'before_widget' => '<div class="col-xs-6 col-sm-3">',
