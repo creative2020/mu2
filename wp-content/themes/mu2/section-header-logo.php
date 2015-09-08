@@ -1,8 +1,8 @@
 <div class="row" id="logo-row">
-    <div class="col-xs-12 col-sm-5 logo-col">
+    <div class="col-xs-12 col-sm-4 logo-col">
         <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/logo.png" />
     </div>
-    <div class="col-xs-12 col-sm-1">
+    <div class="col-xs-12 col-sm-2">
     </div>
     <div class="col-xs-12 col-sm-6">
         <div class="row">
