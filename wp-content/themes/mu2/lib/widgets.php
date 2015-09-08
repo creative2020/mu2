@@ -16,7 +16,7 @@ class Post_Widget extends \WP_Widget {
         if ( !empty( $instance['type'] ) )
             $q['post_type'] = $instance['type'];
         if ( !empty( $instance['category'] ) )
-            $q['category'] = $instance['category'];
+            $q['category_name'] = $instance['category'];
 
         $p = get_posts($q)[0];
         $excerpt = tt_get_excerpt($p);
