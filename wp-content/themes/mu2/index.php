@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-9" style="padding-top: 2rem;">
         <main>
-            <h1 style="text-align: center;"><?php the_title(); ?></h1>
+            <h1><?php the_title(); ?></h1>
             <?php the_content(); ?>
         </main>
     </div>
