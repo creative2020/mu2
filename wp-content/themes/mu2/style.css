@@ -7,6 +7,12 @@ Version: 1.0
 */
 
 /* Jeff's styles */
+.navbar-main {
+	border-bottom:1px solid white;
+}
+.main-slider-row {
+	border-bottom:1px solid white;
+}
 #tt-list {
 	font-size: 1.0em;
 	color:#8E734E;
@@ -82,4 +88,16 @@ Version: 1.0
 }
 .video-tn:hover {
 	opacity: .8;
+}
+/* Footer */
+.footer-contact-container h3{
+	color:white;	
+}
+.footer-contact-container a h4:hover{
+	color:#418FC1;
+	text-decoration: none;	
+}
+.footer-contact-container a:hover{
+	color:#418FC1;
+	text-decoration: none;	
 }
