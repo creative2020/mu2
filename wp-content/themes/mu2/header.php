@@ -11,7 +11,6 @@
     </script>
     <?php wp_head(); ?>
 </head>
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <body <?php body_class(); ?>>
 
 <div class="container-fluid">

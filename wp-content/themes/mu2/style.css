@@ -23,6 +23,14 @@ Version: 1.0
 	margin:0;
 	padding:0 0 0 4px;
 }
+#tt-list i.fa{
+	margin-left:-1.0em;
+	padding:0 0.2em 0 0;
+	height:2.0em;
+}
+#tt-list:hover i.fa{
+	color:white;
+}
 #tt-list h2 {
 	font-size: 1.0em;
 	color:#422f16;
@@ -191,4 +199,7 @@ ul.post-categories li:last {
     border-top:0.5em solid white;
     position: relative;
     z-index: 99;
+}
+#review-list h2 {
+	margin-top:0;
 }

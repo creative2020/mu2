@@ -7,8 +7,8 @@
 ?>
 <div class="col-xs-12 col-sm-6">
     <div class="tt-post">
-        <span class="title"><?php echo $p->post_title; ?></span><br>
-        <?php echo $excerpt; ?>
+	<a href="<?php echo $link; ?>"><span class="title"><?php echo $p->post_title; ?></span></a>
+        <p><?php echo $excerpt; ?></p>
     </div>
 </div>
 <div class="col-xs-12 col-sm-6">
