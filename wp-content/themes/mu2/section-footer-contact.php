@@ -13,10 +13,12 @@
             </div>
 
             <div class="col-sm-3 footer-text-widget center">
-                <h2>Newsletter Archive</h2>
-                <a href="#">Sep 2015</a></br>
-                <a href="#">Oct 2015</a></br>
-                <a href="#">Nov 2015</a></br>
+                <h2>Get Social</h2>
+                <a class="tt-social-icon" href="https://www.facebook.com/musclemetricsZONE" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                <a class="tt-social-icon" href="https://twitter.com/CbishopMuscle" target="_blank"><i class="fa fa-twitter"></i></a>
+	            <a class="tt-social-icon" href="https://www.linkedin.com/company/10076595" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+		        <a class="tt-social-icon" href="https://instagram.com/muscle_metrics/" target="_blank"><i class="fa fa-instagram"></i></h3></a>
+                
                 <?php //dynamic_sidebar('tt-sidebar-footer-center'); ?>
             </div>
             

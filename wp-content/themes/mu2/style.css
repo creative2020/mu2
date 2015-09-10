@@ -203,3 +203,7 @@ ul.post-categories li:last {
 #review-list h2 {
 	margin-top:0;
 }
+.tt-social-icon {
+	font-size: 2.0em;
+	margin-right:1.0em;
+}
