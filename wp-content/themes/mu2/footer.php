@@ -5,7 +5,23 @@
 </div>
 
 <div class="row" id="tt-sidebar-home-row4">
-    <?php dynamic_sidebar('tt-sidebar-home-row4'); ?>
+		<div class="col-sm-3">
+			<?php echo do_shortcode('[tt_img id="58" link="#" responsive=true]'); ?>
+		</div>
+		<div class="col-sm-3">
+			<?php echo do_shortcode('[tt_img id="57" link="#" responsive=true]'); ?>
+		</div>
+		<div class="col-sm-3">
+			<h2>Review</h2>
+			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list"]'); ?>
+			<a href="/category/research/"><p>View all</p></a>
+		</div>
+		<div class="col-sm-3">
+			<h2>Research</h2>
+			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list"]'); ?>
+			<a href="/category/research/"><p>View all</p></a>
+		</div>
+    <?php //dynamic_sidebar('tt-sidebar-home-row4'); ?>
 </div>
 
 <?php

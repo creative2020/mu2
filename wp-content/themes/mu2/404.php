@@ -10,10 +10,10 @@ get_header(); ?>
         <?php get_template_part( 'section', 'logo' ); ?>
     </div>
     
-    <div class="col-xs-12 col-sm-9 col-sm-push-3"> <!-- col RIGHT -->
+    <div class="col-xs-12"> <!-- col RIGHT -->
         <div id="page-header" class="row">
             <div class="col-xs-12 col-sm-8"> 
-                <h1>Sorry, page not found</h1>
+                <h1>404 - Sorry, page not found</h1>
             </div>
             <div class="hidden-xs col-sm-4"> 
                 <div class="col-sm-12 tt-feature-image"><i class="fa fa-question-circle pull-right" style="margin-top:0.5em;font-size:3.5em;color:#79A99C;"></i></div>
@@ -24,6 +24,7 @@ get_header(); ?>
 <div class="row"> <!--row-->
     <div class="section clearfix">
         
+<!--
         <div class="col-md-10 col-md-offset-1">
             <h2>Maybe try a search below</h2>
             <?php echo do_shortcode('[tt_search]'); ?>
@@ -42,6 +43,7 @@ get_header(); ?>
             <?php echo do_shortcode('[tt_rule]'); ?>
             
         </div>
+-->
     </div>
 </div> <!--row-->
 
