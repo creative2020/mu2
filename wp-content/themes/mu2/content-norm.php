@@ -50,14 +50,15 @@
             
             <?php echo do_shortcode('[tt_rule]'); ?>
             
+        </div>
+        <div class="col-sm-12">
+            
                 <?php the_content(); ?> 
             
-            <?php echo do_shortcode('[tt_rule]'); ?>
-            
-            
+            <?php //echo do_shortcode('[tt_rule]'); ?>
             
         </div>
-    </div>
+    </div> <!-- /section -->
 </div> <!--row-->
 
         
@@ -92,7 +93,7 @@
             <a class="btn btn-warning btn-sm" href="<?php echo get_the_permalink() ?>">Read full article</a>
         </div>
         
-    </div>
+    </div> <!-- /row -->
 </a>
 
 <?php } ?> <!--post-->

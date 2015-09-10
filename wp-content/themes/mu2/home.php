@@ -29,7 +29,7 @@ if ( ! is_user_logged_in() ) {
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
-        <a href="/videos"><p class="head">Videos</p></a>
+        <a href="/category/video"><p class="head">Videos</p></a>
         <div class="content">
             <?php echo do_shortcode('[tt_posts limit="1" cat_name="video" layout="list-video"]'); ?>
         </div>

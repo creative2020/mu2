@@ -12,12 +12,20 @@
                 <?php //dynamic_sidebar('tt-sidebar-footer-left'); ?>
             </div>
 
-            <div class="col-sm-6 footer-text-widget center">
+            <div class="col-sm-3 footer-text-widget center">
                 <h2>Newsletter Archive</h2>
                 <a href="#">Sep 2015</a></br>
                 <a href="#">Oct 2015</a></br>
                 <a href="#">Nov 2015</a></br>
                 <?php //dynamic_sidebar('tt-sidebar-footer-center'); ?>
+            </div>
+            
+            <div class="col-sm-3 footer-text-widget">
+                <h2>Payments</h2>
+                <p>We accept cash and credit cards only</p>
+                <h3><i class="fa fa-cc-visa"></i>
+                <i class="fa fa-cc-mastercard"></i>
+                <i class="fa fa-cc-amex"></i></h3>
             </div>
 
             <div class="col-sm-3 footer-text-widget">
