@@ -16,14 +16,11 @@ if (empty($attachment_url)) {
         <?php get_template_part( 'section', 'logo' ); ?>
     </div>
     
-    <div class="col-xs-12 col-sm-9 col-sm-push-3"> <!-- col RIGHT -->
+    <div class="col-xs-12 col-sm-9"> <!-- col LEFT -->
         <div id="page-header" class="row">
-            <div class="col-xs-12 col-sm-8"> 
-                <?php echo do_shortcode('[tt_search]'); ?>
-                <h1>Archive for: </h1>
-            </div>
-            <div class="col-xs-12 col-sm-4"> 
-                <div class="col-sm-12 tt-feature-image"><i class="fa fa-search pull-right" style="margin-top:0.5em;font-size:3.5em;color:#79A99C;"></i></div>
+            <div class="col-xs-12"> 
+                <?php //echo do_shortcode('[tt_search]'); ?>
+                <h1></h1>
             </div>
         </div>
     
@@ -31,7 +28,7 @@ if (empty($attachment_url)) {
 <div class="row"> <!--row-->
     <div class="section clearfix">
         
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-sm-12">
             <?php if ( have_posts() ) : ?>
      
 			<?php
@@ -85,19 +82,13 @@ if (empty($attachment_url)) {
     </div>
 </div> <!--row-->
 
-</div> <!-- col RIGHT -->
+</div> <!-- /col LEFT -->
     
     
     
-    <div id="page-sidebar" class="col-xs-12 col-sm-3 col-sm-pull-9"> <!-- sidebar col left-->
-        
-    <div class="hidden-xs">
-        <?php get_template_part( 'section', 'logo' ); ?>
+    <div class="col-xs-12 col-sm-3" style="padding-top: 2rem;">
+        <?php dynamic_sidebar('tt-sidebar-post-sidebar'); ?>
     </div>
-        <?php get_template_part( 'sidebar', 'main' ); ?>
-            
-    </div> <!-- Sidebar col LEFT -->
-
 
    
 

@@ -15,9 +15,9 @@ if ( ! is_user_logged_in() ) {
 
 <div class="row home-headlines">
     <div class="col-xs-6 col-sm-3">
-        <p class="head">News</p>
+        <a href="#"><p class="head">Health, Fitness & Nutrition</p></a>
         <div class="content">
-            <p class="headsub">Muscle and BodPod articles:</p>
+            <p class="headsub">News and Advice:</p>
             <?php echo do_shortcode('[tt_posts limit="3" cat="-7" cat_name="" layout="list"]'); ?>
         </div>
     </div>
@@ -29,7 +29,7 @@ if ( ! is_user_logged_in() ) {
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
-        <p class="head">Videos</p>
+        <a href="/videos"><p class="head">Videos</p></a>
         <div class="content">
             <?php echo do_shortcode('[tt_posts limit="1" cat_name="video" layout="list-video"]'); ?>
         </div>

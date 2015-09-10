@@ -4,9 +4,9 @@
         <div class="row">
 
             <div class="col-sm-3 footer-text-widget">
-	            <h2>Sponsorships Available Now</h2>
+	            <a href="/sponsorship"><h2>Sponsorships Available Now</h2></a>
 	            
-	            <a href="/pricing">Pricing</a></br>
+	            <a href="/sponsorship">Become a sponsor</a></br>
 	            <a href="/sponsorship">Registration</a>
 	            <h4>Promote your business</h4>
                 <?php //dynamic_sidebar('tt-sidebar-footer-left'); ?>

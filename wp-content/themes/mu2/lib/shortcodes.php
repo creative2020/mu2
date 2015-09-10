@@ -74,6 +74,25 @@ function tt_rule($atts, $content = null) {
 
 ////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////// TT Search
+add_shortcode( 'tt_search', 'tt_search' );
+function tt_search ( $atts ) {
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => '',
+            'id' => '',
+		), $atts )
+	);
+    
+    $tt_post_content = get_search_form();
+    
+    
+// code
+return $tt_post_content;    
+}
+////////////////////////////////////////////////////////
+
 //////////////////////////////////////////////////////// TT Button
 
 // [tt_btn size="lg" link="#" color="#003764" fcolor="#ffffff" float="none" target="" class=""]Button Name[/tt_btn], homes_for_sale_btn

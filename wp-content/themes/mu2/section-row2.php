@@ -29,7 +29,7 @@
 ?>
 <div class="col-xs-12 col-sm-3">
     <div class="tt-post">
-        <span class="title"><?php echo $p->post_title; ?></span><br>
+        <a href="<?php echo $link; ?>"><span class="title"><?php echo $p->post_title; ?></span><br></a>
         <?php echo $excerpt; ?>
     </div>
 </div>
