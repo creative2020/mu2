@@ -12,5 +12,5 @@
     </div>
 </div>
 <div class="col-xs-12 col-sm-6">
-    <img src="<?php echo $url; ?>" class="img-responsive center-block" style="max-height: 24rem;">
+    <img src="<?php echo $url; ?>" class="img-responsive pull-right" style="max-height: 24rem;">
 </div>

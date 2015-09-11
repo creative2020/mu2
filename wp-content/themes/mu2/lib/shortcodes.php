@@ -170,6 +170,7 @@ add_shortcode( 'tt_posts', 'tt_posts' ); // echo do_shortcode('[tt_posts limit="
 function tt_posts ( $atts ) {
 
 	// Attributes
+<<<<<<< HEAD
 	extract( shortcode_atts(
 		array(
 			'name' => 'post',
@@ -183,9 +184,26 @@ function tt_posts ( $atts ) {
             'order' => 'DSC',
             'term' => '',
             'taxonomy' => 'Type',
+            'img' => 'y',
 		), $atts )
 	);
     
+=======
+	extract( shortcode_atts( [
+		'name' => 'post',
+		'cat' => '-1',
+		'cat_name' => '',
+		'limit' => '10',
+		'type' => 'post',
+		'layout' => 'norm',
+		'style' => 'col-sm-offset-4',
+		'orderby' => 'post_date',
+		'order' => 'DSC',
+		'term' => '',
+		'taxonomy' => 'Type',
+	], $atts ) );
+
+>>>>>>> origin/master
 /////////////////////////////////////// Variables
 $user_ID = get_current_user_id();
 $user_data = get_user_meta( $user_ID );
@@ -197,36 +215,23 @@ $user_photo_img = '<img src="' . $user_photo_url . '">';
 if ($name == 'post') {
 	// The Query
 
-	
-
-	if ( !empty($term) ) {
-	    $args = array(
+	$args = [
 		'post_type' => $type,
 		'post_status' => 'publish',
+		'posts_per_page' => $limit,
+		'cat' => $cat,
+		'category_name' => $cat_name,
 		'orderby' => $orderby,
 		'order' => $order,
-		'posts_per_page' => $limit,
-	    'cat' => $cat,
-	    'category_name' => $cat_name,
-	    'tax_query' => array(
-			array(
-				'taxonomy' => $taxonomy,
-				'field'    => 'slug',
-				'terms'    => $term,
-			),
-		),
-	);
-	} else {
-		$args = array(
-		'post_type' => $type,
-		'post_status' => 'publish',
-		'order' => 'post_date',
-		'orderby' => 'rand',
-		'posts_per_page' => $limit,
-	    'cat' => $cat,
-	    'category_name' => $cat_name,
-	);
-}
+	];
+
+	if ( !empty($term) ) {
+		$args['tax_query'] = [ [
+			'taxonomy' => $taxonomy,
+			'field'    => 'slug',
+			'terms'    => $term,
+		] ];
+	}
 }
 remove_all_filters('posts_orderby');
 $the_query = new WP_Query( $args );

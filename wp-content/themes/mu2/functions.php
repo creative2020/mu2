@@ -11,6 +11,10 @@ function tt_get_excerpt($local_post) {
     return $excerpt;
 }
 
+// Add feature image sizes
+add_image_size( square, 400, 400, true );
+add_image_size( sq300, 300, 300, true );
+
 require_once( 'lib/wp_bootstrap_navwalker.php' );
 
 require_once( 'lib/shortcodes.php' );

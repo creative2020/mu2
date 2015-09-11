@@ -10,13 +10,14 @@
         $image = get_the_post_thumbnail( $post_id, 'medium' );
         $col = '9';
         $icon = '';
+        $img = 'y';
             
 ?>
 
     <a href="<?php echo $permalink ?>">
 	    <div id="tt-list" class="row">
 		    
-		    <?php if (empty( $image )) {
+		    <?php if (empty( $image ) || $img == "n") {
 			    
 			    $col = '12';
 			    $icon = '<i class="fa fa-external-link-square pull-left"></i> ';
