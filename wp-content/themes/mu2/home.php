@@ -18,7 +18,7 @@ if ( ! is_user_logged_in() ) {
         <a href="#"><p class="head">Health, Fitness & Nutrition</p></a>
         <div class="content">
             <p class="headsub">News and Advice:</p>
-            <?php echo do_shortcode('[tt_posts limit="3" cat="-7" cat_name="" layout="list"]'); ?>
+            <?php echo do_shortcode('[tt_posts limit="3" cat="-7" layout="list"]'); ?>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
