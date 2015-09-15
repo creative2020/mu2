@@ -30,7 +30,7 @@
 		        </div>
 	        </div>
 			<div id="tt-event-btn" class="col-sm-12">
-				<?php echo do_shortcode('[tt_btn link="#" block="y"]Register[/tt_btn]'); ?>
+				<?php echo do_shortcode('[tt_btn link="'.$permalink.'" block="y"]Register[/tt_btn]'); ?>
 			</div>
 	        
 	    </div>
