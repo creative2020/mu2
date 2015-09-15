@@ -25,7 +25,7 @@ if ( ! is_user_logged_in() ) {
         <p class="head">Next Event Location</p>
         <div class="content">
             <p class="headsub">Come check us out.</p>
-            <?php echo do_shortcode('[tt_posts limit="1" cat_name="event" layout="list-event"]'); ?>
+            <?php echo do_shortcode('[tt_posts limit="1" cat_name="event" order="ASC" layout="list-event"]'); ?>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
