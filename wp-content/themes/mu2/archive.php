@@ -97,8 +97,6 @@ if (empty($attachment_url)) {
 
 
 
-</div> <!-- main -->
-
 </div><!--page row-->
 
 
