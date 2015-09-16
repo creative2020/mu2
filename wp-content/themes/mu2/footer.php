@@ -13,15 +13,14 @@
 		</div>
 		<div id="review-list" class="col-sm-3">
 			<h2>Review</h2>
-			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list"]'); ?>
+			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list-noimg"]'); ?>
 			<a href="/category/research/"><p>View all</p></a>
 		</div>
 		<div id="review-list" class="col-sm-3">
 			<h2>Research</h2>
-			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list"]'); ?>
+			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list-noimg"]'); ?>
 			<a href="/category/research/"><p>View all</p></a>
 		</div>
-    <?php //dynamic_sidebar('tt-sidebar-home-row4'); ?>
 </div>
 
 <?php

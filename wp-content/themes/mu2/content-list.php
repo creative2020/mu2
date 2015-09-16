@@ -20,7 +20,6 @@
 			    
 			    $col = '12';
 			    $icon = '<i class="fa fa-external-link-square pull-left"></i> ';
-			    //do nothing
 			    
 			    } else { ?>
                                
@@ -32,10 +31,7 @@
 		    
 	        
 	        <div id="<?php echo the_title() ?>" class="col-sm-<?php echo $col; ?>">
-		        <div>
-		            <?php echo $icon; ?><h2><?php echo the_title(); ?></h2>
-		            
-		        </div>
+                <?php echo $icon; ?><h2><?php echo the_title(); ?></h2>
 	        </div>
 	        
 	    </div>
