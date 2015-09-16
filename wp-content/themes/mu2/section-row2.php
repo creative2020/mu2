@@ -21,7 +21,7 @@
 </div>
 
 <?php
-    $q = [ 'numberposts' => 1, 'orderby' => 'rand' ];
+    $q = [ 'numberposts' => 1, 'orderby' => 'rand', 'category_name' => 'featured-article' ];
     $p = get_posts($q)[0];
     $excerpt = tt_get_excerpt($p);
     $link = get_permalink($p->ID);
