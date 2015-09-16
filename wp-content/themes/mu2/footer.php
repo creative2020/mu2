@@ -13,8 +13,8 @@
 		</div>
 		<div id="review-list" class="col-sm-3">
 			<h2>Review</h2>
-			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="research" layout="list-noimg"]'); ?>
-			<a href="/category/research/"><p>View all</p></a>
+			<?php echo do_shortcode('[tt_posts limit="5" cat="-7" cat_name="review" layout="list-noimg"]'); ?>
+			<a href="/category/review/"><p>View all</p></a>
 		</div>
 		<div id="review-list" class="col-sm-3">
 			<h2>Research</h2>
