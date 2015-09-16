@@ -40,19 +40,19 @@ class WPLessPlugin extends WPPluginToolkitPlugin
     {
         parent::__construct($configuration);
     }
-    
+
     public function instantiateCompiler()
     {
         if (!class_exists('lessc')) {
             // Load the parent compiler class
             require $this->getLessCompilerPath();
         }
-        
+
         $this->compiler = new WPLessCompiler;
         $this->compiler->setVariable('stylesheet_directory_uri', "'" . get_stylesheet_directory_uri() . "'");
         $this->compiler->setVariable('template_directory_uri', "'" . get_template_directory_uri() . "'");
     }
-    
+
     /**
      * Load the parent compiler class. This is provided via lessc.inc.php for
      * both the lessphp and less.php implementations
@@ -65,8 +65,8 @@ class WPLessPlugin extends WPPluginToolkitPlugin
     {
         // The usage of the WP_LESS_COMPILER is a holdover from an older implentation
         // of this opt-in functionality
-        $compiler = defined('WP_LESS_COMPILER') ? WP_LESS_COMPILER : apply_filters('wp_less_compiler', 'lessphp');
-        
+        $compiler = defined('WP_LESS_COMPILER') ? WP_LESS_COMPILER : apply_filters('wp_less_compiler', 'less.php');
+
         switch( $compiler ){
             case 'less.php':
                 return dirname(__FILE__).'/../vendor/oyejorge/less.php/lessc.inc.php';
@@ -76,7 +76,7 @@ class WPLessPlugin extends WPPluginToolkitPlugin
                 return $compiler;
         }
     }
-    
+
     public function getCompiler()
     {
         if( $this->compiler ) return $this->compiler;
@@ -124,7 +124,7 @@ class WPLessPlugin extends WPPluginToolkitPlugin
             wp_schedule_event(time(), 'daily', 'wp-less-garbage-collection');
         }
 
-        /* 
+        /*
          * Clear old hooks, prior to hook change
          * #57
          */
@@ -285,6 +285,62 @@ class WPLessPlugin extends WPPluginToolkitPlugin
     }
 
     /**
+     * Compile editor stylesheets registered via add_editor_style()
+     *
+     * @param  string $mce_css Comma separated list of CSS file URLs
+     * @return string $mce_css New comma separated list of CSS file URLs
+     */
+    public function processEditorStylesheets($mce_css) {
+
+        if( !$mce_css ) return $mce_css;
+
+        // extract CSS file URLs
+        $style_sheets = explode( ",", $mce_css );
+
+        if ( count( $style_sheets ) ) {
+            $compiled_css = array();
+
+            // loop through editor styles, any .less files will be compiled and the compiled URL returned
+            foreach( $style_sheets as $style_sheet ) {
+
+                // Remove version from uri
+                $parts = parse_url( $style_sheet );
+                $style_sheet = $parts['scheme'] . '://' . $parts['host'] . $parts['path'];
+
+                // Get extension and set handle for wp_register_style()
+                $pathinfo = pathinfo($style_sheet);
+                $extension = $pathinfo['extension'];
+                $handle = $pathinfo['filename'];
+
+                // Only process less files
+                if( $extension === 'less' ) {
+
+                    // Register stylesheet as wp dependency
+                    wp_register_style( $handle, $style_sheet, array(), null );
+
+                    // Process stylesheet
+                    $stylesheet = $this->processStylesheet($handle, false);
+
+                    // Add if successfull
+                    if($stylesheet) {
+                        $compiled_css[] = $stylesheet->getTargetUri();
+                    }
+
+                }
+
+                else {
+                    $compiled_css[] = $style_sheet;
+                }
+            }
+
+            $mce_css = implode( ",", $compiled_css );
+        }
+
+        // return new URLs
+        return $mce_css;
+    }
+
+    /**
      * Method to register hooks (and do it only once)
      *
      * @protected
@@ -299,8 +355,10 @@ class WPLessPlugin extends WPPluginToolkitPlugin
         }
 
         is_admin() ? do_action('wp-less_init_admin', $this) : do_action('wp-less_init', $this);
-        add_action('wp_enqueue_scripts', array($this, 'processStylesheets'), 999, 0);
-        add_action('admin_enqueue_scripts', array($this, 'processStylesheets'), 999, 0);
+        add_action('wp_enqueue_scripts', array($this, 'processStylesheets'), PHP_INT_MAX, 0);
+        add_action('admin_enqueue_scripts', array($this, 'processStylesheets'), PHP_INT_MAX, 0);
+        add_action('login_enqueue_scripts', array($this, 'processStylesheets'), PHP_INT_MAX, 0);
+        add_filter('mce_css', array($this, 'processEditorStylesheets'), PHP_INT_MAX);
         add_filter('wp-less_stylesheet_save', array($this, 'filterStylesheetUri'), 10, 2);
 
         return $this->is_hooks_registered = true;

@@ -76,9 +76,9 @@ class WPLessStylesheet
    * Since this moment, everything is configured to be usable
    *
    * @protected
-   * @author villeristi
+   * @author oncletom
    * @since 1.0
-   * @version 1.1.1
+   * @version 1.1
    */
   protected function configurePath()
   {
@@ -86,8 +86,8 @@ class WPLessStylesheet
 
     $this->source_path =    WP_CONTENT_DIR.preg_replace('#^'.content_url().'#U', '', $this->stylesheet->src);
     $this->source_uri =     $this->stylesheet->src;
-    $this->target_path =    trailingslashit(self::$upload_dir) . basename($target_file);
-    $this->target_uri =     trailingslashit(self::$upload_uri) . basename($target_file);
+    $this->target_path =    self::$upload_dir.$target_file;
+    $this->target_uri =     self::$upload_uri.$target_file;
 
     $this->setSourceTimestamp(filemtime($this->source_path));
   }
@@ -95,7 +95,7 @@ class WPLessStylesheet
   /**
    * Configures the file signature
    *
-   * It corresponds to a unique hash taking care of file timestamp and variables.
+   * It corresponds to a unique hash taking care of file name, timestamp and variables.
    * It should be called each time stylesheet variables are updated.
    *
    * @author oncletom
@@ -105,7 +105,7 @@ class WPLessStylesheet
    */
   protected function configureSignature(array $variables = array())
   {
-    $this->signature = substr(sha1(serialize($variables) . $this->source_timestamp), 0, 10);
+    $this->signature = substr(sha1(serialize($variables) . $this->computeTargetPath() . $this->source_timestamp), 0, 10);
   }
 
   /**

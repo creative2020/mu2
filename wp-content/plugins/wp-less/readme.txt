@@ -3,7 +3,7 @@ Contributors: fabrizim,oncletom
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=752034
 Tags: dev, theme, themes, toolkit, plugin-toolkit, less, lesscss, lessc, lessphp, productivity, style, stylesheet, api
 Requires at least: 3.2
-Tested up to: 4.0
+Tested up to: 4.3
 Stable tag: trunk
 
 Implementation of LESS (Leaner CSS) in order to make themes development easier.
@@ -27,14 +27,14 @@ Seriously.
 
 = Documentation =
 
-Advanced topics on how to use the plugin API are [available on the Github project wiki](https://github.com/oncletom/wp-less/wiki).
+Advanced topics on how to use the plugin API are [available on the Github project documentation](https://github.com/oncletom/wp-less/tree/master/doc).
 
 = Requirements =
 
 The sole requirement is to use WordPress API and LESS convention: the `.less` extension.
 
-**Minimal Requirements**: PHP 5.2.4 and WordPress 3.2.
-**Relies on**: [LESSPHP 0.4.0](http://leafo.net/lessphp/), [plugin-toolkit](http://wordpress.org/extend/plugins/plugin-toolkit/).
+**Minimal Requirements**: PHP 5.3 and WordPress 3.2.
+**Relies on**: [Less.php](http://lessphp.gpeasy.com/), [plugin-toolkit](http://wordpress.org/extend/plugins/plugin-toolkit/).
 
 *Notice*: in case you'd like to drop the usage of this plugin, it's safe to do it. You will just need to convert back your stylesheets to CSS.
 
@@ -67,6 +67,14 @@ Warning: this release has some breaking changes. If you the old selector express
  * Duplicate properties are now removed from output
 
 == Changelog ==
+
+= Version 1.8.0 =
+
+ * feature: default less compiler is now [oyejorge/less.php](http://lessphp.gpeasy.com/) ([#90](https://github.com/oncletom/wp-less/pull/68))
+
+= Version 1.7.6 =
+
+ * info: updated vendored lessphp libraries versions (oyejorge/less.php@1.7.0.5)
 
 = Version 1.7.5 =
 
@@ -122,7 +130,7 @@ Read the UPGRADE NOTICE carefully as this release contains BC change. Hence the 
 Mostly issues related to `lessphp` 0.3.8 features.
 
  * /!\ Leveraged PHP Minimum Version to 5.2.4 /!\ ([WordPress already asks you the same](http://wordpress.org/about/requirements/))
- * [dev documentation available online](https://github.com/oncletom/wp-less/wiki)
+ * [dev documentation available online](https://github.com/oncletom/wp-less/tree/master/doc)
  * bug: stylesheets compilation is now processed on `wp_enqueue_scripts` ([prop of @RixTox](https://github.com/oncletom/wp-less/pull/18))
  * feature: providing stylesheet and template directory uri variables (`@stylesheet_directory_uri` & `@template_directory_uri`) following WordPress convention
  * feature: Pruning old compiled files [#15](https://github.com/oncletom/wp-less/pull/15)
@@ -206,7 +214,7 @@ Mostly issues related to `lessphp` 0.3.8 features.
 
 == Frequently Asked Questions ==
 
-Lots of efforts have been done to write a [consistent documentation](https://github.com/oncletom/wp-less/wiki)
+Lots of efforts have been done to write a [consistent documentation](https://github.com/oncletom/wp-less/tree/master/doc)
 to address issues you may encounter.
 
 It covers topics like path customization, declaring LESS variables from PHP, creating new LESS functions etc.
@@ -217,7 +225,7 @@ It covers topics like path customization, declaring LESS variables from PHP, cre
 
 Some changes in the API may breaks compatibility with your PHP code dealing with `wp-less`.
 
-Please [open issues](https://github.com/oncletom/wp-less/issues) and describe your technical problems [if the usage is not documented](https://github.com/oncletom/wp-less/wiki).
+Please [open issues](https://github.com/oncletom/wp-less/issues) and describe your technical problems [if the usage is not documented](https://github.com/oncletom/wp-less/tree/master/doc).
 
 = 1.4 =
 
