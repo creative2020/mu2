@@ -5,26 +5,26 @@
 @headline-color2: #8e734e;
 
 .action-bg() when (iscolor(@action-bg)) { background-color: @action-bg !important; }
-.action-fg() when (iscolor(@action-fg)) { color: @action-fg !important; }
-.title-fg() when (iscolor(@title-fg)) { color: @title-fg !important; }
+//.action-fg() when (iscolor(@action-fg)) { color: @action-fg !important; }
+//.title-fg() when (iscolor(@title-fg)) { color: @title-fg !important; }
 
 .nav-main-bg() when (iscolor(@nav-main-bg)) { background-color: @nav-main-bg; }
 .nav-main-fg() when (iscolor(@nav-main-fg)) { color: @nav-main-fg; }
-.nav-secondary-bg() when (iscolor(@nav-secondary-bg)) { background-color: @nav-secondary-bg; }
-.nav-secondary-fg() when (iscolor(@nav-secondary-fg)) { color: @nav-secondary-fg; }
+//.nav-secondary-bg() when (iscolor(@nav-secondary-bg)) { background-color: @nav-secondary-bg; }
+//.nav-secondary-fg() when (iscolor(@nav-secondary-fg)) { color: @nav-secondary-fg; }
 
 .contact-bg() when (iscolor(@contact-bg)) { background-color: @contact-bg; }
 .contact-fg() when (iscolor(@contact-fg)) { color: @contact-fg; }
 .contact-action() when (iscolor(@contact-action)) { color: @contact-action; }
 
 .footer-bg() when (iscolor(@footer-bg)) { background-color: @footer-bg; }
-.footer-fg() when (iscolor(@footer-fg)) { color: @footer-fg; }
+//.footer-fg() when (iscolor(@footer-fg)) { color: @footer-fg; }
 
 .faq-rollover-fg() when (iscolor(@nav-main-bg)) { color: @nav-main-bg; }
 
 /* general global stuff */
 h1, h3 {
-    font-family: @headine-font;
+    font-family: @headline-font;
     color: @headline-color;
 }
 
@@ -51,17 +51,19 @@ header > img {
 }
 
 .home-header-img() {
-    background-image: @home-header-img;
+    //background-image: @home-header-img;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
+/*
 .home-header-fg() when (iscolor(@home-header-fg)) {
     color: @home-header-fg;
     a {
         color: @home-header-fg;
     }
 }
+*/
 
 .sgrad(@startColor: white, @endColor: black, @break: 50%) {
     background-color: @endColor;
@@ -118,7 +120,7 @@ header > img {
  */
 .nav > .active > a {
     .action-bg();
-    .action-fg();
+    //.action-fg();
 }
 div.row.navbar-main {
     .nav-main-bg();
@@ -131,10 +133,10 @@ div.row.navbar-main {
     background-color: #003a5d;
 }
 div.row.navbar-secondary {
-    .nav-secondary-bg();
+    //.nav-secondary-bg();
 }
 #navbar-secondary a {
-    .nav-secondary-fg();
+    //.nav-secondary-fg();
 }
 
 .main-slider-row {
@@ -250,7 +252,7 @@ div.row.navbar-secondary {
     .header {
         font-family: @headline-font;
         font-size: 200%;
-        .title-fg();
+        //.title-fg();
     }
     line-height: 1.75;
     a {
@@ -276,16 +278,27 @@ div.row.navbar-secondary {
             font-family: @headline-font;
             font-size: 200%;
         }
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
         padding-left: 2.5em;
         padding-right: 2.5em;
+    }
+}
+/* make the columns full height when layout is lateral */
+@media (min-width: @sm-min-width) {
+    .footer-contact-container > div > .row {
+        display: table;
+        > div[class^="col-"] {
+            float: initial;
+            display: table-cell;
+        }
     }
 }
 
 /* white lines */
 @footer-contact-line-thickness: 0.15em;
 @footer-contact-line-length: 80%;
-.footer-contact-container > div > .row > .center:before,
-.footer-contact-container > div > .row > .center:after {
+.footer-contact-container > div > .row > div:not(:first-child):before {
     content: '';
     background: hsla(0, 100%, 100%, 0.33);
     position: absolute;
@@ -293,29 +306,21 @@ div.row.navbar-secondary {
 
 /* white lines (vertical layout) */
 @media (max-width: @sm-min-width - 1) {
-    .footer-contact-container > div > .row {
-        > .center:before,
-        > .center:after {
-            left: (100% - @footer-contact-line-length) / 2;
-            width: @footer-contact-line-length;
-            height: @footer-contact-line-thickness;
-        }
-        > .center:before { top: 0; }
-        > .center:after { bottom: 0; }
+    .footer-contact-container > div > .row > div:not(:first-child):before {
+        left: (100% - @footer-contact-line-length) / 2;
+        width: @footer-contact-line-length;
+        height: @footer-contact-line-thickness;
+        top: 0;
     }
 }
 
 /* white lines (horizontal layout) */
 @media (min-width: @sm-min-width) {
-    .footer-contact-container > div > .row {
-        > .center:before,
-        > .center:after {
-            top: (100% - @footer-contact-line-length) / 2;
-            width: @footer-contact-line-thickness;
-            height: @footer-contact-line-length;
-        }
-        > .center:before { left: 0; }
-        > .center:after { right: 0; }
+    .footer-contact-container > div > .row > div:not(:first-child):before {
+        top: (100% - @footer-contact-line-length) / 2;
+        width: @footer-contact-line-thickness;
+        height: @footer-contact-line-length;
+        left: 0;
     }
 }
 
@@ -335,7 +340,7 @@ div.row.navbar-secondary {
  */
 #footer-bloginfo {
     .footer-bg();
-    .footer-fg();
+    //.footer-fg();
 }
 
 /*
@@ -344,7 +349,7 @@ div.row.navbar-secondary {
 
 #home-top-container {
     .home-header-img();
-    .home-header-fg();
+    //.home-header-fg();
     font-family: @headline-font;
     .widgettitle {
         margin-left: 10%;
@@ -429,7 +434,7 @@ div.row.navbar-secondary {
             font-family: @headline-font;
             font-size: 200%;
             vertical-align: bottom;
-            .title-fg();
+            //.title-fg();
         }
         a {
             color: black;
@@ -474,7 +479,7 @@ div.row.navbar-secondary {
     .title {
         font-family: @headline-font;
         font-size: 200%;
-        .title-fg();
+        //.title-fg();
     }
 }
 
@@ -493,7 +498,7 @@ div.row.navbar-secondary {
         padding: 100% / 12;
     }
     .widgettitle {
-        .title-fg();
+        //.title-fg();
         font-family: @headline-font;
     }
 }
@@ -520,4 +525,16 @@ div.row.navbar-secondary {
         font-size: 125%;
         line-height: 1.5;
     }
+}
+
+/*
+ * appointments stuff
+ */
+.appointments-confirmation-wrapper {
+    margin-top: 2rem;
+    > fieldset > legend {
+        border: 0;
+        margin: 0;
+    }
+    .appointments-confirmation-worker { display: none !important; }
 }

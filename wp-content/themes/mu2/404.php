@@ -61,8 +61,6 @@ get_header(); ?>
     </div> <!-- Sidebar col LEFT -->
 
 
-</div> <!-- main -->
-
 </div><!--page row-->
 
 

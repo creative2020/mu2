@@ -171,6 +171,7 @@ function tt_posts ( $atts ) {
 
 	// Attributes
 <<<<<<< HEAD
+<<<<<<< HEAD
 	extract( shortcode_atts(
 		array(
 			'name' => 'post',
@@ -189,6 +190,8 @@ function tt_posts ( $atts ) {
 	);
     
 =======
+=======
+>>>>>>> origin/master
 	extract( shortcode_atts( [
 		'name' => 'post',
 		'cat' => '-1',
@@ -203,6 +206,9 @@ function tt_posts ( $atts ) {
 		'taxonomy' => 'Type',
 	], $atts ) );
 
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 /////////////////////////////////////// Variables
 $user_ID = get_current_user_id();
@@ -257,39 +263,13 @@ if ( $the_query->have_posts() ) {
         }
          
 		
-//HTML
-
-
-            
-if ($layout == 'list' ) {
-    //get section html
-    ob_start();
-        get_template_part('content', 'list');
-        $output .= ob_get_contents();
-    ob_end_clean();
-} 
-else if ($layout == 'list-event' ) {
-    //get section html
-    ob_start();
-        get_template_part('content', 'list-event');
-        $output .= ob_get_contents();
-    ob_end_clean();
-}
-else if ( !empty($layout) ) {
     //get section html
     ob_start();
         get_template_part('content', $layout);
         $output .= ob_get_contents();
     ob_end_clean();
-} else {	
-    //get section html
-    ob_start();
-        get_template_part('content', 'default');
-        $output .= ob_get_contents();
-    ob_end_clean();
-}
+
 }    // after loop
-    //$output .= '</ul>';
     
 /* Restore original Post Data */
 wp_reset_postdata();
