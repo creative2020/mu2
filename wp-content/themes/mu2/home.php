@@ -1,52 +1,103 @@
+<?php get_header(); ?> <!-- blog page template -->
 <?php
-if ( ! is_user_logged_in() ) {
-    get_template_part('page', 'coming-soon');
-    die();
+$post_id = get_the_ID();
+$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+$attachment_url = wp_get_attachment_url( $post_thumbnail_id );
+
+if (empty($attachment_url)) {
+    $attachment_url = get_template_directory_uri().'/images/icon-image-pm.png';
+} else {
+    //nothing
 }
 ?>
 
-<?php get_header(); ?>
+<div id="page" class="row">
+    <div class="visible-xs-block">
+        <?php get_template_part( 'section', 'logo' ); ?>
+    </div>
+    
+    <div class="col-xs-12 col-sm-9"> <!-- col LEFT -->
+        <div id="page-header" class="row">
+            <div class="col-xs-12"> 
+                <?php //echo do_shortcode('[tt_search]'); ?>
+                <h1></h1>
+            </div>
+        </div>
+    
+      
+<div class="row"> <!--row-->
+    <div class="section clearfix">
+        
+        <div class="col-sm-12">
+            <?php if ( have_posts() ) : ?>
+     
+			<?php
+			// Start the loop.
+			while ( have_posts() ) : the_post(); 
+            
+                        $category = get_the_category();
+                        $cat_name = $category[0]->category_nicename; 
+            
+				/*
+				 * Run the loop for the search to output the results.
+				 * If you want to overload this in a child theme then include a file
+				 * called content-search.php and that will be used instead.
+				 */
 
-<main>
+            //check for custom content style    
+            if ( in_category( 'testimonial' ) ) {
+                    get_template_part( 'content', 'testimonial' );
+                }
+            else if ( in_category( 'features' ) ) {
+                    get_template_part( 'content', 'features' );
+                }
+            else if ( in_category( 'people' ) ) {
+                    get_template_part( 'content', 'people' );
+                }
 
-<div class="row main-slider-row">
-    <?php echo do_shortcode("[metaslider id=23]"); ?>
-</div>
+            else {
+                    get_template_part( 'content', 'norm' );
 
-<div class="row home-headlines">
-    <div class="col-xs-6 col-sm-3">
-        <a href="#"><p class="head">Health, Fitness & Nutrition</p></a>
-        <div class="content">
-            <p class="headsub">News and Advice:</p>
-            <?php echo do_shortcode('[tt_posts limit="3" cat="-7" layout="list"]'); ?>
+                    }
+                
+                
+
+			// End the loop.
+			endwhile;
+
+			// Previous/next page navigation.
+			the_posts_pagination( array(
+				'prev_text'          => __( 'Previous page', '' ),
+				'next_text'          => __( 'Next page', '' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', '' ) . ' </span>',
+			) );
+
+		// If no content, include the "No posts found" template.
+		else :
+			get_template_part( 'content', 'none' );
+
+		endif;
+		?>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-3">
-        <p class="head">Next Event Location</p>
-        <div class="content">
-            <p class="headsub">Come check us out.</p>
-            <?php echo do_shortcode('[tt_posts limit="1" cat_name="event" order="ASC" layout="list-event"]'); ?>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-3">
-        <a href="/category/video"><p class="head">Videos</p></a>
-        <div class="content">
-            <?php echo do_shortcode('[tt_posts limit="1" cat_name="video" layout="list-video"]'); ?>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-3">
-        <p class="head">Newsletter Signup</p>
-        <div class="content">
-            <p class="headsub">Muscle Matters 1x per month</p>
-            <div class="nl-form"><?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true" tabindex="88"]'); ?></div>
-        </div>
-    </div>
-</div>
+</div> <!--row-->
 
-<div class="row" id="tt-sidebar-home-row2">
-    <?php get_template_part('section', 'row2'); ?>
-</div>
+</div> <!-- /col LEFT -->
+    
+    
+    
+    <div class="col-xs-12 col-sm-3" style="padding-top: 2rem;">
+        <?php dynamic_sidebar('tt-sidebar-post-sidebar'); ?>
+    </div>
 
-</main>
+   
 
-<?php get_footer(); ?>
+
+  
+
+
+
+</div><!--page row-->
+
+
+<?php get_footer() ?>

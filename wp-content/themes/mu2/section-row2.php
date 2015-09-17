@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-3">
     <?php
         $q = [ 'numberposts' => 4 ];
-        $q['category_name'] = 'location';
+        $q['type'] = 'tribe_events';
 
         echo '<span class="title">Upcoming Locations</span><br>';
 
@@ -21,11 +21,8 @@
 </div>
 
 <?php
-<<<<<<< HEAD
-    $q = [ 'numberposts' => 1, 'orderby' => 'rand'];
-=======
+
     $q = [ 'numberposts' => 1, 'orderby' => 'rand', 'category_name' => 'featured-article' ];
->>>>>>> origin/master
     $p = get_posts($q)[0];
     $excerpt = tt_get_excerpt($p);
     $link = get_permalink($p->ID);
