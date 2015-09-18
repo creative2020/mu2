@@ -1,28 +1,11 @@
-<div class="col-xs-12 col-sm-3">
-    <?php
-        $q = [ 'numberposts' => 4 ];
-        $q['type'] = 'tribe_events';
-
-        echo '<span class="title">Upcoming Locations</span><br>';
-
-        foreach(get_posts($q) as $loc) {
-            $categories = get_the_category($loc->ID);
-            foreach($categories as $category) {
-                if ($category->category_parent == 6) {
-                    $display_cat_name = $category->name;
-                }
-            }
-            echo '<a href="' . get_permalink($loc->ID) . '">' .
-                $loc->post_title . ' | ' .
-                $display_cat_name .
-                '</a><br>';
-        }
-    ?>
+<div id="locations-list" class="col-xs-12 col-sm-3">
+	<h3>Upcoming Locations</h3>
+    <?php echo do_shortcode('[tt_posts limit="5" type="tribe_events" cat="-7" layout="list-noimg"]'); ?>
 </div>
 
 <?php
 
-    $q = [ 'numberposts' => 1, 'orderby' => 'rand', 'category_name' => 'featured-article' ];
+    $q = [ 'numberposts' => 1, 'orderby' => 'rand', 'category_name' => 'notable-article' ];
     $p = get_posts($q)[0];
     $excerpt = tt_get_excerpt($p);
     $link = get_permalink($p->ID);

@@ -223,3 +223,8 @@ ul.post-categories li:last {
 .home-headlines a:hover {
 	text-decoration: none;
 }
+/* Locations list */
+#locations-list h3{
+	margin-top:0;
+	padding-top:0;
+}
