@@ -1,6 +1,6 @@
 <div class="row" id="logo-row">
     <div class="col-xs-12 col-sm-4 logo-col">
-        <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/logo.png" />
+        <a href="<?php get_site_url(); ?>"><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/logo.png" /></a>
     </div>
     <div class="col-xs-12 col-sm-2">
     </div>
