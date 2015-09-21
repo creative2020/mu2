@@ -459,8 +459,15 @@ border color while dragging a file over the uploader drop area */
 	width: auto;
 	margin-bottom: 16px;
 	padding: 0 16px;
+<<<<<<< HEAD
 	border: 1px solid #c00;
 	background-color: #feebe8;
+=======
+	border-left: 4px solid #dd3d36;
+ 	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+ 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .upload-php .mode-grid .hide-sidebar .media-sidebar {
@@ -474,13 +481,22 @@ border color while dragging a file over the uploader drop area */
 }
 
 .upload-php .mode-grid .media-sidebar .upload-error {
+<<<<<<< HEAD
 	margin: 20px 0;
 	padding: 0;
 	border: none;
+=======
+	margin: 12px 0;
+	padding: 4px 0 0;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	background: none;
 }
 
 .upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors {
+<<<<<<< HEAD
 	font-size: 0;
 	top: -12px;
 	right: -10px;
@@ -490,11 +506,27 @@ border color while dragging a file over the uploader drop area */
 	content: "\f158";
 	font: normal 20px/1 dashicons;
 	color: #666;
+=======
+	top: -10px;
+	right: -14px;
+	padding: 10px;
+}
+
+.upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors:before {
+	content: "\f153";
+	display: block;
+	font: normal 16px/1 dashicons;
+	color: #bbb;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors:focus:before,
 .upload-php .mode-grid .media-sidebar .media-uploader-status .upload-dismiss-errors:hover:before {
+<<<<<<< HEAD
 	color: #00a0d2;
+=======
+	color: #c00;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .upload-php .mode-grid .media-sidebar .media-uploader-status.errors h3 {
@@ -566,9 +598,15 @@ border color while dragging a file over the uploader drop area */
 	font-size: 14px;
 }
 
+<<<<<<< HEAD
 .media-frame.mode-grid .media-toolbar-secondary > .media-button {
 	margin-top: 10px;
 	margin-bottom: 10px;
+=======
+.media-frame.mode-grid.mode-edit .media-toolbar-secondary > .select-mode-toggle-button {
+	margin: 0 8px 0 0;
+	vertical-align: middle;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .media-frame.mode-grid .attachments-browser .bulk-select {
@@ -581,7 +619,11 @@ border color while dragging a file over the uploader drop area */
 }
 
 .media-frame.mode-grid .spinner {
+<<<<<<< HEAD
 	margin-top: 15px;
+=======
+	margin-top: 16px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .attachments-browser .media-toolbar-secondary > .media-button {
@@ -632,11 +674,14 @@ border color while dragging a file over the uploader drop area */
 	font-size: 22px;
 }
 
+<<<<<<< HEAD
 .upload-php .media-modal-close .media-modal-icon {
 	margin: 14px;
 	width: 22px;
 }
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .upload-php .media-modal-close,
 .edit-attachment-frame .edit-media-header .left,
 .edit-attachment-frame .edit-media-header .right {
@@ -689,6 +734,11 @@ border color while dragging a file over the uploader drop area */
 	border-color: #ccc;
 	color: #000;
 	outline: none;
+<<<<<<< HEAD
+=======
+	-webkit-box-shadow: none;
+	box-shadow: none;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .upload-php .media-modal-close:focus .media-modal-icon:before,
@@ -1017,10 +1067,13 @@ border color while dragging a file over the uploader drop area */
 	margin: 0 8px 0 0;
 }
 
+<<<<<<< HEAD
 .imgedit-group-top {
 	margin: 5px 0;
 }
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 #poststuff .imgedit-group-top h3 {
 	padding: 0;
 }
@@ -1048,7 +1101,11 @@ a.imgedit-help-toggle {
 }
 
 .imgedit-submit {
+<<<<<<< HEAD
 	margin: 8px 0;
+=======
+	margin: 8px 0 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .imgedit-submit-btn {
@@ -1069,7 +1126,11 @@ span.imgedit-scale-warn {
 
 .imgedit-group {
 	margin-bottom: 8px;
+<<<<<<< HEAD
 	padding: 2px 10px;
+=======
+	padding: 10px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 audio, video {

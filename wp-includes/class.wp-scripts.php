@@ -35,6 +35,12 @@ class WP_Scripts extends WP_Dependencies {
 		add_action( 'init', array( $this, 'init' ), 0 );
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @access public
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function init() {
 		/**
 		 * Fires when the WP_Scripts instance is initialized.
@@ -61,12 +67,31 @@ class WP_Scripts extends WP_Dependencies {
 		return $this->do_items( $handles, $group );
 	}
 
+<<<<<<< HEAD
 	// Deprecated since 3.3, see print_extra_script()
+=======
+	/**
+	 * @deprecated 3.3
+	 * @see print_extra_script()
+	 *
+	 * @param string $handle
+	 * @param bool   $echo
+	 * @return bool|string|void
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function print_scripts_l10n( $handle, $echo = true ) {
 		_deprecated_function( __FUNCTION__, '3.3', 'print_extra_script()' );
 		return $this->print_extra_script( $handle, $echo );
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param string $handle
+	 * @param bool   $echo
+	 * @return bool|string|void
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function print_extra_script( $handle, $echo = true ) {
 		if ( !$output = $this->get_data( $handle, 'data' ) )
 			return;
@@ -83,6 +108,14 @@ class WP_Scripts extends WP_Dependencies {
 		return true;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param string   $handle Name of the item. Should be unique.
+	 * @param int|bool $group
+	 * @return bool True on success, false if not set.
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function do_item( $handle, $group = false ) {
 		if ( !parent::do_item($handle) )
 			return false;
@@ -163,7 +196,11 @@ class WP_Scripts extends WP_Dependencies {
 
 		$tag = "{$cond_before}<script type='text/javascript' src='$src'></script>\n{$cond_after}";
 
+<<<<<<< HEAD
 		/** 
+=======
+		/**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		 * Filter the HTML script tag of an enqueued script.
 		 *
 		 * @since 4.1.0
@@ -184,9 +221,18 @@ class WP_Scripts extends WP_Dependencies {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Localizes a script
 	 *
 	 * Localizes only if the script has already been added
+=======
+	 * Localizes a script, only if the script has already been added
+	 *
+	 * @param string $handle
+	 * @param string $object_name
+	 * @param array $l10n
+	 * @return bool
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function localize( $handle, $object_name, $l10n ) {
 		if ( $handle === 'jquery' )
@@ -217,8 +263,18 @@ class WP_Scripts extends WP_Dependencies {
 		return $this->add_data( $handle, 'data', $script );
 	}
 
+<<<<<<< HEAD
 	public function set_group( $handle, $recursion, $group = false ) {
 
+=======
+	/**
+	 * @param string $handle    Name of the item. Should be unique.
+	 * @param bool   $recursion Internal flag that calling function was called recursively.
+	 * @param mixed  $group     Group level.
+	 * @return bool Not already in the group or a lower group
+	 */
+	public function set_group( $handle, $recursion, $group = false ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( $this->registered[$handle]->args === 1 )
 			$grp = 1;
 		else
@@ -230,6 +286,15 @@ class WP_Scripts extends WP_Dependencies {
 		return parent::set_group( $handle, $recursion, $grp );
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param mixed $handles   Item handle and argument (string) or item handles and arguments (array of strings).
+	 * @param bool  $recursion Internal flag that function is calling itself.
+	 * @param mixed $group     Group level: (int) level, (false) no groups.
+	 * @return bool True on success, false on failure.
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function all_deps( $handles, $recursion = false, $group = false ) {
 		$r = parent::all_deps( $handles, $recursion );
 		if ( ! $recursion ) {
@@ -245,16 +310,35 @@ class WP_Scripts extends WP_Dependencies {
 		return $r;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function do_head_items() {
 		$this->do_items(false, 0);
 		return $this->done;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function do_footer_items() {
 		$this->do_items(false, 1);
 		return $this->done;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param string $src
+	 * @return bool
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function in_default_dir( $src ) {
 		if ( ! $this->default_dirs ) {
 			return true;
@@ -272,6 +356,12 @@ class WP_Scripts extends WP_Dependencies {
 		return false;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @access public
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function reset() {
 		$this->do_concat = false;
 		$this->print_code = '';

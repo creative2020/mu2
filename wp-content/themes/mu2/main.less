@@ -1,0 +1,540 @@
+@sm-min-width: 768px;
+
+@headline-font: 'Oswald', sans-serif;
+@headline-color: #00254f;
+@headline-color2: #8e734e;
+
+.action-bg() when (iscolor(@action-bg)) { background-color: @action-bg !important; }
+//.action-fg() when (iscolor(@action-fg)) { color: @action-fg !important; }
+//.title-fg() when (iscolor(@title-fg)) { color: @title-fg !important; }
+
+.nav-main-bg() when (iscolor(@nav-main-bg)) { background-color: @nav-main-bg; }
+.nav-main-fg() when (iscolor(@nav-main-fg)) { color: @nav-main-fg; }
+//.nav-secondary-bg() when (iscolor(@nav-secondary-bg)) { background-color: @nav-secondary-bg; }
+//.nav-secondary-fg() when (iscolor(@nav-secondary-fg)) { color: @nav-secondary-fg; }
+
+.contact-bg() when (iscolor(@contact-bg)) { background-color: @contact-bg; }
+.contact-fg() when (iscolor(@contact-fg)) { color: @contact-fg; }
+.contact-action() when (iscolor(@contact-action)) { color: @contact-action; }
+
+.footer-bg() when (iscolor(@footer-bg)) { background-color: @footer-bg; }
+//.footer-fg() when (iscolor(@footer-fg)) { color: @footer-fg; }
+
+.faq-rollover-fg() when (iscolor(@nav-main-bg)) { color: @nav-main-bg; }
+
+/* general global stuff */
+h1, h3 {
+    font-family: @headline-font;
+    color: @headline-color;
+}
+
+.metaslider {
+    display: none;
+}
+
+/* logo area at top */
+@media (min-width: @sm-min-width) {
+    #logo-row {
+        display: table;
+        > .logo-col {
+            vertical-align: bottom;
+        }
+    }
+    #logo-row > div[class^="col-"] {
+        float: initial;
+        display: table-cell;
+    }
+}
+
+header > img {
+    max-width: @header-img-width;
+}
+
+.home-header-img() {
+    //background-image: @home-header-img;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/*
+.home-header-fg() when (iscolor(@home-header-fg)) {
+    color: @home-header-fg;
+    a {
+        color: @home-header-fg;
+    }
+}
+*/
+
+.sgrad(@startColor: white, @endColor: black, @break: 50%) {
+    background-color: @endColor;
+    background: -webkit-linear-gradient(top, @startColor, @startColor @break, @endColor @break, @endColor 100%);
+    background: -moz-linear-gradient(top, @startColor, @startColor @break, @endColor @break, @endColor 100%);
+    background: -ms-linear-gradient(top, @startColor, @startColor @break, @endColor @break, @endColor 100%);
+    background: -o-linear-gradient(top, @startColor, @startColor @break, @endColor @break, @endColor 100%);
+}
+
+/*
+ * center nav bar (and fight with bootstrap to make it happen)
+ */
+@media (min-width: @sm-min-width) {
+    .navbar {
+        min-height: initial;
+    }
+    .navbar-collapse ul {
+        float: initial;
+        text-align: center;
+        li {
+            float: initial;
+            display: inline-block;
+            a {
+                display: inline-block;
+                padding-top: initial; padding-bottom: initial;
+                padding-left: 1.75em; padding-right: 1.75em;
+                line-height: @nav-padding;
+            }
+        }
+    }
+}
+/* undoing some more bootstrap things */
+.navbar,
+.navbar-collapse {
+    margin-bottom: 0;
+    border-style: none;
+    border-radius: 0;
+}
+.navbar-default {
+    .nav-main-bg();
+}
+
+/*
+ * Undo one bootstrap thing that negatively impacts Gravity Forms
+ */
+.gform_wrapper {
+    label {
+        font-weight: initial;
+    }
+}
+
+/*
+ * apply colors to nav
+ */
+.nav > .active > a {
+    .action-bg();
+    //.action-fg();
+}
+div.row.navbar-main {
+    .nav-main-bg();
+}
+#navbar-main a {
+    .nav-main-fg();
+}
+#navbar-main a:hover {
+    .nav-main-fg();
+    background-color: #003a5d;
+}
+div.row.navbar-secondary {
+    //.nav-secondary-bg();
+}
+#navbar-secondary a {
+    //.nav-secondary-fg();
+}
+
+.main-slider-row {
+    background-color: #418fc1;
+}
+
+.home-headlines {
+    /* > :first-child { color: red; } */
+    background-color: #c79f27;
+    > * {
+        padding-left: 0.125rem;
+        padding-right: 0.125rem;
+    }
+    .head {
+        text-align: center;
+        background-color: #8E734E;
+        color: white;
+        font-size: 150%;
+        line-height: 2.5;
+    }
+    .headsub {
+        text-align: center;
+        color: @headline-color;
+        font-size: 125%;
+        line-height: 1.5;
+    }
+    .content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/*
+ * all forms
+ */
+.hidden-label > label {
+    display: none !important;
+}
+
+/*
+ * newsletter signup form on home page
+ */
+.nl-form {
+    background-image: url('images/newsletter-sample.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    .gform_wrapper { max-width: initial; }
+    .gform_body {
+        .gfield {
+            //margin-left: 10% !important;
+            margin-right: 10% !important;
+        }
+    }
+    .gform_footer {
+        //text-align: center;
+        margin-top: 0.25rem !important;
+        padding-top: 0 !important;
+        input {
+            background-color: #418FC1;
+            border-color: #ccc;
+        }
+        input:hover {
+            border-color: #adadad;
+        }
+    }
+}
+
+/*
+ *
+ */
+#tt-sidebar-home-row2,
+#tt-sidebar-home-row3,
+#tt-sidebar-home-row4 {
+    .title {
+        font-family: @headline-font;
+        font-size: 200%;
+    }
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#tt-sidebar-home-row2 .title {
+    color: @headline-color;
+}
+
+#tt-sidebar-home-row3 {
+    background-color: #3c98cc;
+    color: black;
+    .title {
+        color: white;
+    }
+    padding-top: initial;
+    padding-bottom: initial;
+    .tt-post {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+#tt-sidebar-home-row4 .title {
+    color: @headline-color2;
+}
+
+/*
+ *
+ */
+.tt-newsblog-widget {
+    background-color: #f4f5f6;
+    .header {
+        font-family: @headline-font;
+        font-size: 200%;
+        //.title-fg();
+    }
+    line-height: 1.75;
+    a {
+        color: inherit;
+    }
+}
+
+/*
+ * contact-us footer area
+ */
+
+.footer-contact-container {
+    line-height: 2;
+    .contact-bg();
+    .footer-text-widget {
+        .contact-fg(); /* apply the contact fg to all text in this area */
+        a { .contact-fg(); } /* including anchors */
+        .footer {
+            .contact-action(); /* but the footer gets the action color */
+            a { .contact-action(); }
+        }
+        .header, .footer {
+            font-family: @headline-font;
+            font-size: 200%;
+        }
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 2.5em;
+        padding-right: 2.5em;
+    }
+}
+/* make the columns full height when layout is lateral */
+@media (min-width: @sm-min-width) {
+    .footer-contact-container > div > .row {
+        display: table;
+        > div[class^="col-"] {
+            float: initial;
+            display: table-cell;
+        }
+    }
+}
+
+/* white lines */
+@footer-contact-line-thickness: 0.15em;
+@footer-contact-line-length: 80%;
+.footer-contact-container > div > .row > div:not(:first-child):before {
+    content: '';
+    background: hsla(0, 100%, 100%, 0.33);
+    position: absolute;
+}
+
+/* white lines (vertical layout) */
+@media (max-width: @sm-min-width - 1) {
+    .footer-contact-container > div > .row > div:not(:first-child):before {
+        left: (100% - @footer-contact-line-length) / 2;
+        width: @footer-contact-line-length;
+        height: @footer-contact-line-thickness;
+        top: 0;
+    }
+}
+
+/* white lines (horizontal layout) */
+@media (min-width: @sm-min-width) {
+    .footer-contact-container > div > .row > div:not(:first-child):before {
+        top: (100% - @footer-contact-line-length) / 2;
+        width: @footer-contact-line-thickness;
+        height: @footer-contact-line-length;
+        left: 0;
+    }
+}
+
+
+/*
+ * footer bloginfo layout
+ */
+#footer-bloginfo {
+    padding: 2rem (100% / 12);
+}
+#footer-bloginfo-name {
+    font-size: 150%;
+}
+
+/*
+ * apply colors to footer bloginfo
+ */
+#footer-bloginfo {
+    .footer-bg();
+    //.footer-fg();
+}
+
+/*
+ * home page top widget area
+ */
+
+#home-top-container {
+    .home-header-img();
+    //.home-header-fg();
+    font-family: @headline-font;
+    .widgettitle {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .textwidget {
+        margin-left: 15%;
+        margin-right: 10%;
+    }
+    .widget {
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+}
+
+/* white lines */
+@home-top-line-thickness: 0.15em;
+@home-top-line-length: 66.67%;
+.home-top-container > .row > .center:before,
+.home-top-container > .row > .center:after {
+    content: '';
+    background: hsla(0, 100%, 100%, 0.33);
+    position: absolute;
+}
+
+/* white lines (vertical layout) */
+@media (max-width: @sm-min-width - 1) {
+    .home-top-container > .row {
+        > .center:before,
+        > .center:after {
+            left: (100% - @home-top-line-length) / 2;
+            width: @home-top-line-length;
+            height: @home-top-line-thickness;
+        }
+        > .center:before { top: 0; }
+        > .center:after { bottom: 0; }
+    }
+}
+
+/* white lines (horizontal layout) */
+@media (min-width: @sm-min-width) {
+    .home-top-container > .row {
+        > .center:before,
+        > .center:after {
+            top: (100% - @home-top-line-length) / 2;
+            width: @home-top-line-thickness;
+            height: @home-top-line-length;
+        }
+        > .center:before { left: 0; }
+        > .center:after { right: 0; }
+    }
+}
+
+/*
+ * misc
+ */
+.step-grad {
+    .sgrad(transparent, #E5EEBF, 20%);
+}
+
+/*
+ * headlines and testimonials
+ */
+
+.tt-headline-widget {
+    display: table;
+    div[class^="col-"] {
+        float: initial;
+        display: table-cell;
+    }
+    .image {
+        padding: 1.5em initial;
+    }
+}
+.tt-headline-widget, .tt-headline-widget-narrow {
+    .content {
+        line-height: 1.75;
+        vertical-align: middle;
+        padding-left: 2em;
+        padding-right: 2em;
+        .title {
+            font-family: @headline-font;
+            font-size: 200%;
+            vertical-align: bottom;
+            //.title-fg();
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    }
+    .symbol {
+        font-size: 500%;
+        vertical-align: top;
+        width: 1px;
+        padding-top: 0.25em;
+    }
+}
+
+/*
+ * threebox widget
+ */
+
+@media (min-width: @sm-min-width) {
+    .tt-threebox-widget {
+        display: table;
+        div[class^="col-"] {
+            float: initial;
+            display: table-cell;
+        }
+    }
+}
+
+.tt-threebox-widget {
+    background-color: #D2D0CD;
+    .middle {
+        background-color: #D8D5C3;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    [class^="col-"] > * {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .title {
+        font-family: @headline-font;
+        font-size: 200%;
+        //.title-fg();
+    }
+}
+
+
+.post-content {
+    padding-left: 100% / 12;
+    padding-right: 100% / 12;
+    line-height: 1.75;
+}
+
+.post-sidebar {
+    > div:not(:first-child) {
+        border-top: 0.25rem solid gray;
+    }
+    > div {
+        padding: 100% / 12;
+    }
+    .widgettitle {
+        //.title-fg();
+        font-family: @headline-font;
+    }
+}
+
+/*
+ * faq
+ */
+.faq-button:hover {
+    cursor: pointer;
+    * {
+        .faq-rollover-fg();
+    }
+}
+
+/*
+ */
+.sidebar-widget {
+    padding-top: 1.5rem;
+}
+.textwidget {
+    .headsub {
+        text-align: center;
+        color: @headline-color;
+        font-size: 125%;
+        line-height: 1.5;
+    }
+}
+
+/*
+ * appointments stuff
+ */
+.appointments-confirmation-wrapper {
+    margin-top: 2rem;
+    > fieldset > legend {
+        border: 0;
+        margin: 0;
+    }
+    .appointments-confirmation-worker { display: none !important; }
+}

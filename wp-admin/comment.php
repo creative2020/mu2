@@ -12,6 +12,12 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 $parent_file = 'edit-comments.php';
 $submenu_file = 'edit-comments.php';
 
+<<<<<<< HEAD
+=======
+/**
+ * @global string $action
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $action;
 wp_reset_vars( array('action') );
 
@@ -66,7 +72,11 @@ case 'editcomment' :
 	$comment_id = absint( $_GET['c'] );
 
 	if ( !$comment = get_comment( $comment_id ) )
+<<<<<<< HEAD
 		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'javascript:history.go(-1)') );
+=======
+		comment_footer_die( __( 'Invalid comment ID.' ) . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'javascript:history.go(-1)') );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( !current_user_can( 'edit_comment', $comment_id ) )
 		comment_footer_die( __('You are not allowed to edit this comment.') );
@@ -114,13 +124,21 @@ case 'spam'    :
 ?>
 <div class="wrap">
 
+<<<<<<< HEAD
 <h2><?php echo esc_html( $title ); ?></h2>
+=======
+<h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <?php
 switch ( $action ) {
 	case 'spam' :
 		$caution_msg = __('You are about to mark the following comment as spam:');
+<<<<<<< HEAD
 		$button      = __('Mark as Spam');
+=======
+		$button      = _x( 'Mark as Spam', 'comment' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		break;
 	case 'trash' :
 		$caution_msg = __('You are about to move the following comment to the Trash:');
@@ -174,7 +192,11 @@ if ( $comment->comment_approved != '0' ) { // if not unapproved
 </tr>
 <?php } ?>
 <tr>
+<<<<<<< HEAD
 	<th scope="row"><?php _e( 'In Response To' ); ?></th>
+=======
+	<th scope="row"><?php /* translators: column name or table row header */ _e( 'In Response To' ); ?></th>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	<td>
 	<?php
 		$post_id = $comment->comment_post_ID;
@@ -249,7 +271,11 @@ case 'unapprovecomment' :
 	$noredir = isset($_REQUEST['noredir']);
 
 	if ( !$comment = get_comment($comment_id) )
+<<<<<<< HEAD
 		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'edit-comments.php') );
+=======
+		comment_footer_die( __( 'Invalid comment ID.' ) . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'edit-comments.php') );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	if ( !current_user_can( 'edit_comment', $comment->comment_ID ) )
 		comment_footer_die( __('You are not allowed to edit comments on this post.') );
 

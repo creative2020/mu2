@@ -50,12 +50,20 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h2><?php echo esc_html( $title ); ?></h2>
+=======
+<h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <form method="post" action="options.php">
 <?php settings_fields('writing'); ?>
 
 <table class="form-table">
+<<<<<<< HEAD
+=======
+<?php if ( get_site_option( 'initial_db_version' ) < 32453 ) : ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <tr>
 <th scope="row"><?php _e('Formatting') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Formatting') ?></span></legend>
@@ -65,6 +73,10 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <label for="use_balanceTags"><input name="use_balanceTags" type="checkbox" id="use_balanceTags" value="1" <?php checked('1', get_option('use_balanceTags')); ?> /> <?php _e('WordPress should correct invalidly nested XHTML automatically') ?></label>
 </fieldset></td>
 </tr>
+<<<<<<< HEAD
+=======
+<?php endif; ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <tr>
 <th scope="row"><label for="default_category"><?php _e('Default Post Category') ?></label></th>
 <td>

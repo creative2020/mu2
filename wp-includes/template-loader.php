@@ -53,6 +53,10 @@ if ( defined('WP_USE_THEMES') && WP_USE_THEMES ) :
 		remove_filter('the_content', 'prepend_attachment');
 	elseif ( is_single()         && $template = get_single_template()         ) :
 	elseif ( is_page()           && $template = get_page_template()           ) :
+<<<<<<< HEAD
+=======
+	elseif ( is_singular()       && $template = get_singular_template()       ) :
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	elseif ( is_category()       && $template = get_category_template()       ) :
 	elseif ( is_tag()            && $template = get_tag_template()            ) :
 	elseif ( is_author()         && $template = get_author_template()         ) :

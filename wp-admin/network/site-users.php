@@ -49,6 +49,13 @@ if ( ! $id )
 	wp_die( __('Invalid site ID.') );
 
 $details = get_blog_details( $id );
+<<<<<<< HEAD
+=======
+if ( ! $details ) {
+	wp_die( __( 'The requested site does not exist.' ) );
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 if ( ! can_edit_network( $details->site_id ) )
 	wp_die( __( 'You do not have permission to access this page.' ), 403 );
 
@@ -70,10 +77,17 @@ if ( $action ) {
 				$password = wp_generate_password( 12, false);
 				$user_id = wpmu_create_user( esc_html( strtolower( $user['username'] ) ), $password, esc_html( $user['email'] ) );
 
+<<<<<<< HEAD
 				if ( false == $user_id ) {
 		 			$update = 'err_new_dup';
 				} else {
 					wp_new_user_notification( $user_id, $password );
+=======
+				if ( false === $user_id ) {
+		 			$update = 'err_new_dup';
+				} else {
+					wp_new_user_notification( $user_id, null, 'both' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					add_user_to_blog( $id, $user_id, $_POST['new_role'] );
 					$update = 'newuser';
 				}
@@ -157,9 +171,13 @@ if ( isset( $_GET['action'] ) && 'update-site' == $_GET['action'] ) {
 
 add_screen_option( 'per_page' );
 
+<<<<<<< HEAD
 $site_url_no_http = preg_replace( '#^http(s)?://#', '', get_blogaddress_by_id( $id ) );
 $title_site_url_linked = sprintf( __( 'Edit Site: %s' ), '<a href="' . get_blogaddress_by_id( $id ) . '">' . $site_url_no_http . '</a>' );
 $title = sprintf( __( 'Edit Site: %s' ), $site_url_no_http );
+=======
+$title = sprintf( __( 'Edit Site: %s' ), esc_html( $details->blogname ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 $parent_file = 'sites.php';
 $submenu_file = 'sites.php';
@@ -182,7 +200,12 @@ var current_site_id = <?php echo $id; ?>;
 
 
 <div class="wrap">
+<<<<<<< HEAD
 <h2 id="edit-site"><?php echo $title_site_url_linked ?></h2>
+=======
+<h1 id="edit-site"><?php echo $title; ?></h1>
+<p class="edit-site-actions"><a href="<?php echo esc_url( get_home_url( $id, '/' ) ); ?>"><?php _e( 'Visit' ); ?></a> | <a href="<?php echo esc_url( get_admin_url( $id ) ); ?>"><?php _e( 'Dashboard' ); ?></a></p>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <h3 class="nav-tab-wrapper">
 <?php
 $tabs = array(
@@ -305,7 +328,11 @@ if ( current_user_can( 'create_users' ) && apply_filters( 'show_network_site_use
 			</select></td>
 		</tr>
 		<tr class="form-field">
+<<<<<<< HEAD
 			<td colspan="2"><?php _e( 'Username and password will be mailed to the above email address.' ) ?></td>
+=======
+			<td colspan="2"><?php _e( 'A password reset link will be sent to the user via email.' ) ?></td>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		</tr>
 	</table>
 	<?php wp_nonce_field( 'add-user', '_wpnonce_add-new-user' ) ?>

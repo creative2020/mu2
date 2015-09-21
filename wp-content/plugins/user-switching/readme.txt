@@ -3,15 +3,24 @@
 Contributors: johnbillion  
 Tags: users, profiles, user switching, fast user switching, multisite, buddypress, bbpress, become, user management, developer  
 Requires at least: 3.1  
+<<<<<<< HEAD
 Tested up to: 4.1  
 Stable tag: 1.0.3  
+=======
+Tested up to: 4.3  
+Stable tag: 1.0.8  
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 License: GPL v2 or later  
 
 Instant switching between user accounts in WordPress.
 
 == Description ==
 
+<<<<<<< HEAD
 This plugin allows you to quickly swap between user accounts in WordPress at the click of a button. You'll be instantly logged out and logged in as your desired user. This is handy for test environments where you regularly log out and in between different accounts, or for adminstrators who need to switch between multiple accounts.
+=======
+This plugin allows you to quickly swap between user accounts in WordPress at the click of a button. You'll be instantly logged out and logged in as your desired user. This is handy for test environments where you regularly log out and in between different accounts, or for administrators who need to switch between multiple accounts.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 = Features =
 
@@ -31,7 +40,11 @@ This plugin allows you to quickly swap between user accounts in WordPress at the
 
 = Usage =
 
+<<<<<<< HEAD
  1. Visit the *Users* menu in WordPress and you'll see a *Switch To* link next to each user.
+=======
+ 1. Visit the *Users* menu in WordPress and you'll see a *Switch To* link in the list of action links for each user.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  2. Click this and you will immediately switch into that user account.
  3. You can switch back to your originating account via the *Switch back* link on each dashboard screen or in your profile menu in the WordPress toolbar.
 
@@ -40,9 +53,20 @@ See the [FAQ](https://wordpress.org/plugins/user-switching/faq/) for information
 = Translations Included =
 
  * العربية (Arabic)
+<<<<<<< HEAD
  * Български (Bulgarian)
  * 中文 (Chinese Simplified)
  * Hrvatski (Croatian)
+=======
+ * Azərbaycan dili (Azerbaijani)
+ * Bosanski (Bosnian)
+ * Български (Bulgarian)
+ * 中文 (Chinese Simplified)
+ * 繁體中文 (Chinese (Taiwan))
+ * Hrvatski (Croatian)
+ * Čeština‎ (Czech)
+ * Dansk (Danish)
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * Nederlands (Dutch)
  * Suomi (Finnish)
  * Français (French)
@@ -53,6 +77,10 @@ See the [FAQ](https://wordpress.org/plugins/user-switching/faq/) for information
  * Italiano (Italian)
  * 日本語 (Japanese)
  * Lietuvių kalba (Lithuanian)
+<<<<<<< HEAD
+=======
+ * Norsk bokmål (Norwegian)
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * فارسی (Persian)
  * Polski (Polish)
  * Português do Brasil (Brazilian Portuguese)
@@ -62,7 +90,11 @@ See the [FAQ](https://wordpress.org/plugins/user-switching/faq/) for information
  * Español (Spanish)
  * Türkçe (Turkish)
 
+<<<<<<< HEAD
 Thanks to translations by Hassan Hisham, Tunghsiao Liu, Francois-Xavier Bénard, Ralph Stenzel, Rami Y, Yusuke Hayasaki, Tommixoft, Amin Ab, Bartosz Arendt, Raphael Mendonça, R J, Max Samael, Eko Ikhyar, Marcelo Pedra, Abdullah Pazarbasi, ArianServ, SilverXp, Evi Giannakou, Petya Raykovska, Martin Sauter, Yaser Tallo, Enrique Errando, Sami Keijonen, Ishka Michocka, Alessandro Curci, Alessandro Tesoro, and Ante Sepic!
+=======
+Thanks to translations by Hassan Hisham, Tunghsiao Liu, Francois-Xavier Bénard, Ralph Stenzel, Rami Y, Yusuke Hayasaki, Tommixoft, Amin Ab, Bartosz Arendt, Raphael Mendonça, R J, Max Samael, Eko Ikhyar, Marcelo Pedra, Abdullah Pazarbasi, ArianServ, SilverXp, Evi Giannakou, Petya Raykovska, Martin Sauter, Yaser Tallo, Enrique Errando, Sami Keijonen, Kalina Michocka, Alessandro Curci, Alessandro Tesoro, Ante Sepic, Per Søderlind, Mushviq Abdulla, Kenan Dervisevic, Tomáš Tuček, Gordon Yu, Seggev Shoresh, and Joachim Jensen!
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 == Screenshots ==
 
@@ -100,9 +132,21 @@ Yes, and you'll also be able to switch users from member profile screens and the
 
 Yes, and you'll also be able to switch users from member profile screens.
 
+<<<<<<< HEAD
 = Does this work as a mu-plugin? =
 
 Yes, but you'll need to install `user-switching.php` into the root of your `mu-plugins` directory, not in the `user-switching` subdirectory. This is a restriction of WordPress.
+=======
+= Does this plugin work if my site is using a two-factor authentication plugin? =
+
+Yes, mostly.
+
+One exception I'm aware of is [Duo Security](https://wordpress.org/plugins/duo-wordpress/). If you're using this plugin, you should install the [User Switching for Duo Security](https://github.com/johnbillion/user-switching-duo-security) add-on plugin which will prevent the two-factor authentication prompt from appearing when you switch between users.
+
+= Does this work as a mu-plugin? =
+
+Yes, but you'll need to install `user-switching.php` into the root of your `mu-plugins` directory, not in the `user-switching` subdirectory. This is a limitation of WordPress.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 = What capability does a user need in order to switch accounts? =
 
@@ -112,13 +156,18 @@ A user needs the `edit_users` capability in order to switch user accounts. By de
 
 No. This can be enabled though by installing the [User Switching for Regular Admins](https://github.com/johnbillion/user-switching-for-regular-admins) plugin.
 
+<<<<<<< HEAD
 = Are any plugin hooks called when users switch accounts? =
+=======
+= Are any plugin actions called when a user switches account? =
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 Yes. When a user switches to another account, the `switch_to_user` hook is called with the new and old user IDs passed as parameters.
 
 When a user switches back to their original account, the `switch_back_user` hook is called with the new (original) and old user IDs passed as parameters. Note that the old user ID can be boolean false if the user is switching back after they've been switched off.
 
 When a user switches off, the `switch_off_user` hook is called with the old user ID as a parameter.
+<<<<<<< HEAD
 
 == Upgrade Notice ==
 
@@ -135,6 +184,52 @@ When a user switches off, the `switch_off_user` hook is called with the old user
 
 = 1.0.2 =
 
+=======
+
+See the plugin source code for complete hook documentation.
+
+== Upgrade Notice ==
+
+= 1.0.8 =
+
+* Chinese (Taiwan) and Czech translations.
+* Updated Dutch, Spanish, Hebrew, and German translations.
+* Add an ID attribute to the links on the WordPress login screen, BuddyPress screens, and bbPress screens.
+
+== Changelog ==
+
+= 1.0.8 =
+
+* Chinese (Taiwan) and Czech translations.
+* Updated Dutch, Spanish, Hebrew, and German translations.
+* Add an ID attribute to the links that User Switching outputs on the WordPress login screen, BuddyPress screens, and bbPress screens.
+* Avoid a deprecated argument notice when the `user-actions` admin toolbar node has been removed.
+
+= 1.0.7 =
+
+* Azerbaijani, Danish, and Bosnian translations.
+* Add back the 'User Switching' heading on the user profile screen.
+* Correct the value passed to the `$old_user_id` parameter of the `switch_back_user` hook when a user has been switched off. This should be boolean `false` rather than `0`.
+* Docblocks for actions and filters.
+* More code standards tweaks.
+
+= 1.0.6 =
+* Correct the values passed to the `switch_back_user` action when a user switches back.
+* More code standards tweaks.
+
+= 1.0.5 =
+* Norwegian translation by Per Søderlind.
+* Code standards tweaks.
+
+= 1.0.4 =
+* Support for the new `logout_redirect` and `removable_query_args` filters in WordPress 4.2.
+
+= 1.0.3 =
+* Croation translation by Ante Sepic.
+* Avoid PHP notices caused by other plugins which erroneously use boolean `true` as a capability.
+
+= 1.0.2 =
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 * Turkish translation by Abdullah Pazarbasi.
 * Romanian translation by ArianServ.
 * Dutch translation by Thom.
@@ -145,18 +240,27 @@ When a user switches off, the `switch_off_user` hook is called with the old user
 * Updated Arabic, Spanish, German, and Polish translations.
 
 = 1.0.1 =
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 * Shorten the names of User Switching's cookies to avoid problems with Suhosin's over-zealous default rules.
 * Add backwards compatibility for the deprecated `OLDUSER_COOKIE` constant.
 
 = 1.0 =
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 * Security hardening for sites that use HTTPS in the admin area and HTTP on the front end.
 * Add an extra auth check before the nonce verification.
 * Pretty icon next to the switch back links.
 
 = 0.9 =
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 * Minor fixes for the `login_redirect` filter.
 * Increase the specificity of the `switch_to_old_user` and `switch_off` nonces.
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600&subset=latin-ext,latin);
+=======
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600&subset=latin-ext,latin");
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /* Generic */
 body {

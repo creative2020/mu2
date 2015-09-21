@@ -912,7 +912,11 @@ function LoadFieldSettings(){
     }
 
     // if a product or option field, hide "other choice" setting
+<<<<<<< HEAD
     if(jQuery.inArray(field['type'], ['product', 'option']) != -1) {
+=======
+    if(jQuery.inArray(field['type'], ['product', 'option', 'shipping']) != -1) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
         jQuery(".other_choice_setting").hide();
     }
 
@@ -1150,12 +1154,22 @@ function UpdateAddressFields(){
     var hide_country = jQuery("#field_address_country_" + addressType).val() != "" || countryInput.isHidden;
 
     if(hide_country){
+<<<<<<< HEAD
         jQuery('.field_custom_input_row_' + field.id + '_6').hide();
     } else {
         //selects default country and displays drop down
         jQuery(".field_selected #input_" + field["id"] + "_6").val(jQuery("#field_address_default_country_" + addressType).val());
         jQuery(".field_selected #input_" + field["id"] + "_6_container").show();
         jQuery('.field_selected .field_custom_input_row_' + field.id + '_6').show();
+=======
+        jQuery('.field_selected #input_' + field.id + '_6_container').hide();
+        jQuery('.field_selected .field_custom_input_row_input_' + field.id + '_6').hide();
+    } else {
+        //selects default country and displays drop down
+        jQuery(".field_selected #input_" + field.id + "_6").val(jQuery("#field_address_default_country_" + addressType).val());
+        jQuery(".field_selected #input_" + field.id + "_6_container").show();
+        jQuery('.field_selected .field_custom_input_row_input_' + field.id + '_6').show();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     }
 
     var has_state_drop_down = jQuery("#field_address_has_states_" + addressType).val() != "";
@@ -1822,7 +1836,11 @@ function ObjectHasConditionalLogicDependency(object, fieldId, value) {
             continue;
 
         // if value is provided and the rule value does not match provided value, continue
+<<<<<<< HEAD
         if(value !== false && rule.value != value)
+=======
+		if(value !== false && rule.value != value)
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
             continue;
 
         return true;
@@ -1862,6 +1880,7 @@ function CheckChoiceConditionalLogicDependency(input) {
     var field = GetSelectedField();
 
     var previousValue = jQuery(input).data('previousValue'); // Get the value before checking. Fixes an issue in Chrome on Windows.
+<<<<<<< HEAD
     // check for cond logic dependency
     if(HasConditionalLogicDependency(field.id, previousValue)) {
 
@@ -1871,6 +1890,23 @@ function CheckChoiceConditionalLogicDependency(input) {
 
         // if user does not want to make modification, replace with original value
         jQuery(input).val(jQuery(input).data('previousValue')).trigger('keyup');
+=======
+	if (previousValue == undefined){
+		//set a value because undefined cannot be saved with jQuery data
+		previousValue = '';
+	}
+
+    if(HasConditionalLogicDependency(field.id, previousValue)) {
+
+        // confirm that the user wants to make the modification
+        if(confirm(gf_vars.conditionalLogicDependencyChoiceEdit)) {
+            return;
+		}
+
+        // if user does not want to make modification, replace with original value
+		jQuery(input).val(previousValue).trigger('keyup');
+		jQuery(input).data('previousValue', previousValue);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
     }
 

@@ -10,7 +10,11 @@ class GF_Field_Textarea extends GF_Field {
 	public $type = 'textarea';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
 		return __( 'Paragraph Text', 'gravityforms' );
+=======
+		return esc_attr__( 'Paragraph Text', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -38,7 +42,11 @@ class GF_Field_Textarea extends GF_Field {
 	}
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
+<<<<<<< HEAD
 		$form_id         = $form['id'];
+=======
+		$form_id         = absint( $form['id'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 
@@ -62,9 +70,15 @@ class GF_Field_Textarea extends GF_Field {
 				</div>";
 	}
 
+<<<<<<< HEAD
 	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format ) {
 
 		return $format == 'html' ? nl2br( $value ) : $value;
+=======
+	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format, $nl2br ) {
+
+		return $format == 'html' && ! $nl2br ? nl2br( $value ) : $value;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 }

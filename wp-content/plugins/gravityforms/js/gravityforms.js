@@ -577,7 +577,11 @@ function gformInitPriceFields(){
         var productIds = gformGetProductIds("gfield_price", this);
         gformRegisterPriceField(productIds);
 
+<<<<<<< HEAD
        jQuery(this).find("input[type=\"text\"], input[type=\"number\"], select").change(function(){
+=======
+       jQuery( this ).on( 'change', 'input[type="text"], input[type="number"], select', function() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
            var productIds = gformGetProductIds("gfield_price", this);
            if(productIds.formId == 0)
@@ -587,7 +591,12 @@ function gformInitPriceFields(){
            gformCalculateTotalPrice(productIds.formId);
        });
 
+<<<<<<< HEAD
        jQuery(this).find("input[type=\"radio\"], input[type=\"checkbox\"]").click(function(){
+=======
+       jQuery( this ).on( 'click', 'input[type="radio"], input[type="checkbox"]', function() {
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
            var productIds = gformGetProductIds("gfield_price", this);
            if(productIds.formId == 0)
                 productIds = gformGetProductIds("gfield_shipping", this);
@@ -1380,6 +1389,7 @@ var gform = {
 
         });
 
+<<<<<<< HEAD
         function getAllFiles(){
             var selector = '#gform_uploaded_files_' + formID,
                 $uploadedFiles = $(selector), files;
@@ -1387,6 +1397,18 @@ var gform = {
             files = '' === files ? {} : $.parseJSON(files);
             return files;
         }
+=======
+		function getAllFiles(){
+			var selector = '#gform_uploaded_files_' + formID,
+				$uploadedFiles = $(selector), files;
+
+			files = $uploadedFiles.val();
+			files = (typeof files === "undefined") || files === '' ? {} : $.parseJSON(files);
+
+			return files;
+		}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         function getFiles(fieldID){
             var allFiles = getAllFiles();

@@ -350,6 +350,13 @@ div#widgets-right .closed .widgets-sortables {
 	display: none;
 }
 
+<<<<<<< HEAD
+=======
+.js .widgets-holder-wrap.closed .widget.ui-sortable-helper {
+	display: block;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 /* Hide Widget Settings by Default */
 .widget-inside,
 .widget-description {
@@ -506,6 +513,13 @@ div#widgets-right .widget-top:hover,
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+#available-widgets .widget.ui-draggable-dragging .widget-top {
+	cursor: move;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 /* =Media Queries
 -------------------------------------------------------------- */
 

@@ -28,7 +28,11 @@ $temp_dir = ini_get('upload_tmp_dir');
 if ($temp_dir && (!is_dir($temp_dir) || !is_readable($temp_dir))) {
 	$temp_dir = '';
 }
+<<<<<<< HEAD
 if (!$temp_dir) {
+=======
+if (!$temp_dir && function_exists('sys_get_temp_dir')) { // sys_get_temp_dir added in PHP v5.2.1
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	// sys_get_temp_dir() may give inaccessible temp dir, e.g. with open_basedir on virtual hosts
 	$temp_dir = sys_get_temp_dir();
 }
@@ -109,7 +113,11 @@ class getID3
 	protected $startup_error   = '';
 	protected $startup_warning = '';
 
+<<<<<<< HEAD
 	const VERSION           = '1.9.8-20140511';
+=======
+	const VERSION           = '1.9.9-20141121';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	const FREAD_BUFFER_SIZE = 32768;
 
 	const ATTACHMENTS_NONE   = false;
@@ -249,7 +257,11 @@ class getID3
 			$this->filename = $filename;
 			$this->info = array();
 			$this->info['GETID3_VERSION']   = $this->version();
+<<<<<<< HEAD
 			$this->info['php_memory_limit'] = $this->memory_limit;
+=======
+			$this->info['php_memory_limit'] = (($this->memory_limit > 0) ? $this->memory_limit : false);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// remote files not supported
 			if (preg_match('/^(ht|f)tp:\/\//', $filename)) {
@@ -1793,4 +1805,8 @@ abstract class getid3_handler {
 class getid3_exception extends Exception
 {
 	public $message;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

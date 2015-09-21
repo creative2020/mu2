@@ -66,6 +66,7 @@
 		form.appendChild( input );
 	}
 
+<<<<<<< HEAD
 	if ( href.match( /\/\/(www|m)\.youtube\.com\/watch/ ) ||
 		href.match( /\/\/vimeo\.com\/(.+\/)?([\d]+)$/ ) ||
 		href.match( /\/\/(www\.)?dailymotion\.com\/video\/.+$/ ) ||
@@ -76,6 +77,8 @@
 		add( '_embeds[]', href );
 	}
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	metas = head.getElementsByTagName( 'meta' ) || [];
 
 	for ( var m = 0; m < metas.length; m++ ) {

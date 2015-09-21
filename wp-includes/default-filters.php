@@ -87,6 +87,10 @@ add_filter( 'post_mime_type', 'sanitize_mime_type' );
 
 // Places to balance tags on input
 foreach ( array( 'content_save_pre', 'excerpt_save_pre', 'comment_save_pre', 'pre_comment_content' ) as $filter ) {
+<<<<<<< HEAD
+=======
+	add_filter( $filter, 'convert_invalid_entities' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	add_filter( $filter, 'balanceTags', 50 );
 }
 
@@ -218,8 +222,14 @@ add_action( 'wp_head',             'wp_print_styles',                  8    );
 add_action( 'wp_head',             'wp_print_head_scripts',            9    );
 add_action( 'wp_head',             'wp_generator'                           );
 add_action( 'wp_head',             'rel_canonical'                          );
+<<<<<<< HEAD
 add_action( 'wp_footer',           'wp_print_footer_scripts',         20    );
 add_action( 'wp_head',             'wp_shortlink_wp_head',            10, 0 );
+=======
+add_action( 'wp_head',             'wp_shortlink_wp_head',            10, 0 );
+add_action( 'wp_head',             'wp_site_icon',                    99    );
+add_action( 'wp_footer',           'wp_print_footer_scripts',         20    );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 add_action( 'template_redirect',   'wp_shortlink_header',             11, 0 );
 add_action( 'wp_print_footer_scripts', '_wp_footer_scripts'                 );
 add_action( 'init',                'check_theme_switched',            99    );
@@ -239,6 +249,14 @@ foreach ( array( 'rss2_head', 'commentsrss2_head', 'rss_head', 'rdf_header', 'at
 	add_action( $action, 'the_generator' );
 }
 
+<<<<<<< HEAD
+=======
+// Feed Site Icon
+add_action( 'atom_head', 'atom_site_icon' );
+add_action( 'rss2_head', 'rss2_site_icon' );
+
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 // WP Cron
 if ( !defined( 'DOING_CRON' ) )
 	add_action( 'init', 'wp_cron' );
@@ -290,6 +308,12 @@ add_action( 'post_updated',      'wp_check_for_changed_slugs', 12, 3 );
 // Nonce check for Post Previews
 add_action( 'init', '_show_post_preview' );
 
+<<<<<<< HEAD
+=======
+// Output JS to reset window.name for previews
+add_action( 'wp_head', 'wp_post_preview_js', 1 );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 // Timezone
 add_filter( 'pre_option_gmt_offset','wp_timezone_override_offset' );
 
@@ -318,14 +342,25 @@ add_filter( 'determine_current_user', 'wp_validate_auth_cookie'          );
 add_filter( 'determine_current_user', 'wp_validate_logged_in_cookie', 20 );
 
 // Split term updates.
+<<<<<<< HEAD
 add_action( 'split_shared_term', '_wp_check_split_default_terms',  10, 4 );
 add_action( 'split_shared_term', '_wp_check_split_terms_in_menus', 10, 4 );
+=======
+add_action( 'admin_init',        '_wp_check_for_scheduled_split_terms' );
+add_action( 'split_shared_term', '_wp_check_split_default_terms',  10, 4 );
+add_action( 'split_shared_term', '_wp_check_split_terms_in_menus', 10, 4 );
+add_action( 'split_shared_term', '_wp_check_split_nav_menu_terms', 10, 4 );
+add_action( 'wp_split_shared_term_batch', '_wp_batch_split_terms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Filters formerly mixed into wp-includes
  */
 // Theme
+<<<<<<< HEAD
 add_action( 'setup_theme', 'preview_theme' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 add_action( 'wp_loaded', '_custom_header_background_just_in_time' );
 add_action( 'plugins_loaded', '_wp_customize_include' );
 add_action( 'admin_enqueue_scripts', '_wp_customize_loader_settings' );
@@ -382,6 +417,12 @@ add_action( 'customize_controls_enqueue_scripts', 'wp_plupload_default_settings'
 // Nav menu
 add_filter( 'nav_menu_item_id', '_nav_menu_item_id_use_once', 10, 2 );
 
+<<<<<<< HEAD
+=======
+// Widgets
+add_action( 'init', 'wp_widgets_init', 1 );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 // Admin Bar
 // Don't remove. Wrong way to disable.
 add_action( 'template_redirect', '_wp_admin_bar_init', 0 );
@@ -389,4 +430,12 @@ add_action( 'admin_init', '_wp_admin_bar_init' );
 add_action( 'wp_footer', 'wp_admin_bar_render', 1000 );
 add_action( 'in_admin_header', 'wp_admin_bar_render', 0 );
 
+<<<<<<< HEAD
+=======
+// Former admin filters that can also be hooked on the front end
+add_action( 'media_buttons', 'media_buttons' );
+add_filter( 'image_send_to_editor', 'image_add_caption', 20, 8 );
+add_filter( 'media_send_to_editor', 'image_media_send_to_editor', 10, 3 );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 unset( $filter, $action );

@@ -81,7 +81,11 @@ if ( class_exists( 'GFForms' ) ) {
 
 			add_filter( 'query_vars', array( $this, 'query_vars' ) );
 
+<<<<<<< HEAD
 			add_filter( 'pre_get_posts', array( $this, 'handle_page_request' ) );
+=======
+			add_action( 'template_redirect', array( $this, 'handle_page_request' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// update the cache
 			add_action( 'gform_entry_created', array( $this, 'entry_created' ), 10, 2 );
@@ -168,6 +172,15 @@ if ( class_exists( 'GFForms' ) ) {
 								'label' => __( 'Requirements check', 'gravityforms' ),
 								'type'  => 'requirements_check',
 							),
+<<<<<<< HEAD
+=======
+							array(
+								'id'    => 'save_button',
+								'type'  => 'save',
+								'value' => 'Update',
+								'style' => 'display:none;',
+							),
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						)
 					),
 				);
@@ -235,13 +248,32 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function settings_requirements_check() {
 			$permalinks_url = admin_url( 'options-permalink.php' );
+<<<<<<< HEAD
 			echo "<i class='fa fa-exclamation-triangle gf_invalid'></i> <span class='gf_invalid'>Permalinks are not in the correct format.</span><br /><span class='gf_settings_description'>Change the <a href='{$permalinks_url}'>WordPress Permalink Settings</a> from default to any of the other options to get started.</span>";
+=======
+			?>
+			<i class="fa fa-exclamation-triangle gf_invalid"></i>
+				<span class="gf_invalid">
+					<?php esc_html_e( 'Permalinks are not in the correct format.', 'gravityforms' ); ?>
+				</span>
+			<br />
+			<span class='gf_settings_description'>
+				<?php
+				printf( esc_html__( 'Change the %sWordPress Permalink Settings%s from default to any of the other options to get started.', 'gravityforms' ), '<a href="' . esc_url( $permalinks_url ) .'">', '</a>' );
+				?>
+			</span>
+			<?php
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 
 		public function settings_qrcode() {
 			?>
 			<button class="button-secondary"
+<<<<<<< HEAD
 					id="gfwebapi-qrbutton"><?php _e( 'Show/hide QR Code', 'gravityforms' ); ?></button>
+=======
+					id="gfwebapi-qrbutton"><?php esc_html_e( 'Show/hide QR Code', 'gravityforms' ); ?></button>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<div id="gfwebapi-qrcode-container" style="display:none;">
 				<img id="gfwebapi-qrcode" src="<?php echo GFCommon::get_base_url() ?>/images/spinner.gif" />
 			</div>
@@ -257,7 +289,11 @@ if ( class_exists( 'GFForms' ) ) {
 			</script>
 
 			<a title="Gravity Forms API: Developer Tools" class="thickbox"
+<<<<<<< HEAD
 			   href="#TB_inline?width=300&height=550&inlineId=gfwebapi-dev-tools"><?php _e( 'Open developer tools', 'gravityforms' ) ?></a>
+=======
+			   href="#TB_inline?width=300&height=550&inlineId=gfwebapi-dev-tools"><?php esc_html_e( 'Open developer tools', 'gravityforms' ) ?></a>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			<div id="gfwebapi-dev-tools" style="display:none;">
 				<div>
@@ -345,7 +381,11 @@ if ( class_exists( 'GFForms' ) ) {
 		}
 
 
+<<<<<<< HEAD
 		public function handle_page_request($query) {
+=======
+		public function handle_page_request() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			global $HTTP_RAW_POST_DATA;
 
@@ -808,7 +848,16 @@ if ( class_exists( 'GFForms' ) ) {
 			$capability = apply_filters( 'gform_web_api_capability_post_entries', 'gravityforms_edit_entries' );
 			$this->authorize( $capability );
 
+<<<<<<< HEAD
 			$result = GFAPI::add_entries( $data, $form_id );
+=======
+			$entries = array();
+			foreach ( $data as $entry ) {
+				$entries[] = $this->maybe_serialize_list_fields( $entry, $form_id );
+			}
+
+			$result = GFAPI::add_entries( $entries, $form_id );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			if ( is_wp_error( $result ) ) {
 				$response = $this->get_error_response( $result );
@@ -825,8 +874,21 @@ if ( class_exists( 'GFForms' ) ) {
 
 			$capability = apply_filters( 'gform_web_api_capability_put_entries', 'gravityforms_edit_entries' );
 			$this->authorize( $capability );
+<<<<<<< HEAD
 
 			$result = empty( $entry_id ) ? GFAPI::update_entries( $data ) : $result = GFAPI::update_entry( $data, $entry_id );;
+=======
+			$entries = array();
+			if ( empty( $entry_id ) ) {
+				foreach ( $data as $entry ) {
+					$entries[] = $this->maybe_serialize_list_fields( $entry );
+				}
+				$result = GFAPI::update_entries( $entries );
+			} else {
+				$entry = $this->maybe_serialize_list_fields( $data );
+				$result = GFAPI::update_entry( $entry, $entry_id );
+			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			if ( is_wp_error( $result ) ) {
 				$response = $this->get_error_response( $result );
@@ -980,6 +1042,10 @@ if ( class_exists( 'GFForms' ) ) {
 					foreach ( $entry_ids as $entry_id ) {
 						$result = GFAPI::get_entry( $entry_id );
 						if ( ! is_wp_error( $result ) ) {
+<<<<<<< HEAD
+=======
+							$result = $this->maybe_json_encode_list_fields( $result );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 							$response[ $entry_id ] = $result;
 							if ( ! empty( $field_ids ) && ( ! empty( $response[ $entry_id ] ) ) ) {
 								$response[ $entry_id ] = $this->filter_entry_object( $response[ $entry_id ], $field_ids );
@@ -989,6 +1055,10 @@ if ( class_exists( 'GFForms' ) ) {
 				} else {
 					$result = GFAPI::get_entry( $entry_ids );
 					if ( ! is_wp_error( $result ) ) {
+<<<<<<< HEAD
+=======
+						$result = $this->maybe_json_encode_list_fields( $result );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						$response = $result;
 						if ( ! empty( $field_ids ) && ( ! empty( $response ) ) ) {
 							$response = $this->filter_entry_object( $response, $field_ids );
@@ -1039,6 +1109,12 @@ if ( class_exists( 'GFForms' ) ) {
 				$result = $entry_count > 0 ? GFAPI::get_entries( $form_ids, $search, $sorting, $paging ) : array();
 
 				if ( ! is_wp_error( $result ) ) {
+<<<<<<< HEAD
+=======
+					foreach ( $result as &$entry ) {
+						$entry = $this->maybe_json_encode_list_fields( $entry );
+					}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					$response = array( 'total_count' => $entry_count, 'entries' => $result );
 
 					if ( $schema == 'mtd' ) {
@@ -1113,6 +1189,49 @@ if ( class_exists( 'GFForms' ) ) {
 			$this->end( $status, $response );
 		}
 
+<<<<<<< HEAD
+=======
+		public function maybe_json_encode_list_fields( $entry ) {
+			$form_id = $entry['form_id'];
+			$form = GFAPI::get_form( $form_id );
+			if ( ! empty ( $form['fields'] ) && is_array( $form['fields'] ) ) {
+				foreach ( $form['fields'] as $field ) {
+					/* @var GF_Field $field */
+					if ( $field->get_input_type() == 'list' ) {
+						$new_value = maybe_unserialize( $entry[ $field->id ] );
+
+						if ( ! $this->is_json( $new_value ) ) {
+							$new_value = json_encode( $new_value );
+						}
+
+						$entry[ $field->id ] = $new_value;
+					}
+				}
+			}
+			return $entry;
+		}
+
+		public function maybe_serialize_list_fields( $entry, $form_id = null ) {
+			if ( empty( $form_id ) ) {
+				$form_id = $entry['form_id'];
+			}
+			$form = GFAPI::get_form( $form_id );
+			if ( ! empty ( $form['fields'] ) && is_array( $form['fields'] ) ) {
+				foreach ( $form['fields'] as $field ) {
+					/* @var GF_Field $field */
+					if ( $field->get_input_type() == 'list' ) {
+						$new_list_value = $this->maybe_decode_json( $entry[ $field->id ] );
+						if ( ! is_serialized( $new_list_value ) ) {
+							$new_list_value = serialize( $new_list_value );
+						}
+						$entry[ $field->id ] = $new_list_value;
+					}
+				}
+			}
+			return $entry;
+		}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		// RESULTS
 

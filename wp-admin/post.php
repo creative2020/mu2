@@ -23,6 +23,14 @@ elseif ( isset( $_POST['post_ID'] ) )
 else
  	$post_id = $post_ID = 0;
 
+<<<<<<< HEAD
+=======
+/**
+ * @global string  $post_type
+ * @global object  $post_type_object
+ * @global WP_Post $post
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $post_type, $post_type_object, $post;
 
 if ( $post_id )
@@ -54,7 +62,11 @@ function redirect_post($post_id = '') {
 					$message = 6;
 			}
 		} else {
+<<<<<<< HEAD
 				$message = 'draft' == $status ? 10 : 1;
+=======
+			$message = 'draft' == $status ? 10 : 1;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 
 		$location = add_query_arg( 'message', $message, get_edit_post_link( $post_id, 'url' ) );
@@ -115,8 +127,14 @@ case 'post-quickdraft-save':
 	if ( ! wp_verify_nonce( $nonce, 'add-post' ) )
 		$error_msg = __( 'Unable to submit this form, please refresh and try again.' );
 
+<<<<<<< HEAD
 	if ( ! current_user_can( 'edit_posts' ) )
 		$error_msg = __( 'Oops, you don&#8217;t have access to add new drafts.' );
+=======
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		exit;
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( $error_msg )
 		return wp_dashboard_quick_press( $error_msg );
@@ -124,8 +142,13 @@ case 'post-quickdraft-save':
 	$post = get_post( $_REQUEST['post_ID'] );
 	check_admin_referer( 'add-' . $post->post_type );
 
+<<<<<<< HEAD
 	$_POST['comment_status'] = get_option( 'default_comment_status' );
 	$_POST['ping_status'] = get_option( 'default_ping_status' );
+=======
+	$_POST['comment_status'] = get_default_comment_status( $post->post_type );
+	$_POST['ping_status']    = get_default_comment_status( $post->post_type, 'pingback' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	edit_post();
 	wp_dashboard_quick_press();
@@ -159,6 +182,10 @@ case 'edit':
 		wp_die( __( 'You can&#8217;t edit this item because it is in the Trash. Please restore it and try again.' ) );
 
 	if ( ! empty( $_GET['get-post-lock'] ) ) {
+<<<<<<< HEAD
+=======
+		check_admin_referer( 'lock-post_' . $post_id );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		wp_set_post_lock( $post_id );
 		wp_redirect( get_edit_post_link( $post_id, 'url' ) );
 		exit();
@@ -272,7 +299,11 @@ case 'untrash':
 		wp_die( __( 'Unknown post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
+<<<<<<< HEAD
 		wp_die( __( 'You are not allowed to move this item out of the Trash.' ) );
+=======
+		wp_die( __( 'You are not allowed to restore this item from the Trash.' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( ! wp_untrash_post( $post_id ) )
 		wp_die( __( 'Error in restoring from Trash.' ) );

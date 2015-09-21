@@ -436,10 +436,19 @@ function get_inline_data($post) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @param int $position
  * @param bool $checkbox
  * @param string $mode
  * @param bool $table_row
+=======
+ * @global WP_List_Table $wp_list_table
+ *
+ * @param int    $position
+ * @param bool   $checkbox
+ * @param string $mode
+ * @param bool   $table_row
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_comment_reply( $position = 1, $checkbox = false, $mode = 'single', $table_row = true ) {
 	global $wp_list_table;
@@ -476,7 +485,11 @@ function wp_comment_reply( $position = 1, $checkbox = false, $mode = 'single', $
 ?>
 <form method="get">
 <?php if ( $table_row ) : ?>
+<<<<<<< HEAD
 <table style="display:none;"><tbody id="com-reply"><tr id="replyrow" style="display:none;"><td colspan="<?php echo $wp_list_table->get_column_count(); ?>" class="colspanchange">
+=======
+<table style="display:none;"><tbody id="com-reply"><tr id="replyrow" class="inline-edit-row" style="display:none;"><td colspan="<?php echo $wp_list_table->get_column_count(); ?>" class="colspanchange">
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <?php else : ?>
 <div id="com-reply" style="display:none;"><div id="replyrow" style="display:none;">
 <?php endif; ?>
@@ -603,17 +616,30 @@ function list_meta( $meta ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
+ * @staticvar string $update_nonce
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $entry
  * @param int   $count
  * @return string
  */
 function _list_meta_row( $entry, &$count ) {
+<<<<<<< HEAD
 	static $update_nonce = false;
+=======
+	static $update_nonce = '';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( is_protected_meta( $entry['meta_key'], 'post' ) )
 		return '';
 
+<<<<<<< HEAD
 	if ( !$update_nonce )
+=======
+	if ( ! $update_nonce )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$update_nonce = wp_create_nonce( 'add-meta' );
 
 	$r = '';
@@ -656,6 +682,11 @@ function _list_meta_row( $entry, &$count ) {
  *
  * @since 1.2.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param WP_Post $post Optional. The post being edited.
  */
 function meta_form( $post = null ) {
@@ -671,9 +702,15 @@ function meta_form( $post = null ) {
 	 * @param int $limit Number of custom fields to retrieve. Default 30.
 	 */
 	$limit = apply_filters( 'postmeta_form_limit', 30 );
+<<<<<<< HEAD
 	$sql = "SELECT meta_key
 		FROM $wpdb->postmeta
 		GROUP BY meta_key
+=======
+	$sql = "SELECT DISTINCT meta_key
+		FROM $wpdb->postmeta
+		WHERE meta_key NOT BETWEEN '_' AND '_z'
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		HAVING meta_key NOT LIKE %s
 		ORDER BY meta_key
 		LIMIT %d";
@@ -737,6 +774,12 @@ function meta_form( $post = null ) {
  *
  * @since 0.71
  *
+<<<<<<< HEAD
+=======
+ * @global WP_Locale $wp_locale
+ * @global object    $comment
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int|bool $edit      Accepts 1|true for editing the date, 0|false for adding the date.
  * @param int|bool $for_post  Accepts 1|true for applying the date to a post, 0|false for a comment.
  * @param int      $tab_index The tabindex attribute to add. Default 0.
@@ -772,6 +815,7 @@ function touch_time( $edit = 1, $for_post = 1, $tab_index = 0, $multi = 0 ) {
 	$cur_hh = gmdate( 'H', $time_adj );
 	$cur_mn = gmdate( 'i', $time_adj );
 
+<<<<<<< HEAD
 	$month = '<label for="mm" class="screen-reader-text">' . __( 'Month' ) . '</label><select ' . ( $multi ? '' : 'id="mm" ' ) . 'name="mm"' . $tab_index_attribute . ">\n";
 	for ( $i = 1; $i < 13; $i = $i +1 ) {
 		$monthnum = zeroise($i, 2);
@@ -789,6 +833,26 @@ function touch_time( $edit = 1, $for_post = 1, $tab_index = 0, $multi = 0 ) {
 	echo '<div class="timestamp-wrap">';
 	/* translators: 1: month, 2: day, 3: year, 4: hour, 5: minute */
 	printf( __( '%1$s %2$s, %3$s @ %4$s : %5$s' ), $month, $day, $year, $hour, $minute );
+=======
+	$month = '<label><span class="screen-reader-text">' . __( 'Month' ) . '</span><select ' . ( $multi ? '' : 'id="mm" ' ) . 'name="mm"' . $tab_index_attribute . ">\n";
+	for ( $i = 1; $i < 13; $i = $i +1 ) {
+		$monthnum = zeroise($i, 2);
+		$monthtext = $wp_locale->get_month_abbrev( $wp_locale->get_month( $i ) );
+		$month .= "\t\t\t" . '<option value="' . $monthnum . '" data-text="' . $monthtext . '" ' . selected( $monthnum, $mm, false ) . '>';
+		/* translators: 1: month number (01, 02, etc.), 2: month abbreviation */
+		$month .= sprintf( __( '%1$s-%2$s' ), $monthnum, $monthtext ) . "</option>\n";
+	}
+	$month .= '</select></label>';
+
+	$day = '<label><span class="screen-reader-text">' . __( 'Day' ) . '</span><input type="text" ' . ( $multi ? '' : 'id="jj" ' ) . 'name="jj" value="' . $jj . '" size="2" maxlength="2"' . $tab_index_attribute . ' autocomplete="off" /></label>';
+	$year = '<label><span class="screen-reader-text">' . __( 'Year' ) . '</span><input type="text" ' . ( $multi ? '' : 'id="aa" ' ) . 'name="aa" value="' . $aa . '" size="4" maxlength="4"' . $tab_index_attribute . ' autocomplete="off" /></label>';
+	$hour = '<label><span class="screen-reader-text">' . __( 'Hour' ) . '</span><input type="text" ' . ( $multi ? '' : 'id="hh" ' ) . 'name="hh" value="' . $hh . '" size="2" maxlength="2"' . $tab_index_attribute . ' autocomplete="off" /></label>';
+	$minute = '<label><span class="screen-reader-text">' . __( 'Minute' ) . '</span><input type="text" ' . ( $multi ? '' : 'id="mn" ' ) . 'name="mn" value="' . $mn . '" size="2" maxlength="2"' . $tab_index_attribute . ' autocomplete="off" /></label>';
+
+	echo '<div class="timestamp-wrap">';
+	/* translators: 1: month, 2: day, 3: year, 4: hour, 5: minute */
+	printf( __( '%1$s %2$s, %3$s @ %4$s:%5$s' ), $month, $day, $year, $hour, $minute );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	echo '</div><input type="hidden" id="ss" name="ss" value="' . $ss . '" />';
 
@@ -839,6 +903,11 @@ function page_template_dropdown( $default = '' ) {
  *
  * @since 1.5.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $default Optional. The default page ID to be pre-selected. Default 0.
  * @param int $parent  Optional. The parent page ID. Default 0.
  * @param int $level   Optional. Page depth level. Default 0.
@@ -934,6 +1003,11 @@ function wp_import_upload_form( $action ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
+ * @global array $wp_meta_boxes
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string           $id            String for use in the 'id' attribute of tags.
  * @param string           $title         Title of the meta box.
  * @param callback         $callback      Function that fills the box with the desired content.
@@ -1022,10 +1096,19 @@ function add_meta_box( $id, $title, $callback, $screen = null, $context = 'advan
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @staticvar bool $already_sorted
  * @param string|WP_Screen $screen Screen identifier
  * @param string $context box context
  * @param mixed $object gets passed to the box callback function as first parameter
+=======
+ * @global array $wp_meta_boxes
+ *
+ * @staticvar bool $already_sorted
+ * @param string|WP_Screen $screen  Screen identifier
+ * @param string           $context box context
+ * @param mixed            $object  gets passed to the box callback function as first parameter
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int number of meta_boxes
  */
 function do_meta_boxes( $screen, $context, $object ) {
@@ -1090,9 +1173,17 @@ function do_meta_boxes( $screen, $context, $object ) {
  *
  * @since 2.6.0
  *
+<<<<<<< HEAD
  * @param string $id String for use in the 'id' attribute of tags.
  * @param string|object $screen The screen on which to show the box (post, page, link).
  * @param string $context The context within the page where the boxes should show ('normal', 'advanced').
+=======
+ * @global array $wp_meta_boxes
+ *
+ * @param string        $id      String for use in the 'id' attribute of tags.
+ * @param string|object $screen  The screen on which to show the box (post, page, link).
+ * @param string        $context The context within the page where the boxes should show ('normal', 'advanced').
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function remove_meta_box($id, $screen, $context) {
 	global $wp_meta_boxes;
@@ -1126,9 +1217,15 @@ function remove_meta_box($id, $screen, $context) {
  *
  * @uses global $wp_meta_boxes Used to retrieve registered meta boxes.
  *
+<<<<<<< HEAD
  * @param string|object $screen The screen identifier.
  * @param string $context The meta box context.
  * @param mixed $object gets passed to the section callback function as first parameter.
+=======
+ * @param string|object $screen  The screen identifier.
+ * @param string        $context The meta box context.
+ * @param mixed         $object  gets passed to the section callback function as first parameter.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int number of meta boxes as accordion sections.
  */
 function do_accordion_sections( $screen, $context, $object ) {
@@ -1204,10 +1301,17 @@ function do_accordion_sections( $screen, $context, $object ) {
  *
  * @global $wp_settings_sections Storage array of all settings sections added to admin pages
  *
+<<<<<<< HEAD
  * @param string $id Slug-name to identify the section. Used in the 'id' attribute of tags.
  * @param string $title Formatted title of the section. Shown as the heading for the section.
  * @param string $callback Function that echos out any content at the top of the section (between heading and fields).
  * @param string $page The slug-name of the settings page on which to show the section. Built-in pages include 'general', 'reading', 'writing', 'discussion', 'media', etc. Create your own using add_options_page();
+=======
+ * @param string $id       Slug-name to identify the section. Used in the 'id' attribute of tags.
+ * @param string $title    Formatted title of the section. Shown as the heading for the section.
+ * @param string $callback Function that echos out any content at the top of the section (between heading and fields).
+ * @param string $page     The slug-name of the settings page on which to show the section. Built-in pages include 'general', 'reading', 'writing', 'discussion', 'media', etc. Create your own using add_options_page();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function add_settings_section($id, $title, $callback, $page) {
 	global $wp_settings_sections;
@@ -1465,9 +1569,15 @@ function get_settings_errors( $setting = '', $sanitize = false ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param string $setting Optional slug title of a specific setting who's errors you want.
  * @param boolean $sanitize Whether to re-sanitize the setting value before returning errors.
  * @param boolean $hide_on_update If set to true errors will not be shown if the settings page has already been submitted.
+=======
+ * @param string $setting        Optional slug title of a specific setting who's errors you want.
+ * @param bool   $sanitize       Whether to re-sanitize the setting value before returning errors.
+ * @param bool   $hide_on_update If set to true errors will not be shown if the settings page has already been submitted.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function settings_errors( $setting = '', $sanitize = false, $hide_on_update = false ) {
 
@@ -1576,6 +1686,13 @@ function _admin_search_query() {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
+=======
+ * @global string    $hook_suffix
+ * @global string    $admin_body_class
+ * @global WP_Locale $wp_locale
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $title      Optional. Title of the Iframe page. Default empty.
  * @param bool   $deprecated Not used.
  */
@@ -1637,7 +1754,15 @@ if ( is_rtl() )
 /** This filter is documented in wp-admin/admin-header.php */
 $admin_body_classes = apply_filters( 'admin_body_class', '' );
 ?>
+<<<<<<< HEAD
 <body<?php if ( isset($GLOBALS['body_id']) ) echo ' id="' . $GLOBALS['body_id'] . '"'; ?> class="wp-admin wp-core-ui no-js iframe <?php echo $admin_body_classes . ' ' . $admin_body_class; ?>">
+=======
+<body<?php
+/**
+ * @global string $body_id
+ */
+if ( isset($GLOBALS['body_id']) ) echo ' id="' . $GLOBALS['body_id'] . '"'; ?> class="wp-admin wp-core-ui no-js iframe <?php echo $admin_body_classes . ' ' . $admin_body_class; ?>">
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <script type="text/javascript">
 (function(){
 var c = document.body.className;
@@ -1675,6 +1800,13 @@ function iframe_footer() {
 <?php
 }
 
+<<<<<<< HEAD
+=======
+/**
+ *
+ * @param WP_Post $post
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function _post_states($post) {
 	$post_states = array();
 	if ( isset( $_REQUEST['post_status'] ) )
@@ -1694,6 +1826,13 @@ function _post_states($post) {
 	if ( is_sticky($post->ID) )
 		$post_states['sticky'] = __('Sticky');
 
+<<<<<<< HEAD
+=======
+	if ( 'future' === $post->post_status ) {
+		$post_states['scheduled'] = __( 'Scheduled' );
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	if ( get_option( 'page_on_front' ) == $post->ID ) {
 		$post_states['page_on_front'] = __( 'Front Page' );
 	}
@@ -1725,6 +1864,13 @@ function _post_states($post) {
 
 }
 
+<<<<<<< HEAD
+=======
+/**
+ *
+ * @param WP_Post $post
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function _media_states( $post ) {
 	$media_states = array();
 	$stylesheet = get_option('stylesheet');
@@ -1741,13 +1887,24 @@ function _media_states( $post ) {
 			$media_states[] = __( 'Background Image' );
 	}
 
+<<<<<<< HEAD
+=======
+	if ( $post->ID == get_option( 'site_icon' ) ) {
+		$media_states[] = __( 'Site Icon' );
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	/**
 	 * Filter the default media display states for items in the Media list table.
 	 *
 	 * @since 3.2.0
 	 *
 	 * @param array $media_states An array of media states. Default 'Header Image',
+<<<<<<< HEAD
 	 *                            'Background Image'.
+=======
+	 *                            'Background Image', 'Site Icon'.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	$media_states = apply_filters( 'display_media_states', $media_states );
 
@@ -1921,6 +2078,13 @@ function get_submit_button( $text = '', $type = 'primary large', $name = 'submit
 	return $button;
 }
 
+<<<<<<< HEAD
+=======
+/**
+ *
+ * @global bool $is_IE
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function _wp_admin_html_begin() {
 	global $is_IE;
 
@@ -1964,11 +2128,17 @@ final class WP_Internal_Pointers {
 	 * Individual pointers (e.g. wp390_widgets) can be disabled using the following:
 	 *     remove_action( 'admin_print_footer_scripts', array( 'WP_Internal_Pointers', 'pointer_wp390_widgets' ) );
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param string $hook_suffix The current admin page.
 	 */
 	public static function enqueue_scripts( $hook_suffix ) {
 		/*
 		 * Register feature pointers
+<<<<<<< HEAD
 		 * Format: array( hook_suffix => pointer_id )
 		 */
 
@@ -1978,6 +2148,21 @@ final class WP_Internal_Pointers {
 			'edit.php'     => 'wp360_locks',
 			'widgets.php'  => 'wp390_widgets',
 			'themes.php'   => 'wp390_widgets',
+=======
+		 *
+		 * Format:
+		 *     array(
+		 *         hook_suffix => pointer callback
+		 *     )
+		 *
+		 * Example:
+		 *     array(
+		 *         'themes.php' => 'wp390_widgets'
+		 *     )
+		 */
+		$registered_pointers = array(
+			// None currently
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		);
 
 		// Check if screen related pointer is registered
@@ -1986,8 +2171,26 @@ final class WP_Internal_Pointers {
 
 		$pointers = (array) $registered_pointers[ $hook_suffix ];
 
+<<<<<<< HEAD
 		$caps_required = array(
 			'wp390_widgets' => array( 'edit_theme_options' ),
+=======
+		/*
+		 * Specify required capabilities for feature pointers
+		 *
+		 * Format:
+		 *     array(
+		 *         pointer callback => Array of required capabilities
+		 *     )
+		 *
+		 * Example:
+		 *     array(
+		 *         'wp390_widgets' => array( 'edit_theme_options' )
+		 *     )
+		 */
+		$caps_required = array(
+			// None currently
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		);
 
 		// Get dismissed pointers
@@ -2020,6 +2223,11 @@ final class WP_Internal_Pointers {
 	 *
 	 * @since 3.3.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param string $pointer_id The pointer ID.
 	 * @param string $selector The HTML elements, on which the pointer should be attached.
 	 * @param array  $args Arguments to be passed to the pointer JS (see wp-pointer.js).
@@ -2066,6 +2274,7 @@ final class WP_Internal_Pointers {
 	public static function pointer_wp340_choose_image_from_library() {}
 	public static function pointer_wp350_media() {}
 	public static function pointer_wp360_revisions() {}
+<<<<<<< HEAD
 
 	public static function pointer_wp360_locks() {
 		if ( ! is_multi_author() ) {
@@ -2127,12 +2336,18 @@ final class WP_Internal_Pointers {
 			'position' => $position,
 		) );
 	}
+=======
+	public static function pointer_wp360_locks() {}
+	public static function pointer_wp390_widgets() {}
+	public static function pointer_wp410_dfw() {}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	/**
 	 * Prevents new users from seeing existing 'new feature' pointers.
 	 *
 	 * @since 3.3.0
 	 *
+<<<<<<< HEAD
 	 * @param int $user_id User ID.
 	 */
 	public static function dismiss_pointers_for_new_users( $user_id ) {
@@ -2143,6 +2358,17 @@ final class WP_Internal_Pointers {
 add_action( 'admin_enqueue_scripts', array( 'WP_Internal_Pointers', 'enqueue_scripts'                ) );
 add_action( 'user_register',         array( 'WP_Internal_Pointers', 'dismiss_pointers_for_new_users' ) );
 
+=======
+	 * @static
+	 *
+	 * @param int $user_id User ID.
+	 */
+	public static function dismiss_pointers_for_new_users( $user_id ) {
+		add_user_meta( $user_id, 'dismissed_wp_pointers', '' );
+	}
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 /**
  * Convert a screen string to a screen object
  *

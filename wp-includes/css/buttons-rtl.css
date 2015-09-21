@@ -100,6 +100,13 @@ TABLE OF CONTENTS:
 	outline: none;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .wp-core-ui .button-link:focus {
+	outline: #5b9dd9 solid 1px;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-core-ui .button.hidden {
 	display: none;
 }
@@ -136,6 +143,16 @@ TABLE OF CONTENTS:
 	vertical-align: baseline;
 }
 
+<<<<<<< HEAD
+=======
+.wp-core-ui .button-link {
+	border: 0;
+	background: none;
+	outline: none;
+	cursor: pointer;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-core-ui .button.hover,
 .wp-core-ui .button:hover,
 .wp-core-ui .button-secondary:hover,
@@ -149,7 +166,12 @@ TABLE OF CONTENTS:
 
 .wp-core-ui .button.focus,
 .wp-core-ui .button:focus,
+<<<<<<< HEAD
 .wp-core-ui .button-secondary:focus {
+=======
+.wp-core-ui .button-secondary:focus,
+.wp-core-ui .button-link:focus {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	-webkit-box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);

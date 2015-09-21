@@ -176,8 +176,13 @@
 
 			// If the available widgets panel is open and the customize controls are
 			// interacted with (i.e. available widgets panel is blurred) then close the
+<<<<<<< HEAD
 			// available widgets panel.
 			$( '#customize-controls, .customize-overlay-close' ).on( 'click keydown', function( e ) {
+=======
+			// available widgets panel. Also close on back button click.
+			$( '#customize-controls, #available-widgets .customize-section-title' ).on( 'click keydown', function( e ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				var isAddNewBtn = $( e.target ).is( '.add-new-widget, .add-new-widget *' );
 				if ( $( 'body' ).hasClass( 'adding-widget' ) && ! isAddNewBtn ) {
 					self.close();
@@ -366,7 +371,11 @@
 				this.close( { returnFocus: true } );
 			}
 
+<<<<<<< HEAD
 			if ( isTab && ( isShift && isSearchFocused || ! isShift && isLastWidgetFocused ) ) {
+=======
+			if ( this.currentSidebarControl && isTab && ( isShift && isSearchFocused || ! isShift && isLastWidgetFocused ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				this.currentSidebarControl.container.find( '.add-new-widget' ).focus();
 				event.preventDefault();
 			}
@@ -786,12 +795,20 @@
 
 			// Handle widgets that support live previews
 			$widgetContent.on( 'change input propertychange', ':input', function( e ) {
+<<<<<<< HEAD
 				if ( self.liveUpdateMode ) {
 					if ( e.type === 'change' ) {
 						self.updateWidget();
 					} else if ( this.checkValidity && this.checkValidity() ) {
 						updateWidgetDebounced();
 					}
+=======
+				if ( ! self.liveUpdateMode ) {
+					return;
+				}
+				if ( e.type === 'change' || ( this.checkValidity && this.checkValidity() ) ) {
+					updateWidgetDebounced();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 			} );
 
@@ -1041,6 +1058,10 @@
 			params.wp_customize = 'on';
 			params.nonce = api.Widgets.data.nonce;
 			params.theme = api.settings.theme.stylesheet;
+<<<<<<< HEAD
+=======
+			params.customized = wp.customize.previewer.query().customized;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			data = $.param( params );
 			$inputs = this._getInputs( $widgetContent );
@@ -1270,7 +1291,13 @@
 
 			if ( expanded ) {
 
+<<<<<<< HEAD
 				self.expandControlSection();
+=======
+				if ( self.section() && api.section( self.section() ) ) {
+					self.expandControlSection();
+				}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 				// Close all other widget controls before expanding this one
 				api.control.each( function( otherControl ) {
@@ -1604,6 +1631,10 @@
 				items: '> .customize-control-widget_form',
 				handle: '.widget-top',
 				axis: 'y',
+<<<<<<< HEAD
+=======
+				tolerance: 'pointer',
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				connectWith: '.accordion-section-content:has(.customize-control-sidebar_widgets)',
 				update: function() {
 					var widgetContainerIds = self.$sectionContent.sortable( 'toArray' ), widgetIds;

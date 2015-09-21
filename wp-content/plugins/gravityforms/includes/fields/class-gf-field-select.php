@@ -10,7 +10,11 @@ class GF_Field_Select extends GF_Field {
 	public $type = 'select';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
 		return __( 'Drop Down', 'gravityforms' );
+=======
+		return esc_attr__( 'Drop Down', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -39,7 +43,11 @@ class GF_Field_Select extends GF_Field {
 	}
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
+<<<<<<< HEAD
 		$form_id         = $form['id'];
+=======
+		$form_id         = absint( $form['id'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 
@@ -65,7 +73,11 @@ class GF_Field_Select extends GF_Field {
 		return GFCommon::selection_display( $value, $this, $entry['currency'] );
 	}
 
+<<<<<<< HEAD
 	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format ) {
+=======
+	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format, $nl2br ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$use_value       = $modifier == 'value';
 		$use_price       = in_array( $modifier, array( 'price', 'currency' ) );
 		$format_currency = $modifier == 'currency';
@@ -107,6 +119,19 @@ class GF_Field_Select extends GF_Field {
 
 		return GFCommon::selection_display( $value, $this, $currency, $use_text );
 	}
+<<<<<<< HEAD
+=======
+
+	public function get_value_export( $entry, $input_id = '', $use_text = false, $is_csv = false ) {
+		if ( empty( $input_id ) ) {
+			$input_id = $this->id;
+		}
+
+		$value = rgar( $entry, $input_id );
+
+		return $is_csv ? $value : GFCommon::selection_display( $value, $this, rgar( $entry, 'currency' ), $use_text );
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 GF_Fields::register( new GF_Field_Select() );

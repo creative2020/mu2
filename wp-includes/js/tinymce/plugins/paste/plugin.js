@@ -63,10 +63,19 @@
 	}
 
 	function expose(ids) {
+<<<<<<< HEAD
 		for (var i = 0; i < ids.length; i++) {
 			var target = exports;
 			var id = ids[i];
 			var fragments = id.split(/[.\/]/);
+=======
+		var i, target, id, fragments, privateModules;
+
+		for (i = 0; i < ids.length; i++) {
+			target = exports;
+			id = ids[i];
+			fragments = id.split(/[.\/]/);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			for (var fi = 0; fi < fragments.length - 1; ++fi) {
 				if (target[fragments[fi]] === undefined) {
@@ -78,6 +87,24 @@
 
 			target[fragments[fragments.length - 1]] = modules[id];
 		}
+<<<<<<< HEAD
+=======
+		
+		// Expose private modules for unit tests
+		if (exports.AMDLC_TESTS) {
+			privateModules = exports.privateModules || {};
+
+			for (id in modules) {
+				privateModules[id] = modules[id];
+			}
+
+			for (i = 0; i < ids.length; i++) {
+				delete privateModules[ids[i]];
+			}
+
+			exports.privateModules = privateModules;
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 // Included from: js/tinymce/plugins/paste/classes/Utils.js
@@ -85,8 +112,13 @@
 /**
  * Utils.js
  *
+<<<<<<< HEAD
  * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
+=======
+ * Released under LGPL License.
+ * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -217,8 +249,13 @@ define("tinymce/pasteplugin/Utils", [
 /**
  * Clipboard.js
  *
+<<<<<<< HEAD
  * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
+=======
+ * Released under LGPL License.
+ * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -281,7 +318,11 @@ define("tinymce/pasteplugin/Clipboard", [
 				}
 
 				if (!args.isDefaultPrevented()) {
+<<<<<<< HEAD
 					editor.insertContent(html, {merge: editor.settings.paste_merge_formats !== false});
+=======
+					editor.insertContent(html, {merge: editor.settings.paste_merge_formats !== false, data: {paste: true}});
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 			}
 		}
@@ -805,19 +846,54 @@ define("tinymce/pasteplugin/Clipboard", [
 
 			// Remove all data images from paste for example from Gecko
 			// except internal images like video elements
+<<<<<<< HEAD
 			editor.parser.addNodeFilter('img', function(nodes) {
 				if (!editor.settings.paste_data_images) {
+=======
+			editor.parser.addNodeFilter('img', function(nodes, name, args) {
+				function isPasteInsert(args) {
+					return args.data && args.data.paste === true;
+				}
+
+				function remove(node) {
+					if (!node.attr('data-mce-object') && src !== Env.transparentSrc) {
+						node.remove();
+					}
+				}
+
+				function isWebKitFakeUrl(src) {
+					return src.indexOf("webkit-fake-url") === 0;
+				}
+
+				function isDataUri(src) {
+					return src.indexOf("data:") === 0;
+				}
+
+				if (!editor.settings.paste_data_images && isPasteInsert(args)) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					var i = nodes.length;
 
 					while (i--) {
 						var src = nodes[i].attributes.map.src;
 
+<<<<<<< HEAD
 						// Some browsers automatically produce data uris on paste
 						// Safari on Mac produces webkit-fake-url see: https://bugs.webkit.org/show_bug.cgi?id=49141
 						if (src && /^(data:image|webkit\-fake\-url)/.test(src)) {
 							if (!nodes[i].attr('data-mce-object') && src !== Env.transparentSrc) {
 								nodes[i].remove();
 							}
+=======
+						if (!src) {
+							continue;
+						}
+
+						// Safari on Mac produces webkit-fake-url see: https://bugs.webkit.org/show_bug.cgi?id=49141
+						if (isWebKitFakeUrl(src)) {
+							remove(nodes[i]);
+						} else if (!editor.settings.allow_html_data_urls && isDataUri(src)) {
+							remove(nodes[i]);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						}
 					}
 				}
@@ -831,8 +907,13 @@ define("tinymce/pasteplugin/Clipboard", [
 /**
  * WordFilter.js
  *
+<<<<<<< HEAD
  * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
+=======
+ * Released under LGPL License.
+ * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -1332,8 +1413,13 @@ define("tinymce/pasteplugin/WordFilter", [
 /**
  * Quirks.js
  *
+<<<<<<< HEAD
  * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
+=======
+ * Released under LGPL License.
+ * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -1494,8 +1580,13 @@ define("tinymce/pasteplugin/Quirks", [
 /**
  * Plugin.js
  *
+<<<<<<< HEAD
  * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
+=======
+ * Released under LGPL License.
+ * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing

@@ -76,10 +76,17 @@ if ( isset($_REQUEST['action']) && 'add-site' == $_REQUEST['action'] ) {
 	if ( !$user_id ) { // Create a new user with a random password
 		$password = wp_generate_password( 12, false );
 		$user_id = wpmu_create_user( $domain, $password, $email );
+<<<<<<< HEAD
 		if ( false == $user_id )
 			wp_die( __( 'There was an error creating the user.' ) );
 		else
 			wp_new_user_notification( $user_id, $password );
+=======
+		if ( false === $user_id )
+			wp_die( __( 'There was an error creating the user.' ) );
+		else
+			wp_new_user_notification( $user_id, null, 'both' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	$wpdb->hide_errors();
@@ -130,7 +137,11 @@ require( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h2 id="add-new-site"><?php _e('Add New Site') ?></h2>
+=======
+<h1 id="add-new-site"><?php _e( 'Add New Site' ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <?php
 if ( ! empty( $messages ) ) {
 	foreach ( $messages as $msg )
@@ -143,9 +154,15 @@ if ( ! empty( $messages ) ) {
 			<th scope="row"><label for="site-address"><?php _e( 'Site Address' ) ?></label></th>
 			<td>
 			<?php if ( is_subdomain_install() ) { ?>
+<<<<<<< HEAD
 				<input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc" /><span class="no-break">.<?php echo preg_replace( '|^www\.|', '', $current_site->domain ); ?></span>
 			<?php } else {
 				echo $current_site->domain . $current_site->path ?><input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc" />
+=======
+				<input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc" autocapitalize="none" autocorrect="off"/><span class="no-break">.<?php echo preg_replace( '|^www\.|', '', $current_site->domain ); ?></span>
+			<?php } else {
+				echo $current_site->domain . $current_site->path ?><input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc"  autocapitalize="none" autocorrect="off" />
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<?php }
 			echo '<p id="site-address-desc">' . __( 'Only lowercase letters (a-z) and numbers are allowed.' ) . '</p>';
 			?>
@@ -156,7 +173,11 @@ if ( ! empty( $messages ) ) {
 			<td><input name="blog[title]" type="text" class="regular-text" id="site-title" /></td>
 		</tr>
 		<tr class="form-field form-required">
+<<<<<<< HEAD
 			<th scope="row"><label for="admin-email"><?php _e( 'Admin Email' ) ?></label></td>
+=======
+			<th scope="row"><label for="admin-email"><?php _e( 'Admin Email' ) ?></label></th>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<td><input name="blog[email]" type="email" class="regular-text wp-suggest-user" id="admin-email" data-autocomplete-type="search" data-autocomplete-field="user_email" /></td>
 		</tr>
 		<tr class="form-field">

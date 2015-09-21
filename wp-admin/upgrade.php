@@ -35,6 +35,15 @@ if ( 'upgrade_db' === $step ) {
 	die( '0' );
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * @global string $wp_version
+ * @global string $required_php_version
+ * @global string $required_mysql_version
+ * @global wpdb   $wpdb
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $wp_version, $required_php_version, $required_mysql_version;
 
 $step = (int) $step;

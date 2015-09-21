@@ -2,6 +2,10 @@
 tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 	var toolbar, serializer,
 		each = tinymce.each,
+<<<<<<< HEAD
+=======
+		trim = tinymce.trim,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		iOS = tinymce.Env.iOS;
 
 	function isPlaceholder( node ) {
@@ -60,6 +64,7 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 	} );
 
 	editor.once( 'preinit', function() {
+<<<<<<< HEAD
 		toolbar = editor.wp._createToolbar( [
 			'wp_img_alignleft',
 			'wp_img_aligncenter',
@@ -68,6 +73,18 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 			'wp_img_edit',
 			'wp_img_remove'
 		] );
+=======
+		if ( editor.wp && editor.wp._createToolbar ) {
+			toolbar = editor.wp._createToolbar( [
+				'wp_img_alignleft',
+				'wp_img_aligncenter',
+				'wp_img_alignright',
+				'wp_img_alignnone',
+				'wp_img_edit',
+				'wp_img_remove'
+			] );
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	} );
 
 	editor.on( 'wptoolbar', function( event ) {
@@ -87,7 +104,11 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 					editor.selection.select( node );
 					editor.nodeChanged();
 				}, 200 );
+<<<<<<< HEAD
 			} else {
+=======
+			} else if ( toolbar ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				toolbar.hide();
 			}
 		} );
@@ -95,8 +116,12 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 
 	function parseShortcode( content ) {
 		return content.replace( /(?:<p>)?\[(?:wp_)?caption([^\]]+)\]([\s\S]+?)\[\/(?:wp_)?caption\](?:<\/p>)?/g, function( a, b, c ) {
+<<<<<<< HEAD
 			var id, align, classes, caption, img, width,
 				trim = tinymce.trim;
+=======
+			var id, align, classes, caption, img, width;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			id = b.match( /id=['"]([^'"]*)['"] ?/ );
 			if ( id ) {
@@ -525,12 +550,19 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 	}
 
 	function removeImage( node ) {
+<<<<<<< HEAD
 		var wrap;
 
 		if ( node.nodeName === 'DIV' && editor.dom.hasClass( node, 'mceTemp' ) ) {
 			wrap = node;
 		} else if ( node.nodeName === 'IMG' || node.nodeName === 'DT' || node.nodeName === 'A' ) {
 			wrap = editor.dom.getParent( node, 'div.mceTemp' );
+=======
+		var wrap = editor.dom.getParent( node, 'div.mceTemp' );
+
+		if ( ! wrap && node.nodeName === 'IMG' ) {
+			wrap = editor.dom.getParent( node, 'a' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 
 		if ( wrap ) {
@@ -865,7 +897,11 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 				replacement = ' ' + align;
 			}
 
+<<<<<<< HEAD
 			node.className = node.className.replace( / ?align(left|center|right|none)/g, '' ) + replacement;
+=======
+			node.className = trim( node.className.replace( / ?align(left|center|right|none)/g, '' ) + replacement );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			editor.nodeChanged();
 			event.preventDefault();

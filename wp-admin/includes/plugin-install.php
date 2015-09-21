@@ -130,6 +130,12 @@ function install_popular_tags( $args = array() ) {
 	return $tags;
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * @since 2.7.0
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function install_dashboard() {
 	?>
 	<p><?php printf( __( 'Plugins extend and expand the functionality of WordPress. You may automatically install plugins from the <a href="%1$s">WordPress Plugin Directory</a> or upload a plugin in .zip format via <a href="%2$s">this page</a>.' ), 'https://wordpress.org/plugins/', self_admin_url( 'plugin-install.php?tab=upload' ) ); ?></p>
@@ -148,22 +154,44 @@ function install_dashboard() {
 	} else {
 		//Set up the tags in a way which can be interpreted by wp_generate_tag_cloud()
 		$tags = array();
+<<<<<<< HEAD
 		foreach ( (array)$api_tags as $tag )
 			$tags[ $tag['name'] ] = (object) array(
 									'link' => esc_url( self_admin_url('plugin-install.php?tab=search&type=tag&s=' . urlencode($tag['name'])) ),
 									'name' => $tag['name'],
 									'id' => sanitize_title_with_dashes($tag['name']),
 									'count' => $tag['count'] );
+=======
+		foreach ( (array) $api_tags as $tag ) {
+			$url = self_admin_url( 'plugin-install.php?tab=search&type=tag&s=' . urlencode( $tag['name'] ) );
+			$data = array(
+				'link' => esc_url( $url ),
+				'name' => $tag['name'],
+				'slug' => $tag['slug'],
+				'id' => sanitize_title_with_dashes( $tag['name'] ),
+				'count' => $tag['count']
+			);
+			$tags[ $tag['name'] ] = (object) $data;
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		echo wp_generate_tag_cloud($tags, array( 'single_text' => __('%s plugin'), 'multiple_text' => __('%s plugins') ) );
 	}
 	echo '</p><br class="clear" />';
 }
+<<<<<<< HEAD
 add_action( 'install_plugins_featured', 'install_dashboard' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Display search form for searching plugins.
  *
  * @since 2.7.0
+<<<<<<< HEAD
+=======
+ *
+ * @param bool $type_selector
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function install_search_form( $type_selector = true ) {
 	$type = isset($_REQUEST['type']) ? wp_unslash( $_REQUEST['type'] ) : 'term';
@@ -209,7 +237,10 @@ function install_plugins_upload() {
 </div>
 <?php
 }
+<<<<<<< HEAD
 add_action('install_plugins_upload', 'install_plugins_upload' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Show a username form for the favorites page
@@ -235,6 +266,11 @@ function install_plugins_favorites_form() {
  * Display plugin content based on plugin list.
  *
  * @since 2.7.0
+<<<<<<< HEAD
+=======
+ *
+ * @global WP_List_Table $wp_list_table
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function display_plugins_table() {
 	global $wp_list_table;
@@ -256,17 +292,27 @@ function display_plugins_table() {
 	</form>
 	<?php
 }
+<<<<<<< HEAD
 add_action( 'install_plugins_search',      'display_plugins_table' );
 add_action( 'install_plugins_popular',     'display_plugins_table' );
 add_action( 'install_plugins_recommended', 'display_plugins_table' );
 add_action( 'install_plugins_new',         'display_plugins_table' );
 add_action( 'install_plugins_beta',        'display_plugins_table' );
 add_action( 'install_plugins_favorites',   'display_plugins_table' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Determine the status we can perform on a plugin.
  *
  * @since 3.0.0
+<<<<<<< HEAD
+=======
+ *
+ * @param array|object $api
+ * @param bool        $loop
+ * @return type
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function install_plugin_install_status($api, $loop = false) {
 	// This function is called recursively, $loop prevents further loops.
@@ -337,6 +383,12 @@ function install_plugin_install_status($api, $loop = false) {
  * Display plugin information in dialog box form.
  *
  * @since 2.7.0
+<<<<<<< HEAD
+=======
+ *
+ * @global string $tab
+ * @global string $wp_version
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function install_plugin_information() {
 	global $tab;
@@ -577,4 +629,7 @@ function install_plugin_information() {
 	iframe_footer();
 	exit;
 }
+<<<<<<< HEAD
 add_action('install_plugins_pre_plugin-information', 'install_plugin_information');
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

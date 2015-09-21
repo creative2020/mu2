@@ -50,6 +50,7 @@
 	width: 35%;
 }
 
+<<<<<<< HEAD
 .wp-fullscreen-title {
 	width: 97%;
 }
@@ -63,6 +64,8 @@
 	font-size: 14px;
 }
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 #adminmenuback {
 	right: 0;
 	background-image: none;
@@ -497,12 +500,24 @@ table.ie-fixed {
 }
 
 .widefat tr,
+<<<<<<< HEAD
 .widefat th {
+=======
+.widefat th,
+.widefat thead td,
+.widefat tfoot td {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	margin-bottom: 0;
 	border-spacing: 0;
 }
 
+<<<<<<< HEAD
 .widefat th input {
+=======
+.widefat th input,
+.widefat thead td input,
+.widefat tfoot td input {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	margin: 0 5px 0 0;
 }
 

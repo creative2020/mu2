@@ -9,7 +9,11 @@ class GF_Field_Post_Category extends GF_Field {
 	public $type = 'post_category';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
 		return __( 'Category', 'gravityforms' );
+=======
+		return esc_attr__( 'Category', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {

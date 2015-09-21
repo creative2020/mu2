@@ -1,0 +1,36 @@
+/*
+ * Theme Name: TT2020
+ * Theme URI: http://2020creative.net
+ * Description: TT2020 Theme Framework
+ * Version: 1.1
+ * Author: 2020 Creative, Inc.
+ * Author URI: http://2020creative.net
+ * Tags: 2020
+ * License: GNU General Public License v2.0 & Apache License 2.0
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/licenses/LICENSE-2.0
+ * GitHub Theme URI: https://github.com/creative2020/tt-tpl
+ * GitHub Branch: master
+*/
+
+/*
+colors
+@brand-primary  #428bca = #1 = TT Color 1 - name
+@brand-success  #5cb85c = #2 = TT Color 2 - name
+@brand-info     #5bc0de = #3 = TT Color 3 - name
+@brand-warning  #f0ad4e = #4 = TT Color 4 - name
+@brand-danger   #d9534f = #5 = TT Color 5 - name 
+
+Grays
+#2a2a2a - dk dk gray
+#555    - dk gray
+#808080 - md gray
+#ABABAB - lt gray
+#D5D5D5 - lt lt gray
+
+gray
+@gray-darker  = lighten(#000, 13.5%)
+@gray-dark    = lighten(#000, 20%)
+@gray         = lighten(#000, 33.5%)
+@gray-light   = lighten(#000, 60%)
+@gray-lighter = lighten(#000, 93.5%)
+*/

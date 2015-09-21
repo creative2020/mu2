@@ -39,7 +39,14 @@ class PasswordHash {
 	var $portable_hashes;
 	var $random_state;
 
+<<<<<<< HEAD
 	function PasswordHash($iteration_count_log2, $portable_hashes)
+=======
+	/**
+	 * PHP5 constructor.
+	 */
+	function __construct( $iteration_count_log2, $portable_hashes )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	{
 		$this->itoa64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
@@ -52,6 +59,16 @@ class PasswordHash {
 		$this->random_state = microtime() . uniqid(rand(), TRUE); // removed getmypid() for compatibility reasons
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * PHP4 constructor.
+	 */
+	public function PasswordHash( $iteration_count_log2, $portable_hashes ) {
+		self::__construct( $iteration_count_log2, $portable_hashes );
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	function get_random_bytes($count)
 	{
 		$output = '';

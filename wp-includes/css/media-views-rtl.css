@@ -153,11 +153,19 @@
 
 .media-modal-close {
 	position: absolute;
+<<<<<<< HEAD
 	text-decoration: none;
 	top: 10px;
 	left: 10px;
 	width: 30px;
 	height: 30px;
+=======
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	z-index: 1000;
 	-webkit-transition: color .1s ease-in-out, background .1s ease-in-out;
 	transition: color .1s ease-in-out, background .1s ease-in-out;
@@ -169,12 +177,16 @@
 }
 
 .media-modal-close span.media-modal-icon {
+<<<<<<< HEAD
 	display: block;
 	margin-top: 5px;
 	width: 30px;
 	height: 15px;
 	background-image: none;
 	text-align: center;
+=======
+	background-image: none;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .media-modal-close .media-modal-icon:before {
@@ -209,7 +221,12 @@
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 
+<<<<<<< HEAD
 .media-modal-icon {
+=======
+/* higher specificity */
+.wp-core-ui .media-modal-icon {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	background-image: url(../images/uploader-icons.png);
 	background-repeat: no-repeat;
 }
@@ -700,6 +717,13 @@
 	height: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.wp-customizer:not(.mobile) .media-frame-content .crop-content.site-icon {
+	margin-left: 300px;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .media-frame-content .crop-content .crop-image {
 	display: block;
 	margin: auto;
@@ -935,7 +959,11 @@
 	position: absolute;
 }
 
+<<<<<<< HEAD
 .wp-core-ui .attachment .close {
+=======
+.wp-core-ui .attachment-close {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	display: block;
 	position: absolute;
 	top: 5px;
@@ -943,6 +971,7 @@
 	height: 22px;
 	width: 22px;
 	padding: 0;
+<<<<<<< HEAD
 	font-size: 20px;
 	line-height: 20px;
 	text-align: center;
@@ -951,10 +980,15 @@
 	background-color: #fff;
 	background-position: -96px 4px;
 	border-width: 0;
+=======
+	background-color: #fff;
+	background-position: -96px 4px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.3 );
 	box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.3 );
+<<<<<<< HEAD
 	-webkit-transition-duration: none;
 	transition-duration: none;
 	-webkit-transition-property: none;
@@ -967,12 +1001,23 @@
 	box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.6 );
 	background-position: -36px 4px;
 
+=======
+}
+
+.wp-core-ui .attachment-close:hover,
+.wp-core-ui .attachment-close:focus {
+	background-position: -36px 4px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .wp-core-ui .attachment .check {
 	display: none;
 	height: 24px;
 	width: 24px;
+<<<<<<< HEAD
+=======
+	padding: 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	position: absolute;
 	z-index: 10;
 	top: 0;
@@ -983,14 +1028,23 @@
 	box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba( 0, 0, 0, 0.15 );
 }
 
+<<<<<<< HEAD
 .wp-core-ui .attachment .check div {
+=======
+.wp-core-ui .attachment .check .media-modal-icon {
+	display: block;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	background-position: -1px 0;
 	height: 15px;
 	width: 15px;
 	margin: 5px;
 }
 
+<<<<<<< HEAD
 .wp-core-ui .attachment .check:hover div {
+=======
+.wp-core-ui .attachment .check:hover .media-modal-icon {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	background-position: -40px 0;
 }
 
@@ -1010,6 +1064,7 @@
 		0 0 0 2px #1e8cbe;
 }
 
+<<<<<<< HEAD
 .wp-core-ui .attachment.details .check div,
 .wp-core-ui .media-frame.mode-grid .attachment.selected .check div {
 	background-position: -21px 0;
@@ -1018,6 +1073,16 @@
 .wp-core-ui .attachment.details .check:hover div,
 .wp-core-ui .attachment.selected .check:focus div,
 .wp-core-ui .media-frame.mode-grid .attachment.selected .check:hover div {
+=======
+.wp-core-ui .attachment.details .check .media-modal-icon,
+.wp-core-ui .media-frame.mode-grid .attachment.selected .check .media-modal-icon {
+	background-position: -21px 0;
+}
+
+.wp-core-ui .attachment.details .check:hover .media-modal-icon,
+.wp-core-ui .attachment.selected .check:focus .media-modal-icon,
+.wp-core-ui .media-frame.mode-grid .attachment.selected .check:hover .media-modal-icon {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	background-position: -60px 0;
 }
 
@@ -1174,10 +1239,13 @@
 	max-width: 400px;
 }
 
+<<<<<<< HEAD
 .media-sidebar .media-uploader-status {
 	border-bottom: 1px solid #dfdfdf;
 }
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .uploader-inline .media-uploader-status h3 {
 	display: none;
 }
@@ -1221,6 +1289,7 @@
 }
 
 .upload-errors .upload-error {
+<<<<<<< HEAD
 	margin: 8px auto 0 auto;
 	padding: 8px;
 	border: 1px #c00 solid;
@@ -1240,12 +1309,27 @@
 	background-image: linear-gradient(to bottom, #e00, #a00);
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
+=======
+	padding: 12px;
+	margin-bottom: 12px;
+	background: #fff;
+	border-right: 4px solid #dd3d36;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.upload-errors .upload-error-filename {
+	font-weight: bold;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .upload-errors .upload-error-message {
 	display: block;
 	padding-top: 8px;
+<<<<<<< HEAD
 	color: #b44;
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	word-wrap: break-word;
 }
 
@@ -1405,34 +1489,61 @@
 	font-weight: bold;
 }
 
+<<<<<<< HEAD
 .media-selection .selection-info a {
 	display: block;
+=======
+.media-selection .button-link {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	float: right;
 	padding: 1px 8px;
 	margin: 1px -8px 1px 8px;
 	line-height: 16px;
+<<<<<<< HEAD
 	text-decoration: none;
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	border-left: 1px solid #dfdfdf;
 	color: #21759B;
 }
 
+<<<<<<< HEAD
 .media-selection .selection-info a:hover {
+=======
+.media-selection .button-link:hover,
+.media-selection .button-link:focus {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	background: #21759B;
 	color: #fff;
 	border-color: transparent;
 }
 
+<<<<<<< HEAD
 .media-selection .selection-info a:last-child {
+=======
+.media-selection .button-link:last-child {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	border-left: 0;
 	margin-left: 0;
 }
 
+<<<<<<< HEAD
 .media-selection .selection-info .clear-selection {
 	color: red;
 }
 
 .media-selection .selection-info .clear-selection:hover {
 	background: red;
+=======
+.selection-info .clear-selection {
+	color: red;
+}
+
+.selection-info .clear-selection:hover,
+.selection-info .clear-selection:focus {
+	background: red;
+	color: #fff;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .media-selection .selection-view {
@@ -1635,7 +1746,10 @@
 }
 
 .attachment-info .edit-attachment,
+<<<<<<< HEAD
 .attachment-info .refresh-attachment,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .attachment-info .delete-attachment,
 .attachment-info .trash-attachment,
 .attachment-info .untrash-attachment {
@@ -1644,12 +1758,18 @@
 	white-space: nowrap;
 }
 
+<<<<<<< HEAD
 .attachment-info .refresh-attachment,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .attachment-details.needs-refresh .attachment-info .edit-attachment {
 	display: none;
 }
 
+<<<<<<< HEAD
 .attachment-details.needs-refresh .attachment-info .refresh-attachment,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .attachment-info .edit-attachment {
 	display: block;
 }
@@ -1657,12 +1777,25 @@
 .media-modal .delete-attachment,
 .media-modal .trash-attachment,
 .media-modal .untrash-attachment {
+<<<<<<< HEAD
+=======
+	display: inline;
+	padding: 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	color: #bc0b0b;
 }
 
 .media-modal .delete-attachment:hover,
+<<<<<<< HEAD
 .media-modal .trash-attachment:hover,
 .media-modal .untrash-attachment:hover {
+=======
+.media-modal .delete-attachment:focus,
+.media-modal .trash-attachment:hover,
+.media-modal .trash-attachment:focus,
+.media-modal .untrash-attachment:hover,
+.media-modal .untrash-attachment:focus {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	color: red;
 }
 
@@ -1823,10 +1956,24 @@
 	overflow: auto;
 }
 
+<<<<<<< HEAD
 .embed-preview img,
 .embed-preview iframe,
 .embed-preview embed {
 	max-width: 100%;
+=======
+.media-embed .embed-link-settings {
+	/* avoid Firefox to give focus to the embed preview container parent */
+	overflow: visible;
+}
+
+.embed-preview img,
+.embed-preview iframe,
+.embed-preview embed,
+.mejs-container video {
+	max-width: 100%;
+	vertical-align: middle;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .embed-preview a {
@@ -1838,6 +1985,15 @@
 	height: auto;
 }
 
+<<<<<<< HEAD
+=======
+.mejs-container:focus {
+	outline: 1px solid #5b9dd9;
+	-webkit-box-shadow: 0 0 2px 1px rgba(30, 140, 190, .8);
+	box-shadow: 0 0 2px 1px rgba(30, 140, 190, .8);
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .image-details .media-modal {
 	right: 140px;
 	left: 140px;
@@ -1895,9 +2051,15 @@
 }
 
 .image-details .advanced-toggle {
+<<<<<<< HEAD
 	color: #666;
 	text-decoration: none;
 	display: block;
+=======
+	padding: 0;
+	color: #666;
+	text-transform: uppercase;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .image-details .advanced-toggle:after {
@@ -2056,7 +2218,10 @@
 }
 
 /* Drag & drop on the editor upload */
+<<<<<<< HEAD
 #wp-fullscreen-body .uploader-editor,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-editor-wrap .uploader-editor {
 	background: rgba( 150, 150, 150, 0.9 );
 	position: absolute;
@@ -2069,6 +2234,7 @@
 	text-align: center;
 }
 
+<<<<<<< HEAD
 #wp-fullscreen-body .uploader-editor {
 	background: rgba( 0, 86, 132, 0.9 );
 	position: fixed;
@@ -2080,6 +2246,8 @@
 }
 
 #wp-fullscreen-body .uploader-editor-content,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-editor-wrap .uploader-editor-content {
 	border: 1px dashed #fff;
 	position: absolute;
@@ -2089,7 +2257,10 @@
 	bottom: 10px;
 }
 
+<<<<<<< HEAD
 #wp-fullscreen-body .uploader-editor .uploader-editor-title,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-editor-wrap .uploader-editor .uploader-editor-title {
 	position: absolute;
 	top: 50%;
@@ -2111,7 +2282,10 @@
 	background: rgba( 0, 86, 132, 0.9 );
 }
 
+<<<<<<< HEAD
 #wp-fullscreen-body .uploader-editor .uploader-editor-title,
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-editor-wrap .uploader-editor.droppable .uploader-editor-title {
 	display: block;
 }
@@ -2502,14 +2676,25 @@
 
 @media only screen and (max-width: 480px) {
 	.media-modal-close {
+<<<<<<< HEAD
 		top: 5px;
 		left: 5px;
+=======
+		top: -5px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	.media-modal .media-frame-title {
 		height: 40px;
 	}
 
+<<<<<<< HEAD
+=======
+	.wp-core-ui.wp-customizer .media-button {
+		margin-top: 13px;
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	.media-modal .media-frame-title h1,
 	.media-frame:not(.hide-menu) .media-frame-title h1 {
 		font-size: 18px;

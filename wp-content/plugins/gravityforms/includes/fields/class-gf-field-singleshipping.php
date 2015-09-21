@@ -20,7 +20,11 @@ class GF_Field_SingleShipping extends GF_Field {
 	}
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
+<<<<<<< HEAD
 		$form_id         = $form['id'];
+=======
+		$form_id         = absint( $form['id'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 
@@ -34,6 +38,11 @@ class GF_Field_SingleShipping extends GF_Field {
 			$price = 0;
 		}
 
+<<<<<<< HEAD
+=======
+		$price = esc_attr( $price );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		return "<div class='ginput_container'>
 					<input type='hidden' name='input_{$id}' value='{$price}' class='gform_hidden'/>
 					<span class='ginput_shipping_price' id='{$field_id}'>" . GFCommon::to_money( $price, $currency ) . '</span>

@@ -16,8 +16,11 @@ function loadBillingLength(setting_name){
         str += "<option value='" + i + "' " + selected + ">" + i + "</option>";
     }
     lengthField.html(str);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 function cancel_subscription(entryId){

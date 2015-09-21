@@ -101,6 +101,7 @@ class getid3_lyrics3 extends getid3_handler
 			$this->getLyrics3Data($lyrics3offset, $lyrics3version, $lyrics3size);
 
 			if (!isset($info['ape'])) {
+<<<<<<< HEAD
 				$GETID3_ERRORARRAY = &$info['warning'];
 				getid3_lib::IncludeDependency(GETID3_INCLUDEPATH.'module.tag.apetag.php', __FILE__, true);
 				$getid3_temp = new getID3();
@@ -115,6 +116,26 @@ class getid3_lyrics3 extends getid3_handler
 					$info['replay_gain'] = $getid3_temp->info['replay_gain'];
 				}
 				unset($getid3_temp, $getid3_apetag);
+=======
+				if (isset($info['lyrics3']['tag_offset_start'])) {
+					$GETID3_ERRORARRAY = &$info['warning'];
+					getid3_lib::IncludeDependency(GETID3_INCLUDEPATH.'module.tag.apetag.php', __FILE__, true);
+					$getid3_temp = new getID3();
+					$getid3_temp->openfile($this->getid3->filename);
+					$getid3_apetag = new getid3_apetag($getid3_temp);
+					$getid3_apetag->overrideendoffset = $info['lyrics3']['tag_offset_start'];
+					$getid3_apetag->Analyze();
+					if (!empty($getid3_temp->info['ape'])) {
+						$info['ape'] = $getid3_temp->info['ape'];
+					}
+					if (!empty($getid3_temp->info['replay_gain'])) {
+						$info['replay_gain'] = $getid3_temp->info['replay_gain'];
+					}
+					unset($getid3_temp, $getid3_apetag);
+				} else {
+					$info['warning'][] = 'Lyrics3 and APE tags appear to have become entangled (most likely due to updating the APE tags with a non-Lyrics3-aware tagger)';
+				}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 
 		}
@@ -291,4 +312,8 @@ class getid3_lyrics3 extends getid3_handler
 		}
 		return null;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

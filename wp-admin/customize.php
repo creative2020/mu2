@@ -33,6 +33,13 @@ if ( ! $return ) {
 	}
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * @global WP_Scripts           $wp_scripts
+ * @global WP_Customize_Manager $wp_customize
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $wp_scripts, $wp_customize;
 
 $registered = $wp_scripts->registered;
@@ -119,6 +126,7 @@ do_action( 'customize_controls_print_scripts' );
 <div class="wp-full-overlay expanded">
 	<form id="customize-controls" class="wrap wp-full-overlay-sidebar">
 		<div id="customize-header-actions" class="wp-full-overlay-header">
+<<<<<<< HEAD
 			<div class="primary-actions">
 				<?php
 					$save_text = $wp_customize->is_theme_active() ? __( 'Save &amp; Publish' ) : __( 'Save &amp; Activate' );
@@ -139,10 +147,25 @@ do_action( 'customize_controls_print_scripts' );
 					<span class="screen-reader-text"><?php _e( 'Close overlay' ); ?></span>
 				</button>
 			</div>
+=======
+			<?php
+			$save_text = $wp_customize->is_theme_active() ? __( 'Save &amp; Publish' ) : __( 'Save &amp; Activate' );
+			submit_button( $save_text, 'primary save', 'save', false );
+			?>
+			<span class="spinner"></span>
+			<a class="customize-controls-preview-toggle" href="#">
+				<span class="controls"><?php _e( 'Customize' ); ?></span>
+				<span class="preview"><?php _e( 'Preview' ); ?></span>
+			</a>
+			<a class="customize-controls-close" href="<?php echo esc_url( $return ); ?>">
+				<span class="screen-reader-text"><?php _e( 'Cancel' ); ?></span>
+			</a>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		</div>
 
 		<div id="widgets-right"><!-- For Widget Customizer, many widgets try to look for instances under div#widgets-right, so we have to add that ID to a container div in the Customizer for compat -->
 		<div class="wp-full-overlay-sidebar-content" tabindex="-1">
+<<<<<<< HEAD
 			<div id="customize-info" class="accordion-section">
 				<div class="accordion-section-title" aria-label="<?php esc_attr_e( 'Customizer Options' ); ?>" tabindex="0">
 					<span class="preview-notice"><?php
@@ -151,6 +174,17 @@ do_action( 'customize_controls_print_scripts' );
 				</div>
 				<div class="accordion-section-content"><?php
 					echo __( 'The Customizer allows you to preview changes to your site before publishing them. You can also navigate to different pages on your site to preview them.' );
+=======
+			<div id="customize-info" class="accordion-section customize-info">
+				<div class="accordion-section-title" aria-label="<?php esc_attr_e( 'Customizer Options' ); ?>">
+					<span class="preview-notice"><?php
+						echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title site-title">' . get_bloginfo( 'name' ) . '</strong>' );
+					?></span>
+					<button class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+				</div>
+				<div class="customize-panel-description"><?php
+					_e( 'The Customizer allows you to preview changes to your site before publishing them. You can also navigate to different pages on your site to preview them.' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				?></div>
 			</div>
 
@@ -161,16 +195,29 @@ do_action( 'customize_controls_print_scripts' );
 		</div>
 
 		<div id="customize-footer-actions" class="wp-full-overlay-footer">
+<<<<<<< HEAD
 			<a href="#" class="collapse-sidebar button-secondary" title="<?php esc_attr_e('Collapse Sidebar'); ?>">
 				<span class="collapse-sidebar-arrow"></span>
 				<span class="collapse-sidebar-label"><?php _e('Collapse'); ?></span>
 			</a>
+=======
+			<button type="button" class="collapse-sidebar button-secondary" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse Sidebar' ); ?>">
+				<span class="collapse-sidebar-arrow"></span>
+				<span class="collapse-sidebar-label"><?php _e( 'Collapse' ); ?></span>
+			</button>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		</div>
 	</form>
 	<div id="customize-preview" class="wp-full-overlay-main"></div>
 	<?php
 
+<<<<<<< HEAD
 	// Render control templates.
+=======
+	// Render Panel, Section, and Control templates.
+	$wp_customize->render_panel_templates();
+	$wp_customize->render_section_templates();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$wp_customize->render_control_templates();
 
 	/**
@@ -206,6 +253,7 @@ do_action( 'customize_controls_print_scripts' );
 	 */
 	$allowed_urls = array_unique( apply_filters( 'customize_allowed_urls', $allowed_urls ) );
 
+<<<<<<< HEAD
 	$fallback_url = add_query_arg( array(
 		'preview'        => 1,
 		'template'       => $wp_customize->get_template(),
@@ -214,6 +262,8 @@ do_action( 'customize_controls_print_scripts' );
 		'TB_iframe'      => 'true'
 	), home_url( '/' ) );
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$login_url = add_query_arg( array(
 		'interim-login' => 1,
 		'customize-login' => 1
@@ -232,7 +282,10 @@ do_action( 'customize_controls_print_scripts' );
 			'ajax'          => esc_url_raw( admin_url( 'admin-ajax.php', 'relative' ) ),
 			'allowed'       => array_map( 'esc_url_raw', $allowed_urls ),
 			'isCrossDomain' => $cross_domain,
+<<<<<<< HEAD
 			'fallback'      => esc_url_raw( $fallback_url ),
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			'home'          => esc_url_raw( home_url( '/' ) ),
 			'login'         => esc_url_raw( $login_url ),
 		),
@@ -254,20 +307,37 @@ do_action( 'customize_controls_print_scripts' );
 
 	// Prepare Customize Setting objects to pass to JavaScript.
 	foreach ( $wp_customize->settings() as $id => $setting ) {
+<<<<<<< HEAD
 		$settings['settings'][ $id ] = array(
 			'value'     => $setting->js_value(),
 			'transport' => $setting->transport,
 			'dirty'     => $setting->dirty,
 		);
+=======
+		if ( $setting->check_capabilities() ) {
+			$settings['settings'][ $id ] = array(
+				'value'     => $setting->js_value(),
+				'transport' => $setting->transport,
+				'dirty'     => $setting->dirty,
+			);
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	// Prepare Customize Control objects to pass to JavaScript.
 	foreach ( $wp_customize->controls() as $id => $control ) {
+<<<<<<< HEAD
 		$settings['controls'][ $id ] = $control->json();
+=======
+		if ( $control->check_capabilities() ) {
+			$settings['controls'][ $id ] = $control->json();
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	// Prepare Customize Section objects to pass to JavaScript.
 	foreach ( $wp_customize->sections() as $id => $section ) {
+<<<<<<< HEAD
 		$settings['sections'][ $id ] = $section->json();
 	}
 
@@ -276,6 +346,22 @@ do_action( 'customize_controls_print_scripts' );
 		$settings['panels'][ $id ] = $panel->json();
 		foreach ( $panel->sections as $section_id => $section ) {
 			$settings['sections'][ $section_id ] = $section->json();
+=======
+		if ( $section->check_capabilities() ) {
+			$settings['sections'][ $id ] = $section->json();
+		}
+	}
+
+	// Prepare Customize Panel objects to pass to JavaScript.
+	foreach ( $wp_customize->panels() as $panel_id => $panel ) {
+		if ( $panel->check_capabilities() ) {
+			$settings['panels'][ $panel_id ] = $panel->json();
+			foreach ( $panel->sections as $section_id => $section ) {
+				if ( $section->check_capabilities() ) {
+					$settings['sections'][ $section_id ] = $section->json();
+				}
+			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 	}
 

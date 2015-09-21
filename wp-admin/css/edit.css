@@ -30,7 +30,11 @@
 }
 
 #lost-connection-notice .spinner {
+<<<<<<< HEAD
 	display: block;
+=======
+	visibility: visible;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	float: left;
 	margin: 0 5px 0 0;
 }
@@ -70,12 +74,15 @@
 	padding: 11px 10px;
 }
 
+<<<<<<< HEAD
 #wp-fullscreen-save .fs-saved {
 	color: #999;
 	float: right;
 	margin-top: 4px;
 }
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 #poststuff .inside-submitbox,
 #side-sortables .inside-submitbox {
 	margin: 0 3px;
@@ -297,6 +304,7 @@ form#tags-filter {
 	position: relative;
 }
 
+<<<<<<< HEAD
 /* Edit posts */
 td.post-title strong,
 td.plugin-title strong {
@@ -310,6 +318,8 @@ td.plugin-title p {
 	margin: 6px 0;
 }
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 /* Global classes */
 .wp-hidden-children .wp-hidden-child,
 .ui-tabs-hide {
@@ -390,6 +400,7 @@ td.plugin-title p {
 	border: 1px solid transparent;
 }
 
+<<<<<<< HEAD
 .wp-fullscreen-wrap #content-textarea-clone {
 	display: none;
 }
@@ -408,6 +419,8 @@ td.plugin-title p {
 }
 /* end editor-expand.js override */
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .wp-editor-expand #wp-content-editor-tools {
 	z-index: 1000;
 	border-bottom: 1px solid #e5e5e5;
@@ -449,6 +462,13 @@ td.plugin-title p {
 	visibility: visible !important;
 }
 
+<<<<<<< HEAD
+=======
+.mce-fullscreen #wp-content-wrap .mce-tinymce .mce-wp-dfw {
+	display: none;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .post-php.mce-fullscreen #wpadminbar,
 .mce-fullscreen #wp-content-wrap .mce-wp-dfw {
 	display: none;
@@ -545,6 +565,10 @@ span.wp-media-buttons-icon:before {
 .notification-dialog {
 	position: fixed;
 	top: 30%;
+<<<<<<< HEAD
+=======
+	max-height: 70%;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	left: 50%;
 	width: 450px;
 	margin-left: -225px;
@@ -553,6 +577,10 @@ span.wp-media-buttons-icon:before {
 	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
 	line-height: 1.5;
 	z-index: 1000005;
+<<<<<<< HEAD
+=======
+	overflow-y: auto;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .notification-dialog-background {
@@ -595,11 +623,19 @@ span.wp-media-buttons-icon:before {
 	display: inline;
 }
 
+<<<<<<< HEAD
 #excerpt,
 .attachmentlinks {
 	margin: 0;
 	height: 4em;
 	width: 98%;
+=======
+#excerpt {
+	display: block;
+	margin: 12px 0 0;
+	height: 4em;
+	width: 100%;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .tagchecklist {
@@ -1231,12 +1267,20 @@ table.links-table {
 	display: inline-block;
 }
 
+<<<<<<< HEAD
 .focus-on .wrap > h2,
+=======
+.focus-on .wrap > h1,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .focus-on #wpfooter,
 .focus-on .postbox-container > *,
 .focus-on div.updated,
 .focus-on div.error,
 .focus-on div.notice,
+<<<<<<< HEAD
+=======
+.focus-on .update-nag,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .focus-on #wp-toolbar,
 .focus-on #screen-meta-links,
 .focus-on #screen-meta {
@@ -1253,12 +1297,20 @@ table.links-table {
 	opacity: 0.3;
 }
 
+<<<<<<< HEAD
 .focus-off .wrap > h2,
+=======
+.focus-off .wrap > h1,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .focus-off #wpfooter,
 .focus-off .postbox-container > *,
 .focus-off div.updated,
 .focus-off div.error,
 .focus-off div.notice,
+<<<<<<< HEAD
+=======
+.focus-off .update-nag,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .focus-off #wp-toolbar,
 .focus-off #screen-meta-links,
 .focus-off #screen-meta {
@@ -1461,7 +1513,11 @@ table.links-table {
 
 	.tagchecklist span {
 		font-size: 16px;
+<<<<<<< HEAD
 		line-height: 120%;
+=======
+		line-height: 1.4;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	/* Discussion */
@@ -1559,6 +1615,14 @@ table.links-table {
 		line-height: 47px;
 	}
 
+<<<<<<< HEAD
+=======
+	#publishing-action .spinner {
+		float: none;
+		margin-top: -2px; /* Half of the Publish button's bottom margin. */
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	/* Moderate Comment */
 	.comment-ays th,
 	.comment-ays td {

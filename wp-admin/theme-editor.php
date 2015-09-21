@@ -131,7 +131,11 @@ if ( $description != $file_show )
 	$description .= ' <span>(' . $file_show . ')</span>';
 ?>
 <div class="wrap">
+<<<<<<< HEAD
 <h2><?php echo esc_html( $title ); ?></h2>
+=======
+<h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <div class="fileedit-sub">
 <div class="alignleft">

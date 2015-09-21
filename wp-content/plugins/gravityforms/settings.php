@@ -50,6 +50,15 @@ class GFSettings {
 				break;
 			default:
 				self::page_header();
+<<<<<<< HEAD
+=======
+
+				/**
+				 * Fires in the settings page depending on which page of the settings page you are in (the Subview)
+				 *
+				 * @param mixed $subview The sub-section of the main Form's settings
+				 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				do_action( 'gform_settings_' . str_replace( ' ', '_', $subview ) );
 				self::page_footer();
 		}
@@ -60,7 +69,11 @@ class GFSettings {
 		if ( isset( $_POST['uninstall'] ) ) {
 
 			if ( ! GFCommon::current_user_can_any( 'gravityforms_uninstall' ) || ( function_exists( 'is_multisite' ) && is_multisite() && ! is_super_admin() ) ) {
+<<<<<<< HEAD
 				die( __( "You don't have adequate permission to uninstall Gravity Forms.", 'gravityforms' ) );
+=======
+				die( esc_html__( "You don't have adequate permission to uninstall Gravity Forms.", 'gravityforms' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 
 			//dropping all tables
@@ -90,7 +103,11 @@ class GFSettings {
 			update_option( 'recently_activated', array( $plugin => time() ) + (array) get_option( 'recently_activated' ) );
 
 			?>
+<<<<<<< HEAD
 			<div class="updated fade" style="padding:20px;"><?php echo sprintf( __( 'Gravity Forms have been successfully uninstalled. It can be re-activated from the %splugins page%s.', 'gravityforms' ), "<a href='plugins.php'>", '</a>' ) ?></div>
+=======
+			<div class="updated fade" style="padding:20px;"><?php echo sprintf( esc_html__( 'Gravity Forms has been successfully uninstalled. It can be re-activated from the %splugins page%s.', 'gravityforms' ), "<a href='plugins.php'>", '</a>' ) ?></div>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<?php
 			return;
 		}
@@ -98,6 +115,7 @@ class GFSettings {
 
 		<form action="" method="post">
 			<?php if ( GFCommon::current_user_can_any( 'gravityforms_uninstall' ) && ( ! function_exists( 'is_multisite' ) || ! is_multisite() || is_super_admin() ) ) { ?>
+<<<<<<< HEAD
 				<h3><span><i class="fa fa-times"></i> <?php _e( 'Uninstall Gravity Forms', 'gravityforms' ); ?></span>
 				</h3>
 				<div class="delete-alert alert_red">
@@ -111,6 +129,27 @@ class GFSettings {
 
 				<?php
 				$uninstall_button = '<input type="submit" name="uninstall" value="' . __( 'Uninstall Gravity Forms', 'gravityforms' ) . '" class="button" onclick="return confirm(\'' . __( "Warning! ALL Gravity Forms data, including form entries will be deleted. This cannot be undone. \'OK\' to delete, \'Cancel\' to stop", 'gravityforms' ) . '\');"/>';
+=======
+				<h3><span><i class="fa fa-times"></i> <?php esc_html_e( 'Uninstall Gravity Forms', 'gravityforms' ); ?></span>
+				</h3>
+				<div class="delete-alert alert_red">
+
+					<h3>
+						<i class="fa fa-exclamation-triangle gf_invalid"></i> <?php esc_html_e( 'Warning', 'gravityforms' ); ?>
+					</h3>
+
+					<div class="gf_delete_notice"><strong><?php esc_html_e( 'This operation deletes ALL Gravity Forms data.', 'gravityforms' ); ?></strong> <?php esc_html_e( 'If you continue, You will not be able to retrieve or restore your forms or entries.', 'gravityforms' ); ?>
+				</div>
+
+				<?php
+				$uninstall_button = '<input type="submit" name="uninstall" value="' . esc_attr__( 'Uninstall Gravity Forms', 'gravityforms' ) . '" class="button" onclick="return confirm(\'' . esc_js( __( "Warning! ALL Gravity Forms data, including form entries will be deleted. This cannot be undone. 'OK' to delete, 'Cancel' to stop", 'gravityforms' ) ) . '\');"/>';
+
+				/**
+				 * Allows for the modification of the Gravity Forms uninstall button
+				 *
+				 * @param string $uninstall_button The HTML of the uninstall button
+				 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				echo apply_filters( 'gform_uninstall_button', $uninstall_button );
 				?>
 
@@ -140,7 +179,11 @@ class GFSettings {
 			check_admin_referer( 'gforms_update_settings', 'gforms_update_settings' );
 
 			if ( ! GFCommon::current_user_can_any( 'gravityforms_edit_settings' ) ) {
+<<<<<<< HEAD
 				die( __( "You don't have adequate permission to edit settings.", 'gravityforms' ) );
+=======
+				die( esc_html__( "You don't have adequate permission to edit settings.", 'gravityforms' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 
 			RGFormsModel::save_key( sanitize_text_field( $_POST['gforms_key'] ) );
@@ -164,7 +207,11 @@ class GFSettings {
 			$version_info = GFCommon::get_version_info( false );
 			?>
 			<div class="updated fade" style="padding:6px;">
+<<<<<<< HEAD
 				<?php _e( 'Settings Updated', 'gravityforms' ); ?>.
+=======
+				<?php esc_html_e( 'Settings Updated', 'gravityforms' ); ?>.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			</div>
 		<?php
 		}
@@ -176,32 +223,53 @@ class GFSettings {
 		?>
 		<form method="post">
 			<?php wp_nonce_field( 'gforms_update_settings', 'gforms_update_settings' ) ?>
+<<<<<<< HEAD
 			<h3><span><i class="fa fa-cogs"></i> <?php _e( 'General Settings', 'gravityforms' ); ?></span></h3>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
 						<label for="gforms_key"><?php _e( 'Support License Key', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_license_key' ) ?>
+=======
+			<h3><span><i class="fa fa-cogs"></i> <?php esc_html_e( 'General Settings', 'gravityforms' ); ?></span></h3>
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row">
+						<label for="gforms_key"><?php esc_html_e( 'Support License Key', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_license_key' ) ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</th>
 					<td>
 						<?php
 						$key = GFCommon::get_key();
 						$key_field = '<input type="password" name="gforms_key" id="gforms_key" style="width:350px;" value="' . $key . '" />';
 						if ( ! rgempty( 'is_error', $version_info ) ) {
+<<<<<<< HEAD
 							$key_field .= "&nbsp;<img src='" . GFCommon::get_base_url() . "/images/exclamation.png' class='gf_keystatus_error gf_tooltip' alt='There was an error validating your key' title='<h6>" . __( 'Validation Error', 'gravityforms' ) . '</h6>' . __( 'There was an error while validating your license key. Gravity Forms will continue to work, but automatic upgrades will not be available. Please contact support to resolve this issue.', 'gravityforms' ) . "'/>";
 						} else if ( rgar( $version_info, 'is_valid_key' ) ) {
 							$key_field .= "&nbsp;<i class='fa fa-check gf_keystatus_valid'></i> <span class='gf_keystatus_valid_text'>" . __( 'Valid Key : Your license key has been successfully validated.', 'gravityforms' ) . '</span>';
 						} else if ( ! empty( $key ) ) {
 							$key_field .= "&nbsp;<i class='fa fa-times gf_keystatus_invalid'></i> <span class='gf_keystatus_invalid_text'>" . __( 'Invalid or Expired Key : Please make sure you have entered the correct value and that your key is not expired.', 'gravityforms' ) . '</span>';
+=======
+							$key_field .= "&nbsp;<img src='" . GFCommon::get_base_url() . "/images/exclamation.png' class='gf_keystatus_error gf_tooltip' alt='There was an error validating your key' title='<h6>" . esc_attr__( 'Validation Error', 'gravityforms' ) . '</h6>' . esc_attr__( 'There was an error while validating your license key. Gravity Forms will continue to work, but automatic upgrades will not be available. Please contact support to resolve this issue.', 'gravityforms' ) . "'/>";
+						} else if ( rgar( $version_info, 'is_valid_key' ) ) {
+							$key_field .= "&nbsp;<i class='fa fa-check gf_keystatus_valid'></i> <span class='gf_keystatus_valid_text'>" . esc_html__( 'Valid Key : Your license key has been successfully validated.', 'gravityforms' ) . '</span>';
+						} else if ( ! empty( $key ) ) {
+							$key_field .= "&nbsp;<i class='fa fa-times gf_keystatus_invalid'></i> <span class='gf_keystatus_invalid_text'>" . esc_html__( 'Invalid or Expired Key : Please make sure you have entered the correct value and that your key is not expired.', 'gravityforms' ) . '</span>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						}
 
 						echo apply_filters( 'gform_settings_key_field', $key_field );
 						?>
 						<br />
+<<<<<<< HEAD
 						<span class="gf_settings_description"><?php _e( 'The license key is used for access to automatic upgrades and support.', 'gravityforms' ); ?></span>
+=======
+						<span class="gf_settings_description"><?php esc_html_e( 'The license key is used for access to automatic upgrades and support.', 'gravityforms' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gforms_disable_css"><?php _e( 'Output CSS', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_output_css' ) ?>
 					</th>
 					<td>
@@ -209,10 +277,20 @@ class GFSettings {
 						<input type="radio" name="gforms_disable_css" value="1" id="gforms_css_output_disabled" <?php echo get_option( 'rg_gforms_disable_css' ) == 1 ? "checked='checked'" : '' ?> /> <?php _e( 'No', 'gravityforms' ); ?>
 						<br />
 						<span class="gf_settings_description"><?php _e( 'Set this to No if you would like to disable the plugin from outputting the form CSS.', 'gravityforms' ); ?></span>
+=======
+						<label for="gforms_disable_css"><?php esc_html_e( 'Output CSS', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_output_css' ) ?>
+					</th>
+					<td>
+						<input type="radio" name="gforms_disable_css" value="0" id="gforms_css_output_enabled" <?php echo get_option( 'rg_gforms_disable_css' ) == 1 ? '' : "checked='checked'" ?> /> <?php esc_html_e( 'Yes', 'gravityforms' ); ?>&nbsp;&nbsp;
+						<input type="radio" name="gforms_disable_css" value="1" id="gforms_css_output_disabled" <?php echo get_option( 'rg_gforms_disable_css' ) == 1 ? "checked='checked'" : '' ?> /> <?php esc_html_e( 'No', 'gravityforms' ); ?>
+						<br />
+						<span class="gf_settings_description"><?php esc_html_e( 'Set this to No if you would like to disable the plugin from outputting the form CSS.', 'gravityforms' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gforms_enable_html5"><?php _e( 'Output HTML5', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_html5' ) ?>
 					</th>
 					<td>
@@ -220,11 +298,21 @@ class GFSettings {
 						<input type="radio" name="gforms_enable_html5" value="0" <?php echo get_option( 'rg_gforms_enable_html5' ) == 1 ? '' : "checked='checked'" ?> /> <?php _e( 'No', 'gravityforms' ); ?>
 						<br />
 						<span class="gf_settings_description"><?php _e( 'Set this to No if you would like to disable the plugin from outputting HTML5 form fields.', 'gravityforms' ); ?></span>
+=======
+						<label for="gforms_enable_html5"><?php esc_html_e( 'Output HTML5', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_html5' ) ?>
+					</th>
+					<td>
+						<input type="radio" name="gforms_enable_html5" value="1" <?php echo get_option( 'rg_gforms_enable_html5' ) == 1 ? "checked='checked'" : '' ?> id="gforms_enable_html5" /> <?php esc_html_e( 'Yes', 'gravityforms' ); ?>&nbsp;&nbsp;
+						<input type="radio" name="gforms_enable_html5" value="0" <?php echo get_option( 'rg_gforms_enable_html5' ) == 1 ? '' : "checked='checked'" ?> /> <?php esc_html_e( 'No', 'gravityforms' ); ?>
+						<br />
+						<span class="gf_settings_description"><?php esc_html_e( 'Set this to No if you would like to disable the plugin from outputting HTML5 form fields.', 'gravityforms' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gform_enable_noconflict"><?php _e( 'No-Conflict Mode', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_noconflict' ) ?>
 					</th>
 					<td>
@@ -232,30 +320,54 @@ class GFSettings {
 						<input type="radio" name="gform_enable_noconflict" value="0" <?php echo get_option( 'gform_enable_noconflict' ) == 1 ? '' : "checked='checked'" ?> id="gform_disable_noconflict" /> <?php _e( 'Off', 'gravityforms' ); ?>
 						<br />
 						<span class="gf_settings_description"><?php _e( 'Set this to ON to prevent extraneous scripts and styles from being printed on Gravity Forms admin pages, reducing conflicts with other plugins and themes.', 'gravityforms' ); ?></span>
+=======
+						<label for="gform_enable_noconflict"><?php esc_html_e( 'No-Conflict Mode', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_noconflict' ) ?>
+					</th>
+					<td>
+						<input type="radio" name="gform_enable_noconflict" value="1" <?php echo get_option( 'gform_enable_noconflict' ) == 1 ? "checked='checked'" : '' ?> id="gform_enable_noconflict" /> <?php esc_html_e( 'On', 'gravityforms' ); ?>&nbsp;&nbsp;
+						<input type="radio" name="gform_enable_noconflict" value="0" <?php echo get_option( 'gform_enable_noconflict' ) == 1 ? '' : "checked='checked'" ?> id="gform_disable_noconflict" /> <?php esc_html_e( 'Off', 'gravityforms' ); ?>
+						<br />
+						<span class="gf_settings_description"><?php esc_html_e( 'Set this to ON to prevent extraneous scripts and styles from being printed on Gravity Forms admin pages, reducing conflicts with other plugins and themes.', 'gravityforms' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 
 				<?php if ( GFCommon::has_akismet() ) { ?>
 					<tr valign="top">
 						<th scope="row">
+<<<<<<< HEAD
 							<label for="gforms_enable_akismet"><?php _e( 'Akismet Integration', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_akismet' ) ?>
+=======
+							<label for="gforms_enable_akismet"><?php esc_html_e( 'Akismet Integration', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_akismet' ) ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						</th>
 						<td>
 							<?php
 							$akismet_setting = get_option( 'rg_gforms_enable_akismet' );
 							$is_akismet_enabled = $akismet_setting === false || ! empty( $akismet_setting ); //Akismet is enabled by default.
 							?>
+<<<<<<< HEAD
 							<input type="radio" name="gforms_enable_akismet" value="1" <?php checked( $is_akismet_enabled, true ) ?> id="gforms_enable_akismet" /> <?php _e( 'Yes', 'gravityforms' ); ?>&nbsp;&nbsp;
 							<input type="radio" name="gforms_enable_akismet" value="0" <?php checked( $is_akismet_enabled, false ) ?> /> <?php _e( 'No', 'gravityforms' ); ?>
 							<br />
 							<span class="gf_settings_description"><?php _e( 'Protect your form entries from spam using Akismet.', 'gravityforms' ); ?></span>
+=======
+							<input type="radio" name="gforms_enable_akismet" value="1" <?php checked( $is_akismet_enabled, true ) ?> id="gforms_enable_akismet" /> <?php esc_html_e( 'Yes', 'gravityforms' ); ?>&nbsp;&nbsp;
+							<input type="radio" name="gforms_enable_akismet" value="0" <?php checked( $is_akismet_enabled, false ) ?> /> <?php esc_html_e( 'No', 'gravityforms' ); ?>
+							<br />
+							<span class="gf_settings_description"><?php esc_html_e( 'Protect your form entries from spam using Akismet.', 'gravityforms' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						</td>
 					</tr>
 				<?php } ?>
 
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gforms_currency"><?php _e( 'Currency', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_currency' ) ?>
+=======
+						<label for="gforms_currency"><?php esc_html_e( 'Currency', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_currency' ) ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</th>
 					<td>
 						<?php
@@ -263,7 +375,11 @@ class GFSettings {
 						?>
 
 						<select id="gforms_currency" name="gforms_currency" <?php echo $disabled ?>>
+<<<<<<< HEAD
 							<option><?php _e( 'Select a Currency', 'gravityforms' ) ?></option>
+=======
+							<option><?php esc_html_e( 'Select a Currency', 'gravityforms' ) ?></option>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 							<?php
 							$current_currency = GFCommon::get_currency();
 
@@ -280,6 +396,7 @@ class GFSettings {
 
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gform_enable_background_updates"><?php _e( 'Background updates', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_background_updates' ) ?>
 					</th>
 					<td>
@@ -287,36 +404,68 @@ class GFSettings {
 						<input type="radio" name="gform_enable_background_updates" value="0" <?php echo get_option( 'gform_enable_background_updates' ) == 1 ? '' : "checked='checked'" ?> id="gform_disable_background_updates" /> <?php _e( 'Off', 'gravityforms' ); ?>
 						<br />
 						<span class="gf_settings_description"><?php _e( 'Set this to ON to allow Gravity Forms to download and install bug fixes and security updates automatically in the background. Requires a valid license key.', 'gravityforms' ); ?></span>
+=======
+						<label for="gform_enable_background_updates"><?php esc_html_e( 'Background updates', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_background_updates' ) ?>
+					</th>
+					<td>
+						<input type="radio" name="gform_enable_background_updates" value="1" <?php echo get_option( 'gform_enable_background_updates' ) == 1 ? "checked='checked'" : '' ?> id="gform_enable_background_updates" /> <?php esc_html_e( 'On', 'gravityforms' ); ?>&nbsp;&nbsp;
+						<input type="radio" name="gform_enable_background_updates" value="0" <?php echo get_option( 'gform_enable_background_updates' ) == 1 ? '' : "checked='checked'" ?> id="gform_disable_background_updates" /> <?php esc_html_e( 'Off', 'gravityforms' ); ?>
+						<br />
+						<span class="gf_settings_description"><?php esc_html_e( 'Set this to ON to allow Gravity Forms to download and install bug fixes and security updates automatically in the background. Requires a valid license key.', 'gravityforms' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 			</table>
 
 			<div class="hr-divider"></div>
 
+<<<<<<< HEAD
 			<h3><span><i class="fa fa-cogs"></i> <?php _e( 'reCAPTCHA Settings', 'gravityforms' ); ?></span></h3>
 
 			<p style="text-align: left;"><?php _e( 'Gravity Forms integrates with reCAPTCHA, a free CAPTCHA service that helps to digitize books while protecting your forms from spam bots. ', 'gravityforms' ); ?>
 				<a href="http://www.google.com/recaptcha/" target="_blank"><?php _e( 'Read more about reCAPTCHA', 'gravityforms' ); ?></a>.
+=======
+			<h3><span><i class="fa fa-cogs"></i> <?php esc_html_e( 'reCAPTCHA Settings', 'gravityforms' ); ?></span></h3>
+
+			<p style="text-align: left;"><?php esc_html_e( 'Gravity Forms integrates with reCAPTCHA, a free CAPTCHA service that helps to digitize books while protecting your forms from spam bots. ', 'gravityforms' ); ?>
+				<a href="http://www.google.com/recaptcha/" target="_blank"><?php esc_html_e( 'Read more about reCAPTCHA', 'gravityforms' ); ?></a>.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			</p>
 
 			<table class="form-table">
 
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gforms_captcha_public_key"><?php _e( 'reCAPTCHA Public Key', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_recaptcha_public' ) ?>
 					</th>
 					<td>
 						<input type="text" name="gforms_captcha_public_key" style="width:350px;" value="<?php echo esc_attr( get_option( 'rg_gforms_captcha_public_key' ) ); ?>" /><br />
 						<span class="gf_settings_description"><?php _e( 'Required only if you decide to use the reCAPTCHA field.', 'gravityforms' ); ?> <?php printf( __( '%sSign up%s for a free account to get the key.', 'gravityforms' ), '<a target="_blank" href="http://www.google.com/recaptcha">', '</a>' ); ?></span>
+=======
+						<label for="gforms_captcha_public_key"><?php esc_html_e( 'reCAPTCHA Public Key', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_recaptcha_public' ) ?>
+					</th>
+					<td>
+						<input type="text" name="gforms_captcha_public_key" style="width:350px;" value="<?php echo esc_attr( get_option( 'rg_gforms_captcha_public_key' ) ); ?>" /><br />
+						<span class="gf_settings_description"><?php esc_html_e( 'Required only if you decide to use the reCAPTCHA field.', 'gravityforms' ); ?> <?php printf( esc_html__( '%sSign up%s for a free account to get the key.', 'gravityforms' ), '<a target="_blank" href="http://www.google.com/recaptcha">', '</a>' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row">
+<<<<<<< HEAD
 						<label for="gforms_captcha_private_key"><?php _e( 'reCAPTCHA Private Key', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_recaptcha_private' ) ?>
 					</th>
 					<td>
 						<input type="text" name="gforms_captcha_private_key" style="width:350px;" value="<?php echo esc_attr( get_option( 'rg_gforms_captcha_private_key' ) ) ?>" /><br />
 						<span class="gf_settings_description"><?php _e( 'Required only if you decide to use the reCAPTCHA field.', 'gravityforms' ); ?> <?php printf( __( '%sSign up%s for a free account to get the key.', 'gravityforms' ), '<a target="_blank" href="http://www.google.com/recaptcha">', '</a>' ); ?></span>
+=======
+						<label for="gforms_captcha_private_key"><?php esc_html_e( 'reCAPTCHA Private Key', 'gravityforms' ); ?></label>  <?php gform_tooltip( 'settings_recaptcha_private' ) ?>
+					</th>
+					<td>
+						<input type="text" name="gforms_captcha_private_key" style="width:350px;" value="<?php echo esc_attr( get_option( 'rg_gforms_captcha_private_key' ) ) ?>" /><br />
+						<span class="gf_settings_description"><?php esc_html_e( 'Required only if you decide to use the reCAPTCHA field.', 'gravityforms' ); ?> <?php printf( esc_html__( '%sSign up%s for a free account to get the key.', 'gravityforms' ), '<a target="_blank" href="http://www.google.com/recaptcha">', '</a>' ); ?></span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					</td>
 				</tr>
 
@@ -325,7 +474,17 @@ class GFSettings {
 			<?php if ( GFCommon::current_user_can_any( 'gravityforms_edit_settings' ) ) { ?>
 				<p class="submit" style="text-align: left;">
 					<?php
+<<<<<<< HEAD
 					$save_button = '<input type="submit" name="submit" value="' . __( 'Save Settings', 'gravityforms' ) . '" class="button-primary gfbutton"/>';
+=======
+					$save_button = '<input type="submit" name="submit" value="' . esc_html__( 'Save Settings', 'gravityforms' ) . '" class="button-primary gfbutton"/>';
+
+					/**
+					 * Filters through and allows modification of the Settings save button HTML in a Form
+					 *
+					 * @param string $save_button
+					 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					echo apply_filters( 'gform_settings_save_button', $save_button );
 					?>
 				</p>
@@ -346,6 +505,7 @@ class GFSettings {
 				);
 			});
 		</script>
+<<<<<<< HEAD
 
 		<div class="hr-divider"></div>
 
@@ -431,6 +591,95 @@ class GFSettings {
 			</tr>
 		</table>
 		<?php
+=======
+		<?php
+		if ( ! apply_filters( 'gform_disable_installation_status', false ) ) { ?>
+			<div class="hr-divider"></div>
+
+			<h3><span><i class="fa fa-dashboard"></i> <?php esc_html_e( 'Installation Status', 'gravityforms' ); ?><span></h3>
+			<table class="form-table">
+
+				<tr valign="top">
+					<th scope="row"><label><?php esc_html_e( 'PHP Version', 'gravityforms' ); ?></label></th>
+					<td class="installation_item_cell">
+						<strong><?php echo phpversion(); ?></strong>
+					</td>
+					<td>
+						<?php
+						if ( version_compare( phpversion(), '5.0.0', '>' ) ) {
+							?>
+							<i class="fa fa-check gf_valid"></i>
+						<?php
+						} else {
+							?>
+							<i class="fa fa-times gf_invalid"></i>
+							<span class="installation_item_message"><?php esc_html_e( 'Gravity Forms requires PHP 5 or above.', 'gravityforms' ); ?></span>
+						<?php
+						}
+						?>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label><?php esc_html_e( 'MySQL Version', 'gravityforms' ); ?></label></th>
+					<td class="installation_item_cell">
+						<strong><?php echo esc_html( $wpdb->db_version() ); ?></strong>
+					</td>
+					<td>
+						<?php
+						if ( version_compare( $wpdb->db_version(), '5.0.0', '>' ) ) {
+							?>
+							<i class="fa fa-check gf_valid"></i>
+						<?php
+						} else {
+							?>
+							<i class="fa fa-times gf_invalid"></i>
+							<span class="installation_item_message"><?php esc_html_e( 'Gravity Forms requires MySQL 5 or above.', 'gravityforms' ); ?></span>
+						<?php
+						}
+						?>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label><?php esc_html_e( 'WordPress Version', 'gravityforms' ); ?></label></th>
+					<td class="installation_item_cell">
+						<strong><?php echo esc_html( get_bloginfo( 'version' ) ); ?></strong>
+					</td>
+					<td>
+						<?php
+						if ( version_compare( get_bloginfo( 'version' ), '3.0', '>' ) ) {
+							?>
+							<i class="fa fa-check gf_valid"></i>
+						<?php
+						} else {
+							?>
+							<i class="fa fa-times gf_invalid"></i>
+							<span class="installation_item_message"><?php printf( esc_html__( 'Gravity Forms requires WordPress v%s or greater. You must upgrade WordPress in order to use this version of Gravity Forms.', 'gravityforms' ), GF_MIN_WP_VERSION ); ?></span>
+						<?php
+						}
+						?>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label><?php esc_html_e( 'Gravity Forms Version', 'gravityforms' ); ?></label></th>
+					<td class="installation_item_cell">
+						<strong><?php echo esc_html( GFCommon::$version ) ?></strong>
+					</td>
+					<td>
+						<?php
+						if ( version_compare( GFCommon::$version, $version_info['version'], '>=' ) ) {
+							?>
+							<i class="fa fa-check gf_valid"></i>
+						<?php
+						} else {
+							echo sprintf( esc_html__( 'New version %s available. Automatic upgrade available on the %splugins page%s', 'gravityforms' ), esc_html( $version_info['version'] ), '<a href="plugins.php">', '</a>' );
+						}
+						?>
+					</td>
+				</tr>
+			</table>
+		<?php
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		self::page_footer();
 	}
 
@@ -485,7 +734,11 @@ class GFSettings {
 			foreach ( $sorted_addons as $sorted_addon ) {
 				$setting_tabs[] = array(
 					'name'  => urlencode( $sorted_addon['name'] ),
+<<<<<<< HEAD
 					'label' => __( esc_html( $sorted_addon['tab_label'] ), 'gravityforms' ),
+=======
+					'label' => esc_html( $sorted_addon['tab_label'] ),
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					'title' => esc_html( rgar( $sorted_addon, 'title' ) ),
 				);
 			}
@@ -532,8 +785,13 @@ class GFSettings {
 				<div id="gform_tab_container" class="gform_tab_container">
 					<div class="gform_tab_content" id="tab_<?php echo $current_tab ?>">
 
+<<<<<<< HEAD
 						<?php
 						}
+=======
+	<?php
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	public static function page_footer(){
 					?>

@@ -212,7 +212,11 @@
   //   Note that no real action is taken, if the archive does not exist it is not
   //   created. Use create() for that.
   // --------------------------------------------------------------------------------
+<<<<<<< HEAD
   function PclZip($p_zipname)
+=======
+  function __construct($p_zipname)
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
   {
 
     // ----- Tests the zlib
@@ -229,6 +233,13 @@
     // ----- Return
     return;
   }
+<<<<<<< HEAD
+=======
+
+  public function PclZip($p_zipname) {
+    self::__construct($p_zipname);
+  }
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
   // --------------------------------------------------------------------------------
 
   // --------------------------------------------------------------------------------

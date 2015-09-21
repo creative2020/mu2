@@ -94,11 +94,29 @@ $time_format = get_option('time_format');
 
 wp_enqueue_script( 'common' );
 
+<<<<<<< HEAD
 // $pagenow is set in vars.php
 // $wp_importers is sometimes set in wp-admin/includes/import.php
 //
 // The remaining variables are imported as globals elsewhere,
 //     declared as globals here
+=======
+
+
+
+/**
+ * $pagenow is set in vars.php
+ * $wp_importers is sometimes set in wp-admin/includes/import.php
+ * The remaining variables are imported as globals elsewhere, declared as globals here
+ *
+ * @global string $pagenow
+ * @global array  $wp_importers
+ * @global string $hook_suffix
+ * @global string $plugin_page
+ * @global string $typenow
+ * @global string $taxnow
+ */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $pagenow, $wp_importers, $hook_suffix, $plugin_page, $typenow, $taxnow;
 
 $page_hook = null;

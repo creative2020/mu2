@@ -42,11 +42,24 @@ a:active {
 
 a:focus {
 	color: #124964;
+<<<<<<< HEAD
 }
 
 a:focus,
 a:active {
 	outline: thin dotted;
+=======
+	-webkit-box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+	box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+}
+
+.ie8 a:focus {
+	outline: #5b9dd9 solid 1px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 p {
@@ -183,6 +196,15 @@ p {
 	color: #00a0d2;
 }
 
+<<<<<<< HEAD
+=======
+.login #nav a:focus,
+.login #backtoblog a:focus,
+.login h1 a:focus {
+	color: #124964;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .login form .input,
 .login input[type="text"] {
 	font-size: 24px;
@@ -202,12 +224,27 @@ p {
 	font-family: sans-serif;
 }
 
+<<<<<<< HEAD
 .login #pass-strength-result {
 	width: 250px;
 	font-weight: 600;
 	margin: 12px 0 6px;
 	padding: 6px 5px;
 	text-align: center;
+=======
+.login-action-rp input[type="text"] {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	margin: 0;
+}
+
+.login #pass-strength-result {
+	font-weight: 600;
+	margin: -1px 5px 16px 0;
+	padding: 6px 5px;
+	text-align: center;
+	width: 100%;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .mobile #login {

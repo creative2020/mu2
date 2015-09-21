@@ -38,7 +38,11 @@ final class WP_Customize_Manager {
 	/**
 	 * Whether this is a Customizer pageload.
 	 *
+<<<<<<< HEAD
 	 * @var boolean
+=======
+	 * @var bool
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	protected $previewing = false;
 
@@ -49,6 +53,16 @@ final class WP_Customize_Manager {
 	 */
 	public $widgets;
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Methods and properties deailing with managing nav menus in the Customizer.
+	 *
+	 * @var WP_Customize_Nav_Menus
+	 */
+	public $nav_menus;
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected $settings   = array();
 	protected $containers = array();
 	protected $panels     = array();
@@ -60,7 +74,29 @@ final class WP_Customize_Manager {
 	protected $customized;
 
 	/**
+<<<<<<< HEAD
 	 * Controls that may be rendered from JS templates.
+=======
+	 * Panel types that may be rendered from JS templates.
+	 *
+	 * @since 4.3.0
+	 * @access protected
+	 * @var array
+	 */
+	protected $registered_panel_types = array();
+
+	/**
+	 * Section types that may be rendered from JS templates.
+	 *
+	 * @since 4.3.0
+	 * @access protected
+	 * @var array
+	 */
+	protected $registered_section_types = array();
+
+	/**
+	 * Control types that may be rendered from JS templates.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 *
 	 * @since 4.1.0
 	 * @access protected
@@ -86,8 +122,15 @@ final class WP_Customize_Manager {
 		require_once( ABSPATH . WPINC . '/class-wp-customize-section.php' );
 		require_once( ABSPATH . WPINC . '/class-wp-customize-control.php' );
 		require_once( ABSPATH . WPINC . '/class-wp-customize-widgets.php' );
+<<<<<<< HEAD
 
 		$this->widgets = new WP_Customize_Widgets( $this );
+=======
+		require_once( ABSPATH . WPINC . '/class-wp-customize-nav-menus.php' );
+
+		$this->widgets = new WP_Customize_Widgets( $this );
+		$this->nav_menus = new WP_Customize_Nav_Menus( $this );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		add_filter( 'wp_die_handler', array( $this, 'wp_die_handler' ) );
 
@@ -612,6 +655,7 @@ final class WP_Customize_Manager {
 		}
 
 		foreach ( $this->settings as $id => $setting ) {
+<<<<<<< HEAD
 			$settings['values'][ $id ] = $setting->js_value();
 		}
 		foreach ( $this->panels as $id => $panel ) {
@@ -625,6 +669,31 @@ final class WP_Customize_Manager {
 		}
 		foreach ( $this->controls as $id => $control ) {
 			$settings['activeControls'][ $id ] = $control->active();
+=======
+			if ( $setting->check_capabilities() ) {
+				$settings['values'][ $id ] = $setting->js_value();
+			}
+		}
+		foreach ( $this->panels as $panel_id => $panel ) {
+			if ( $panel->check_capabilities() ) {
+				$settings['activePanels'][ $panel_id ] = $panel->active();
+				foreach ( $panel->sections as $section_id => $section ) {
+					if ( $section->check_capabilities() ) {
+						$settings['activeSections'][ $section_id ] = $section->active();
+					}
+				}
+			}
+		}
+		foreach ( $this->sections as $id => $section ) {
+			if ( $section->check_capabilities() ) {
+				$settings['activeSections'][ $id ] = $section->active();
+			}
+		}
+		foreach ( $this->controls as $id => $control ) {
+			if ( $control->check_capabilities() ) {
+				$settings['activeControls'][ $id ] = $control->active();
+			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 
 		?>
@@ -647,6 +716,11 @@ final class WP_Customize_Manager {
 	 * Removes the signature in case we experience a case where the Customizer was not properly executed.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
+=======
+	 *
+	 * @return mixed
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function remove_preview_signature( $return = null ) {
 		remove_action( 'shutdown', array( $this, 'customize_preview_signature' ), 1000 );
@@ -841,7 +915,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.2.0
 	 *
+<<<<<<< HEAD
 	 * @param string $setting_ids The setting IDs to add.
+=======
+	 * @param array $setting_ids The setting IDs to add.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @return WP_Customize_Setting The settings added.
 	 */
 	public function add_dynamic_settings( $setting_ids ) {
@@ -879,7 +957,11 @@ final class WP_Customize_Manager {
 			 *
 			 * @param string $setting_class WP_Customize_Setting or a subclass.
 			 * @param string $setting_id    ID for dynamic setting, usually coming from `$_POST['customized']`.
+<<<<<<< HEAD
 			 * @param string $setting_args  WP_Customize_Setting or a subclass.
+=======
+			 * @param array  $setting_args  WP_Customize_Setting or a subclass.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			 */
 			$setting_class = apply_filters( 'customize_dynamic_setting_class', $setting_class, $setting_id, $setting_args );
 
@@ -897,7 +979,11 @@ final class WP_Customize_Manager {
 	 * @since 3.4.0
 	 *
 	 * @param string $id Customize Setting ID.
+<<<<<<< HEAD
 	 * @return WP_Customize_Setting
+=======
+	 * @return WP_Customize_Setting|void The setting, if set.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function get_setting( $id ) {
 		if ( isset( $this->settings[ $id ] ) ) {
@@ -942,7 +1028,11 @@ final class WP_Customize_Manager {
 	 * @access public
 	 *
 	 * @param string $id Panel ID to get.
+<<<<<<< HEAD
 	 * @return WP_Customize_Panel Requested panel instance.
+=======
+	 * @return WP_Customize_Panel|void Requested panel instance, if set.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function get_panel( $id ) {
 		if ( isset( $this->panels[ $id ] ) ) {
@@ -963,6 +1053,38 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Register a customize panel type.
+	 *
+	 * Registered types are eligible to be rendered via JS and created dynamically.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 *
+	 * @see WP_Customize_Panel
+	 *
+	 * @param string $panel Name of a custom panel which is a subclass of WP_Customize_Panel.
+	 */
+	public function register_panel_type( $panel ) {
+		$this->registered_panel_types[] = $panel;
+	}
+
+	/**
+	 * Render JS templates for all registered panel types.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 */
+	public function render_panel_templates() {
+		foreach ( $this->registered_panel_types as $panel_type ) {
+			$panel = new $panel_type( $this, 'temp', array() );
+			$panel->print_template();
+		}
+	}
+
+	/**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * Add a customize section.
 	 *
 	 * @since 3.4.0
@@ -985,7 +1107,11 @@ final class WP_Customize_Manager {
 	 * @since 3.4.0
 	 *
 	 * @param string $id Section ID.
+<<<<<<< HEAD
 	 * @return WP_Customize_Section
+=======
+	 * @return WP_Customize_Section|void The section, if set.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function get_section( $id ) {
 		if ( isset( $this->sections[ $id ] ) )
@@ -1004,6 +1130,38 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Register a customize section type.
+	 *
+	 * Registered types are eligible to be rendered via JS and created dynamically.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 *
+	 * @see WP_Customize_Section
+	 *
+	 * @param string $section Name of a custom section which is a subclass of WP_Customize_Section.
+	 */
+	public function register_section_type( $section ) {
+		$this->registered_section_types[] = $section;
+	}
+
+	/**
+	 * Render JS templates for all registered section types.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 */
+	public function render_section_templates() {
+		foreach ( $this->registered_section_types as $section_type ) {
+			$section = new $section_type( $this, 'temp', array() );
+			$section->print_template();
+		}
+	}
+
+	/**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * Add a customize control.
 	 *
 	 * @since 3.4.0
@@ -1027,7 +1185,11 @@ final class WP_Customize_Manager {
 	 * @since 3.4.0
 	 *
 	 * @param string $id ID of the control.
+<<<<<<< HEAD
 	 * @return WP_Customize_Control $control The control object.
+=======
+	 * @return WP_Customize_Control|void The control object, if set.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function get_control( $id ) {
 		if ( isset( $this->controls[ $id ] ) )
@@ -1119,7 +1281,11 @@ final class WP_Customize_Manager {
 		$sections = array();
 
 		foreach ( $this->sections as $section ) {
+<<<<<<< HEAD
 			if ( ! $section->check_capabilities() || ! $section->controls ) {
+=======
+			if ( ! $section->check_capabilities() ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				continue;
 			}
 
@@ -1142,7 +1308,11 @@ final class WP_Customize_Manager {
 		$panels = array();
 
 		foreach ( $this->panels as $panel ) {
+<<<<<<< HEAD
 			if ( ! $panel->check_capabilities() || ! $panel->sections ) {
+=======
+			if ( ! $panel->check_capabilities() ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				continue;
 			}
 
@@ -1174,12 +1344,24 @@ final class WP_Customize_Manager {
 	 */
 	public function register_controls() {
 
+<<<<<<< HEAD
 		/* Control Types (custom control classes) */
+=======
+		/* Panel, Section, and Control Types */
+		$this->register_panel_type( 'WP_Customize_Panel' );
+		$this->register_section_type( 'WP_Customize_Section' );
+		$this->register_section_type( 'WP_Customize_Sidebar_Section' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$this->register_control_type( 'WP_Customize_Color_Control' );
 		$this->register_control_type( 'WP_Customize_Media_Control' );
 		$this->register_control_type( 'WP_Customize_Upload_Control' );
 		$this->register_control_type( 'WP_Customize_Image_Control' );
 		$this->register_control_type( 'WP_Customize_Background_Image_Control' );
+<<<<<<< HEAD
+=======
+		$this->register_control_type( 'WP_Customize_Cropped_Image_Control' );
+		$this->register_control_type( 'WP_Customize_Site_Icon_Control' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$this->register_control_type( 'WP_Customize_Theme_Control' );
 
 		/* Themes */
@@ -1226,10 +1408,17 @@ final class WP_Customize_Manager {
 			) ) );
 		}
 
+<<<<<<< HEAD
 		/* Site Title & Tagline */
 
 		$this->add_section( 'title_tagline', array(
 			'title'    => __( 'Site Title & Tagline' ),
+=======
+		/* Site Identity */
+
+		$this->add_section( 'title_tagline', array(
+			'title'    => __( 'Site Identity' ),
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			'priority' => 20,
 		) );
 
@@ -1255,6 +1444,24 @@ final class WP_Customize_Manager {
 			'section'    => 'title_tagline',
 		) );
 
+<<<<<<< HEAD
+=======
+		$this->add_setting( 'site_icon', array(
+			'type'       => 'option',
+			'capability' => 'manage_options',
+			'transport'  => 'postMessage', // Previewed with JS in the Customizer controls window.
+		) );
+
+		$this->add_control( new WP_Customize_Site_Icon_Control( $this, 'site_icon', array(
+			'label'       => __( 'Site Icon' ),
+			'description' => __( 'The Site Icon is used as a browser and app icon for your site. Icons must be square, and at least 512px wide and tall.' ),
+			'section'     => 'title_tagline',
+			'priority'    => 60,
+			'height'      => 512,
+			'width'       => 512,
+		) ) );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/* Colors */
 
 		$this->add_section( 'colors', array(
@@ -1277,6 +1484,10 @@ final class WP_Customize_Manager {
 			'label'    => __( 'Display Header Text' ),
 			'section'  => 'title_tagline',
 			'type'     => 'checkbox',
+<<<<<<< HEAD
+=======
+			'priority' => 40,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		) );
 
 		$this->add_control( new WP_Customize_Color_Control( $this, 'header_textcolor', array(
@@ -1395,6 +1606,7 @@ final class WP_Customize_Manager {
 			}
 		}
 
+<<<<<<< HEAD
 		/* Nav Menus */
 
 		$locations      = get_registered_nav_menus();
@@ -1437,6 +1649,8 @@ final class WP_Customize_Manager {
 			}
 		}
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/* Static Front Page */
 		// #WP19627
 
@@ -1513,7 +1727,11 @@ final class WP_Customize_Manager {
 	 * @since 3.4.0
 	 *
 	 * @param string $color
+<<<<<<< HEAD
 	 * @return string
+=======
+	 * @return mixed
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function _sanitize_header_textcolor( $color ) {
 		if ( 'blank' === $color )
@@ -1530,13 +1748,21 @@ final class WP_Customize_Manager {
 /**
  * Sanitizes a hex color.
  *
+<<<<<<< HEAD
  * Returns either '', a 3 or 6 digit hex color (with #), or null.
+=======
+ * Returns either '', a 3 or 6 digit hex color (with #), or nothing.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * For sanitizing values without a #, see sanitize_hex_color_no_hash().
  *
  * @since 3.4.0
  *
  * @param string $color
+<<<<<<< HEAD
  * @return string|null
+=======
+ * @return string|void
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function sanitize_hex_color( $color ) {
 	if ( '' === $color )
@@ -1545,8 +1771,11 @@ function sanitize_hex_color( $color ) {
 	// 3 or 6 hex digits, or the empty string.
 	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
 		return $color;
+<<<<<<< HEAD
 
 	return null;
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**

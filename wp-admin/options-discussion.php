@@ -51,7 +51,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h2><?php echo esc_html( $title ); ?></h2>
+=======
+<h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <form method="post" action="options.php">
 <?php settings_fields('discussion'); ?>
@@ -66,7 +70,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <br />
 <label for="default_ping_status">
 <input name="default_ping_status" type="checkbox" id="default_ping_status" value="open" <?php checked('open', get_option('default_ping_status')); ?> />
+<<<<<<< HEAD
 <?php _e('Allow link notifications from other blogs (pingbacks and trackbacks)'); ?></label>
+=======
+<?php _e('Allow link notifications from other blogs (pingbacks and trackbacks) on new articles'); ?></label>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <br />
 <label for="default_comment_status">
 <input name="default_comment_status" type="checkbox" id="default_comment_status" value="open" <?php checked('open', get_option('default_comment_status')); ?> />
@@ -258,9 +266,13 @@ $avatar_defaults = array(
  * @param array $avatar_defaults Array of default avatars.
  */
 $avatar_defaults = apply_filters( 'avatar_defaults', $avatar_defaults );
+<<<<<<< HEAD
 $default = get_option('avatar_default');
 if ( empty($default) )
 	$default = 'mystery';
+=======
+$default = get_option( 'avatar_default', 'mystery' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 $size = 32;
 $avatar_list = '';
 

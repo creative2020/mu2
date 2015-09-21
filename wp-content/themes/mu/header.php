@@ -20,6 +20,7 @@
     
 <div class="row">
     <div id="navbar" class="col-sm-12">
+<<<<<<< HEAD
         
                         
                        
@@ -36,6 +37,8 @@
             ); ?>
             
                         
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     </div>
 </div>
     

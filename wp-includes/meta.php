@@ -18,6 +18,7 @@
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $object_id ID of the object metadata is for
  * @param string $meta_key Metadata key
@@ -26,6 +27,17 @@
  * 		unique for the object. If true, and the object already has a value for the specified
  * 		metadata key, no change will be made
  * @return int|bool The meta ID on success, false on failure.
+=======
+ * @param string $meta_type  Type of object metadata is for (e.g., comment, post, or user)
+ * @param int    $object_id  ID of the object metadata is for
+ * @param string $meta_key   Metadata key
+ * @param mixed  $meta_value Metadata value. Must be serializable if non-scalar.
+ * @param bool   $unique     Optional, default is false.
+ *                           Whether the specified metadata key should be unique for the object.
+ *                           If true, and the object already has a value for the specified metadata key,
+ *                           no change will be made.
+ * @return int|false The meta ID on success, false on failure.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = false) {
 	global $wpdb;
@@ -132,12 +144,21 @@ function add_metadata($meta_type, $object_id, $meta_key, $meta_value, $unique = 
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $object_id ID of the object metadata is for
  * @param string $meta_key Metadata key
  * @param mixed $meta_value Metadata value. Must be serializable if non-scalar.
  * @param mixed $prev_value Optional. If specified, only update existing metadata entries with
  * 		the specified value. Otherwise, update all entries.
+=======
+ * @param string $meta_type  Type of object metadata is for (e.g., comment, post, or user)
+ * @param int    $object_id  ID of the object metadata is for
+ * @param string $meta_key   Metadata key
+ * @param mixed  $meta_value Metadata value. Must be serializable if non-scalar.
+ * @param mixed  $prev_value Optional. If specified, only update existing metadata entries with
+ * 		                     the specified value. Otherwise, update all entries.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
 function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_value = '') {
@@ -294,6 +315,7 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $object_id ID of the object metadata is for
  * @param string $meta_key Metadata key
@@ -302,6 +324,19 @@ function update_metadata($meta_type, $object_id, $meta_key, $meta_value, $prev_v
  * @param bool $delete_all Optional, default is false. If true, delete matching metadata entries
  * 		for all objects, ignoring the specified object_id. Otherwise, only delete matching
  * 		metadata entries for the specified object_id.
+=======
+ * @param string $meta_type  Type of object metadata is for (e.g., comment, post, or user)
+ * @param int    $object_id  ID of the object metadata is for
+ * @param string $meta_key   Metadata key
+ * @param mixed  $meta_value Optional. Metadata value. Must be serializable if non-scalar. If specified, only delete
+ *                           metadata entries with this value. Otherwise, delete all entries with the specified meta_key.
+ *                           Pass `null, `false`, or an empty string to skip this check. (For backward compatibility,
+ *                           it is not possible to pass an empty string to delete those entries with an empty string
+ *                           for a value.)
+ * @param bool   $delete_all Optional, default is false. If true, delete matching metadata entries for all objects,
+ *                           ignoring the specified object_id. Otherwise, only delete matching metadata entries for
+ *                           the specified object_id.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True on successful delete, false on failure.
  */
 function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $delete_all = false) {
@@ -356,7 +391,11 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
 	if ( !$delete_all )
 		$query .= $wpdb->prepare(" AND $type_column = %d", $object_id );
 
+<<<<<<< HEAD
 	if ( $meta_value )
+=======
+	if ( '' !== $meta_value && null !== $meta_value && false !== $meta_value )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$query .= $wpdb->prepare(" AND meta_value = %s", $meta_value );
 
 	$meta_ids = $wpdb->get_col( $query );
@@ -444,11 +483,20 @@ function delete_metadata($meta_type, $object_id, $meta_key, $meta_value = '', $d
  * @since 2.9.0
  *
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
+<<<<<<< HEAD
  * @param int $object_id ID of the object metadata is for
  * @param string $meta_key Optional. Metadata key. If not specified, retrieve all metadata for
  * 		the specified object.
  * @param bool $single Optional, default is false. If true, return only the first value of the
  * 		specified meta_key. This parameter has no effect if meta_key is not specified.
+=======
+ * @param int    $object_id ID of the object metadata is for
+ * @param string $meta_key  Optional. Metadata key. If not specified, retrieve all metadata for
+ * 		                    the specified object.
+ * @param bool   $single    Optional, default is false.
+ *                          If true, return only the first value of the specified meta_key.
+ *                          This parameter has no effect if meta_key is not specified.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return mixed Single metadata value, or array of values
  */
 function get_metadata($meta_type, $object_id, $meta_key = '', $single = false) {
@@ -515,9 +563,15 @@ function get_metadata($meta_type, $object_id, $meta_key = '', $single = false) {
  * @since 3.3.0
  *
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
+<<<<<<< HEAD
  * @param int $object_id ID of the object metadata is for
  * @param string $meta_key Metadata key.
  * @return boolean true of the key is set, false if not.
+=======
+ * @param int    $object_id ID of the object metadata is for
+ * @param string $meta_key  Metadata key.
+ * @return bool True of the key is set, false if not.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function metadata_exists( $meta_type, $object_id, $meta_key ) {
 	if ( ! $meta_type || ! is_numeric( $object_id ) ) {
@@ -552,9 +606,17 @@ function metadata_exists( $meta_type, $object_id, $meta_key ) {
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $meta_id ID for a specific meta row
  * @return object Meta object or false.
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
+ * @param int    $meta_id   ID for a specific meta row
+ * @return object|false Meta object or false.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function get_metadata_by_mid( $meta_type, $meta_id ) {
 	global $wpdb;
@@ -591,10 +653,19 @@ function get_metadata_by_mid( $meta_type, $meta_id ) {
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $meta_id ID for a specific meta row
  * @param string $meta_value Metadata value
  * @param string $meta_key Optional, you can provide a meta key to update it
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $meta_type  Type of object metadata is for (e.g., comment, post, or user)
+ * @param int    $meta_id    ID for a specific meta row
+ * @param string $meta_value Metadata value
+ * @param string $meta_key   Optional, you can provide a meta key to update it
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True on successful update, false on failure.
  */
 function update_metadata_by_mid( $meta_type, $meta_id, $meta_value, $meta_key = false ) {
@@ -682,8 +753,15 @@ function update_metadata_by_mid( $meta_type, $meta_id, $meta_value, $meta_key = 
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int $meta_id ID for a specific meta row
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
+ * @param int    $meta_id   ID for a specific meta row
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True on successful delete, false on failure.
  */
 function delete_metadata_by_mid( $meta_type, $meta_id ) {
@@ -769,9 +847,15 @@ function delete_metadata_by_mid( $meta_type, $meta_id ) {
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of object metadata is for (e.g., comment, post, or user)
  * @param int|array $object_ids array or comma delimited list of object IDs to update cache for
  * @return mixed Metadata cache for the specified objects, or false on failure.
+=======
+ * @param string    $meta_type  Type of object metadata is for (e.g., comment, post, or user)
+ * @param int|array $object_ids Array or comma delimited list of object IDs to update cache for
+ * @return array|false Metadata cache for the specified objects, or false on failure.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function update_meta_cache($meta_type, $object_ids) {
 	global $wpdb;
@@ -943,6 +1027,18 @@ class WP_Meta_Query {
 	protected $clauses = array();
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Whether the query contains any OR relations.
+	 *
+	 * @since 4.3.0
+	 * @access protected
+	 * @var bool
+	 */
+	protected $has_or_relation = false;
+
+	/**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * Constructor.
 	 *
 	 * @since 3.2.0
@@ -1035,6 +1131,10 @@ class WP_Meta_Query {
 		// Sanitize the 'relation' key provided in the query.
 		if ( isset( $relation ) && 'OR' === strtoupper( $relation ) ) {
 			$clean_queries['relation'] = 'OR';
+<<<<<<< HEAD
+=======
+			$this->has_or_relation = true;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		/*
 		 * If there is only a single clause, call the relation 'OR'.
@@ -1150,7 +1250,11 @@ class WP_Meta_Query {
 	 * @param string $primary_table     Database table where the object being filtered is stored (eg wp_users).
 	 * @param string $primary_id_column ID column for the filtered object in $primary_table.
 	 * @param object $context           Optional. The main query object.
+<<<<<<< HEAD
 	 * @return array {
+=======
+	 * @return false|array {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -1321,6 +1425,11 @@ class WP_Meta_Query {
 	 * @since 4.1.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+=======
+	 * @global wpdb $wpdb
+	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param array  $clause       Query clause, passed by reference.
 	 * @param array  $parent_query Parent query array.
 	 * @param string $clause_key   Optional. The array key used to name the clause in the original `$meta_query`
@@ -1565,6 +1674,24 @@ class WP_Meta_Query {
 		 */
 		return apply_filters( 'meta_query_find_compatible_table_alias', $alias, $clause, $parent_query, $this ) ;
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Checks whether the current query has any OR relations.
+	 *
+	 * In some cases, the presence of an OR relation somewhere in the query will require
+	 * the use of a `DISTINCT` or `GROUP BY` keyword in the `SELECT` clause. The current
+	 * method can be used in these cases to determine whether such a clause is necessary.
+	 *
+	 * @since 4.3.0
+	 *
+	 * @return bool True if the query contains any `OR` relations, otherwise false.
+	 */
+	public function has_or_relation() {
+		return $this->has_or_relation;
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -1575,7 +1702,11 @@ class WP_Meta_Query {
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $type Type of object to get metadata table for (e.g., comment, post, or user)
+<<<<<<< HEAD
  * @return mixed Metadata table name, or false if no metadata table exists
+=======
+ * @return string|false Metadata table name, or false if no metadata table exists
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function _get_meta_table($type) {
 	global $wpdb;
@@ -1617,9 +1748,15 @@ function is_protected_meta( $meta_key, $meta_type = null ) {
  *
  * @since 3.1.3
  *
+<<<<<<< HEAD
  * @param string $meta_key Meta key
  * @param mixed $meta_value Meta value to sanitize
  * @param string $meta_type Type of meta
+=======
+ * @param string $meta_key   Meta key
+ * @param mixed  $meta_value Meta value to sanitize
+ * @param string $meta_type  Type of meta
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return mixed Sanitized $meta_value
  */
 function sanitize_meta( $meta_key, $meta_value, $meta_type ) {
@@ -1646,10 +1783,17 @@ function sanitize_meta( $meta_key, $meta_value, $meta_type ) {
  *
  * @since 3.3.0
  *
+<<<<<<< HEAD
  * @param string $meta_type Type of meta
  * @param string $meta_key Meta key
  * @param string|array $sanitize_callback A function or method to call when sanitizing the value of $meta_key.
  * @param string|array $auth_callback Optional. A function or method to call when performing edit_post_meta, add_post_meta, and delete_post_meta capability checks.
+=======
+ * @param string       $meta_type         Type of meta
+ * @param string       $meta_key          Meta key
+ * @param string|array $sanitize_callback A function or method to call when sanitizing the value of $meta_key.
+ * @param string|array $auth_callback     Optional. A function or method to call when performing edit_post_meta, add_post_meta, and delete_post_meta capability checks.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function register_meta( $meta_type, $meta_key, $sanitize_callback, $auth_callback = null ) {
 	if ( is_callable( $sanitize_callback ) )

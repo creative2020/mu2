@@ -33,7 +33,11 @@ class Text_Diff_Renderer {
     /**
      * Constructor.
      */
+<<<<<<< HEAD
     function Text_Diff_Renderer($params = array())
+=======
+    function __construct( $params = array() )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     {
         foreach ($params as $param => $value) {
             $v = '_' . $param;
@@ -43,6 +47,16 @@ class Text_Diff_Renderer {
         }
     }
 
+<<<<<<< HEAD
+=======
+	/**
+	 * PHP4 constructor.
+	 */
+	public function Text_Diff_Renderer( $params = array() ) {
+		self::__construct( $params );
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     /**
      * Get any renderer parameters.
      *

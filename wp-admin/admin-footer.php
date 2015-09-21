@@ -81,6 +81,10 @@ do_action( 'admin_print_footer_scripts' );
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
+=======
+ * @global string $hook_suffix
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $hook_suffix The current admin page.
  */
 do_action( "admin_footer-" . $GLOBALS['hook_suffix'] );

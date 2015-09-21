@@ -10,7 +10,11 @@ class GF_Field_MultiSelect extends GF_Field {
 	public $type = 'multiselect';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
 		return __( 'Multi Select', 'gravityforms' );
+=======
+		return esc_attr__( 'Multi Select', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -26,7 +30,10 @@ class GF_Field_MultiSelect extends GF_Field {
 			'choices_setting',
 			'rules_setting',
 			'visibility_setting',
+<<<<<<< HEAD
 			'duplicate_setting',
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			'description_setting',
 			'css_class_setting',
 		);
@@ -37,7 +44,11 @@ class GF_Field_MultiSelect extends GF_Field {
 	}
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
+<<<<<<< HEAD
 		$form_id         = $form['id'];
+=======
+		$form_id         = absint( $form['id'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 
@@ -52,14 +63,22 @@ class GF_Field_MultiSelect extends GF_Field {
 		$tabindex      = $this->get_tabindex();
 		$disabled_text = $is_form_editor ? 'disabled="disabled"' : '';
 
+<<<<<<< HEAD
 		$placeholder = $this->enableEnhancedUI ? "data-placeholder='" . esc_attr( apply_filters( "gform_multiselect_placeholder_{$form_id}", apply_filters( 'gform_multiselect_placeholder', __( 'Click to select...', 'gravityforms' ), $form_id ), $form_id ) ) . "'" : '';
+=======
+		$placeholder = $this->enableEnhancedUI ? "data-placeholder='" . esc_attr( gf_apply_filters( 'gform_multiselect_placeholder', $form_id, esc_attr__( 'Click to select...', 'gravityforms' ), $form_id ) ) . "'" : '';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$size = $this->multiSelectSize;
 		if ( empty( $size ) ) {
 			$size = 7;
 		}
 
+<<<<<<< HEAD
 		return sprintf( "<div class='ginput_container'><select multiple='multiple' {$placeholder} size='{$size}' name='input_%d[]' id='%s' {$logic_event} class='%s' $tabindex %s>%s</select></div>", $id, $field_id, $css_class, $disabled_text, $this->get_choices( $value ) );
+=======
+		return sprintf( "<div class='ginput_container'><select multiple='multiple' {$placeholder} size='{$size}' name='input_%d[]' id='%s' {$logic_event} class='%s' $tabindex %s>%s</select></div>", $id, esc_attr( $field_id ), $css_class, $disabled_text, $this->get_choices( $value ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	public function get_choices( $value ) {
@@ -92,7 +111,11 @@ class GF_Field_MultiSelect extends GF_Field {
 		return empty( $value ) ? '' : is_array( $value ) ? implode( ',', $value ) : $value;
 	}
 
+<<<<<<< HEAD
 	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format ) {
+=======
+	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format, $nl2br ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( $this->type == 'post_category' ) {
 			$use_id = $modifier == 'id';
 			$items  = explode( ',', $value );
@@ -118,6 +141,29 @@ class GF_Field_MultiSelect extends GF_Field {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public function get_value_export( $entry, $input_id = '', $use_text = false, $is_csv = false ) {
+		if ( empty( $input_id ) ) {
+			$input_id = $this->id;
+		}
+
+		$value  = rgar( $entry, $input_id );
+
+		if ( ! empty( $value ) && ! $is_csv ) {
+			$items = explode( ',', $value );
+
+			foreach ( $items as &$item ) {
+				$item = GFCommon::selection_display( $item, $this, rgar( $entry, 'currency' ), $use_text );
+			}
+
+			$value = GFCommon::implode_non_blank( ', ', $items );
+		}
+
+		return $value;
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 GF_Fields::register( new GF_Field_MultiSelect() );

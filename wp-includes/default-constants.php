@@ -17,7 +17,11 @@ function wp_initial_constants() {
 
 	// set memory limits
 	if ( !defined('WP_MEMORY_LIMIT') ) {
+<<<<<<< HEAD
 		if( is_multisite() ) {
+=======
+		if ( is_multisite() ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			define('WP_MEMORY_LIMIT', '64M');
 		} else {
 			define('WP_MEMORY_LIMIT', '40M');
@@ -71,6 +75,21 @@ function wp_initial_constants() {
 	if ( !defined('WP_CACHE') )
 		define('WP_CACHE', false);
 
+<<<<<<< HEAD
+=======
+	// Add define('SCRIPT_DEBUG', true); to wp-config.php to enable loading of non-minified,
+	// non-concatenated scripts and stylesheets.
+	if ( ! defined( 'SCRIPT_DEBUG' ) ) {
+		if ( ! empty( $GLOBALS['wp_version'] ) ) {
+			$develop_src = false !== strpos( $GLOBALS['wp_version'], '-src' );
+		} else {
+			$develop_src = false;
+		}
+
+		define( 'SCRIPT_DEBUG', $develop_src );
+	}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	/**
 	 * Private
 	 */
@@ -80,6 +99,12 @@ function wp_initial_constants() {
 	if ( !defined('SHORTINIT') )
 		define('SHORTINIT', false);
 
+<<<<<<< HEAD
+=======
+	// Constants for features added to WP that should short-circuit their plugin implementations
+	define( 'WP_FEATURE_BETTER_PASSWORDS', true );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	// Constants for expressing human-readable intervals
 	// in their respective number of seconds.
 	define( 'MINUTE_IN_SECONDS', 60 );

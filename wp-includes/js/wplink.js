@@ -68,7 +68,11 @@ var wpLink;
 				inputs.queryNoticeTextHint.addClass( 'screen-reader-text' ).hide();
 			} );
 
+<<<<<<< HEAD
 			inputs.search.keyup( function() {
+=======
+			inputs.search.on( 'keyup input', function() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				var self = this;
 
 				window.clearTimeout( searchTimer );
@@ -77,6 +81,7 @@ var wpLink;
 				}, 500 );
 			});
 
+<<<<<<< HEAD
 			function correctURL() {
 				var url = $.trim( inputs.url.val() );
 
@@ -97,6 +102,30 @@ var wpLink;
 			var ed;
 
 			$( document.body ).addClass( 'modal-open' );
+=======
+			inputs.url.on( 'paste', function() {
+				setTimeout( wpLink.correctURL, 0 );
+			} );
+
+			inputs.url.on( 'blur', wpLink.correctURL );
+		},
+
+		// If URL wasn't corrected last time and doesn't start with http:, https:, ? # or /, prepend http://
+		correctURL: function () {
+			var url = $.trim( inputs.url.val() );
+
+			if ( url && correctedURL !== url && ! /^(?:[a-z]+:|#|\?|\.|\/)/.test( url ) ) {
+				inputs.url.val( 'http://' + url );
+				correctedURL = url;
+			}
+		},
+
+		open: function( editorId ) {
+			var ed,
+				$body = $( document.body );
+
+			$body.addClass( 'modal-open' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			wpLink.range = null;
 
@@ -111,6 +140,13 @@ var wpLink;
 			this.textarea = $( '#' + window.wpActiveEditor ).get( 0 );
 
 			if ( typeof tinymce !== 'undefined' ) {
+<<<<<<< HEAD
+=======
+				// Make sure the link wrapper is the last element in the body,
+				// or the inline editor toolbar may show above the backdrop.
+				$body.append( inputs.backdrop, inputs.wrap );
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				ed = tinymce.get( wpActiveEditor );
 
 				if ( ed && ! ed.isHidden() ) {
@@ -260,12 +296,30 @@ var wpLink;
 		},
 
 		getAttrs: function() {
+<<<<<<< HEAD
+=======
+			wpLink.correctURL();
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			return {
 				href: $.trim( inputs.url.val() ),
 				target: inputs.openInNewTab.prop( 'checked' ) ? '_blank' : ''
 			};
 		},
 
+<<<<<<< HEAD
+=======
+		buildHtml: function(attrs) {
+			var html = '<a href="' + attrs.href + '"';
+
+			if ( attrs.target ) {
+				html += ' target="' + attrs.target + '"';
+			}
+
+			return html + '>';
+		},
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		update: function() {
 			if ( wpLink.isMCE() ) {
 				wpLink.mceUpdate();
@@ -290,6 +344,7 @@ var wpLink;
 				return;
 			}
 
+<<<<<<< HEAD
 			// Build HTML
 			html = '<a href="' + attrs.href + '"';
 
@@ -298,6 +353,9 @@ var wpLink;
 			}
 
 			html += '>';
+=======
+			html = wpLink.buildHtml(attrs);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// Insert HTML
 			if ( document.selection && wpLink.range ) {
@@ -354,7 +412,14 @@ var wpLink;
 			}
 
 			link = getLink();
+<<<<<<< HEAD
 			text = inputs.text.val();
+=======
+
+			if ( inputs.wrap.hasClass( 'has-text-field' ) ) {
+				text = inputs.text.val() || attrs.href;
+			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			if ( link ) {
 				if ( text ) {
@@ -373,6 +438,11 @@ var wpLink;
 					editor.execCommand( 'mceInsertLink', false, attrs );
 				}
 			}
+<<<<<<< HEAD
+=======
+
+			editor.nodeChanged();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		},
 
 		updateFields: function( e, li ) {

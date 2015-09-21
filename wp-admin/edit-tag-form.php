@@ -62,7 +62,11 @@ if ( 'category' == $taxonomy ) {
 do_action( "{$taxonomy}_pre_edit_form", $tag, $taxonomy ); ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h2><?php echo $tax->labels->edit_item; ?></h2>
+=======
+<h1><?php echo $tax->labels->edit_item; ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <div id="ajax-response"></div>
 <form name="edittag" id="edittag" method="post" action="edit-tags.php" class="validate"
 <?php

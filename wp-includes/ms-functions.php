@@ -28,9 +28,17 @@ function get_sitestats() {
  *
  * @since MU 1.0
  *
+<<<<<<< HEAD
  * @param string $sitedomain Optional. Site domain.
  * @param string $path Optional. Site path.
  * @return array The network admins
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $sitedomain Optional. Site domain.
+ * @param string $path       Optional. Site path.
+ * @return array|false The network admins
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function get_admin_users_for_domain( $sitedomain = '', $path = '' ) {
 	global $wpdb;
@@ -57,14 +65,25 @@ function get_admin_users_for_domain( $sitedomain = '', $path = '' ) {
  *
  * @since MU 1.0
  *
+<<<<<<< HEAD
  * @param int $user_id The unique ID of the user
  * @return object The blog object
+=======
+ * @global wpdb $wpdb
+ *
+ * @param int $user_id The unique ID of the user
+ * @return object|void The blog object
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function get_active_blog_for_user( $user_id ) {
 	global $wpdb;
 	$blogs = get_blogs_of_user( $user_id );
 	if ( empty( $blogs ) )
+<<<<<<< HEAD
 		return null;
+=======
+		return;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( !is_multisite() )
 		return $blogs[$wpdb->blogid];
@@ -103,7 +122,11 @@ function get_active_blog_for_user( $user_id ) {
 				}
 			}
 		} else {
+<<<<<<< HEAD
 			return null;
+=======
+			return;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 		return $ret;
 	} else {
@@ -166,10 +189,17 @@ function get_blog_post( $blog_id, $post_id ) {
  *
  * @since MU 1.0
  *
+<<<<<<< HEAD
  * @param int $blog_id ID of the blog you're adding the user to.
  * @param int $user_id ID of the user you're adding.
  * @param string $role The role you want the user to have
  * @return bool
+=======
+ * @param int    $blog_id ID of the blog you're adding the user to.
+ * @param int    $user_id ID of the user you're adding.
+ * @param string $role    The role you want the user to have
+ * @return true|WP_Error
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function add_user_to_blog( $blog_id, $user_id, $role ) {
 	switch_to_blog($blog_id);
@@ -200,6 +230,10 @@ function add_user_to_blog( $blog_id, $user_id, $role ) {
 	 */
 	do_action( 'add_user_to_blog', $user_id, $role, $blog_id );
 	wp_cache_delete( $user_id, 'users' );
+<<<<<<< HEAD
+=======
+	wp_cache_delete( $blog_id . '_user_count', 'blog-details' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	restore_current_blog();
 	return true;
 }
@@ -215,10 +249,19 @@ function add_user_to_blog( $blog_id, $user_id, $role ) {
  *
  * @since MU 1.0
  *
+<<<<<<< HEAD
  * @param int $user_id ID of the user you're removing.
  * @param int $blog_id ID of the blog you're removing the user from.
  * @param string $reassign Optional. A user to whom to reassign posts.
  * @return bool
+=======
+ * @global wpdb $wpdb
+ *
+ * @param int    $user_id  ID of the user you're removing.
+ * @param int    $blog_id  ID of the blog you're removing the user from.
+ * @param string $reassign Optional. A user to whom to reassign posts.
+ * @return true|WP_Error
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function remove_user_from_blog($user_id, $blog_id = '', $reassign = '') {
 	global $wpdb;
@@ -294,11 +337,19 @@ function remove_user_from_blog($user_id, $blog_id = '', $reassign = '') {
  *
  * @since MU 1.0
  *
+<<<<<<< HEAD
  * @param string $domain The new blog's domain.
  * @param string $path The new blog's path.
  * @param string $weblog_title The new blog's title.
  * @param int $site_id Optional. Defaults to 1.
  * @return int The ID of the newly created blog
+=======
+ * @param string $domain       The new blog's domain.
+ * @param string $path         The new blog's path.
+ * @param string $weblog_title The new blog's title.
+ * @param int    $site_id      Optional. Defaults to 1.
+ * @return string|int The ID of the newly created blog
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function create_empty_blog( $domain, $path, $weblog_title, $site_id = 1 ) {
 	if ( empty($path) )
@@ -349,8 +400,15 @@ function get_blog_permalink( $blog_id, $post_id ) {
  *
  * @since MU 2.6.5
  *
+<<<<<<< HEAD
  * @param string $domain
  * @param string $path Optional. Not required for subdomain installations.
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $domain
+ * @param string $path   Optional. Not required for subdomain installations.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int 0 if no blog found, otherwise the ID of the matching blog
  */
 function get_blog_id_from_url( $domain, $path = '/' ) {
@@ -447,6 +505,11 @@ function is_email_address_unsafe( $user_email ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $user_name  The login name provided by the user.
  * @param string $user_email The email provided by the user.
  * @return array Contains username, email, and error messages.
@@ -470,11 +533,19 @@ function wpmu_validate_user_signup($user_name, $user_email) {
 	   	$errors->add('user_name', __( 'Please enter a username.' ) );
 
 	$illegal_names = get_site_option( 'illegal_names' );
+<<<<<<< HEAD
 	if ( is_array( $illegal_names ) == false ) {
 		$illegal_names = array(  'www', 'web', 'root', 'admin', 'main', 'invite', 'administrator' );
 		add_site_option( 'illegal_names', $illegal_names );
 	}
 	if ( in_array( $user_name, $illegal_names ) == true )
+=======
+	if ( ! is_array( $illegal_names ) ) {
+		$illegal_names = array(  'www', 'web', 'root', 'admin', 'main', 'invite', 'administrator' );
+		add_site_option( 'illegal_names', $illegal_names );
+	}
+	if ( in_array( $user_name, $illegal_names ) )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$errors->add('user_name',  __( 'That username is not allowed.' ) );
 
 	if ( is_email_address_unsafe( $user_email ) )
@@ -483,7 +554,15 @@ function wpmu_validate_user_signup($user_name, $user_email) {
 	if ( strlen( $user_name ) < 4 )
 		$errors->add('user_name',  __( 'Username must be at least 4 characters.' ) );
 
+<<<<<<< HEAD
 	if ( strpos( ' ' . $user_name, '_' ) != false )
+=======
+	if ( strlen( $user_name ) > 60 ) {
+		$errors->add( 'user_name', __( 'Username may not be longer than 60 characters.' ) );
+	}
+
+	if ( strpos( $user_name, '_' ) !== false )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$errors->add( 'user_name', __( 'Sorry, usernames may not contain the character &#8220;_&#8221;!' ) );
 
 	// all numeric?
@@ -494,10 +573,18 @@ function wpmu_validate_user_signup($user_name, $user_email) {
 		$errors->add('user_email', __( 'Please enter a valid email address.' ) );
 
 	$limited_email_domains = get_site_option( 'limited_email_domains' );
+<<<<<<< HEAD
 	if ( is_array( $limited_email_domains ) && empty( $limited_email_domains ) == false ) {
 		$emaildomain = substr( $user_email, 1 + strpos( $user_email, '@' ) );
 		if ( in_array( $emaildomain, $limited_email_domains ) == false )
 			$errors->add('user_email', __('Sorry, that email address is not allowed!'));
+=======
+	if ( is_array( $limited_email_domains ) && ! empty( $limited_email_domains ) ) {
+		$emaildomain = substr( $user_email, 1 + strpos( $user_email, '@' ) );
+		if ( ! in_array( $emaildomain, $limited_email_domains ) ) {
+			$errors->add('user_email', __('Sorry, that email address is not allowed!'));
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	// Check if the username has been used already.
@@ -569,7 +656,14 @@ function wpmu_validate_user_signup($user_name, $user_email) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $blogname The blog name provided by the user. Must be unique.
+=======
+ * @global wpdb   $wpdb
+ * @global string $domain
+ *
+ * @param string $blogname   The blog name provided by the user. Must be unique.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $blog_title The blog title provided by the user.
  * @return array Contains the new site data and error messages.
  */
@@ -613,7 +707,11 @@ function wpmu_validate_blog_signup( $blogname, $blog_title, $user = '' ) {
 	if ( preg_match( '/[^a-z0-9]+/', $blogname ) )
 		$errors->add('blogname', __( 'Only lowercase letters (a-z) and numbers are allowed.' ) );
 
+<<<<<<< HEAD
 	if ( in_array( $blogname, $illegal_names ) == true )
+=======
+	if ( in_array( $blogname, $illegal_names ) )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$errors->add('blogname',  __( 'That name is not allowed.' ) );
 
 	if ( strlen( $blogname ) < 4 && !is_super_admin() )
@@ -659,7 +757,11 @@ function wpmu_validate_blog_signup( $blogname, $blog_title, $user = '' ) {
 		$errors->add( 'blogname', __( 'Sorry, that site already exists!' ) );
 
 	if ( username_exists( $blogname ) ) {
+<<<<<<< HEAD
 		if ( is_object( $user ) == false || ( is_object($user) && ( $user->user_login != $blogname ) ) )
+=======
+		if ( ! is_object( $user ) || ( is_object($user) && ( $user->user_login != $blogname ) ) )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$errors->add( 'blogname', __( 'Sorry, that site is reserved!' ) );
 	}
 
@@ -700,12 +802,23 @@ function wpmu_validate_blog_signup( $blogname, $blog_title, $user = '' ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $domain The requested domain.
  * @param string $path The requested path.
  * @param string $title The requested site title.
  * @param string $user The user's requested login name.
  * @param string $user_email The user's email address.
  * @param array $meta By default, contains the requested privacy setting and lang_id.
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $domain     The requested domain.
+ * @param string $path       The requested path.
+ * @param string $title      The requested site title.
+ * @param string $user       The user's requested login name.
+ * @param string $user_email The user's email address.
+ * @param array  $meta       By default, contains the requested privacy setting and lang_id.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wpmu_signup_blog( $domain, $path, $title, $user, $user_email, $meta = array() )  {
 	global $wpdb;
@@ -735,9 +848,17 @@ function wpmu_signup_blog( $domain, $path, $title, $user, $user_email, $meta = a
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $user The user's requested login name.
  * @param string $user_email The user's email address.
  * @param array $meta By default, this is an empty array.
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $user       The user's requested login name.
+ * @param string $user_email The user's email address.
+ * @param array  $meta       By default, this is an empty array.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wpmu_signup_user( $user, $user_email, $meta = array() ) {
 	global $wpdb;
@@ -777,6 +898,7 @@ function wpmu_signup_user( $user, $user_email, $meta = array() ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $domain The new blog domain.
  * @param string $path The new blog path.
  * @param string $title The site title.
@@ -784,6 +906,15 @@ function wpmu_signup_user( $user, $user_email, $meta = array() ) {
  * @param string $user_email The user's email address.
  * @param string $key The activation key created in wpmu_signup_blog()
  * @param array $meta By default, contains the requested privacy setting and lang_id.
+=======
+ * @param string $domain     The new blog domain.
+ * @param string $path       The new blog path.
+ * @param string $title      The site title.
+ * @param string $user       The user's login name.
+ * @param string $user_email The user's email address.
+ * @param string $key        The activation key created in wpmu_signup_blog()
+ * @param array  $meta       By default, contains the requested privacy setting and lang_id.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool
  */
 function wpmu_signup_blog_notification( $domain, $path, $title, $user, $user_email, $key, $meta = array() ) {
@@ -883,10 +1014,17 @@ function wpmu_signup_blog_notification( $domain, $path, $title, $user, $user_ema
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $user The user's login name.
  * @param string $user_email The user's email address.
  * @param string $key The activation key created in wpmu_signup_user()
  * @param array $meta By default, an empty array.
+=======
+ * @param string $user       The user's login name.
+ * @param string $user_email The user's email address.
+ * @param string $key        The activation key created in wpmu_signup_user()
+ * @param array  $meta       By default, an empty array.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool
  */
 function wpmu_signup_user_notification( $user, $user_email, $key, $meta = array() ) {
@@ -963,8 +1101,15 @@ function wpmu_signup_user_notification( $user, $user_email, $key, $meta = array(
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $key The activation key provided to the user.
  * @return array An array containing information about the activated user and/or blog
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $key The activation key provided to the user.
+ * @return array|WP_Error An array containing information about the activated user and/or blog
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wpmu_activate_signup($key) {
 	global $wpdb;
@@ -1058,9 +1203,15 @@ function wpmu_activate_signup($key) {
  * @since MU
  *
  * @param string $user_name The new user's login name.
+<<<<<<< HEAD
  * @param string $password The new user's password.
  * @param string $email The new user's email address.
  * @return int|bool Returns false on failure, or int $user_id on success
+=======
+ * @param string $password  The new user's password.
+ * @param string $email     The new user's email address.
+ * @return int|false Returns false on failure, or int $user_id on success
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wpmu_create_user( $user_name, $password, $email ) {
 	$user_name = preg_replace( '/\s+/', '', sanitize_user( $user_name, true ) );
@@ -1099,6 +1250,7 @@ function wpmu_create_user( $user_name, $password, $email ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $domain The new site's domain.
  * @param string $path The new site's path.
  * @param string $title The new site's title.
@@ -1106,6 +1258,15 @@ function wpmu_create_user( $user_name, $password, $email ) {
  * @param array $meta Optional. Used to set initial site options.
  * @param int $site_id Optional. Only relevant on multi-network installs.
  * @return mixed Returns WP_Error object on failure, int $blog_id on success
+=======
+ * @param string $domain  The new site's domain.
+ * @param string $path    The new site's path.
+ * @param string $title   The new site's title.
+ * @param int    $user_id The user ID of the new site's admin.
+ * @param array  $meta    Optional. Used to set initial site options.
+ * @param int    $site_id Optional. Only relevant on multi-network installs.
+ * @return int|WP_Error Returns WP_Error object on failure, int $blog_id on success
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wpmu_create_blog( $domain, $path, $title, $user_id, $meta = array(), $site_id = 1 ) {
 	$defaults = array( 'public' => 0 );
@@ -1264,9 +1425,17 @@ Disable these notifications: %3$s'), $user->user_login, wp_unslash( $_SERVER['RE
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $domain The domain to be checked.
  * @param string $path The path to be checked.
  * @param int $site_id Optional. Relevant only on multi-network installs.
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $domain  The domain to be checked.
+ * @param string $path    The path to be checked.
+ * @param int    $site_id Optional. Relevant only on multi-network installs.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int
  */
 function domain_exists($domain, $path, $site_id = 1) {
@@ -1295,10 +1464,19 @@ function domain_exists($domain, $path, $site_id = 1) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $domain The domain of the new site.
  * @param string $path The path of the new site.
  * @param int $site_id Unless you're running a multi-network install, be sure to set this value to 1.
  * @return int The ID of the new row
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $domain  The domain of the new site.
+ * @param string $path    The path of the new site.
+ * @param int    $site_id Unless you're running a multi-network install, be sure to set this value to 1.
+ * @return int|false The ID of the new row
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function insert_blog($domain, $path, $site_id) {
 	global $wpdb;
@@ -1327,7 +1505,14 @@ function insert_blog($domain, $path, $site_id) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param int $blog_id The value returned by insert_blog().
+=======
+ * @global wpdb     $wpdb
+ * @global WP_Roles $wp_roles
+ *
+ * @param int    $blog_id    The value returned by insert_blog().
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $blog_title The title of the new site.
  */
 function install_blog( $blog_id, $blog_title = '' ) {
@@ -1381,6 +1566,11 @@ function install_blog( $blog_id, $blog_title = '' ) {
  * @deprecated MU
  * @deprecated Use wp_install_defaults()
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $blog_id Ignored in this function.
  * @param int $user_id
  */
@@ -1406,11 +1596,19 @@ function install_blog_defaults($blog_id, $user_id) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param int $blog_id
  * @param int $user_id
  * @param string $password
  * @param string $title The new blog's title
  * @param array $meta Optional. Not used in the default function, but is passed along to hooks for customization.
+=======
+ * @param int    $blog_id
+ * @param int    $user_id
+ * @param string $password
+ * @param string $title    The new blog's title
+ * @param array  $meta     Optional. Not used in the default function, but is passed along to hooks for customization.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool
  */
 function wpmu_welcome_notification( $blog_id, $user_id, $password, $title, $meta = array() ) {
@@ -1433,7 +1631,12 @@ function wpmu_welcome_notification( $blog_id, $user_id, $password, $title, $meta
 		return false;
 
 	$welcome_email = get_site_option( 'welcome_email' );
+<<<<<<< HEAD
 	if ( $welcome_email == false )
+=======
+	if ( $welcome_email == false ) {
+		/* translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those are placeholders. */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$welcome_email = __( 'Howdy USERNAME,
 
 Your new SITE_NAME site has been successfully set up at:
@@ -1448,6 +1651,10 @@ Log in here: BLOG_URLwp-login.php
 We hope you enjoy your new site. Thanks!
 
 --The Team @ SITE_NAME' );
+<<<<<<< HEAD
+=======
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	$url = get_blogaddress_by_id($blog_id);
 	$user = get_userdata( $user_id );
@@ -1507,9 +1714,15 @@ We hope you enjoy your new site. Thanks!
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param int $user_id
  * @param string $password
  * @param array $meta Optional. Not used in the default function, but is passed along to hooks for customization.
+=======
+ * @param int    $user_id
+ * @param string $password
+ * @param array  $meta     Optional. Not used in the default function, but is passed along to hooks for customization.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool
  */
 function wpmu_welcome_user_notification( $user_id, $password, $meta = array() ) {
@@ -1585,6 +1798,11 @@ function wpmu_welcome_user_notification( $user_id, $password, $meta = array() ) 
  *
  * @since MU
  *
+<<<<<<< HEAD
+=======
+ * @global object $current_site
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return object
  */
 function get_current_site() {
@@ -1600,6 +1818,11 @@ function get_current_site() {
  *
  * @since MU
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $user_id
  * @return array Contains the blog_id, post_id, post_date_gmt, and post_gmt_ts
  */
@@ -1646,18 +1869,36 @@ function get_most_recent_post_of_user( $user_id ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $directory
  * @return int
+=======
+ * @param string $directory Full path of a directory.
+ * @return int Size of the directory in MB.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function get_dirsize( $directory ) {
 	$dirsize = get_transient( 'dirsize_cache' );
 	if ( is_array( $dirsize ) && isset( $dirsize[ $directory ][ 'size' ] ) )
 		return $dirsize[ $directory ][ 'size' ];
 
+<<<<<<< HEAD
 	if ( false == is_array( $dirsize ) )
 		$dirsize = array();
 
 	$dirsize[ $directory ][ 'size' ] = recurse_dirsize( $directory );
+=======
+	if ( ! is_array( $dirsize ) )
+		$dirsize = array();
+
+	// Exclude individual site directories from the total when checking the main site,
+	// as they are subdirectories and should not be counted.
+	if ( is_main_site() ) {
+		$dirsize[ $directory ][ 'size' ] = recurse_dirsize( $directory, $directory . '/sites' );
+	} else {
+		$dirsize[ $directory ][ 'size' ] = recurse_dirsize( $directory );
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	set_transient( 'dirsize_cache', $dirsize, HOUR_IN_SECONDS );
 	return $dirsize[ $directory ][ 'size' ];
@@ -1670,17 +1911,33 @@ function get_dirsize( $directory ) {
  * other directories.
  *
  * @since MU
+<<<<<<< HEAD
  *
  * @param string $directory
  * @return int
  */
 function recurse_dirsize( $directory ) {
+=======
+ * @since 4.3.0 $exclude parameter added.
+ *
+ * @param string $directory Full path of a directory.
+ * @param string $exclude   Optional. Full path of a subdirectory to exclude from the total.
+ * @return int|false Size in MB if a valid directory. False if not.
+ */
+function recurse_dirsize( $directory, $exclude = null ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$size = 0;
 
 	$directory = untrailingslashit( $directory );
 
+<<<<<<< HEAD
 	if ( !file_exists($directory) || !is_dir( $directory ) || !is_readable( $directory ) )
 		return false;
+=======
+	if ( ! file_exists( $directory ) || ! is_dir( $directory ) || ! is_readable( $directory ) || $directory === $exclude ) {
+		return false;
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ($handle = opendir($directory)) {
 		while(($file = readdir($handle)) !== false) {
@@ -1689,7 +1946,11 @@ function recurse_dirsize( $directory ) {
 				if (is_file($path)) {
 					$size += filesize($path);
 				} elseif (is_dir($path)) {
+<<<<<<< HEAD
 					$handlesize = recurse_dirsize($path);
+=======
+					$handlesize = recurse_dirsize( $path, $exclude );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					if ($handlesize > 0)
 						$size += $handlesize;
 				}
@@ -1735,6 +1996,11 @@ function check_upload_mimes( $mimes ) {
  * are published or unpublished to make sure the count stays current.
  *
  * @since MU
+<<<<<<< HEAD
+=======
+ *
+ * @global wpdb $wpdb
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function update_posts_count( $deprecated = '' ) {
 	global $wpdb;
@@ -1746,6 +2012,11 @@ function update_posts_count( $deprecated = '' ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $blog_id
  * @param int $user_id
  */
@@ -1763,6 +2034,12 @@ function wpmu_log_new_registrations( $blog_id, $user_id ) {
  *
  * @see term_id_filter
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ * @staticvar int $global_terms_recurse
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $term_id An ID for a term on the current blog.
  * @return int An ID from the global terms table mapped from $term_id.
  */
@@ -1820,7 +2097,11 @@ function global_terms( $term_id, $deprecated = '' ) {
 
 		clean_term_cache($term_id);
 	}
+<<<<<<< HEAD
 	if( $recurse_start )
+=======
+	if ( $recurse_start )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$global_terms_recurse = null;
 
 	return $global_id;
@@ -1844,10 +2125,17 @@ function redirect_this_site( $deprecated = '' ) {
  * @since MU
  *
  * @param array $upload
+<<<<<<< HEAD
  * @return mixed If the upload is under the size limit, $upload is returned. Otherwise returns an error message.
  */
 function upload_is_file_too_big( $upload ) {
 	if ( is_array( $upload ) == false || defined( 'WP_IMPORTING' ) || get_site_option( 'upload_space_check_disabled' ) )
+=======
+ * @return string|array If the upload is under the size limit, $upload is returned. Otherwise returns an error message.
+ */
+function upload_is_file_too_big( $upload ) {
+	if ( ! is_array( $upload ) || defined( 'WP_IMPORTING' ) || get_site_option( 'upload_space_check_disabled' ) )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		return $upload;
 
 	if ( strlen( $upload['bits'] )  > ( 1024 * get_site_option( 'fileupload_maxk', 1500 ) ) )
@@ -1919,7 +2207,11 @@ function maybe_redirect_404() {
  */
 function maybe_add_existing_user_to_blog() {
 	if ( false === strpos( $_SERVER[ 'REQUEST_URI' ], '/newbloguser/' ) )
+<<<<<<< HEAD
 		return false;
+=======
+		return;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	$parts = explode( '/', $_SERVER[ 'REQUEST_URI' ] );
 	$key = array_pop( $parts );
@@ -1942,7 +2234,14 @@ function maybe_add_existing_user_to_blog() {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param array $details
+=======
+ * @global int $blog_id
+ *
+ * @param array $details
+ * @return true|WP_Error|void
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function add_existing_user_to_blog( $details = false ) {
 	global $blog_id;
@@ -1958,8 +2257,13 @@ function add_existing_user_to_blog( $details = false ) {
 		 * @param mixed $result  True on success or a WP_Error object if the user doesn't exist.
 		 */
 		do_action( 'added_existing_user', $details['user_id'], $result );
+<<<<<<< HEAD
 	}
 	return $result;
+=======
+		return $result;
+	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -1971,7 +2275,11 @@ function add_existing_user_to_blog( $details = false ) {
  * @since MU
  * @see add_user_to_blog()
  *
+<<<<<<< HEAD
  * @param int $user_id
+=======
+ * @param int   $user_id
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param mixed $password Ignored.
  * @param array $meta
  */
@@ -2000,7 +2308,11 @@ function fix_phpmailer_messageid( $phpmailer ) {
  * @since MU
  *
  * @param string|WP_User $user Optional. Defaults to current user. WP_User object,
+<<<<<<< HEAD
  * 	or user login name as a string.
+=======
+ * 	                           or user login name as a string.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool
  */
 function is_user_spammy( $user = null ) {
@@ -2023,7 +2335,11 @@ function is_user_spammy( $user = null ) {
  * @since MU
  *
  * @param int $old_value
+<<<<<<< HEAD
  * @param int $value The new public value
+=======
+ * @param int $value     The new public value
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function update_blog_public( $old_value, $value ) {
 	update_blog_status( get_current_blog_id(), 'public', (int) $value );
@@ -2034,9 +2350,17 @@ function update_blog_public( $old_value, $value ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
  * @param string $key
  * @param int $user_id Optional. Defaults to current user.
  * @param int $blog_id Optional. Defaults to current blog.
+=======
+ * @global wpdb $wpdb
+ *
+ * @param string $key
+ * @param int    $user_id Optional. Defaults to current user.
+ * @param int    $blog_id Optional. Defaults to current blog.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool
  */
 function is_user_option_local( $key, $user_id = 0, $blog_id = 0 ) {
@@ -2048,10 +2372,14 @@ function is_user_option_local( $key, $user_id = 0, $blog_id = 0 ) {
 	}
 	$local_key = $wpdb->get_blog_prefix( $blog_id ) . $key;
 
+<<<<<<< HEAD
 	if ( isset( $current_user->$local_key ) )
 		return true;
 
 	return false;
+=======
+	return isset( $current_user->$local_key );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -2063,10 +2391,14 @@ function is_user_option_local( $key, $user_id = 0, $blog_id = 0 ) {
  */
 function users_can_register_signup_filter() {
 	$registration = get_site_option('registration');
+<<<<<<< HEAD
 	if ( $registration == 'all' || $registration == 'user' )
 		return true;
 
 	return false;
+=======
+	return ( $registration == 'all' || $registration == 'user' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -2080,6 +2412,11 @@ function users_can_register_signup_filter() {
 function welcome_user_msg_filter( $text ) {
 	if ( !$text ) {
 		remove_filter( 'site_option_welcome_user_email', 'welcome_user_msg_filter' );
+<<<<<<< HEAD
+=======
+
+		/* translators: Do not translate USERNAME, PASSWORD, LOGINLINK, SITE_NAME: those are placeholders. */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$text = __( 'Howdy USERNAME,
 
 Your new account is set up.
@@ -2102,11 +2439,21 @@ Thanks!
  *
  * @since 2.8.5
  *
+<<<<<<< HEAD
  * @param string|bool $force
  * @return bool True if forced, false if not forced.
  */
 function force_ssl_content( $force = '' ) {
 	static $forced_content;
+=======
+ * @staticvar bool $forced_content
+ *
+ * @param bool $force
+ * @return bool True if forced, false if not forced.
+ */
+function force_ssl_content( $force = '' ) {
+	static $forced_content = false;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( '' != $force ) {
 		$old_forced = $forced_content;
@@ -2209,6 +2556,11 @@ function wp_maybe_update_network_user_counts() {
  * Update the network-wide site count.
  *
  * @since 3.7.0
+<<<<<<< HEAD
+=======
+ *
+ * @global wpdb $wpdb
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_update_network_site_counts() {
 	global $wpdb;
@@ -2221,6 +2573,11 @@ function wp_update_network_site_counts() {
  * Update the network-wide user count.
  *
  * @since 3.7.0
+<<<<<<< HEAD
+=======
+ *
+ * @global wpdb $wpdb
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_update_network_user_counts() {
 	global $wpdb;
@@ -2361,6 +2718,11 @@ function wp_is_large_network( $using = 'sites' ) {
  *
  * @since 3.7.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $args {
  *     Array of default arguments. Optional.
  *

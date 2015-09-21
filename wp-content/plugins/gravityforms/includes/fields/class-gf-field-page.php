@@ -9,7 +9,11 @@ class GF_Field_Page extends GF_Field {
 	public $type = 'page';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
 		return __( 'Page', 'gravityforms' );
+=======
+		return esc_attr__( 'Page', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -24,7 +28,11 @@ class GF_Field_Page extends GF_Field {
 
 	public function get_field_content( $value, $force_frontend_label, $form ) {
 		$admin_buttons = $this->get_admin_buttons();
+<<<<<<< HEAD
 		$field_content = "{$admin_buttons} <label class='gfield_label'>&nbsp;</label><div class='gf-pagebreak-inline gf-pagebreak-container'><div class='gf-pagebreak-text-before'>" . __( 'end of page', 'gravityforms' ) . "</div><div class='gf-pagebreak-text-main'><span>" . __( 'PAGE BREAK', 'gravityforms' ) . "</span></div><div class='gf-pagebreak-text-after'>" . __( 'top of new page', 'gravityforms' ) . '</div></div>';
+=======
+		$field_content = "{$admin_buttons} <label class='gfield_label'>&nbsp;</label><div class='gf-pagebreak-inline gf-pagebreak-container'><div class='gf-pagebreak-text-before'>" . esc_html__( 'end of page', 'gravityforms' ) . "</div><div class='gf-pagebreak-text-main'><span>" . esc_html__( 'PAGE BREAK', 'gravityforms' ) . "</span></div><div class='gf-pagebreak-text-after'>" . esc_html__( 'top of new page', 'gravityforms' ) . '</div></div>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		return $field_content;
 	}
 
@@ -35,7 +43,11 @@ class GF_Field_Page extends GF_Field {
 			$allowed_tags      = wp_kses_allowed_html( 'post' );
 			$this->nextButton['text'] = wp_kses( $this->nextButton['text'], $allowed_tags );
 			$this->nextButton['type'] = wp_strip_all_tags( $this->nextButton['type'] );
+<<<<<<< HEAD
 			if ( $this->nextButton['conditionalLogic'] && is_array( $this->nextButton['conditionalLogic'] ) ) {
+=======
+			if ( isset( $this->nextButton['conditionalLogic'] ) && is_array( $this->nextButton['conditionalLogic'] ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$this->nextButton['conditionalLogic'] = $this->sanitize_settings_conditional_logic( $this->nextButton['conditionalLogic'] );
 			}
 		}

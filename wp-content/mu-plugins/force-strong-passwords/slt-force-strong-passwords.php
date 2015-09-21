@@ -1,11 +1,20 @@
 <?php
 
 /*
+<<<<<<< HEAD
 Plugin Name: Force Strong Passwords
 Description: Forces users to use something strong when updating their passwords.
 Version: 1.3.3
 Author: Steve Taylor
 Author URI: http://sltaylor.co.uk
+=======
+Plugin Name: Force Strong Passwords - WPE Edition
+Plugin URI: https://github.com/boogah/Force-Strong-Passwords/
+Description: Forces users to use something strong when updating their passwords.
+Version: 1.3.3-bugfix
+Author: Jason Cosper
+Author URI: http://jasoncosper.com/
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 License: GPLv2
 */
 
@@ -88,7 +97,10 @@ function slt_fsp_validate_profile_update( $errors, $update, $user_data ) {
 	return slt_fsp_validate_strong_password( $errors, $user_data );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 // Functionality used by both user profile and reset password validation
 function slt_fsp_validate_strong_password( $errors, $user_data ) {
 	$password_ok = true;
@@ -128,7 +140,55 @@ function slt_fsp_validate_strong_password( $errors, $user_data ) {
 			// Check the strength passed from the zxcvbn meter
 			$compare_strong = html_entity_decode( __( 'Strong' ), ENT_QUOTES, 'UTF-8');
 			$compare_medium = html_entity_decode( __( 'Medium' ), ENT_QUOTES, 'UTF-8');
+<<<<<<< HEAD
 			if ( ! in_array( $_POST['slt-fsp-pass-strength-result'] , array(null, $compare_strong, $compare_medium))) {
+=======
+			$compare_strong_es = html_entity_decode( __( 'Fuerte' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_id = html_entity_decode( __( 'Kuat' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_sk = html_entity_decode( __( 'Silné' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_da = html_entity_decode( __( 'Stærk' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_eo = html_entity_decode( __( 'Forta' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_de = html_entity_decode( __( 'Stark' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_bg = html_entity_decode( __( 'Устойчива' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_az = html_entity_decode( __( 'Güclü' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_hu = html_entity_decode( __( 'Erős' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_hy = html_entity_decode( __( 'Ապահով' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_tl = html_entity_decode( __( 'Malakas' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_fa = html_entity_decode( __( 'قوی' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_pl = html_entity_decode( __( 'Silne' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_nb = html_entity_decode( __( 'Sterk' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_nn = html_entity_decode( __( 'Sterkt' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_sv = html_entity_decode( __( 'Starkt' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_it = html_entity_decode( __( 'Forte' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_tr = html_entity_decode( __( 'Güçlü' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ca = html_entity_decode( __( 'Robusta' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ps = html_entity_decode( __( 'قوي' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_zh = html_entity_decode( __( '讚' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_lt = html_entity_decode( __( 'Stiprus' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_el = html_entity_decode( __( 'Δυνατό' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ko = html_entity_decode( __( '강함' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_th = html_entity_decode( __( 'ใช้ได้' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ru = html_entity_decode( __( 'Надёжный' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_sr = html_entity_decode( __( 'Јако' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_et = html_entity_decode( __( 'Tugev' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_fi = html_entity_decode( __( 'Erinomainen' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_cy = html_entity_decode( __( 'Cryf' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_oc = html_entity_decode( __( 'Fòrta' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_he = html_entity_decode( __( 'סיסמה חזקה' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_zh = html_entity_decode( __( '强' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_is = html_entity_decode( __( 'Traust' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_eu = html_entity_decode( __( 'Sendoa' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_sl = html_entity_decode( __( 'Dobra' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ug = html_entity_decode( __( 'كۈچلۈك' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_my = html_entity_decode( __( 'အားကောင်း' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_hr = html_entity_decode( __( 'Jako' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_gd = html_entity_decode( __( 'Làidir' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_uk = html_entity_decode( __( 'Сильний' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ja = html_entity_decode( __( '強力' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_ro = html_entity_decode( __( 'Puternică' ), ENT_QUOTES, 'UTF-8');
+			$compare_strong_sq = html_entity_decode( __( 'I fortë' ), ENT_QUOTES, 'UTF-8');
+			if ( ! in_array( $_POST['slt-fsp-pass-strength-result'] , array(null, $compare_strong, $compare_medium, $compare_strong_es, $compare_strong_id, $compare_strong_sk, $compare_strong_da, $compare_strong_eo, $compare_strong_de, $compare_strong_bg, $compare_strong_az, $compare_strong_hu, $compare_strong_hy, $compare_strong_tl, $compare_strong_fa, $compare_strong_pl, $compare_strong_nb, $compare_strong_nn, $compare_strong_sv, $compare_strong_it, $compare_strong_tr, $compare_strong_ca, $compare_strong_ps, $compare_strong_zh, $compare_strong_lt, $compare_strong_el, $compare_strong_ko, $compare_strong_th, $compare_strong_ru, $compare_strong_sr, $compare_strong_et, $compare_strong_fi, $compare_strong_cy, $compare_strong_oc, $compare_strong_he, $compare_strong_zh, $compare_strong_is, $compare_strong_eu, $compare_strong_sl, $compare_strong_ug, $compare_strong_my, $compare_strong_hr, $compare_strong_gd, $compare_strong_uk, $compare_strong_ja, $compare_strong_ro, $compare_strong_sq))) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$password_ok = false;
 			}
 

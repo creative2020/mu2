@@ -39,7 +39,11 @@ if ( ! current_user_can( 'manage_network' ) )
 	wp_die( __( 'You do not have permission to access this page.' ), 403 );
 
 echo '<div class="wrap">';
+<<<<<<< HEAD
 echo '<h2>' . __( 'Upgrade Network' ) . '</h2>';
+=======
+echo '<h1>' . __( 'Upgrade Network' ) . '</h1>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'show';
 
@@ -48,6 +52,12 @@ switch ( $action ) {
 		$n = ( isset($_GET['n']) ) ? intval($_GET['n']) : 0;
 
 		if ( $n < 5 ) {
+<<<<<<< HEAD
+=======
+			/**
+			 * @global string $wp_db_version
+			 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			global $wp_db_version;
 			update_site_option( 'wpmu_upgrade_site', $wp_db_version );
 		}

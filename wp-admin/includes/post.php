@@ -173,6 +173,11 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
  *
  * @since 1.5.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $post_data Optional.
  * @return int Post ID.
  */
@@ -383,7 +388,11 @@ function edit_post( $post_data = null ) {
 
 	wp_set_post_lock( $post_ID );
 
+<<<<<<< HEAD
 	if ( current_user_can( $ptype->cap->edit_others_posts ) ) {
+=======
+	if ( current_user_can( $ptype->cap->edit_others_posts ) && current_user_can( $ptype->cap->publish_posts ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( ! empty( $post_data['sticky'] ) )
 			stick_post( $post_ID );
 		else
@@ -401,6 +410,11 @@ function edit_post( $post_data = null ) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $post_data Optional, the array of post data to process if not provided will use $_POST superglobal.
  * @return array
  */
@@ -606,8 +620,13 @@ function get_default_post_to_edit( $post_type = 'post', $create_in_db = false ) 
 		$post->post_status = 'draft';
 		$post->to_ping = '';
 		$post->pinged = '';
+<<<<<<< HEAD
 		$post->comment_status = get_option( 'default_comment_status' );
 		$post->ping_status = get_option( 'default_ping_status' );
+=======
+		$post->comment_status = get_default_comment_status( $post_type );
+		$post->ping_status = get_default_comment_status( $post_type, 'pingback' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$post->post_pingback = get_option( 'default_pingback_flag' );
 		$post->post_category = get_option( 'default_category' );
 		$post->page_template = 'default';
@@ -654,6 +673,11 @@ function get_default_post_to_edit( $post_type = 'post', $create_in_db = false ) 
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $title Post title
  * @param string $content Optional post content
  * @param string $date Optional post date
@@ -695,6 +719,11 @@ function post_exists($title, $content = '', $date = '') {
  *
  * @since 2.1.0
  *
+<<<<<<< HEAD
+=======
+ * @global WP_User $current_user
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int|WP_Error
  */
 function wp_write_post() {
@@ -834,6 +863,11 @@ function delete_meta( $mid ) {
  *
  * @since 1.2.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return mixed
  */
 function get_meta_keys() {
@@ -865,6 +899,11 @@ function get_post_meta_by_id( $mid ) {
  *
  * @since 1.2.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $postid
  * @return mixed
  */
@@ -1055,6 +1094,11 @@ function wp_edit_posts_query( $q = false ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $type
  * @return mixed
  */
@@ -1304,7 +1348,11 @@ function get_sample_permalink_html( $id, $new_title = null, $new_slug = null ) {
 	}
 
 	if ( isset( $view_post ) ) {
+<<<<<<< HEAD
 		if( 'draft' == $post->post_status ) {
+=======
+		if ( 'draft' == $post->post_status ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$preview_link = set_url_scheme( get_permalink( $post->ID ) );
 			/** This filter is documented in wp-admin/includes/meta-boxes.php */
 			$preview_link = apply_filters( 'preview_post_link', add_query_arg( 'preview', 'true', $preview_link ), $post );
@@ -1338,6 +1386,12 @@ function get_sample_permalink_html( $id, $new_title = null, $new_slug = null ) {
  *
  * @since 2.9.0
  *
+<<<<<<< HEAD
+=======
+ * @global int   $content_width
+ * @global array $_wp_additional_image_sizes
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $thumbnail_id ID of the attachment used for thumbnail
  * @param mixed $post The post ID or object associated with the thumbnail, defaults to global $post.
  * @return string html
@@ -1345,11 +1399,24 @@ function get_sample_permalink_html( $id, $new_title = null, $new_slug = null ) {
 function _wp_post_thumbnail_html( $thumbnail_id = null, $post = null ) {
 	global $content_width, $_wp_additional_image_sizes;
 
+<<<<<<< HEAD
 	$post = get_post( $post );
 
 	$upload_iframe_src = esc_url( get_upload_iframe_src('image', $post->ID ) );
 	$set_thumbnail_link = '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set featured image' ) . '" href="%s" id="set-post-thumbnail" class="thickbox">%s</a></p>';
 	$content = sprintf( $set_thumbnail_link, $upload_iframe_src, esc_html__( 'Set featured image' ) );
+=======
+	$post               = get_post( $post );
+	$post_type_object   = get_post_type_object( $post->post_type );
+	$set_thumbnail_link = '<p class="hide-if-no-js"><a title="%s" href="%s" id="set-post-thumbnail" class="thickbox">%s</a></p>';
+	$upload_iframe_src  = get_upload_iframe_src( 'image', $post->ID );
+
+	$content = sprintf( $set_thumbnail_link,
+		esc_attr( $post_type_object->labels->set_featured_image ),
+		esc_url( $upload_iframe_src ),
+		esc_html( $post_type_object->labels->set_featured_image )
+	);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( $thumbnail_id && get_post( $thumbnail_id ) ) {
 		$old_content_width = $content_width;
@@ -1360,8 +1427,17 @@ function _wp_post_thumbnail_html( $thumbnail_id = null, $post = null ) {
 			$thumbnail_html = wp_get_attachment_image( $thumbnail_id, 'post-thumbnail' );
 		if ( !empty( $thumbnail_html ) ) {
 			$ajax_nonce = wp_create_nonce( 'set_post_thumbnail-' . $post->ID );
+<<<<<<< HEAD
 			$content = sprintf( $set_thumbnail_link, $upload_iframe_src, $thumbnail_html );
 			$content .= '<p class="hide-if-no-js"><a href="#" id="remove-post-thumbnail" onclick="WPRemoveThumbnail(\'' . $ajax_nonce . '\');return false;">' . esc_html__( 'Remove featured image' ) . '</a></p>';
+=======
+			$content = sprintf( $set_thumbnail_link,
+				esc_attr( $post_type_object->labels->set_featured_image ),
+				esc_url( $upload_iframe_src ),
+				$thumbnail_html
+			);
+			$content .= '<p class="hide-if-no-js"><a href="#" id="remove-post-thumbnail" onclick="WPRemoveThumbnail(\'' . $ajax_nonce . '\');return false;">' . esc_html( $post_type_object->labels->remove_featured_image ) . '</a></p>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 		$content_width = $old_content_width;
 	}
@@ -1542,7 +1618,11 @@ function _admin_notice_post_locked() {
 		// Allow plugins to prevent some users overriding the post lock
 		if ( $override ) {
 			?>
+<<<<<<< HEAD
 			<a class="button button-primary wp-tab-last" href="<?php echo esc_url( add_query_arg( 'get-post-lock', '1', get_edit_post_link( $post->ID, 'url' ) ) ); ?>"><?php _e('Take over'); ?></a>
+=======
+			<a class="button button-primary wp-tab-last" href="<?php echo esc_url( add_query_arg( 'get-post-lock', '1', wp_nonce_url( get_edit_post_link( $post->ID, 'url' ), 'lock-post_' . $post->ID ) ) ); ?>"><?php _e('Take over'); ?></a>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<?php
 		}
 

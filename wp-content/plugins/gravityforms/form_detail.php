@@ -131,7 +131,11 @@ class GFFormDetail {
 			$form['fields'] = array();
 		}
 
+<<<<<<< HEAD
 		$form = apply_filters( 'gform_admin_pre_render_' . $form_id, apply_filters( 'gform_admin_pre_render', $form ) );
+=======
+		$form = gf_apply_filters( 'gform_admin_pre_render', $form_id, $form );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		if ( isset( $form['id'] ) ) {
 			echo "<script type=\"text/javascript\">var form = " . json_encode( $form ) . ';</script>';
@@ -214,9 +218,15 @@ class GFFormDetail {
 			<div id="pagination_settings" style="display: none;">
 				<ul>
 					<li style="width:100px; padding:0px;">
+<<<<<<< HEAD
 						<a href="#gform_pagination_settings_tab_1"><?php esc_html_e( 'Properties', 'gravityforms' ); ?></a></li>
 					<li style="width:100px; padding:0px;">
 						<a href="#gform_pagination_settings_tab_2"><?php esc_html_e( 'Advanced', 'gravityforms' ); ?></a></li>
+=======
+						<a href="#gform_pagination_settings_tab_1"><?php esc_html_e( 'General', 'gravityforms' ); ?></a></li>
+					<li style="width:100px; padding:0px;">
+						<a href="#gform_pagination_settings_tab_2"><?php esc_html_e( 'Appearance', 'gravityforms' ); ?></a></li>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				</ul>
 
 				<div id="gform_pagination_settings_tab_1">
@@ -337,7 +347,11 @@ class GFFormDetail {
 
 					<h4 class="gf_nofield_header gf_nofield_1">1. <?php esc_html_e( 'Select A Field Type', 'gravityforms' ); ?></h4>
 
+<<<<<<< HEAD
 					<p><?php esc_html_e( 'Start by seleting a field type from the nifty floating panels on the right.', 'gravityforms' ); ?></p>
+=======
+					<p><?php esc_html_e( 'Start by selecting a field type from the nifty floating panels on the right.', 'gravityforms' ); ?></p>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 					<div id="gf_nofield_1_instructions">
 						<span class="gf_nofield_1_instructions_heading gf_tips"><?php esc_html_e( 'Start Over There', 'gravityforms' ); ?></span>
@@ -416,7 +430,11 @@ class GFFormDetail {
 			<div id="last_page_settings" style="display:none;">
 				<ul>
 					<li style="width:100px; padding:0px;">
+<<<<<<< HEAD
 						<a href="#gform_last_page_settings_tab_1"><?php esc_html_e( 'Properties', 'gravityforms' ); ?></a></li>
+=======
+						<a href="#gform_last_page_settings_tab_1"><?php esc_html_e( 'General', 'gravityforms' ); ?></a></li>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				</ul>
 				<div id="gform_last_page_settings_tab_1">
 					<ul class="gforms_form_settings">
@@ -904,7 +922,11 @@ class GFFormDetail {
 			</label>
 			<?php
 			$args = array( 'name' => 'field_post_author' );
+<<<<<<< HEAD
 			$args = apply_filters( 'gform_author_dropdown_args_' . rgar( $form, 'id' ), apply_filters( 'gform_author_dropdown_args', $args ) );
+=======
+			$args = gf_apply_filters( 'gform_author_dropdown_args', rgar( $form, 'id' ), $args );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			wp_dropdown_users( $args );
 			?>
 			<div>
@@ -1437,7 +1459,11 @@ class GFFormDetail {
 						__( 'Size', 'gravityforms' )                        => array( __( 'Extra Small', 'gravityforms' ), __( 'Small', 'gravityforms' ), __( 'Medium', 'gravityforms' ), __( 'Large', 'gravityforms' ), __( 'Extra Large', 'gravityforms' ) ),
 
 					);
+<<<<<<< HEAD
 					$predefined_choices = apply_filters( 'gform_predefined_choices_' . rgar( $form, 'id' ), apply_filters( 'gform_predefined_choices', $predefined_choices ) );
+=======
+					$predefined_choices = gf_apply_filters( 'gform_predefined_choices', rgar( $form, 'id' ), $predefined_choices );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 					$custom_choices = RGFormsModel::get_custom_choices();
 
@@ -2367,12 +2393,30 @@ class GFFormDetail {
 					if ( GFCommon::current_user_can_any( 'gravityforms_delete_forms' ) ) {
 						$trash_link = '<a class="submitdelete" title="' . __( 'Move this form to the trash', 'gravityforms' ) . '" onclick="if(confirm(\'' . __( "Would you like to move this form to the trash? \'Cancel\' to stop. \'OK\' to continue", 'gravityforms' ) . '\')){ gf_vars.isFormTrash = true; jQuery(\'#form_trash\')[0].submit();} else{return false;}">' . __( 'Move to Trash', 'gravityforms' ) . '</a>';
 						$trash_link = apply_filters( 'gform_form_delete_link', $trash_link ); // deprecated
+<<<<<<< HEAD
+=======
+
+						/**
+						 * Allows for modification of the Form Trash Link
+						 *
+						 * @param string $trash_link The Trash link HTML
+						 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						echo apply_filters( 'gform_form_trash_link', $trash_link );
 					}
 
 					$button_text = rgar( $form, 'id' ) > 0 ? __( 'Update Form', 'gravityforms' ) : __( 'Save Form', 'gravityforms' );
 					$isNew = rgar( $form, 'id' ) > 0 ? 0 : 1;
 					$save_button = '<input type="button" class="button button-large button-primary update-form" value="' . $button_text . '" onclick="SaveForm(' . $isNew . ');" />';
+<<<<<<< HEAD
+=======
+
+					/**
+					 * A filter to aloow you to modify the Form Save button
+					 *
+					 * @param string $save_button The Form Save button HTML
+					 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					$save_button = apply_filters( 'gform_save_form_button', $save_button );
 					echo $save_button;
 					?>

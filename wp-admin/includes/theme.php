@@ -11,9 +11,17 @@
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @param string $stylesheet Stylesheet of the theme to delete
  * @param string $redirect Redirect to page when complete.
  * @return mixed
+=======
+ * @global WP_Filesystem_Base $wp_filesystem Subclass
+ *
+ * @param string $stylesheet Stylesheet of the theme to delete
+ * @param string $redirect Redirect to page when complete.
+ * @return void|bool|WP_Error When void, echoes content.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function delete_theme($stylesheet, $redirect = '') {
 	global $wp_filesystem;
@@ -25,8 +33,13 @@ function delete_theme($stylesheet, $redirect = '') {
 	if ( empty( $redirect ) )
 		$redirect = wp_nonce_url('themes.php?action=delete&stylesheet=' . urlencode( $stylesheet ), 'delete-theme_' . $stylesheet);
 	if ( false === ($credentials = request_filesystem_credentials($redirect)) ) {
+<<<<<<< HEAD
 		$data = ob_get_contents();
 		ob_end_clean();
+=======
+		$data = ob_get_clean();
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( ! empty($data) ){
 			include_once( ABSPATH . 'wp-admin/admin-header.php');
 			echo $data;
@@ -38,8 +51,13 @@ function delete_theme($stylesheet, $redirect = '') {
 
 	if ( ! WP_Filesystem($credentials) ) {
 		request_filesystem_credentials($redirect, '', true); // Failed to connect, Error and request again
+<<<<<<< HEAD
 		$data = ob_get_contents();
 		ob_end_clean();
+=======
+		$data = ob_get_clean();
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( ! empty($data) ) {
 			include_once( ABSPATH . 'wp-admin/admin-header.php');
 			echo $data;
@@ -121,7 +139,11 @@ function _get_template_edit_filename($fullpath, $containingfolder) {
  * @since 2.7.0
  * @see get_theme_update_available()
  *
+<<<<<<< HEAD
  * @param object $theme Theme data object.
+=======
+ * @param WP_Theme $theme Theme data object.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function theme_update_available( $theme ) {
 	echo get_theme_update_available( $theme );
@@ -134,11 +156,20 @@ function theme_update_available( $theme ) {
  *
  * @since 3.8.0
  *
+<<<<<<< HEAD
+=======
+ * @staticvar object $themes_update
+ *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param WP_Theme $theme WP_Theme object.
  * @return false|string HTML for the update link, or false if invalid info was passed.
  */
 function get_theme_update_available( $theme ) {
+<<<<<<< HEAD
 	static $themes_update;
+=======
+	static $themes_update = null;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( !current_user_can('update_themes' ) )
 		return false;
@@ -475,6 +506,7 @@ function wp_prepare_themes_for_js( $themes = null ) {
 			'actions'      => array(
 				'activate' => current_user_can( 'switch_themes' ) ? wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=' . $encoded_slug ), 'switch-theme_' . $slug ) : null,
 				'customize' => ( current_user_can( 'edit_theme_options' ) && current_user_can( 'customize' ) ) ? wp_customize_url( $slug ) : null,
+<<<<<<< HEAD
 				'preview'   => add_query_arg( array(
 					'preview'        => 1,
 					'template'       => urlencode( $theme->get_template() ),
@@ -482,6 +514,8 @@ function wp_prepare_themes_for_js( $themes = null ) {
 					'preview_iframe' => true,
 					'TB_iframe'      => true,
 				), home_url( '/' ) ),
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				'delete'   => current_user_can( 'delete_themes' ) ? wp_nonce_url( admin_url( 'themes.php?action=delete&amp;stylesheet=' . $encoded_slug ), 'delete-theme_' . $slug ) : null,
 			),
 		);
@@ -561,4 +595,7 @@ function customize_themes_print_templates() {
 	</script>
 	<?php
 }
+<<<<<<< HEAD
 add_action( 'customize_controls_print_footer_scripts', 'customize_themes_print_templates' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

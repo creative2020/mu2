@@ -119,7 +119,11 @@ if ( isset( $_GET['updated'] ) ) {
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 	<h2><?php echo esc_html( $title ); ?></h2>
+=======
+	<h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	<form method="post" action="settings.php" novalidate="novalidate">
 		<?php wp_nonce_field( 'siteoptions' ); ?>
 		<h3><?php _e( 'Operational Settings' ); ?></h3>

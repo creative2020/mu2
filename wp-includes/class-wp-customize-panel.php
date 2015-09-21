@@ -24,7 +24,14 @@ class WP_Customize_Panel {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+	 *
+	 * @static
+	 * @access protected
+	 * @static
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -212,7 +219,12 @@ class WP_Customize_Panel {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
+<<<<<<< HEAD
 		$array = wp_array_slice_assoc( (array) $this, array( 'title', 'description', 'priority', 'type' ) );
+=======
+		$array = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'type' ) );
+		$array['title'] = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$array['content'] = $this->get_content();
 		$array['active'] = $this->active();
 		$array['instanceNumber'] = $this->instance_number;
@@ -249,9 +261,13 @@ class WP_Customize_Panel {
 	final public function get_content() {
 		ob_start();
 		$this->maybe_render();
+<<<<<<< HEAD
 		$template = trim( ob_get_contents() );
 		ob_end_clean();
 		return $template;
+=======
+		return trim( ob_get_clean() );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	/**
@@ -287,11 +303,18 @@ class WP_Customize_Panel {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Render the panel container, and then its contents.
+=======
+	 * Render the panel container, and then its contents (via `this->render_content()`) in a subclass.
+	 *
+	 * Panel containers are now rendered in JS by default, see {@see WP_Customize_Panel::print_template()}.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 *
 	 * @since 4.0.0
 	 * @access protected
 	 */
+<<<<<<< HEAD
 	protected function render() {
 		$classes = 'accordion-section control-section control-panel control-panel-' . $this->type;
 		?>
@@ -303,11 +326,66 @@ class WP_Customize_Panel {
 			<ul class="accordion-sub-container control-panel-content">
 				<?php $this->render_content(); ?>
 			</ul>
+=======
+	protected function render() {}
+
+	/**
+	 * Render the panel UI in a subclass.
+	 *
+	 * Panel contents are now rendered in JS by default, see {@see WP_Customize_Panel::print_template()}.
+	 *
+	 * @since 4.1.0
+	 * @access protected
+	 */
+	protected function render_content() {}
+
+	/**
+	 * Render the panel's JS templates.
+	 *
+	 * This function is only run for panel types that have been registered with
+	 * WP_Customize_Manager::register_panel_type().
+	 *
+	 * @since 4.3.0
+	 *
+	 * @see WP_Customize_Manager::register_panel_type()
+	 */
+	public function print_template() {
+		?>
+		<script type="text/html" id="tmpl-customize-panel-<?php echo esc_attr( $this->type ); ?>-content">
+			<?php $this->content_template(); ?>
+		</script>
+		<script type="text/html" id="tmpl-customize-panel-<?php echo esc_attr( $this->type ); ?>">
+			<?php $this->render_template(); ?>
+		</script>
+        <?php
+	}
+
+	/**
+	 * An Underscore (JS) template for rendering this panel's container.
+	 *
+	 * Class variables for this panel class are available in the `data` JS object;
+	 * export custom variables by overriding WP_Customize_Panel::json().
+	 *
+	 * @see WP_Customize_Panel::print_template()
+	 *
+	 * @since 4.3.0
+	 * @access protected
+	 */
+	protected function render_template() {
+		?>
+		<li id="accordion-panel-{{ data.id }}" class="accordion-section control-section control-panel control-panel-{{ data.type }}">
+			<h3 class="accordion-section-title" tabindex="0">
+				{{ data.title }}
+				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this panel' ); ?></span>
+			</h3>
+			<ul class="accordion-sub-container control-panel-content"></ul>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		</li>
 		<?php
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Render the sections that have been added to the panel.
 	 *
 	 * @since 4.1.0
@@ -327,7 +405,135 @@ class WP_Customize_Panel {
 					<?php echo $this->description; ?>
 				</div>
 			<?php endif; ?>
+=======
+	 * An Underscore (JS) template for this panel's content (but not its container).
+	 *
+	 * Class variables for this panel class are available in the `data` JS object;
+	 * export custom variables by overriding WP_Customize_Panel::json().
+	 *
+	 * @see WP_Customize_Panel::print_template()
+	 *
+	 * @since 4.3.0
+	 * @access protected
+	 */
+	protected function content_template() {
+		?>
+		<li class="panel-meta customize-info accordion-section <# if ( ! data.description ) { #> cannot-expand<# } #>">
+			<button class="customize-panel-back" tabindex="-1"><span class="screen-reader-text"><?php _e( 'Back' ); ?></span></button>
+			<div class="accordion-section-title">
+				<span class="preview-notice"><?php
+					/* translators: %s is the site/panel title in the Customizer */
+					echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
+				?></span>
+				<button class="customize-help-toggle dashicons dashicons-editor-help" tabindex="0" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+			</div>
+			<# if ( data.description ) { #>
+				<div class="description customize-panel-description">
+					{{{ data.description }}}
+				</div>
+			<# } #>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		</li>
 		<?php
 	}
 }
+<<<<<<< HEAD
+=======
+
+/**
+ * Customize Nav Menus Panel Class
+ *
+ * Needed to add screen options.
+ *
+ * @since 4.3.0
+ *
+ * @see WP_Customize_Panel
+ */
+class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
+
+	/**
+	 * Control type.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 * @var string
+	 */
+	public $type = 'nav_menus';
+
+	/**
+	 * Render screen options for Menus.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 */
+	public function render_screen_options() {
+		// Essentially adds the screen options.
+		add_filter( 'manage_nav-menus_columns', array( $this, 'wp_nav_menu_manage_columns' ) );
+
+		// Display screen options.
+		$screen = WP_Screen::get( 'nav-menus.php' );
+		$screen->render_screen_options();
+	}
+
+	/**
+	 * Returns the advanced options for the nav menus page.
+	 *
+	 * Link title attribute added as it's a relatively advanced concept for new users.
+	 *
+	 * @since 4.3.0
+	 * @access public
+	 *
+	 * @return array The advanced menu properties.
+	 */
+	public function wp_nav_menu_manage_columns() {
+		return array(
+			'_title'      => __( 'Show advanced menu properties' ),
+			'cb'          => '<input type="checkbox" />',
+			'link-target' => __( 'Link Target' ),
+			'attr-title'  => __( 'Title Attribute' ),
+			'css-classes' => __( 'CSS Classes' ),
+			'xfn'         => __( 'Link Relationship (XFN)' ),
+			'description' => __( 'Description' ),
+		);
+	}
+
+	/**
+	 * An Underscore (JS) template for this panel's content (but not its container).
+	 *
+	 * Class variables for this panel class are available in the `data` JS object;
+	 * export custom variables by overriding WP_Customize_Panel::json().
+	 *
+	 * @since 4.3.0
+	 * @access protected
+	 *
+	 * @see WP_Customize_Panel::print_template()
+	 */
+	protected function content_template() {
+		?>
+		<li class="panel-meta customize-info accordion-section <# if ( ! data.description ) { #> cannot-expand<# } #>">
+			<button type="button" class="customize-panel-back" tabindex="-1">
+				<span class="screen-reader-text"><?php _e( 'Back' ); ?></span>
+			</button>
+			<div class="accordion-section-title">
+				<span class="preview-notice">
+					<?php
+					/* Translators: %s is the site/panel title in the Customizer. */
+					printf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
+					?>
+				</span>
+				<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false">
+					<span class="screen-reader-text"><?php _e( 'Help' ); ?></span>
+				</button>
+				<button type="button" class="customize-screen-options-toggle" aria-expanded="false">
+					<span class="screen-reader-text"><?php _e( 'Menu Options' ); ?></span>
+				</button>
+			</div>
+			<# if ( data.description ) { #>
+			<div class="description customize-panel-description">{{{ data.description }}}</div>
+			<# } #>
+			<?php $this->render_screen_options(); ?>
+		</li>
+	<?php
+	}
+}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

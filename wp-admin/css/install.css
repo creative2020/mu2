@@ -121,7 +121,10 @@ textarea {
 .form-table td {
 	margin-bottom: 9px;
 	padding: 10px 20px 10px 0;
+<<<<<<< HEAD
 	border-bottom: 8px solid #fff;
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	font-size: 14px;
 	vertical-align: top
 }
@@ -129,7 +132,11 @@ textarea {
 .form-table th {
 	font-size: 14px;
 	text-align: left;
+<<<<<<< HEAD
 	padding: 16px 20px 10px 0;
+=======
+	padding: 10px 20px 10px 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	width: 140px;
 	vertical-align: top;
 }
@@ -171,7 +178,11 @@ submit {
 
 .form-table.install-success td {
 	vertical-align: middle;
+<<<<<<< HEAD
 	padding: 16px 20px 10px 0;
+=======
+	padding: 16px 20px 16px 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .form-table.install-success td p {
@@ -198,6 +209,7 @@ submit {
 	font-family: Consolas, Monaco, monospace;
 }
 
+<<<<<<< HEAD
 #pass-strength-result {
 	background-color: #eee;
 	border-color: #ddd !important;
@@ -228,6 +240,68 @@ submit {
 #pass-strength-result.strong {
 	background-color: #c3ff88;
 	border-color: #8dff1c !important;
+=======
+.wp-hide-pw > .dashicons {
+	line-height: inherit;
+}
+
+#pass-strength-result {
+	background-color: #eee;
+	border: 1px solid #ddd;
+	color: #23282d;
+	margin: -2px 5px 5px 0px;
+	padding: 3px 5px;
+	text-align: center;
+	width: 218px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	opacity: 0;
+}
+
+#pass-strength-result.short {
+	background-color: #f1adad;
+	border-color: #e35b5b;
+	opacity: 1;
+}
+
+#pass-strength-result.bad {
+	background-color: #fbc5a9;
+	border-color: #f78b53;
+	opacity: 1;
+}
+
+#pass-strength-result.good {
+	background-color: #ffe399;
+	border-color: #ffc733;
+	opacity: 1;
+}
+
+#pass-strength-result.strong {
+	background-color: #c1e1b9;
+	border-color: #83c373;
+	opacity: 1;
+}
+
+#pass1.short, #pass1-text.short {
+	border-color: #e35b5b;
+}
+
+#pass1.bad, #pass1-text.bad {
+	border-color: #f78b53;
+}
+
+#pass1.good, #pass1-text.good {
+	border-color: #ffc733;
+}
+
+#pass1.strong, #pass1-text.strong {
+	border-color: #83c373;
+}
+
+.pw-weak {
+	display: none;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .message {
@@ -250,6 +324,23 @@ submit {
 	direction: ltr;
 }
 
+<<<<<<< HEAD
+=======
+#pass1-text,
+.show-password #pass1 {
+	display: none;
+}
+
+.show-password #pass1-text
+{
+	display: inline-block;
+}
+
+.form-table span.description.important {
+	font-size: 12px;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /* localization */
 body.rtl,
@@ -374,6 +465,14 @@ body.language-chooser {
 	vertical-align: top;
 }
 
+<<<<<<< HEAD
+=======
+.button-secondary.hide-if-no-js,
+.hide-if-no-js {
+	display: none;
+}
+
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 /**
  * HiDPI Displays
  */

@@ -135,7 +135,21 @@ class getid3_flac extends getid3_handler
 		if (isset($info['flac']['PICTURE']) && ($this->getid3->option_save_attachments !== getID3::ATTACHMENTS_NONE)) {
 			foreach ($info['flac']['PICTURE'] as $entry) {
 				if (!empty($entry['data'])) {
+<<<<<<< HEAD
 					$info['flac']['comments']['picture'][] = array('image_mime'=>$entry['image_mime'], 'data'=>$entry['data']);
+=======
+					if (!isset($info['flac']['comments']['picture'])) {
+						$info['flac']['comments']['picture'] = array();
+					}
+					$comments_picture_data = array();
+					foreach (array('data', 'image_mime', 'image_width', 'image_height', 'imagetype', 'picturetype', 'description', 'datalength') as $picture_key) {
+						if (isset($entry[$picture_key])) {
+							$comments_picture_data[$picture_key] = $entry[$picture_key];
+						}
+					}
+					$info['flac']['comments']['picture'][] = $comments_picture_data;
+					unset($comments_picture_data);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 			}
 		}
@@ -343,12 +357,17 @@ class getid3_flac extends getid3_handler
 		$info = &$this->getid3->info;
 
 		$picture['typeid']         = getid3_lib::BigEndian2Int($this->fread(4));
+<<<<<<< HEAD
 		$picture['type']           = self::pictureTypeLookup($picture['typeid']);
+=======
+		$picture['picturetype']    = self::pictureTypeLookup($picture['typeid']);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$picture['image_mime']     = $this->fread(getid3_lib::BigEndian2Int($this->fread(4)));
 		$descr_length              = getid3_lib::BigEndian2Int($this->fread(4));
 		if ($descr_length) {
 			$picture['description'] = $this->fread($descr_length);
 		}
+<<<<<<< HEAD
 		$picture['width']          = getid3_lib::BigEndian2Int($this->fread(4));
 		$picture['height']         = getid3_lib::BigEndian2Int($this->fread(4));
 		$picture['color_depth']    = getid3_lib::BigEndian2Int($this->fread(4));
@@ -362,6 +381,21 @@ class getid3_flac extends getid3_handler
 				str_replace('/', '_', $picture['type']).'_'.$this->ftell(),
 				$this->ftell(),
 				$data_length,
+=======
+		$picture['image_width']    = getid3_lib::BigEndian2Int($this->fread(4));
+		$picture['image_height']   = getid3_lib::BigEndian2Int($this->fread(4));
+		$picture['color_depth']    = getid3_lib::BigEndian2Int($this->fread(4));
+		$picture['colors_indexed'] = getid3_lib::BigEndian2Int($this->fread(4));
+		$picture['datalength']     = getid3_lib::BigEndian2Int($this->fread(4));
+
+		if ($picture['image_mime'] == '-->') {
+			$picture['data'] = $this->fread($picture['datalength']);
+		} else {
+			$picture['data'] = $this->saveAttachment(
+				str_replace('/', '_', $picture['picturetype']).'_'.$this->ftell(),
+				$this->ftell(),
+				$picture['datalength'],
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$picture['image_mime']);
 		}
 
@@ -440,4 +474,8 @@ class getid3_flac extends getid3_handler
 		return (isset($lookup[$type_id]) ? $lookup[$type_id] : 'reserved');
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

@@ -1,0 +1,230 @@
+/*
+Theme Name: 2020 MU
+Theme URI: http://2020creative.com
+Author: 2020 Creative
+Author URI: http://2020creative.com
+Version: 1.0
+*/
+
+/* Jeff's styles */
+.navbar-main {
+	border-bottom:1px solid white;
+}
+.main-slider-row {
+	border-bottom:1px solid white;
+}
+#tt-list {
+	font-size: 1.0em;
+	color:#8E734E;
+	padding:6px 2px;
+	margin:0 0 2px 0;
+}
+#tt-list-img {
+	margin:0;
+	padding:0 0 0 4px;
+}
+#tt-list i.fa{
+	margin-left:-1.0em;
+	padding:0 0.2em 0 0;
+	height:2.0em;
+}
+#tt-list:hover i.fa{
+	color:white;
+}
+#tt-list h2 {
+	font-size: 1.0em;
+	color:#422f16;
+	padding:0;
+	margin:0;
+}
+#tt-list:hover{
+	background-color: #8E734E;
+	text-decoration: none;
+}
+#tt-list:hover h2{
+	color:white;
+	text-decoration: none;
+}
+#tt-list a:hover {
+	text-decoration: none;
+	color:white;
+}
+/* Post list event */
+#tt-list-event {
+	font-size: 1.2em;
+	color:#8E734E;
+	padding:6px 2px;
+	margin:0 0 2px 0;
+}
+#tt-list-event h2 {
+	font-size: 1.2em;
+	color:white;
+	padding:0;
+	margin:0;
+}
+#tt-list-event p {
+	color:white;
+}
+/* Post list video */
+#tt-list-video{
+	}
+.video-title h2{
+	position: relative;
+	width:100%;
+	height:2.0em;
+	top:8%;
+	font-size: 1.3em;
+	color:white;
+	text-align: center;
+	background-color: green;
+	padding:0.2em;
+}
+.video-icon {
+	color:white;
+	opacity: .75;
+}
+.video-icon i {
+	font-size: 5.0em;
+	text-align: center;
+}
+.video-tn {
+	position: absolute;
+	border:1px solid white;
+	margin:0 auto;
+	height:200px;
+	overflow: hidden;
+}
+.video-tn:hover {
+	opacity: .8;
+}
+/* Footer */
+.footer-contact-container h3{
+	color:white;	
+}
+.footer-contact-container a h4:hover{
+	color:#418FC1;
+	text-decoration: none;	
+}
+.footer-contact-container a:hover{
+	color:#418FC1;
+	text-decoration: none;	
+}
+/*Blog*/
+.tt-blog-article {
+    margin-bottom:1.0em;
+}
+/*Search*/
+#searchform {
+    padding:0.5em 0;
+}
+#searchform label{
+    display:none;
+}
+#searchform input{
+    padding:0.2em 0.5em;
+    font-size:1.5em;
+    border-radius: 8px;
+}
+#searchform input[type=text]{
+    border:1px solid gray;
+    background-color: #FAF7E7;
+}
+#searchform input[type=submit]{
+    border:0px;
+    color:white;
+    padding:0.2em 1.0em;
+    background-color: #79a99c;
+}
+#searchform input[type=submit]:hover{
+    color:white;
+    background-color: #f6b02e;
+}
+.tt-search {
+    border-left:10px solid transparent;
+    padding:1.0em;
+    margin-bottom: 1.0em;
+}
+.tt-search p{
+    color:grey;
+    font-size: 1.1em;
+}
+.tt-search:hover {
+    opacity:1.0;
+    background-color: #F0F0F0 !important;
+    border-left:10px solid #f6b02e !important;
+}
+.tt-search:hover i {
+    color: #f6b02e !important;
+}
+ul.post-categories {
+    margin:0.8em 0;
+    list-style-type: none;
+}
+ul.post-categories a {
+    color:gray;
+    font-size: 1.0em;
+    float:left;
+    text-decoration: underline;
+}
+ul.post-categories a:hover {
+    background-color: #f6b02e;
+}
+post-categories li a{
+    text-decoration: underline !important;
+}
+ul.post-categories li {
+    padding-left: 0.0em;
+    text-indent: 0.0em;
+    font-size: 1.0em;
+}
+ul.post-categories li:before { 
+    font-family: FontAwesome;
+    font-size:1.0em;
+    color:gray;
+    content: '\f08d'; 
+    padding-right:0.2em;
+    float:left;
+}
+ul.post-categories li a { 
+    margin-right:1.0em;
+}
+
+ul.post-categories li:last { 
+    clear:both;
+}
+.search {
+    padding: 1.0em 0;
+    background-color: #d0cec0;
+    border-bottom:1.0em solid white;
+    border-top:0.5em solid white;
+    position: relative;
+    z-index: 99;
+}
+#review-list h2 {
+	margin-top:0;
+}
+.tt-social-icon {
+	font-size: 2.0em;
+	margin-right:1.0em;
+}
+/* Calendar by Modern Tribe */
+.tribe-events-event-image {
+	float:right;
+	margin-top:-10%;
+	max-height:250px;
+}
+.tribe-events-event-image img{
+	max-height:250px;
+	width:auto;
+}
+.head:hover {
+	background-color: #418FC1;
+}
+.home-headlines a:hover {
+	text-decoration: none;
+}
+/* Locations list */
+#locations-list h3{
+	margin-top:0;
+	padding-top:0;
+}

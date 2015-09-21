@@ -18,6 +18,13 @@ class WP_Widget_Pages extends WP_Widget {
 		parent::__construct('pages', __('Pages'), $widget_ops);
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function widget( $args, $instance ) {
 
 		/**
@@ -67,6 +74,14 @@ class WP_Widget_Pages extends WP_Widget {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -81,6 +96,12 @@ class WP_Widget_Pages extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array( 'sortby' => 'post_title', 'title' => '', 'exclude' => '') );
@@ -118,8 +139,16 @@ class WP_Widget_Links extends WP_Widget {
 		parent::__construct('links', __('Links'), $widget_ops);
 	}
 
+<<<<<<< HEAD
 	public function widget( $args, $instance ) {
 
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$show_description = isset($instance['description']) ? $instance['description'] : false;
 		$show_name = isset($instance['name']) ? $instance['name'] : false;
 		$show_rating = isset($instance['rating']) ? $instance['rating'] : false;
@@ -151,6 +180,14 @@ class WP_Widget_Links extends WP_Widget {
 		) ) );
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$new_instance = (array) $new_instance;
 		$instance = array( 'images' => 0, 'name' => 0, 'description' => 0, 'rating' => 0 );
@@ -169,6 +206,12 @@ class WP_Widget_Links extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 
 		//Defaults
@@ -227,8 +270,16 @@ class WP_Widget_Search extends WP_Widget {
 		parent::__construct( 'search', _x( 'Search', 'Search widget' ), $widget_ops );
 	}
 
+<<<<<<< HEAD
 	public function widget( $args, $instance ) {
 
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
@@ -243,6 +294,12 @@ class WP_Widget_Search extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
 		$title = $instance['title'];
@@ -251,6 +308,14 @@ class WP_Widget_Search extends WP_Widget {
 <?php
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$new_instance = wp_parse_args((array) $new_instance, array( 'title' => ''));
@@ -272,6 +337,13 @@ class WP_Widget_Archives extends WP_Widget {
 		parent::__construct('archives', __('Archives'), $widget_ops);
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function widget( $args, $instance ) {
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
@@ -354,6 +426,14 @@ class WP_Widget_Archives extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
@@ -364,6 +444,12 @@ class WP_Widget_Archives extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
 		$title = strip_tags($instance['title']);
@@ -394,8 +480,16 @@ class WP_Widget_Meta extends WP_Widget {
 		parent::__construct('meta', __('Meta'), $widget_ops);
 	}
 
+<<<<<<< HEAD
 	public function widget( $args, $instance ) {
 
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', empty($instance['title']) ? __( 'Meta' ) : $instance['title'], $instance, $this->id_base );
 
@@ -430,6 +524,14 @@ class WP_Widget_Meta extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -437,6 +539,12 @@ class WP_Widget_Meta extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
@@ -458,8 +566,16 @@ class WP_Widget_Calendar extends WP_Widget {
 		parent::__construct('calendar', __('Calendar'), $widget_ops);
 	}
 
+<<<<<<< HEAD
 	public function widget( $args, $instance ) {
 
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
@@ -473,6 +589,14 @@ class WP_Widget_Calendar extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -480,6 +604,12 @@ class WP_Widget_Calendar extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = strip_tags($instance['title']);
@@ -503,8 +633,16 @@ class WP_Widget_Text extends WP_Widget {
 		parent::__construct('text', __('Text'), $widget_ops, $control_ops);
 	}
 
+<<<<<<< HEAD
 	public function widget( $args, $instance ) {
 
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
@@ -526,6 +664,14 @@ class WP_Widget_Text extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -537,6 +683,12 @@ class WP_Widget_Text extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
 		$title = strip_tags($instance['title']);
@@ -545,7 +697,12 @@ class WP_Widget_Text extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
+<<<<<<< HEAD
 		<textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+=======
+		<p><label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e( 'Content:' ); ?></label>
+		<textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea></p>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		<p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox" <?php checked(isset($instance['filter']) ? $instance['filter'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs'); ?></label></p>
 <?php
@@ -564,7 +721,18 @@ class WP_Widget_Categories extends WP_Widget {
 		parent::__construct('categories', __('Categories'), $widget_ops);
 	}
 
+<<<<<<< HEAD
 	public function widget( $args, $instance ) {
+=======
+	/**
+	 * @staticvar bool $first_dropdown
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		static $first_dropdown = true;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Categories' ) : $instance['title'], $instance, $this->id_base );
@@ -585,8 +753,11 @@ class WP_Widget_Categories extends WP_Widget {
 		);
 
 		if ( $d ) {
+<<<<<<< HEAD
 			static $first_dropdown = true;
 
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$dropdown_id = ( $first_dropdown ) ? 'cat' : "{$this->id_base}-dropdown-{$this->number}";
 			$first_dropdown = false;
 
@@ -644,6 +815,14 @@ class WP_Widget_Categories extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -654,6 +833,12 @@ class WP_Widget_Categories extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
@@ -695,7 +880,15 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
 	}
 
+<<<<<<< HEAD
 	public function widget($args, $instance) {
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$cache = array();
 		if ( ! $this->is_preview() ) {
 			$cache = wp_cache_get( 'widget_recent_posts', 'widget' );
@@ -773,6 +966,14 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -787,10 +988,22 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @access public
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function flush_widget_cache() {
 		wp_cache_delete('widget_recent_posts', 'widget');
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
@@ -828,8 +1041,15 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		add_action( 'transition_comment_status', array($this, 'flush_widget_cache') );
 	}
 
+<<<<<<< HEAD
 	public function recent_comments_style() {
 
+=======
+	/**
+	 * @access public
+	 */
+	public function recent_comments_style() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		/**
 		 * Filter the Recent Comments default widget styles.
 		 *
@@ -846,10 +1066,26 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 <?php
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @access public
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function flush_widget_cache() {
 		wp_cache_delete('widget_recent_comments', 'widget');
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @global array  $comments
+	 * @global object $comment
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function widget( $args, $instance ) {
 		global $comments, $comment;
 
@@ -901,7 +1137,11 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		}
 
 		$output .= '<ul id="recentcomments">';
+<<<<<<< HEAD
 		if ( $comments ) {
+=======
+		if ( is_array( $comments ) && $comments ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			// Prime cache for associated posts. (Prime post term cache if we need it for permalinks.)
 			$post_ids = array_unique( wp_list_pluck( $comments, 'comment_post_ID' ) );
 			_prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
@@ -927,6 +1167,14 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -940,6 +1188,12 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$title  = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
@@ -966,8 +1220,16 @@ class WP_Widget_RSS extends WP_Widget {
 		parent::__construct( 'rss', __('RSS'), $widget_ops, $control_ops );
 	}
 
+<<<<<<< HEAD
 	public function widget($args, $instance) {
 
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( isset($instance['error']) && $instance['error'] )
 			return;
 
@@ -1019,15 +1281,34 @@ class WP_Widget_RSS extends WP_Widget {
 		unset($rss);
 	}
 
+<<<<<<< HEAD
 	public function update($new_instance, $old_instance) {
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+	public function update( $new_instance, $old_instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$testurl = ( isset( $new_instance['url'] ) && ( !isset( $old_instance['url'] ) || ( $new_instance['url'] != $old_instance['url'] ) ) );
 		return wp_widget_rss_process( $new_instance, $testurl );
 	}
 
+<<<<<<< HEAD
 	public function form($instance) {
 
 		if ( empty($instance) )
 			$instance = array( 'title' => '', 'url' => '', 'items' => 10, 'error' => false, 'show_summary' => 0, 'show_author' => 0, 'show_date' => 0 );
+=======
+	/**
+	 * @param array $instance
+	 */
+	public function form( $instance ) {
+		if ( empty( $instance ) ) {
+			$instance = array( 'title' => '', 'url' => '', 'items' => 10, 'error' => false, 'show_summary' => 0, 'show_author' => 0, 'show_date' => 0 );
+		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$instance['number'] = $this->number;
 
 		wp_widget_rss_form( $instance );
@@ -1261,6 +1542,13 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		parent::__construct('tag_cloud', __('Tag Cloud'), $widget_ops);
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function widget( $args, $instance ) {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
 		if ( !empty($instance['title']) ) {
@@ -1301,6 +1589,14 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags(stripslashes($new_instance['title']));
@@ -1308,6 +1604,12 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
 ?>
@@ -1325,6 +1627,13 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	</select></p><?php
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 * @return string
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function _get_current_taxonomy($instance) {
 		if ( !empty($instance['taxonomy']) && taxonomy_exists($instance['taxonomy']) )
 			return $instance['taxonomy'];
@@ -1345,7 +1654,15 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		parent::__construct( 'nav_menu', __('Custom Menu'), $widget_ops );
 	}
 
+<<<<<<< HEAD
 	public function widget($args, $instance) {
+=======
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		// Get menu
 		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
 
@@ -1384,6 +1701,14 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		if ( ! empty( $new_instance['title'] ) ) {
@@ -1395,6 +1720,12 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		return $instance;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @param array $instance
+	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function form( $instance ) {
 		$title = isset( $instance['title'] ) ? $instance['title'] : '';
 		$nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
@@ -1403,6 +1734,7 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		$menus = wp_get_nav_menus();
 
 		// If no menus exists, direct the user to go and create some.
+<<<<<<< HEAD
 		if ( !$menus ) {
 			echo '<p>'. sprintf( __('No menus have been created yet. <a href="%s">Create some</a>.'), admin_url('nav-menus.php') ) .'</p>';
 			return;
@@ -1425,6 +1757,36 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		?>
 			</select>
 		</p>
+=======
+		?>
+		<p class="nav-menu-widget-no-menus-message" <?php if ( ! empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+			<?php
+			if ( isset( $GLOBALS['wp_customize'] ) && $GLOBALS['wp_customize'] instanceof WP_Customize_Manager ) {
+				$url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
+			} else {
+				$url = admin_url( 'nav-menus.php' );
+			}
+			?>
+			<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) ); ?>
+		</p>
+		<div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:' ); ?></label>
+				<select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
+					<option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+					<?php foreach ( $menus as $menu ) : ?>
+						<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
+							<?php echo esc_html( $menu->name ); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+			</p>
+		</div>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<?php
 	}
 }
@@ -1475,5 +1837,8 @@ function wp_widgets_init() {
 	 */
 	do_action( 'widgets_init' );
 }
+<<<<<<< HEAD
 
 add_action('init', 'wp_widgets_init', 1);
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
