@@ -313,9 +313,14 @@ commentReply = {
 	},
 
 	toggle : function(el) {
+<<<<<<< HEAD
+		if ( $(el).css('display') != 'none' )
+			$(el).find('a.vim-q').click();
+=======
 		if ( 'none' !== $( el ).css( 'display' ) && ( $( '#replyrow' ).parent().is('#com-reply') || window.confirm( adminCommentsL10n.warnQuickEdit ) ) ) {
 			$( el ).find( 'a.vim-q' ).click();
 		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	},
 
 	revert : function() {
@@ -362,8 +367,12 @@ commentReply = {
 		var editRow, rowData, act, replyButton, editHeight,
 			t = this,
 			c = $('#comment-' + comment_id),
+<<<<<<< HEAD
+			h = c.height();
+=======
 			h = c.height(),
 			colspanVal = 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		t.close();
 		t.cid = comment_id;
@@ -373,12 +382,15 @@ commentReply = {
 		action = action || 'replyto';
 		act = 'edit' == action ? 'edit' : 'replyto';
 		act = t.act = act + '-comment';
+<<<<<<< HEAD
+=======
 		colspanVal = $( 'th:visible, td:visible', c ).length;
 
 		// Make sure it's actually a table and there's a `colspan` value to apply.
 		if ( editRow.hasClass( 'inline-edit-row' ) && 0 !== colspanVal ) {
 			$( 'td', editRow ).attr( 'colspan', colspanVal );
 		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$('#action', editRow).val(act);
 		$('#comment_post_ID', editRow).val(post_id);
@@ -405,7 +417,11 @@ commentReply = {
 			});
 		} else if ( action == 'add' ) {
 			$('#addhead, #addbtn', editRow).show();
+<<<<<<< HEAD
+			$('#replyhead, #replybtn, #edithead, #editbtn', editRow).hide();
+=======
 			$('#replyhead, #replybtn, #edithead, #savebtn', editRow).hide();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$('#the-comment-list').prepend(editRow);
 			$('#replyrow').fadeIn(300);
 		} else {

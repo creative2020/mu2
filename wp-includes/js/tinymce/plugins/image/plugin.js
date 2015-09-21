@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+=======
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -23,7 +28,11 @@ tinymce.PluginManager.add('image', function(editor) {
 		}
 
 		img.onload = function() {
+<<<<<<< HEAD
+			done(img.clientWidth, img.clientHeight);
+=======
 			done(Math.max(img.width, img.clientWidth), Math.max(img.height, img.clientHeight));
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		};
 
 		img.onerror = function() {
@@ -308,7 +317,10 @@ tinymce.PluginManager.add('image', function(editor) {
 					win.find('#src').value(e.control.value()).fire('change');
 				},
 				onPostRender: function() {
+<<<<<<< HEAD
+=======
 					/*eslint consistent-this: 0*/
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					imageListCtrl = this;
 				}
 			};

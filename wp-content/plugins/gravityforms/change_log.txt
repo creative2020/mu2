@@ -1,4 +1,6 @@
 -------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
 Version 1.9.13
 
     - Added security enhancements. Credits to Jonathan Desrosiers & Aaron Ware of Linchpin and Thomas Kräftner (http://kraftner.com).
@@ -192,6 +194,7 @@ Version 1.9.10
 	- API: Updated the Web API to hook into the template_redirect action instead of the pre_get_posts filter. This fixes an issue for add-ons that need access to posts.
 
 -------------------------------------------------------------------------------------------------------------------
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 Version 1.9.9
 	- Added gform_is_form_editor, gform_is_entry_detail, gform_is_entry_detail_view, gform_is_entry_detail_edit filters.
 	- Added security enhancements.
@@ -290,7 +293,11 @@ Version 1.9.6
     - Added GFNotifications::get_routing_field_types() for fetching supported fields types
     - Added 'gform_routing_field_types' filter; allows modifying supported routing field types
         Example:
+<<<<<<< HEAD
+        add_filter( 'gform_routing_field_types', function( $field_types ) { 
+=======
         add_filter( 'gform_routing_field_types', function( $field_types ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
             array_push( $field_types, 'my-custom-field-type' );
             return $field_types;
         } );
@@ -335,13 +342,21 @@ Version 1.9.6
     - AF: Added support in add-on framework for limiting field map fields to specific field types
             Example:
                 $field_map = array(
+<<<<<<< HEAD
+                    array(	
+=======
                     array(
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
                         'name'       => 'email',
                         'label'      => ‘Email Address’,
                         'required'   => true,
                         'field_type' => array( 'email' )
                     ),
+<<<<<<< HEAD
+                    array(	
+=======
                     array(
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
                         'name'       => ‘name’,
                         'label'      => ‘Your Name',
                         'field_type' => array( ‘name’ )

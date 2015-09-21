@@ -19,10 +19,13 @@
  */
 class WP_oEmbed {
 	public $providers = array();
+<<<<<<< HEAD
+=======
 	/**
 	 * @static
 	 * @var array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public static $early_providers = array();
 
 	private $compat_methods = array( '_fetch_with_format', '_parse_json', '_parse_xml', '_parse_body' );
@@ -34,10 +37,17 @@ class WP_oEmbed {
 	 */
 	public function __construct() {
 		$providers = array(
+<<<<<<< HEAD
+			'#http://(www\.)?youtube\.com/watch.*#i'              => array( 'http://www.youtube.com/oembed',                      true  ),
+			'#https://(www\.)?youtube\.com/watch.*#i'             => array( 'http://www.youtube.com/oembed?scheme=https',         true  ),
+			'#http://(www\.)?youtube\.com/playlist.*#i'           => array( 'http://www.youtube.com/oembed',                      true  ),
+			'#https://(www\.)?youtube\.com/playlist.*#i'          => array( 'http://www.youtube.com/oembed?scheme=https',         true  ),
+=======
 			'#http://((m|www)\.)?youtube\.com/watch.*#i'          => array( 'http://www.youtube.com/oembed',                      true  ),
 			'#https://((m|www)\.)?youtube\.com/watch.*#i'         => array( 'http://www.youtube.com/oembed?scheme=https',         true  ),
 			'#http://((m|www)\.)?youtube\.com/playlist.*#i'       => array( 'http://www.youtube.com/oembed',                      true  ),
 			'#https://((m|www)\.)?youtube\.com/playlist.*#i'      => array( 'http://www.youtube.com/oembed?scheme=https',         true  ),
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			'#http://youtu\.be/.*#i'                              => array( 'http://www.youtube.com/oembed',                      true  ),
 			'#https://youtu\.be/.*#i'                             => array( 'http://www.youtube.com/oembed?scheme=https',         true  ),
 			'http://blip.tv/*'                                    => array( 'http://blip.tv/oembed/',                             false ),
@@ -73,7 +83,10 @@ class WP_oEmbed {
 			'#https?://(.+)\.tumblr\.com/post/.*#i'               => array( 'https://www.tumblr.com/oembed/1.0',                  true  ),
 			'#https?://(www\.)?kickstarter\.com/projects/.*#i'    => array( 'https://www.kickstarter.com/services/oembed',        true  ),
 			'#https?://kck\.st/.*#i'                              => array( 'https://www.kickstarter.com/services/oembed',        true  ),
+<<<<<<< HEAD
+=======
 			'#https?://cloudup\.com/.*#i'                         => array( 'https://cloudup.com/oembed', true ),
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		);
 
 		if ( ! empty( self::$early_providers['add'] ) ) {
@@ -200,7 +213,11 @@ class WP_oEmbed {
 	 *
 	 * @param string        $url  The URL to the content.
 	 * @param string|array  $args Optional provider arguments.
+<<<<<<< HEAD
+	 * @return bool|string False on failure, otherwise the oEmbed provider URL.
+=======
 	 * @return false|string False on failure, otherwise the oEmbed provider URL.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function get_provider( $url, $args = '' ) {
 
@@ -311,7 +328,11 @@ class WP_oEmbed {
 	 * Attempts to discover link tags at the given URL for an oEmbed provider.
 	 *
 	 * @param string $url The URL that should be inspected for discovery `<link>` tags.
+<<<<<<< HEAD
+	 * @return bool|string False on failure, otherwise the oEmbed provider URL.
+=======
 	 * @return false|string False on failure, otherwise the oEmbed provider URL.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function discover( $url ) {
 		$providers = array();
@@ -389,7 +410,11 @@ class WP_oEmbed {
 	 * @param string $provider The URL to the oEmbed provider.
 	 * @param string $url The URL to the content that is desired to be embedded.
 	 * @param array $args Optional arguments. Usually passed from a shortcode.
+<<<<<<< HEAD
+	 * @return bool|object False on failure, otherwise the result in the form of an object.
+=======
 	 * @return false|object False on failure, otherwise the result in the form of an object.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function fetch( $provider, $url, $args = '' ) {
 		$args = wp_parse_args( $args, wp_embed_defaults( $url ) );
@@ -425,7 +450,11 @@ class WP_oEmbed {
 	 * @access private
 	 * @param string $provider_url_with_args URL to the provider with full arguments list (url, maxheight, etc.)
 	 * @param string $format Format to use
+<<<<<<< HEAD
+	 * @return bool|object False on failure, otherwise the result in the form of an object.
+=======
 	 * @return false|object|WP_Error False on failure, otherwise the result in the form of an object.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	private function _fetch_with_format( $provider_url_with_args, $format ) {
 		$provider_url_with_args = add_query_arg( 'format', $format, $provider_url_with_args );
@@ -447,6 +476,11 @@ class WP_oEmbed {
 	 *
 	 * @since 3.0.0
 	 * @access private
+<<<<<<< HEAD
+	 */
+	private function _parse_json( $response_body ) {
+		return ( ( $data = json_decode( trim( $response_body ) ) ) && is_object( $data ) ) ? $data : false;
+=======
 	 *
 	 * @param string $response_body
 	 * @return object|false
@@ -454,6 +488,7 @@ class WP_oEmbed {
 	private function _parse_json( $response_body ) {
 		$data = json_decode( trim( $response_body ) );
 		return ( $data && is_object( $data ) ) ? $data : false;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	/**
@@ -461,9 +496,12 @@ class WP_oEmbed {
 	 *
 	 * @since 3.0.0
 	 * @access private
+<<<<<<< HEAD
+=======
 	 *
 	 * @param string $response_body
 	 * @return object|false
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	private function _parse_xml( $response_body ) {
 		if ( ! function_exists( 'libxml_disable_entity_loader' ) )
@@ -485,9 +523,12 @@ class WP_oEmbed {
 	 *
 	 * @since 3.6.0
 	 * @access private
+<<<<<<< HEAD
+=======
 	 *
 	 * @param string $response_body
 	 * @return object|false
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	private function _parse_xml_body( $response_body ) {
 		if ( ! function_exists( 'simplexml_import_dom' ) || ! class_exists( 'DOMDocument' ) )
@@ -616,15 +657,27 @@ class WP_oEmbed {
  * @since 2.9.0
  * @access private
  *
+<<<<<<< HEAD
+ * @see WP_oEmbed
+=======
  * @staticvar WP_oEmbed $wp_oembed
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * @return WP_oEmbed object.
  */
 function _wp_oembed_get_object() {
+<<<<<<< HEAD
+	static $wp_oembed;
+
+	if ( is_null($wp_oembed) )
+		$wp_oembed = new WP_oEmbed();
+
+=======
 	static $wp_oembed = null;
 
 	if ( is_null( $wp_oembed ) ) {
 		$wp_oembed = new WP_oEmbed();
 	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	return $wp_oembed;
 }

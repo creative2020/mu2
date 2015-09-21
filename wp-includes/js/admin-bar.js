@@ -28,12 +28,15 @@ if ( typeof(jQuery) != 'undefined' ) {
 					e.stopPropagation();
 					e.preventDefault();
 					el.addClass('hover');
+<<<<<<< HEAD
+=======
 				} else if ( ! $( e.target ).closest( 'div' ).hasClass( 'ab-sub-wrapper' ) ) {
 					// We're dealing with an already-touch-opened menu genericon (we know el.hasClass('hover')),
 					// so close it on a second tap and prevent propag and defaults. See #29906
 					e.stopPropagation();
 					e.preventDefault();
 					el.removeClass('hover');
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 
 				if ( unbind ) {
@@ -129,6 +132,14 @@ if ( typeof(jQuery) != 'undefined' ) {
 			target.siblings('.ab-sub-wrapper').find('.ab-item').each(refresh);
 		});
 
+<<<<<<< HEAD
+		$('#wpadminbar').click( function(e) {
+			if ( e.target.id != 'wpadminbar' && e.target.id != 'wp-admin-bar-top-secondary' )
+				return;
+
+			e.preventDefault();
+			$('html, body').animate({ scrollTop: 0 }, 'fast');
+=======
 		adminbar.click( function(e) {
 			if ( e.target.id != 'wpadminbar' && e.target.id != 'wp-admin-bar-top-secondary' ) {
 				return;
@@ -137,6 +148,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			adminbar.find( 'li.menupop.hover' ).removeClass( 'hover' );
 			$( 'html, body' ).animate( { scrollTop: 0 }, 'fast' );
 			e.preventDefault();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		});
 
 		// fix focus bug in WebKit

@@ -41,14 +41,21 @@ function check_upload_size( $file ) {
 
 	return $file;
 }
+<<<<<<< HEAD
+add_filter( 'wp_handle_upload_prefilter', 'check_upload_size' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Delete a blog.
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
+=======
  * @global wpdb $wpdb
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int  $blog_id Blog ID.
  * @param bool $drop    True if blog's table should be dropped. Default is false.
  */
@@ -177,8 +184,11 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
  *
  * @todo Merge with wp_delete_user() ?
  *
+<<<<<<< HEAD
+=======
  * @global wpdb $wpdb
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $id The user ID.
  * @return bool True if the user was deleted, otherwise false.
  */
@@ -190,6 +200,8 @@ function wpmu_delete_user( $id ) {
 
 	if ( !$user->exists() )
 		return false;
+<<<<<<< HEAD
+=======
 
 	// Global super-administrators are protected, and cannot be deleted.
 	$_super_admins = get_super_admins();
@@ -197,6 +209,7 @@ function wpmu_delete_user( $id ) {
 		return false;
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	/**
 	 * Fires before a user is deleted from the network.
 	 *
@@ -263,7 +276,10 @@ function update_option_new_admin_email( $old_value, $value ) {
 	);
 	update_option( 'adminhash', $new_admin_email );
 
+<<<<<<< HEAD
+=======
 	/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$email_text = __( 'Howdy ###USERNAME###,
 
 You recently requested to have the administration email address on
@@ -298,7 +314,10 @@ All at ###SITENAME###
 	 */
 	$content = apply_filters( 'new_admin_email_content', $email_text, $new_admin_email );
 
+<<<<<<< HEAD
+=======
 	$current_user = wp_get_current_user();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$content = str_replace( '###USERNAME###', $current_user->user_login, $content );
 	$content = str_replace( '###ADMIN_URL###', esc_url( admin_url( 'options.php?adminhash='.$hash ) ), $content );
 	$content = str_replace( '###EMAIL###', $value, $content );
@@ -307,6 +326,11 @@ All at ###SITENAME###
 
 	wp_mail( $value, sprintf( __( '[%s] New Admin Email Address' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), $content );
 }
+<<<<<<< HEAD
+add_action( 'update_option_new_admin_email', 'update_option_new_admin_email', 10, 2 );
+add_action( 'add_option_new_admin_email', 'update_option_new_admin_email', 10, 2 );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Sends an email when an email address change is requested.
@@ -344,7 +368,10 @@ function send_confirmation_on_profile_email() {
 				);
 		update_option( $current_user->ID . '_new_email', $new_user_email );
 
+<<<<<<< HEAD
+=======
 		/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$email_text = __( 'Howdy ###USERNAME###,
 
 You recently requested to have the email address on your account changed.
@@ -388,6 +415,10 @@ All at ###SITENAME###
 		$_POST['email'] = $current_user->user_email;
 	}
 }
+<<<<<<< HEAD
+add_action( 'personal_options_update', 'send_confirmation_on_profile_email' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Adds an admin notice alerting the user to check for confirmation email
@@ -399,6 +430,10 @@ function new_user_email_admin_notice() {
 	if ( strpos( $_SERVER['PHP_SELF'], 'profile.php' ) && isset( $_GET['updated'] ) && $email = get_option( get_current_user_id() . '_new_email' ) )
 		echo "<div class='update-nag'>" . sprintf( __( "Your email address has not been updated yet. Please check your inbox at %s for a confirmation email." ), $email['newemail'] ) . "</div>";
 }
+<<<<<<< HEAD
+add_action( 'admin_notices', 'new_user_email_admin_notice' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Check whether a blog has used its allotted upload space.
@@ -461,9 +496,15 @@ function display_space_usage() {
  * @return int Max size in bytes
  */
 function fix_import_form_size( $size ) {
+<<<<<<< HEAD
+	if ( upload_is_user_over_quota( false ) == true )
+		return 0;
+
+=======
 	if ( upload_is_user_over_quota( false ) ) {
 		return 0;
 	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$available = get_upload_space_available();
 	return min( $size, $available );
 }
@@ -493,6 +534,10 @@ function upload_space_setting( $id ) {
 	</tr>
 	<?php
 }
+<<<<<<< HEAD
+add_action( 'wpmueditblogaction', 'upload_space_setting' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Update the status of a user in the database.
@@ -501,8 +546,11 @@ function upload_space_setting( $id ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
+=======
  * @global wpdb $wpdb
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int    $id         The user ID.
  * @param string $pref       The column in the wp_users table to update the user's status
  *                           in (presumably user_status, spam, or deleted).
@@ -623,6 +671,10 @@ function sync_category_tag_slugs( $term, $taxonomy ) {
 	}
 	return $term;
 }
+<<<<<<< HEAD
+add_filter( 'get_term', 'sync_category_tag_slugs', 10, 2 );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Displays an access denied message when a user tries to view a site's dashboard they
@@ -663,6 +715,10 @@ function _access_denied_splash() {
 
 	wp_die( $output, 403 );
 }
+<<<<<<< HEAD
+add_action( 'admin_page_access_denied', '_access_denied_splash', 99 );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Checks if the current user has permissions to import new users.
@@ -677,6 +733,10 @@ function check_import_new_users( $permission ) {
 		return false;
 	return true;
 }
+<<<<<<< HEAD
+add_filter( 'import_allow_create_users', 'check_import_new_users' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 // See "import_allow_fetch_attachments" and "import_attachment_size_limit" filters too.
 
 /**
@@ -735,8 +795,11 @@ function mu_dropdown_languages( $lang_files = array(), $current = '' ) {
  * @since 3.0.0
  *
  * @global int $wp_db_version The version number of the database.
+<<<<<<< HEAD
+=======
  *
  * @return false False if the current user is not a super admin.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function site_admin_notice() {
 	global $wp_db_version;
@@ -745,6 +808,11 @@ function site_admin_notice() {
 	if ( get_site_option( 'wpmu_upgrade_site' ) != $wp_db_version )
 		echo "<div class='update-nag'>" . sprintf( __( 'Thank you for Updating! Please visit the <a href="%s">Upgrade Network</a> page to update all your sites.' ), esc_url( network_admin_url( 'upgrade.php' ) ) ) . "</div>";
 }
+<<<<<<< HEAD
+add_action( 'admin_notices', 'site_admin_notice' );
+add_action( 'network_admin_notices', 'site_admin_notice' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Avoids a collision between a site slug and a permalink slug.
@@ -779,6 +847,10 @@ function avoid_blog_page_permalink_collision( $data, $postarr ) {
 	}
 	return $data;
 }
+<<<<<<< HEAD
+add_filter( 'wp_insert_post_data', 'avoid_blog_page_permalink_collision', 10, 2 );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Handles the display of choosing a user's primary site.
@@ -815,7 +887,11 @@ function choose_primary_blog() {
 			}
 		} elseif ( count( $all_blogs ) == 1 ) {
 			$blog = reset( $all_blogs );
+<<<<<<< HEAD
+			echo $blog->domain;
+=======
 			echo esc_url( get_home_url( $blog->userblog_id ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			if ( $primary_blog != $blog->userblog_id ) // Set the primary blog again if it's out of sync with blog list.
 				update_user_meta( get_current_user_id(), 'primary_blog', $blog->userblog_id );
 		} else {
@@ -844,8 +920,11 @@ function choose_primary_blog() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
+=======
  * @global array $super_admins
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $user_id ID of the user to be granted Super Admin privileges.
  * @return bool True on success, false on failure. This can fail when the user is
  *              already a super admin or when the `$super_admins` global is defined.
@@ -891,8 +970,11 @@ function grant_super_admin( $user_id ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
+=======
  * @global array $super_admins
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $user_id ID of the user Super Admin privileges to be revoked from.
  * @return bool True on success, false on failure. This can fail when the user's email
  *              is the network admin email or when the `$super_admins` global is defined.
@@ -943,8 +1025,11 @@ function revoke_super_admin( $user_id ) {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
+=======
  * @global wpdb $wpdb
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param int $site_id The network/site ID to check.
  * @return bool True if network can be edited, otherwise false.
  */

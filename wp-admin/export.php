@@ -143,7 +143,11 @@ function export_date_options( $post_type = 'post' ) {
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+<h2><?php echo esc_html( $title ); ?></h2>
+=======
 <h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <p><?php _e('When you click the button below WordPress will create an XML file for you to save to your computer.'); ?></p>
 <p><?php _e('This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom fields, categories, and tags.'); ?></p>

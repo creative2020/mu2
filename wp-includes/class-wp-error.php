@@ -144,7 +144,11 @@ class WP_Error {
 	 * @since 2.1.0
 	 *
 	 * @param string|int $code Optional. Error code.
+<<<<<<< HEAD
+	 * @return mixed Null, if no errors.
+=======
 	 * @return mixed Error data, if it exists.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function get_error_data($code = '') {
 		if ( empty($code) )
@@ -152,6 +156,10 @@ class WP_Error {
 
 		if ( isset($this->error_data[$code]) )
 			return $this->error_data[$code];
+<<<<<<< HEAD
+		return null;
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	/**

@@ -12,8 +12,11 @@
  * Update the last_updated field for the current blog.
  *
  * @since MU
+<<<<<<< HEAD
+=======
  *
  * @global wpdb $wpdb
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wpmu_update_blogs_date() {
 	global $wpdb;
@@ -68,8 +71,11 @@ function get_blogaddress_by_name( $blogname ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+=======
  * @global wpdb $wpdb
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $slug
  * @return int A blog id
  */
@@ -101,12 +107,17 @@ function get_id_from_blogname( $slug ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int|string|array $fields A blog ID, a blog slug, or an array of fields to query against. Optional. If not specified the current blog ID is used.
+ * @param bool $get_all Whether to retrieve all details or only the details in the blogs table. Default is true.
+=======
  * @global wpdb $wpdb
  *
  * @param int|string|array $fields  Optional. A blog ID, a blog slug, or an array of fields to query against.
  *                                  If not specified the current blog ID is used.
  * @param bool             $get_all Whether to retrieve all details or only the details in the blogs table.
  *                                  Default is true.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return object|false Blog details on success. False on failure.
  */
 function get_blog_details( $fields = null, $get_all = true ) {
@@ -280,9 +291,13 @@ function refresh_blog_details( $blog_id = 0 ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $blog_id Blog ID
+=======
  * @global wpdb $wpdb
  *
  * @param int   $blog_id Blog ID
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $details Array of details keyed by blogs table field names.
  * @return bool True if update succeeds, false otherwise.
  */
@@ -454,9 +469,15 @@ function clean_blog_cache( $blog ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $id A blog ID. Can be null to refer to the current blog.
+ * @param string $option Name of option to retrieve. Expected to not be SQL-escaped.
+ * @param mixed $default Optional. Default value to return if the option does not exist.
+=======
  * @param int    $id      A blog ID. Can be null to refer to the current blog.
  * @param string $option  Name of option to retrieve. Expected to not be SQL-escaped.
  * @param mixed  $default Optional. Default value to return if the option does not exist.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return mixed Value set for the option.
  */
 function get_blog_option( $id, $option, $default = false ) {
@@ -499,9 +520,15 @@ function get_blog_option( $id, $option, $default = false ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $id A blog ID. Can be null to refer to the current blog.
+ * @param string $option Name of option to add. Expected to not be SQL-escaped.
+ * @param mixed $value Optional. Option value, can be anything. Expected to not be SQL-escaped.
+=======
  * @param int    $id     A blog ID. Can be null to refer to the current blog.
  * @param string $option Name of option to add. Expected to not be SQL-escaped.
  * @param mixed  $value  Optional. Option value, can be anything. Expected to not be SQL-escaped.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool False if option was not added and true if option was added.
  */
 function add_blog_option( $id, $option, $value ) {
@@ -525,7 +552,11 @@ function add_blog_option( $id, $option, $value ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $id A blog ID. Can be null to refer to the current blog.
+=======
  * @param int    $id     A blog ID. Can be null to refer to the current blog.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $option Name of option to remove. Expected to not be SQL-escaped.
  * @return bool True, if option is successfully deleted. False on failure.
  */
@@ -550,9 +581,15 @@ function delete_blog_option( $id, $option ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $id The blog id
+ * @param string $option The option key
+ * @param mixed $value The option value
+=======
  * @param int    $id     The blog id
  * @param string $option The option key
  * @param mixed  $value  The option value
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True on success, false on failure.
  */
 function update_blog_option( $id, $option, $value, $deprecated = null ) {
@@ -586,6 +623,14 @@ function update_blog_option( $id, $option, $value, $deprecated = null ) {
  * @see restore_current_blog()
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $new_blog The id of the blog you want to switch to. Default: current blog
+ * @param bool $deprecated Deprecated argument
+ * @return bool Always returns True.
+ */
+function switch_to_blog( $new_blog, $deprecated = null ) {
+	global $wpdb, $wp_roles;
+=======
  * @global wpdb            $wpdb
  * @global int             $blog_id
  * @global array           $_wp_switched_stack
@@ -599,6 +644,7 @@ function update_blog_option( $id, $option, $value, $deprecated = null ) {
  */
 function switch_to_blog( $new_blog, $deprecated = null ) {
 	global $wpdb;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( empty( $new_blog ) )
 		$new_blog = $GLOBALS['blog_id'];
@@ -652,7 +698,11 @@ function switch_to_blog( $new_blog, $deprecated = null ) {
 	}
 
 	if ( did_action( 'init' ) ) {
+<<<<<<< HEAD
+		$wp_roles->reinit();
+=======
 		wp_roles()->reinit();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$current_user = wp_get_current_user();
 		$current_user->for_blog( $new_blog );
 	}
@@ -670,6 +720,12 @@ function switch_to_blog( $new_blog, $deprecated = null ) {
  * @see switch_to_blog()
  * @since MU
  *
+<<<<<<< HEAD
+ * @return bool True on success, false if we're already on the current blog
+ */
+function restore_current_blog() {
+	global $wpdb, $wp_roles;
+=======
  * @global wpdb            $wpdb
  * @global array           $_wp_switched_stack
  * @global int             $blog_id
@@ -681,6 +737,7 @@ function switch_to_blog( $new_blog, $deprecated = null ) {
  */
 function restore_current_blog() {
 	global $wpdb;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( empty( $GLOBALS['_wp_switched_stack'] ) )
 		return false;
@@ -723,7 +780,11 @@ function restore_current_blog() {
 	}
 
 	if ( did_action( 'init' ) ) {
+<<<<<<< HEAD
+		$wp_roles->reinit();
+=======
 		wp_roles()->reinit();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$current_user = wp_get_current_user();
 		$current_user->for_blog( $blog );
 	}
@@ -742,8 +803,11 @@ function restore_current_blog() {
  *
  * @since 3.5.0
  *
+<<<<<<< HEAD
+=======
  * @global array $_wp_switched_stack
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True if switched, false otherwise.
  */
 function ms_is_switched() {
@@ -767,7 +831,11 @@ function is_archived( $id ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $id The blog id
+=======
  * @param int    $id       The blog id
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $archived The new status
  * @return string $archived
  */
@@ -781,6 +849,12 @@ function update_archived( $id, $archived ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $blog_id BLog ID
+ * @param string $pref A field name
+ * @param string $value Value for $pref
+ * @return string $value
+=======
  * @global wpdb $wpdb
  *
  * @param int    $blog_id BLog ID
@@ -788,6 +862,7 @@ function update_archived( $id, $archived ) {
  * @param string $value   Value for $pref
  * @param null   $deprecated
  * @return string|false $value
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function update_blog_status( $blog_id, $pref, $value, $deprecated = null ) {
 	global $wpdb;
@@ -857,11 +932,17 @@ function update_blog_status( $blog_id, $pref, $value, $deprecated = null ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param int $id The blog id
+ * @param string $pref A field name
+ * @return bool $value
+=======
  * @global wpdb $wpdb
  *
  * @param int    $id   The blog id
  * @param string $pref A field name
  * @return bool|string|null $value
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function get_blog_status( $id, $pref ) {
 	global $wpdb;
@@ -878,11 +959,17 @@ function get_blog_status( $id, $pref ) {
  *
  * @since MU
  *
+<<<<<<< HEAD
+ * @param mixed $deprecated Not used
+ * @param int $start The offset
+ * @param int $quantity The maximum number of blogs to retrieve. Default is 40.
+=======
  * @global wpdb $wpdb
  *
  * @param mixed $deprecated Not used
  * @param int   $start      The offset
  * @param int   $quantity   The maximum number of blogs to retrieve. Default is 40.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return array The list of blogs
  */
 function get_last_updated( $deprecated = '', $start = 0, $quantity = 40 ) {
@@ -901,7 +988,11 @@ function get_last_updated( $deprecated = '', $start = 0, $quantity = 40 ) {
  *
  * @param string $new_status The new post status
  * @param string $old_status The old post status
+<<<<<<< HEAD
+ * @param object $post Post object
+=======
  * @param object $post       Post object
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function _update_blog_date_on_post_publish( $new_status, $old_status, $post ) {
 	$post_type_obj = get_post_type_object( $post->post_type );

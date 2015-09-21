@@ -390,6 +390,8 @@ strong {
 	text-decoration: underline;
 }
 
+<<<<<<< HEAD
+=======
 .split-button {
 	position: relative;
 	display: inline-block;
@@ -523,6 +525,7 @@ strong {
 	-webkit-box-shadow: inset 0 1px 0 rgba( 0, 0, 0, 0.1 );
 	box-shadow: inset 0 1px 0 rgba( 0, 0, 0, 0.1 );
 }
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
 * Forms
@@ -979,7 +982,10 @@ input[type="search"].categories-search,
 	border-bottom: 1px solid #e5e5e5;
 	font-size: 14px;
 	-webkit-appearance: none;
+<<<<<<< HEAD
+=======
 	-moz-appearance: none;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	appearance: none;
 }
 
@@ -1886,12 +1892,22 @@ html {
 	padding: 0 10px;
 }
 
+<<<<<<< HEAD
+.draft-button.is-hidden,
+.draft-button .saving-draft,
+.draft-button.is-saving .save-draft {
+	display: none;
+}
+
+.draft-button.is-saving .saving-draft {
+=======
 .publish-button .saving-draft,
 .publish-button.is-saving .publish {
 	display: none;
 }
 
 .publish-button.is-saving .saving-draft {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	display: inline;
 }
 
@@ -2170,6 +2186,8 @@ html {
 	top: -1px;
 	margin-left: 11px;
 }
+<<<<<<< HEAD
+=======
 
 /* Text editor */
 #pressthis {
@@ -2213,3 +2231,4 @@ html {
 	background: #fff;
 	border-color: #d8d8d8;
 }
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

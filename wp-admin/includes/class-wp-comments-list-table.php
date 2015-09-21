@@ -33,8 +33,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @see WP_List_Table::__construct() for more information on default arguments.
 	 *
+<<<<<<< HEAD
+=======
 	 * @global int $post_id
 	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param array $args An associative array of arguments.
 	 */
 	public function __construct( $args = array() ) {
@@ -53,13 +56,18 @@ class WP_Comments_List_Table extends WP_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @return bool
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function ajax_user_can() {
 		return current_user_can('edit_posts');
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global int    $post_id
@@ -67,6 +75,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 * @global string $search
 	 * @global string $comment_type
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function prepare_items() {
 		global $post_id, $comment_status, $search, $comment_type;
 
@@ -128,6 +137,24 @@ class WP_Comments_List_Table extends WP_List_Table {
 		);
 
 		$_comments = get_comments( $args );
+<<<<<<< HEAD
+
+		update_comment_cache( $_comments );
+
+		$this->items = array_slice( $_comments, 0, $comments_per_page );
+		$this->extra_items = array_slice( $_comments, $comments_per_page );
+
+		$total_comments = get_comments( array_merge( $args, array('count' => true, 'offset' => 0, 'number' => 0) ) );
+
+		$_comment_post_ids = array();
+		foreach ( $_comments as $_c ) {
+			$_comment_post_ids[] = $_c->comment_post_ID;
+		}
+
+		$_comment_post_ids = array_unique( $_comment_post_ids );
+
+		$this->pending_count = get_pending_comments_num( $_comment_post_ids );
+=======
 		if ( is_array( $_comments ) ) {
 			update_comment_cache( $_comments );
 
@@ -144,6 +171,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 			'offset' => 0,
 			'number' => 0
 		) ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$this->set_pagination_args( array(
 			'total_items' => $total_comments,
@@ -151,11 +179,14 @@ class WP_Comments_List_Table extends WP_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @param string $comment_status
 	 * @return int
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_per_page( $comment_status = 'all' ) {
 		$comments_per_page = $this->get_items_per_page( 'edit_comments_per_page' );
 		/**
@@ -166,6 +197,12 @@ class WP_Comments_List_Table extends WP_List_Table {
 		 * @param int    $comments_per_page The number of comments to list per page.
 		 * @param string $comment_status    The comment status name. Default 'All'.
 		 */
+<<<<<<< HEAD
+		$comments_per_page = apply_filters( 'comments_per_page', $comments_per_page, $comment_status );
+		return $comments_per_page;
+	}
+
+=======
 		return apply_filters( 'comments_per_page', $comments_per_page, $comment_status );
 	}
 
@@ -173,6 +210,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @global string $comment_status
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function no_items() {
 		global $comment_status;
 
@@ -182,12 +220,15 @@ class WP_Comments_List_Table extends WP_List_Table {
 			_e( 'No comments found.' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global int $post_id
 	 * @global string $comment_status
 	 * @global string $comment_type
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_views() {
 		global $post_id, $comment_status, $comment_type;
 
@@ -237,6 +278,12 @@ class WP_Comments_List_Table extends WP_List_Table {
 		 * @param array $status_links An array of fully-formed status links. Default 'All'.
 		 *                            Accepts 'All', 'Pending', 'Approved', 'Spam', and 'Trash'.
 		 */
+<<<<<<< HEAD
+		$status_links = apply_filters( 'comment_status_links', $status_links );
+		return $status_links;
+	}
+
+=======
 		return apply_filters( 'comment_status_links', $status_links );
 	}
 
@@ -246,6 +293,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_bulk_actions() {
 		global $comment_status;
 
@@ -270,6 +318,8 @@ class WP_Comments_List_Table extends WP_List_Table {
 		return $actions;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global string $comment_status
@@ -277,6 +327,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @param string $which
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function extra_tablenav( $which ) {
 		global $comment_status, $comment_type;
 ?>
@@ -330,9 +381,12 @@ class WP_Comments_List_Table extends WP_List_Table {
 		echo '</div>';
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @return string|false
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function current_action() {
 		if ( isset( $_REQUEST['delete_all'] ) || isset( $_REQUEST['delete_all2'] ) )
 			return 'delete_all';
@@ -340,12 +394,15 @@ class WP_Comments_List_Table extends WP_List_Table {
 		return parent::current_action();
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global int $post_id
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_columns() {
 		global $post_id;
 
@@ -357,18 +414,26 @@ class WP_Comments_List_Table extends WP_List_Table {
 		$columns['author'] = __( 'Author' );
 		$columns['comment'] = _x( 'Comment', 'column name' );
 
+<<<<<<< HEAD
+		if ( !$post_id )
+			$columns['response'] = _x( 'In Response To', 'column name' );
+=======
 		if ( ! $post_id ) {
 			/* translators: column name or table row header */
 			$columns['response'] = __( 'In Response To' );
 		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		return $columns;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_sortable_columns() {
 		return array(
 			'author'   => 'comment_author',
@@ -376,6 +441,8 @@ class WP_Comments_List_Table extends WP_List_Table {
 		);
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * Get the name of the default primary column.
 	 *
@@ -391,13 +458,18 @@ class WP_Comments_List_Table extends WP_List_Table {
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
 
 		$this->display_tablenav( 'top' );
 
 ?>
+<<<<<<< HEAD
+<table class="<?php echo implode( ' ', $this->get_table_classes() ); ?>">
+=======
 <table class="wp-list-table <?php echo implode( ' ', $this->get_table_classes() ); ?>">
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	<thead>
 	<tr>
 		<?php $this->print_column_headers(); ?>
@@ -424,6 +496,8 @@ class WP_Comments_List_Table extends WP_List_Table {
 		$this->display_tablenav( 'bottom' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global WP_Post $post
@@ -431,6 +505,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @param object $a_comment
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function single_row( $a_comment ) {
 		global $post, $comment;
 
@@ -450,6 +525,8 @@ class WP_Comments_List_Table extends WP_List_Table {
 		echo "</tr>\n";
 	}
 
+<<<<<<< HEAD
+=======
  	/**
  	 * Generate and display row actions links.
  	 *
@@ -569,6 +646,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @param object $comment
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function column_cb( $comment ) {
 		if ( $this->user_can ) { ?>
 		<label class="screen-reader-text" for="cb-select-<?php echo $comment->comment_ID; ?>"><?php _e( 'Select comment' ); ?></label>
@@ -577,11 +655,35 @@ class WP_Comments_List_Table extends WP_List_Table {
 		}
 	}
 
+<<<<<<< HEAD
+	public function column_comment( $comment ) {
+		global $comment_status;
+		$post = get_post();
+
+		$comment_url = esc_url( get_comment_link( $comment->comment_ID ) );
+		$the_comment_status = wp_get_comment_status( $comment->comment_ID );
+
+		if ( $this->user_can ) {
+			$del_nonce = esc_html( '_wpnonce=' . wp_create_nonce( "delete-comment_$comment->comment_ID" ) );
+			$approve_nonce = esc_html( '_wpnonce=' . wp_create_nonce( "approve-comment_$comment->comment_ID" ) );
+
+			$url = "comment.php?c=$comment->comment_ID";
+
+			$approve_url = esc_url( $url . "&action=approvecomment&$approve_nonce" );
+			$unapprove_url = esc_url( $url . "&action=unapprovecomment&$approve_nonce" );
+			$spam_url = esc_url( $url . "&action=spamcomment&$del_nonce" );
+			$unspam_url = esc_url( $url . "&action=unspamcomment&$del_nonce" );
+			$trash_url = esc_url( $url . "&action=trashcomment&$del_nonce" );
+			$untrash_url = esc_url( $url . "&action=untrashcomment&$del_nonce" );
+			$delete_url = esc_url( $url . "&action=deletecomment&$del_nonce" );
+		}
+=======
 	/**
 	 * @param object $comment
 	 */
 	public function column_comment( $comment ) {
 		$comment_url = esc_url( get_comment_link( $comment->comment_ID ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		echo '<div class="comment-author">';
 			$this->column_author( $comment );
@@ -617,6 +719,83 @@ class WP_Comments_List_Table extends WP_List_Table {
 		</div>
 		<?php
 		}
+<<<<<<< HEAD
+
+		if ( $this->user_can ) {
+			// Preorder it: Approve | Reply | Quick Edit | Edit | Spam | Trash.
+			$actions = array(
+				'approve' => '', 'unapprove' => '',
+				'reply' => '',
+				'quickedit' => '',
+				'edit' => '',
+				'spam' => '', 'unspam' => '',
+				'trash' => '', 'untrash' => '', 'delete' => ''
+			);
+
+			// Not looking at all comments.
+			if ( $comment_status && 'all' != $comment_status ) {
+				if ( 'approved' == $the_comment_status ) {
+					$actions['unapprove'] = "<a href='$unapprove_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:e7e7d3:action=dim-comment&amp;new=unapproved' class='vim-u vim-destructive' title='" . esc_attr__( 'Unapprove this comment' ) . "'>" . __( 'Unapprove' ) . '</a>';
+				} elseif ( 'unapproved' == $the_comment_status ) {
+					$actions['approve'] = "<a href='$approve_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:e7e7d3:action=dim-comment&amp;new=approved' class='vim-a vim-destructive' title='" . esc_attr__( 'Approve this comment' ) . "'>" . __( 'Approve' ) . '</a>';
+				}
+			} else {
+				$actions['approve'] = "<a href='$approve_url' data-wp-lists='dim:the-comment-list:comment-$comment->comment_ID:unapproved:e7e7d3:e7e7d3:new=approved' class='vim-a' title='" . esc_attr__( 'Approve this comment' ) . "'>" . __( 'Approve' ) . '</a>';
+				$actions['unapprove'] = "<a href='$unapprove_url' data-wp-lists='dim:the-comment-list:comment-$comment->comment_ID:unapproved:e7e7d3:e7e7d3:new=unapproved' class='vim-u' title='" . esc_attr__( 'Unapprove this comment' ) . "'>" . __( 'Unapprove' ) . '</a>';
+			}
+
+			if ( 'spam' != $the_comment_status ) {
+				$actions['spam'] = "<a href='$spam_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::spam=1' class='vim-s vim-destructive' title='" . esc_attr__( 'Mark this comment as spam' ) . "'>" . /* translators: mark as spam link */ _x( 'Spam', 'verb' ) . '</a>';
+			} elseif ( 'spam' == $the_comment_status ) {
+				$actions['unspam'] = "<a href='$unspam_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:66cc66:unspam=1' class='vim-z vim-destructive'>" . _x( 'Not Spam', 'comment' ) . '</a>';
+			}
+
+			if ( 'trash' == $the_comment_status ) {
+				$actions['untrash'] = "<a href='$untrash_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID:66cc66:untrash=1' class='vim-z vim-destructive'>" . __( 'Restore' ) . '</a>';
+			}
+
+			if ( 'spam' == $the_comment_status || 'trash' == $the_comment_status || !EMPTY_TRASH_DAYS ) {
+				$actions['delete'] = "<a href='$delete_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::delete=1' class='delete vim-d vim-destructive'>" . __( 'Delete Permanently' ) . '</a>';
+			} else {
+				$actions['trash'] = "<a href='$trash_url' data-wp-lists='delete:the-comment-list:comment-$comment->comment_ID::trash=1' class='delete vim-d vim-destructive' title='" . esc_attr__( 'Move this comment to the trash' ) . "'>" . _x( 'Trash', 'verb' ) . '</a>';
+			}
+
+			if ( 'spam' != $the_comment_status && 'trash' != $the_comment_status ) {
+				$actions['edit'] = "<a href='comment.php?action=editcomment&amp;c={$comment->comment_ID}' title='" . esc_attr__( 'Edit comment' ) . "'>". __( 'Edit' ) . '</a>';
+
+				$format = '<a data-comment-id="%d" data-post-id="%d" data-action="%s" class="%s" title="%s" href="#">%s</a>';
+
+				$actions['quickedit'] = sprintf( $format, $comment->comment_ID, $post->ID, 'edit', 'vim-q comment-inline',esc_attr__( 'Edit this item inline' ), __( 'Quick&nbsp;Edit' ) );
+
+				$actions['reply'] = sprintf( $format, $comment->comment_ID, $post->ID, 'replyto', 'vim-r comment-inline', esc_attr__( 'Reply to this comment' ), __( 'Reply' ) );
+			}
+
+			/** This filter is documented in wp-admin/includes/dashboard.php */
+			$actions = apply_filters( 'comment_row_actions', array_filter( $actions ), $comment );
+
+			$i = 0;
+			echo '<div class="row-actions">';
+			foreach ( $actions as $action => $link ) {
+				++$i;
+				( ( ( 'approve' == $action || 'unapprove' == $action ) && 2 === $i ) || 1 === $i ) ? $sep = '' : $sep = ' | ';
+
+				// Reply and quickedit need a hide-if-no-js span when not added with ajax
+				if ( ( 'reply' == $action || 'quickedit' == $action ) && ! defined('DOING_AJAX') )
+					$action .= ' hide-if-no-js';
+				elseif ( ( $action == 'untrash' && $the_comment_status == 'trash' ) || ( $action == 'unspam' && $the_comment_status == 'spam' ) ) {
+					if ( '1' == get_comment_meta( $comment->comment_ID, '_wp_trash_meta_status', true ) )
+						$action .= ' approve';
+					else
+						$action .= ' unapprove';
+				}
+
+				echo "<span class='$action'>$sep$link</span>";
+			}
+			echo '</div>';
+		}
+	}
+
+=======
 	}
 
 	/**
@@ -625,6 +804,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 *
 	 * @param object $comment
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function column_author( $comment ) {
 		global $comment_status;
 
@@ -656,14 +836,22 @@ class WP_Comments_List_Table extends WP_List_Table {
 		}
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return string
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function column_date() {
 		return get_comment_date( __( 'Y/m/d \a\t g:i a' ) );
 	}
 
+<<<<<<< HEAD
+	public function column_response() {
+		$post = get_post();
+
+=======
 	/**
 	 * @access public
 	 */
@@ -674,6 +862,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 			return;
 		}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( isset( $this->pending_count[$post->ID] ) ) {
 			$pending_comments = $this->pending_count[$post->ID];
 		} else {
@@ -682,12 +871,29 @@ class WP_Comments_List_Table extends WP_List_Table {
 		}
 
 		if ( current_user_can( 'edit_post', $post->ID ) ) {
+<<<<<<< HEAD
+			$post_link = "<a href='" . get_edit_post_link( $post->ID ) . "'>";
+=======
 			$post_link = "<a href='" . get_edit_post_link( $post->ID ) . "' class='comments-edit-item-link'>";
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$post_link .= esc_html( get_the_title( $post->ID ) ) . '</a>';
 		} else {
 			$post_link = esc_html( get_the_title( $post->ID ) );
 		}
 
+<<<<<<< HEAD
+		echo '<div class="response-links"><span class="post-com-count-wrapper">';
+		echo $post_link . '<br />';
+		$this->comments_bubble( $post->ID, $pending_comments );
+		echo '</span> ';
+		$post_type_object = get_post_type_object( $post->post_type );
+		echo "<a href='" . get_permalink( $post->ID ) . "'>" . $post_type_object->labels->view_item . '</a>';
+		echo '</div>';
+		if ( 'attachment' == $post->post_type && ( $thumb = wp_get_attachment_image( $post->ID, array( 80, 60 ), true ) ) )
+			echo $thumb;
+	}
+
+=======
 		echo '<div class="response-links">';
 		if ( 'attachment' == $post->post_type && ( $thumb = wp_get_attachment_image( $post->ID, array( 80, 60 ), true ) ) ) {
 			echo $thumb;
@@ -706,6 +912,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 * @param object $comment
 	 * @param string $column_name
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function column_default( $comment, $column_name ) {
 		/**
 		 * Fires when the default column output is displayed for a single row.
@@ -731,10 +938,13 @@ class WP_Comments_List_Table extends WP_List_Table {
  */
 class WP_Post_Comments_List_Table extends WP_Comments_List_Table {
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_column_info() {
 		return array(
 			array(
@@ -743,6 +953,13 @@ class WP_Post_Comments_List_Table extends WP_Comments_List_Table {
 			),
 			array(),
 			array(),
+<<<<<<< HEAD
+		);
+	}
+
+	protected function get_table_classes() {
+		$classes = parent::get_table_classes();
+=======
 			'comment',
 		);
 	}
@@ -754,14 +971,18 @@ class WP_Post_Comments_List_Table extends WP_Comments_List_Table {
 	protected function get_table_classes() {
 		$classes = parent::get_table_classes();
 		$classes[] = 'wp-list-table';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$classes[] = 'comments-box';
 		return $classes;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @param bool $output_empty
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display( $output_empty = false ) {
 		$singular = $this->_args['singular'];
 
@@ -780,11 +1001,14 @@ class WP_Post_Comments_List_Table extends WP_Comments_List_Table {
 <?php
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @param bool $comment_status
 	 * @return int
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_per_page( $comment_status = false ) {
 		return 10;
 	}

@@ -354,6 +354,9 @@ switch ( $action ) {
 
 			// Update menu items.
 			if ( ! is_wp_error( $_menu_object ) ) {
+<<<<<<< HEAD
+				$messages = array_merge( $messages, wp_nav_menu_update_menu_items( $nav_menu_selected_id, $nav_menu_selected_title ) );
+=======
 				$messages = array_merge( $messages, wp_nav_menu_update_menu_items( $_nav_menu_selected_id, $nav_menu_selected_title ) );
 
 				// If the menu ID changed, redirect to the new URL.
@@ -361,6 +364,7 @@ switch ( $action ) {
 					wp_redirect( admin_url( 'nav-menus.php?menu=' . intval( $_nav_menu_selected_id ) ) );
 					exit();
 				}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		}
 		break;
@@ -473,8 +477,11 @@ if ( current_theme_supports( 'menus' ) ) {
 /*
  * Ensure the user will be able to scroll horizontally
  * by adding a class for the max menu depth.
+<<<<<<< HEAD
+=======
  *
  * @global int $_wp_nav_menu_max_depth
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 global $_wp_nav_menu_max_depth;
 $_wp_nav_menu_max_depth = 0;
@@ -485,6 +492,9 @@ if ( is_nav_menu( $nav_menu_selected_id ) ) {
 	$edit_markup = wp_get_nav_menu_to_edit( $nav_menu_selected_id );
 }
 
+<<<<<<< HEAD
+function wp_nav_menu_max_depth($classes) {
+=======
 /**
  *
  * @global int $_wp_nav_menu_max_depth
@@ -493,6 +503,7 @@ if ( is_nav_menu( $nav_menu_selected_id ) ) {
  * @return string
  */
 function wp_nav_menu_max_depth( $classes ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	global $_wp_nav_menu_max_depth;
 	return "$classes menu-max-depth-$_wp_nav_menu_max_depth";
 }
@@ -564,6 +575,8 @@ get_current_screen()->set_help_sidebar(
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <div class="wrap">
+<<<<<<< HEAD
+=======
 	<h1><?php echo esc_html( __( 'Menus' ) ); ?>
 		<?php
 		if ( current_user_can( 'customize' ) ) :
@@ -579,13 +592,18 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		endif;
 		?>
 	</h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	<h2 class="nav-tab-wrapper">
 		<a href="<?php echo admin_url( 'nav-menus.php' ); ?>" class="nav-tab<?php if ( ! isset( $_GET['action'] ) || isset( $_GET['action'] ) && 'locations' != $_GET['action'] ) echo ' nav-tab-active'; ?>"><?php esc_html_e( 'Edit Menus' ); ?></a>
 		<?php if ( $num_locations && $menu_count ) : ?>
 			<a href="<?php echo esc_url( add_query_arg( array( 'action' => 'locations' ), admin_url( 'nav-menus.php' ) ) ); ?>" class="nav-tab<?php if ( $locations_screen ) echo ' nav-tab-active'; ?>"><?php esc_html_e( 'Manage Locations' ); ?></a>
+<<<<<<< HEAD
+		<?php endif; ?>
+=======
 		<?php
 			endif;
 		?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	</h2>
 	<?php
 	foreach( $messages as $message ) :
@@ -663,8 +681,13 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		<?php else : ?>
 			<form method="get" action="<?php echo admin_url( 'nav-menus.php' ); ?>">
 			<input type="hidden" name="action" value="edit" />
+<<<<<<< HEAD
+			<label for="menu" class="selected-menu"><?php _e( 'Select a menu to edit:' ); ?></label>
+			<select name="menu" id="menu">
+=======
 			<label for="select-menu-to-edit" class="selected-menu"><?php _e( 'Select a menu to edit:' ); ?></label>
 			<select name="menu" id="select-menu-to-edit">
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				<?php if ( $add_new_screen ) : ?>
 					<option value="0" selected="selected"><?php _e( '&mdash; Select &mdash;' ); ?></option>
 				<?php endif; ?>

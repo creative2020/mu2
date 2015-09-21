@@ -3,14 +3,26 @@ window.wp = window.wp || {};
 ( function ( wp, $ ) {
 	'use strict';
 
+<<<<<<< HEAD
+	var $container;
+=======
 	var $containerPolite,
 		$containerAssertive,
 		role;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	/**
 	 * Update the ARIA live notification area text node.
 	 *
 	 * @since 4.2.0
+<<<<<<< HEAD
+	 *
+	 * @param {String} message
+	 */
+	function speak( message ) {
+		if ( $container ) {
+			$container.text( message );
+=======
 	 * @since 4.3.0 Introduced the 'ariaLive' argument.
 	 *
 	 * @param {String} message  The message to be announced by Assistive Technologies.
@@ -25,10 +37,33 @@ window.wp = window.wp || {};
 			$containerAssertive.text( message );
 		} else if ( $containerPolite ) {
 			$containerPolite.text( message );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Initialize wp.a11y and define ARIA live notification area.
+	 *
+	 * @since 4.2.0
+	 */
+	$( document ).ready( function() {
+		$container = $( '#wp-a11y-speak' );
+
+		if ( ! $container.length ) {
+			$container = $( '<div>', {
+				id: 'wp-a11y-speak',
+				role: 'status',
+				'aria-live': 'polite',
+				'aria-relevant': 'all',
+				'aria-atomic': 'true',
+				'class': 'screen-reader-text'
+			} );
+
+			$( document.body ).append( $container );
+		}
+	} );
+=======
 	 * Build the live regions markup.
 	 *
 	 * @since 4.3.0
@@ -81,8 +116,13 @@ window.wp = window.wp || {};
 			$containerAssertive = addContainer( 'assertive' );
 		}
 	});
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	wp.a11y = wp.a11y || {};
 	wp.a11y.speak = speak;
 
+<<<<<<< HEAD
+} )( window.wp, window.jQuery );
+=======
 }( window.wp, window.jQuery ));
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

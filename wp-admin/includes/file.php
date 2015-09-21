@@ -50,7 +50,11 @@ $wp_file_descriptions = array(
  *
  * @since 1.5.0
  *
+<<<<<<< HEAD
+ * @uses $wp_file_descriptions
+=======
  * @global array $wp_file_descriptions
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $file Filesystem path or filename
  * @return string Description of file from $wp_file_descriptions or basename of $file if description doesn't exist
  */
@@ -516,8 +520,11 @@ function verify_file_md5( $filename, $expected_md5 ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $file Full path and filename of zip archive
  * @param string $to Full path on the filesystem to extract archive to
  * @return mixed WP_Error on failure, True on success
@@ -581,8 +588,11 @@ function unzip_file($file, $to) {
  * @see unzip_file
  * @access private
  *
+<<<<<<< HEAD
+=======
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $file Full path and filename of zip archive
  * @param string $to Full path on the filesystem to extract archive to
  * @param array $needed_dirs A partial list of required folders needed to be created.
@@ -681,8 +691,11 @@ function _unzip_file_ziparchive($file, $to, $needed_dirs = array() ) {
  * @see unzip_file
  * @access private
  *
+<<<<<<< HEAD
+=======
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $file Full path and filename of zip archive
  * @param string $to Full path on the filesystem to extract archive to
  * @param array $needed_dirs A partial list of required folders needed to be created.
@@ -775,8 +788,11 @@ function _unzip_file_pclzip($file, $to, $needed_dirs = array()) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $from source directory
  * @param string $to destination directory
  * @param array $skip_list a list of files/folders to skip copying
@@ -831,6 +847,15 @@ function copy_dir($from, $to, $skip_list = array() ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+ * @param array  $args                         Optional. Connection args, These are passed directly to
+ *                                             the `WP_Filesystem_*()` classes. Default false.
+ * @param string $context                      Optional. Context for {@see get_filesystem_method()}.
+ *                                             Default false.
+ * @param bool   $allow_relaxed_file_ownership Optional. Whether to allow Group/World writable.
+ *                                             Default false.
+ * @return null|boolean false on failure, true on success.
+=======
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
  * @param array|false  $args                         Optional. Connection args, These are passed directly to
@@ -838,6 +863,7 @@ function copy_dir($from, $to, $skip_list = array() ) {
  * @param string|false $context                      Optional. Context for get_filesystem_method(). Default false.
  * @param bool         $allow_relaxed_file_ownership Optional. Whether to allow Group/World writable. Default false.
  * @return null|bool false on failure, true on success.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_ownership = false ) {
 	global $wp_filesystem;
@@ -910,8 +936,11 @@ function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_own
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
  * @global callback $_wp_filesystem_direct_method
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array  $args                         Optional. Connection details. Default empty array.
  * @param string $context                      Optional. Full path to the directory that is tested
  *                                             for being writable. Default false.
@@ -996,6 +1025,15 @@ function get_filesystem_method( $args = array(), $context = false, $allow_relaxe
  *
  * @todo Properly mark optional arguments as such
  *
+<<<<<<< HEAD
+ * @param string $form_post the URL to post the form to
+ * @param string $type the chosen Filesystem method in use
+ * @param boolean $error if the current request has failed to connect
+ * @param string $context The directory which is needed access to, The write-test will be performed on this directory by get_filesystem_method()
+ * @param array $extra_fields Extra POST fields which should be checked for to be included in the post.
+ * @param bool $allow_relaxed_file_ownership Whether to allow Group/World writable.
+ * @return boolean False on failure. True on success.
+=======
  * @param string $form_post    the URL to post the form to
  * @param string $type         the chosen Filesystem method in use
  * @param bool   $error        if the current request has failed to connect
@@ -1003,6 +1041,7 @@ function get_filesystem_method( $args = array(), $context = false, $allow_relaxe
  * @param array  $extra_fields Extra POST fields which should be checked for to be included in the post.
  * @param bool   $allow_relaxed_file_ownership Whether to allow Group/World writable.
  * @return bool False on failure. True on success.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function request_filesystem_credentials($form_post, $type = '', $error = false, $context = false, $extra_fields = null, $allow_relaxed_file_ownership = false ) {
 

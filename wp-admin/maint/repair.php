@@ -28,6 +28,8 @@ header( 'Content-Type: text/html; charset=utf-8' );
 
 if ( ! defined( 'WP_ALLOW_REPAIR' ) ) {
 	echo '<p>' . __( 'To allow use of this page to automatically repair database problems, please add the following line to your <code>wp-config.php</code> file. Once this line is added to your config, reload this page.' ) . "</p><p><code>define('WP_ALLOW_REPAIR', true);</code></p>";
+<<<<<<< HEAD
+=======
 
 	$default_key     = 'put your unique phrase here';
 	$missing_key     = false;
@@ -56,6 +58,7 @@ if ( ! defined( 'WP_ALLOW_REPAIR' ) ) {
 		echo '<p>' . sprintf( __( 'While you are editing your %1$s file, take a moment to make sure you have all 8 keys and that they are unique. You can generate these using the <a href="%2$s">WordPress.org secret key service</a>.' ), '<code>wp-config.php</code>', 'https://api.wordpress.org/secret-key/1.1/salt/' ) . '</p>';
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 } elseif ( isset( $_GET['repair'] ) ) {
 	$optimize = 2 == $_GET['repair'];
 	$okay = true;

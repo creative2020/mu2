@@ -84,6 +84,13 @@ class WP_Styles extends WP_Dependencies {
 		 * Filter the HTML link tag of an enqueued style.
 		 *
 		 * @since 2.6.0
+<<<<<<< HEAD
+		 *
+		 * @param string         The link tag for the enqueued style.
+		 * @param string $handle The style's registered handle.
+		 */
+		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle );
+=======
 		 * @since 4.3.0 Introduced the `$href` parameter.
 		 *
 		 * @param string $html   The link tag for the enqueued style.
@@ -91,6 +98,7 @@ class WP_Styles extends WP_Dependencies {
 		 * @param string $href   The stylesheet's source URL.
 		 */
 		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle, $href );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( 'rtl' === $this->text_direction && isset($obj->extra['rtl']) && $obj->extra['rtl'] ) {
 			if ( is_bool( $obj->extra['rtl'] ) || 'replace' === $obj->extra['rtl'] ) {
 				$suffix = isset( $obj->extra['suffix'] ) ? $obj->extra['suffix'] : '';
@@ -100,7 +108,11 @@ class WP_Styles extends WP_Dependencies {
 			}
 
 			/** This filter is documented in wp-includes/class.wp-styles.php */
+<<<<<<< HEAD
+			$rtl_tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-rtl-css' $title href='$rtl_href' type='text/css' media='$media' />\n", $handle );
+=======
 			$rtl_tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-rtl-css' $title href='$rtl_href' type='text/css' media='$media' />\n", $handle, $rtl_href );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			if ( $obj->extra['rtl'] === 'replace' ) {
 				$tag = $rtl_tag;
@@ -236,17 +248,23 @@ class WP_Styles extends WP_Dependencies {
 		return false;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function do_footer_items() { // HTML 5 allows styles in the body, grab late enqueued items and output them in the footer.
 		$this->do_items(false, 1);
 		return $this->done;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function reset() {
 		$this->do_concat = false;
 		$this->concat = '';

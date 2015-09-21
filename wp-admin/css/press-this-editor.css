@@ -6,6 +6,10 @@ Press This TinyMCE editor styles :)
 /**
 * Links
 */
+<<<<<<< HEAD
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,600,700");
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 a {
 	color: #0073aa;
 }

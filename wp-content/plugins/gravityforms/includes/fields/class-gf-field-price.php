@@ -39,7 +39,11 @@ class GF_Field_Price extends GF_Field {
 	}
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
+<<<<<<< HEAD
+		$form_id         = $form['id'];
+=======
 		$form_id         = absint( $form['id'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 

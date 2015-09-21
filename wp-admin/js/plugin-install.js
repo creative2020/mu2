@@ -38,7 +38,11 @@ jQuery( document ).ready( function( $ ) {
 		tb_position();
 	});
 
+<<<<<<< HEAD
+	$( '.plugin-card, .plugins .column-description' ).on( 'click', 'a.thickbox', function() {
+=======
 	$( '.plugin-card, .plugins .plugin-version-author-uri' ).on( 'click', 'a.thickbox', function() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		tb_click.call(this);
 
 		$('#TB_title').css({'background-color':'#23282d','color':'#cfcfcf'});

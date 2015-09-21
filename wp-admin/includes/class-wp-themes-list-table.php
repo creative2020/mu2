@@ -29,18 +29,24 @@ class WP_Themes_List_Table extends WP_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return bool
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function ajax_user_can() {
 		// Do not check edit_theme_options here. AJAX calls for available themes require switch_themes.
 		return current_user_can( 'switch_themes' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function prepare_items() {
 		$themes = wp_get_themes( array( 'allowed' => true ) );
 
@@ -74,9 +80,12 @@ class WP_Themes_List_Table extends WP_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function no_items() {
 		if ( $this->search_terms || $this->features ) {
 			_e( 'No items found.' );
@@ -107,6 +116,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 	/**
 	 * @param string $which
+<<<<<<< HEAD
+	 * @return null
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function tablenav( $which = 'top' ) {
 		if ( $this->get_pagination_arg( 'total_pages' ) <= 1 )
@@ -120,9 +133,12 @@ class WP_Themes_List_Table extends WP_List_Table {
 		<?php
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
 ?>
@@ -136,17 +152,23 @@ class WP_Themes_List_Table extends WP_List_Table {
 <?php
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_columns() {
 		return array();
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display_rows_or_placeholder() {
 		if ( $this->has_items() ) {
 			$this->display_rows();
@@ -157,9 +179,12 @@ class WP_Themes_List_Table extends WP_List_Table {
 		}
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display_rows() {
 		$themes = $this->items;
 
@@ -174,10 +199,23 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 			$activate_link = wp_nonce_url( "themes.php?action=activate&amp;template=" . urlencode( $template ) . "&amp;stylesheet=" . urlencode( $stylesheet ), 'switch-theme_' . $stylesheet );
 
+<<<<<<< HEAD
+			$preview_link = esc_url( add_query_arg(
+				array( 'preview' => 1, 'template' => urlencode( $template ), 'stylesheet' => urlencode( $stylesheet ), 'preview_iframe' => true, 'TB_iframe' => 'true' ),
+				home_url( '/' ) ) );
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$actions = array();
 			$actions['activate'] = '<a href="' . $activate_link . '" class="activatelink" title="'
 				. esc_attr( sprintf( __( 'Activate &#8220;%s&#8221;' ), $title ) ) . '">' . __( 'Activate' ) . '</a>';
 
+<<<<<<< HEAD
+			$actions['preview'] = '<a href="' . $preview_link . '" class="hide-if-customize" title="'
+				. esc_attr( sprintf( __( 'Preview &#8220;%s&#8221;' ), $title ) ) . '">' . __( 'Preview' ) . '</a>';
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			if ( current_user_can( 'edit_theme_options' ) && current_user_can( 'customize' ) ) {
 				$actions['preview'] .= '<a href="' . wp_customize_url( $stylesheet ) . '" class="load-customize hide-if-no-customize">'
 					. __( 'Live Preview' ) . '</a>';
@@ -198,11 +236,19 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 			?>
 
+<<<<<<< HEAD
+			<a href="<?php echo $preview_link; ?>" class="screenshot hide-if-customize">
+				<?php if ( $screenshot = $theme->get_screenshot() ) : ?>
+					<img src="<?php echo esc_url( $screenshot ); ?>" alt="" />
+				<?php endif; ?>
+			</a>
+=======
 			<span class="screenshot hide-if-customize">
 				<?php if ( $screenshot = $theme->get_screenshot() ) : ?>
 					<img src="<?php echo esc_url( $screenshot ); ?>" alt="" />
 				<?php endif; ?>
 			</span>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<a href="<?php echo wp_customize_url( $stylesheet ); ?>" class="screenshot load-customize hide-if-no-customize">
 				<?php if ( $screenshot = $theme->get_screenshot() ) : ?>
 					<img src="<?php echo esc_url( $screenshot ); ?>" alt="" />

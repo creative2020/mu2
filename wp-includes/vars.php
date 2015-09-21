@@ -118,6 +118,15 @@ $is_iis7 = $is_IIS && intval( substr( $_SERVER['SERVER_SOFTWARE'], strpos( $_SER
 /**
  * Test if the current browser runs on a mobile device (smart phone, tablet, etc.)
  *
+<<<<<<< HEAD
+ * @return bool true|false
+ */
+function wp_is_mobile() {
+	static $is_mobile;
+
+	if ( isset($is_mobile) )
+		return $is_mobile;
+=======
  * @staticvar bool $is_mobile
  *
  * @return bool
@@ -128,6 +137,7 @@ function wp_is_mobile() {
 	if ( isset( $is_mobile ) ) {
 		return $is_mobile;
 	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
 		$is_mobile = false;

@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+/* global ajaxurl, pwsL10n */
+(function($){
+
+	function check_pass_strength() {
+		var pass1 = $('#pass1').val(), pass2 = $('#pass2').val(), strength;
+
+		$('#pass-strength-result').removeClass('short bad good strong');
+		if ( ! pass1 ) {
+			$('#pass-strength-result').html( pwsL10n.empty );
+			return;
+		}
+
+		strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputBlacklist(), pass2 );
+=======
 /* global ajaxurl, pwsL10n, userProfileL10n */
 (function($) {
 	var updateLock = false,
@@ -243,6 +258,7 @@
 		}
 
 		strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputBlacklist(), pass1 );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		switch ( strength ) {
 			case 2:
@@ -266,7 +282,12 @@
 		var $colorpicker, $stylesheet, user_id, current_user_id,
 			select = $( '#display_name' );
 
+<<<<<<< HEAD
+		$('#pass1').val('').on( 'input propertychange', check_pass_strength );
+		$('#pass2').val('').on( 'input propertychange', check_pass_strength );
+=======
 		$('#pass1').val('').on( inputEvent + ' pwupdate', check_pass_strength );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$('#pass-strength-result').show();
 		$('.color-palette').click( function() {
 			$(this).siblings('input[name="admin_color"]').prop('checked', true);
@@ -357,8 +378,11 @@
 				});
 			}
 		});
+<<<<<<< HEAD
+=======
 
 		bindPasswordForm();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	});
 
 	$( '#destroy-sessions' ).on( 'click', function( e ) {
@@ -379,6 +403,8 @@
 		e.preventDefault();
 	});
 
+<<<<<<< HEAD
+=======
 	window.generatePassword = generatePassword;
 
 	/* Warn the user if password was generated but not saved */
@@ -388,4 +414,5 @@
 		}
 	} );
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 })(jQuery);

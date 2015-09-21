@@ -1,7 +1,10 @@
 # Copyright (C) 2013 John Blackbourn
 # This file is distributed under the same license as the User Switching package.
 # Translators:
+<<<<<<< HEAD
+=======
 # Digital03.net <info@digital03.net>, 2015
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 # Enrique Errando <contacto@enriqueerrando.com>, 2014
 # Enrique Errando <contacto@enriqueerrando.com>, 2014
 msgid ""
@@ -9,9 +12,15 @@ msgstr ""
 "Project-Id-Version: User Switching\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/user-switching\n"
 "POT-Creation-Date: 2013-10-28 23:22:09+00:00\n"
+<<<<<<< HEAD
+"PO-Revision-Date: 2014-04-05 13:00+0000\n"
+"Last-Translator: Enrique Errando <contacto@enriqueerrando.com>\n"
+"Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/user-switching/language/es_ES/)\n"
+=======
 "PO-Revision-Date: 2015-05-21 19:05+0000\n"
 "Last-Translator: Digital03.net <info@digital03.net>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/wp-translations/user-switching/language/es_ES/)\n"
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +34,11 @@ msgstr "User Switching"
 
 #: user-switching.php:81 user-switching.php:355 user-switching.php:409
 msgid "Switch&nbsp;To"
+<<<<<<< HEAD
+msgstr "Cambiarse&nbsp;a&nbsp;este&nbsp;usuario"
+=======
 msgstr "Cambiarse&nbsp;a"
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 #: user-switching.php:151 user-switching.php:162 user-switching.php:172
 msgid "Could not switch users."

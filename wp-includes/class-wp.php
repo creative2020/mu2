@@ -115,8 +115,11 @@ class WP {
 	 *
 	 * @since 2.0.0
 	 *
+<<<<<<< HEAD
+=======
 	 * @global WP_Rewrite $wp_rewrite
 	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param array|string $extra_query_vars Set the extra query variables.
 	 */
 	public function parse_request($extra_query_vars = '') {
@@ -159,7 +162,10 @@ class WP {
 			list( $req_uri ) = explode( '?', $_SERVER['REQUEST_URI'] );
 			$self = $_SERVER['PHP_SELF'];
 			$home_path = trim( parse_url( home_url(), PHP_URL_PATH ), '/' );
+<<<<<<< HEAD
+=======
 			$home_path_regex = sprintf( '|^%s|i', preg_quote( $home_path, '|' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// Trim path info from the end and the leading home path from the
 			// front. For path info requests, this leaves us with the requesting
@@ -167,6 +173,15 @@ class WP {
 			// requested permalink.
 			$req_uri = str_replace($pathinfo, '', $req_uri);
 			$req_uri = trim($req_uri, '/');
+<<<<<<< HEAD
+			$req_uri = preg_replace("|^$home_path|i", '', $req_uri);
+			$req_uri = trim($req_uri, '/');
+			$pathinfo = trim($pathinfo, '/');
+			$pathinfo = preg_replace("|^$home_path|i", '', $pathinfo);
+			$pathinfo = trim($pathinfo, '/');
+			$self = trim($self, '/');
+			$self = preg_replace("|^$home_path|i", '', $self);
+=======
 			$req_uri = preg_replace( $home_path_regex, '', $req_uri );
 			$req_uri = trim($req_uri, '/');
 			$pathinfo = trim($pathinfo, '/');
@@ -174,6 +189,7 @@ class WP {
 			$pathinfo = trim($pathinfo, '/');
 			$self = trim($self, '/');
 			$self = preg_replace( $home_path_regex, '', $self );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$self = trim($self, '/');
 
 			// The requested permalink is in $pathinfo for path info requests and
@@ -309,9 +325,12 @@ class WP {
 			}
 		}
 
+<<<<<<< HEAD
+=======
 		// Resolve conflicts between posts with numeric slugs and date archive queries.
 		$this->query_vars = wp_resolve_numeric_slug_conflicts( $this->query_vars );
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		foreach ( (array) $this->private_query_vars as $var) {
 			if ( isset($this->extra_query_vars[$var]) )
 				$this->query_vars[$var] = $this->extra_query_vars[$var];
@@ -494,6 +513,15 @@ class WP {
 	 * be taken when naming global variables that might interfere with the
 	 * WordPress environment.
 	 *
+<<<<<<< HEAD
+	 * @global string $query_string Query string for the loop.
+	 * @global array $posts The found posts.
+	 * @global WP_Post|null $post The current post, if available.
+	 * @global string $request The SQL statement for the request.
+	 * @global int $more Only set, if single page or post.
+	 * @global int $single If single page or post. Only set, if single page or post.
+	 * @global WP_User $authordata Only set, if author archive.
+=======
 	 * @global WP_Query     $wp_query
 	 * @global string       $query_string Query string for the loop.
 	 * @global array        $posts The found posts.
@@ -502,6 +530,7 @@ class WP {
 	 * @global int          $more Only set, if single page or post.
 	 * @global int          $single If single page or post. Only set, if single page or post.
 	 * @global WP_User      $authordata Only set, if author archive.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 *
 	 * @since 2.0.0
 	 */
@@ -540,8 +569,11 @@ class WP {
 	 * Set up the Loop based on the query variables.
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
+=======
 	 *
 	 * @global WP_Query $wp_the_query
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function query_posts() {
 		global $wp_the_query;
@@ -559,8 +591,11 @@ class WP {
 	 * Otherwise, issue a 200.
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
+=======
 	 *
 	 * @global WP_Query $wp_query
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  	 */
 	public function handle_404() {
 		global $wp_query;
@@ -632,6 +667,10 @@ class WP {
 		 */
 		do_action_ref_array( 'wp', array( &$this ) );
 	}
+<<<<<<< HEAD
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -688,9 +727,13 @@ class WP_MatchesMapRegex {
 	 *
 	 * static helper function to ease use
 	 *
+<<<<<<< HEAD
+	 * @access public
+=======
 	 * @static
 	 * @access public
 	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param string $subject subject
 	 * @param array  $matches data used for substitution
 	 * @return string
@@ -722,4 +765,8 @@ class WP_MatchesMapRegex {
 		$index = intval(substr($matches[0], 9, -1));
 		return ( isset( $this->_matches[$index] ) ? urlencode($this->_matches[$index]) : '' );
 	}
+<<<<<<< HEAD
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }

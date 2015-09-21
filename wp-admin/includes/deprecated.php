@@ -470,7 +470,11 @@ class WP_User_Search {
 	var $paging_text;
 
 	/**
+<<<<<<< HEAD
+	 * PHP4 Constructor - Sets up the object properties.
+=======
 	 * PHP5 Constructor - Sets up the object properties.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 *
 	 * @since 2.1.0
 	 *
@@ -479,7 +483,11 @@ class WP_User_Search {
 	 * @param string $role Role name.
 	 * @return WP_User_Search
 	 */
+<<<<<<< HEAD
+	function WP_User_Search ($search_term = '', $page = '', $role = '') {
+=======
 	function __construct( $search_term = '', $page = '', $role = '' ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		_deprecated_function( __FUNCTION__, '3.1', 'WP_User_Query' );
 
 		$this->search_term = wp_unslash( $search_term );
@@ -493,6 +501,8 @@ class WP_User_Search {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
 	 * PHP4 Constructor - Sets up the object properties.
 	 *
 	 * @since 2.1.0
@@ -507,6 +517,7 @@ class WP_User_Search {
 	}
 
 	/**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * {@internal Missing Short Description}}
 	 *
 	 * {@internal Missing Long Description}}
@@ -586,9 +597,15 @@ class WP_User_Search {
 	function do_paging() {
 		if ( $this->total_users_for_query > $this->users_per_page ) { // have to page the results
 			$args = array();
+<<<<<<< HEAD
+			if( ! empty($this->search_term) )
+				$args['usersearch'] = urlencode($this->search_term);
+			if( ! empty($this->role) )
+=======
 			if ( ! empty($this->search_term) )
 				$args['usersearch'] = urlencode($this->search_term);
 			if ( ! empty($this->role) )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$args['role'] = urlencode($this->role);
 
 			$this->paging_text = paginate_links( array(
@@ -746,8 +763,11 @@ function wp_dashboard_quick_press_output() {
  * @deprecated 3.3.0
  * @deprecated Use wp_editor()
  * @see wp_editor()
+<<<<<<< HEAD
+=======
  *
  * @staticvar int $num
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_tiny_mce( $teeny = false, $settings = false ) {
 	_deprecated_function( __FUNCTION__, '3.3', 'wp_editor()' );

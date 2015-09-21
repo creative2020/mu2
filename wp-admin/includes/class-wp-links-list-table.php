@@ -26,14 +26,19 @@ class WP_Links_List_Table extends WP_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return bool
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function ajax_user_can() {
 		return current_user_can( 'manage_links' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global int    $cat_id
@@ -41,6 +46,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	 * @global string $orderby
 	 * @global string $order
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function prepare_items() {
 		global $cat_id, $s, $orderby, $order;
 
@@ -60,17 +66,23 @@ class WP_Links_List_Table extends WP_List_Table {
 		$this->items = get_bookmarks( $args );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function no_items() {
 		_e( 'No links found.' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_bulk_actions() {
 		$actions = array();
 		$actions['delete'] = __( 'Delete' );
@@ -78,11 +90,14 @@ class WP_Links_List_Table extends WP_List_Table {
 		return $actions;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global int $cat_id
 	 * @param string $which
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function extra_tablenav( $which ) {
 		global $cat_id;
 
@@ -110,10 +125,13 @@ class WP_Links_List_Table extends WP_List_Table {
 <?php
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_columns() {
 		return array(
 			'cb'         => '<input type="checkbox" />',
@@ -126,10 +144,13 @@ class WP_Links_List_Table extends WP_List_Table {
 		);
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_sortable_columns() {
 		return array(
 			'name'    => 'name',
@@ -139,6 +160,11 @@ class WP_Links_List_Table extends WP_List_Table {
 		);
 	}
 
+<<<<<<< HEAD
+	public function display_rows() {
+		global $cat_id;
+
+=======
 	/**
 	 * Get the name of the default primary column.
 	 *
@@ -286,17 +312,109 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	public function display_rows() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		foreach ( $this->items as $link ) {
 			$link = sanitize_bookmark( $link );
 			$link->link_name = esc_attr( $link->link_name );
 			$link->link_category = wp_get_link_cats( $link->link_id );
+<<<<<<< HEAD
+
+			$short_url = url_shorten( $link->link_url );
+
+			$visible = ( $link->link_visible == 'Y' ) ? __( 'Yes' ) : __( 'No' );
+			$rating  = $link->link_rating;
+
+			$edit_link = get_edit_bookmark_link( $link );
+?>
+		<tr id="link-<?php echo $link->link_id; ?>">
+<?php
+
+			list( $columns, $hidden ) = $this->get_column_info();
+
+			foreach ( $columns as $column_name => $column_display_name ) {
+				$class = "class='column-$column_name'";
+
+				$style = '';
+				if ( in_array( $column_name, $hidden ) )
+					$style = ' style="display:none;"';
+
+				$attributes = $class . $style;
+
+				switch ( $column_name ) {
+					case 'cb': ?>
+						<th scope="row" class="check-column">
+							<label class="screen-reader-text" for="cb-select-<?php echo $link->link_id; ?>"><?php echo sprintf( __( 'Select %s' ), $link->link_name ); ?></label>
+							<input type="checkbox" name="linkcheck[]" id="cb-select-<?php echo $link->link_id; ?>" value="<?php echo esc_attr( $link->link_id ); ?>" />
+						</th>
+						<?php
+						break;
+
+					case 'name':
+						echo "<td $attributes><strong><a class='row-title' href='$edit_link' title='" . esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;' ), $link->link_name ) ) . "'>$link->link_name</a></strong><br />";
+
+						$actions = array();
+						$actions['edit'] = '<a href="' . $edit_link . '">' . __( 'Edit' ) . '</a>';
+						$actions['delete'] = "<a class='submitdelete' href='" . wp_nonce_url( "link.php?action=delete&amp;link_id=$link->link_id", 'delete-bookmark_' . $link->link_id ) . "' onclick=\"if ( confirm( '" . esc_js( sprintf( __( "You are about to delete this link '%s'\n  'Cancel' to stop, 'OK' to delete." ), $link->link_name ) ) . "' ) ) { return true;}return false;\">" . __( 'Delete' ) . "</a>";
+						echo $this->row_actions( $actions );
+
+						echo '</td>';
+						break;
+					case 'url':
+						echo "<td $attributes><a href='$link->link_url' title='". esc_attr( sprintf( __( 'Visit %s' ), $link->link_name ) )."'>$short_url</a></td>";
+						break;
+					case 'categories':
+						?><td <?php echo $attributes ?>><?php
+						$cat_names = array();
+						foreach ( $link->link_category as $category ) {
+							$cat = get_term( $category, 'link_category', OBJECT, 'display' );
+							if ( is_wp_error( $cat ) )
+								echo $cat->get_error_message();
+							$cat_name = $cat->name;
+							if ( $cat_id != $category )
+								$cat_name = "<a href='link-manager.php?cat_id=$category'>$cat_name</a>";
+							$cat_names[] = $cat_name;
+						}
+						echo implode( ', ', $cat_names );
+						?></td><?php
+						break;
+					case 'rel':
+						?><td <?php echo $attributes ?>><?php echo empty( $link->link_rel ) ? '<br />' : $link->link_rel; ?></td><?php
+						break;
+					case 'visible':
+						?><td <?php echo $attributes ?>><?php echo $visible; ?></td><?php
+						break;
+					case 'rating':
+	 					?><td <?php echo $attributes ?>><?php echo $rating; ?></td><?php
+						break;
+					default:
+						?>
+						<td <?php echo $attributes ?>><?php
+							/**
+							 * Fires for each registered custom link column.
+							 *
+							 * @since 2.1.0
+							 *
+							 * @param string $column_name Name of the custom column.
+							 * @param int    $link_id     Link ID.
+							 */
+							do_action( 'manage_link_custom_column', $column_name, $link->link_id );
+						?></td>
+						<?php
+						break;
+				}
+			}
+?>
+=======
 ?>
 		<tr id="link-<?php echo $link->link_id; ?>">
 			<?php $this->single_row_columns( $link ) ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		</tr>
 <?php
 		}
 	}
+<<<<<<< HEAD
+=======
 
 	/**
 	 * Generates and displays row action links.
@@ -321,4 +439,5 @@ class WP_Links_List_Table extends WP_List_Table {
 		$actions['delete'] = "<a class='submitdelete' href='" . wp_nonce_url("link.php?action=delete&amp;link_id=$link->link_id", 'delete-bookmark_' . $link->link_id) . "' onclick=\"if ( confirm( '" . esc_js(sprintf(__("You are about to delete this link '%s'\n  'Cancel' to stop, 'OK' to delete."), $link->link_name)) . "' ) ) { return true;}return false;\">" . __('Delete') . "</a>";
 		return $this->row_actions( $actions );
 	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }

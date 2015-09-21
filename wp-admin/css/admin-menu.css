@@ -318,6 +318,13 @@
 	padding: 0;
 }
 
+<<<<<<< HEAD
+#adminmenu .wp-submenu-head,
+.folded #adminmenu .wp-menu-name {
+	display: none;
+}
+
+=======
 #adminmenu .wp-submenu-head {
 	display: none;
 }
@@ -327,6 +334,7 @@
 	left: -999px;
 }
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .folded #adminmenu .wp-submenu-head {
 	display: block;
 }
@@ -682,8 +690,12 @@ li#wp-admin-bar-menu-toggle {
 	}
 
 	.auto-fold #adminmenu .wp-menu-name {
+<<<<<<< HEAD
+		display: none;
+=======
 		position: absolute;
 		left: -999px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	.auto-fold #adminmenu .wp-submenu-head {
@@ -802,7 +814,11 @@ li#wp-admin-bar-menu-toggle {
 
 	/* Restore the menu names */
 	.auto-fold #adminmenu .wp-menu-name {
+<<<<<<< HEAD
+		display: block;
+=======
 		position: static;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		margin-left: 35px;
 	}
 
@@ -920,10 +936,13 @@ li#wp-admin-bar-menu-toggle {
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
+<<<<<<< HEAD
+=======
 
 	.wp-responsive-open #wpadminbar #wp-admin-bar-menu-toggle .ab-icon:before {
 		color: #00b9eb;
 	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /* Smartphone */

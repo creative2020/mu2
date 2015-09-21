@@ -519,6 +519,13 @@ class getid3_lib
 	}
 
 	public static function XML2array($XMLstring) {
+<<<<<<< HEAD
+		if ( function_exists( 'simplexml_load_string' ) && function_exists( 'libxml_disable_entity_loader' ) ) {
+			$loader = libxml_disable_entity_loader( true );
+			$XMLobject = simplexml_load_string( $XMLstring, 'SimpleXMLElement', LIBXML_NOENT );
+			$return = self::SimpleXMLelement2array( $XMLobject );
+			libxml_disable_entity_loader( $loader );
+=======
 		if (function_exists('simplexml_load_string') && function_exists('libxml_disable_entity_loader')) {
 			// http://websec.io/2012/08/27/Preventing-XEE-in-PHP.html
 			// https://core.trac.wordpress.org/changeset/29378
@@ -526,6 +533,7 @@ class getid3_lib
 			$XMLobject = simplexml_load_string($XMLstring, 'SimpleXMLElement', LIBXML_NOENT);
 			$return = self::SimpleXMLelement2array($XMLobject);
 			libxml_disable_entity_loader($loader);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			return $return;
 		}
 		return false;
@@ -1165,8 +1173,11 @@ class getid3_lib
 				fwrite($tmp, $imgData);
 				fclose($tmp);
 				$GetDataImageSize = @getimagesize($tempfilename, $imageinfo);
+<<<<<<< HEAD
+=======
 				$GetDataImageSize['height'] = $GetDataImageSize[0];
 				$GetDataImageSize['width']  = $GetDataImageSize[1];
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 			unlink($tempfilename);
 		}
@@ -1377,4 +1388,8 @@ class getid3_lib
 		return substr(basename('X'.$splited[count($splited) - 1], $suffix), 1);
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

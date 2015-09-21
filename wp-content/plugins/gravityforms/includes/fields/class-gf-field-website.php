@@ -10,7 +10,11 @@ class GF_Field_Website extends GF_Field {
 	public $type = 'website';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'Website', 'gravityforms' );
+=======
 		return esc_attr__( 'Website', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -41,13 +45,21 @@ class GF_Field_Website extends GF_Field {
 			$value = '';
 			if ( $this->isRequired ) {
 				$this->failed_validation  = true;
+<<<<<<< HEAD
+				$this->validation_message = empty( $this->errorMessage ) ? __( 'This field is required.', 'gravityforms' ) : $this->errorMessage;
+=======
 				$this->validation_message = empty( $this->errorMessage ) ? esc_html__( 'This field is required.', 'gravityforms' ) : $this->errorMessage;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		}
 
 		if ( ! empty( $value ) && ! GFCommon::is_valid_url( $value ) ) {
 			$this->failed_validation  = true;
+<<<<<<< HEAD
+			$this->validation_message = empty( $this->errorMessage ) ? __( 'Please enter a valid Website URL (i.e. http://www.gravityforms.com).', 'gravityforms' ) : $this->errorMessage;
+=======
 			$this->validation_message = empty( $this->errorMessage ) ? esc_html__( 'Please enter a valid Website URL (e.g. http://www.gravityforms.com).', 'gravityforms' ) : $this->errorMessage;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 	}
 

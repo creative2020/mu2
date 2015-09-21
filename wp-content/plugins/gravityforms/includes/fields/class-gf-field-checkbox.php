@@ -10,7 +10,11 @@ class GF_Field_Checkbox extends GF_Field {
 	public $type = 'checkbox';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'Checkboxes', 'gravityforms' );
+=======
 		return esc_attr__( 'Checkboxes', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	public function get_form_editor_field_settings() {
@@ -35,7 +39,11 @@ class GF_Field_Checkbox extends GF_Field {
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
 
+<<<<<<< HEAD
+		$form_id         = $form['id'];
+=======
 		$form_id         = absint( $form['id'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 
@@ -43,7 +51,11 @@ class GF_Field_Checkbox extends GF_Field {
 		$field_id      = $is_entry_detail || $is_form_editor || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
 		$disabled_text = $is_form_editor ? 'disabled="disabled"' : '';
 
+<<<<<<< HEAD
+		return sprintf( "<div class='ginput_container'><ul class='gfield_checkbox' id='%s'>%s</ul></div>", $field_id, $this->get_checkbox_choices( $value, $disabled_text, $form_id ) );
+=======
 		return sprintf( "<div class='ginput_container'><ul class='gfield_checkbox' id='%s'>%s</ul></div>", esc_attr( $field_id ), $this->get_checkbox_choices( $value, $disabled_text, $form_id ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	public function get_first_input_id( $form ) {
@@ -104,7 +116,11 @@ class GF_Field_Checkbox extends GF_Field {
 		} else {
 			$value = '';
 
+<<<<<<< HEAD
+			if ( GFFormsModel::is_checkbox_checked( $field_id, $columns[ $field_id ]['label'], $entry, $form ) ) {
+=======
 			if ( $this->is_checkbox_checked( $field_id, $columns[ $field_id ]['label'], $entry ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$value = "<i class='fa fa-check gf_valid'></i>";
 			}
 		}
@@ -143,7 +159,11 @@ class GF_Field_Checkbox extends GF_Field {
 
 	}
 
+<<<<<<< HEAD
+	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format ) {
+=======
 	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format, $nl2br ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$use_value       = $modifier == 'value';
 		$use_price       = in_array( $modifier, array( 'price', 'currency' ) );
 		$format_currency = $modifier == 'currency';
@@ -237,10 +257,14 @@ class GF_Field_Checkbox extends GF_Field {
 								<label for='choice_{$id}' id='label_{$id}'>{$choice['text']}</label>
 							</li>";
 
+<<<<<<< HEAD
+				$choices .= apply_filters( 'gform_field_choice_markup_pre_render_' . $this->formId, apply_filters( 'gform_field_choice_markup_pre_render', $choice_markup, $choice, $this, $value ), $choice, $this, $value );
+=======
 				$choices .= gf_apply_filters( 'gform_field_choice_markup_pre_render', array(
 					$this->formId,
 					$this->id
 				), $choice_markup, $choice, $this, $value );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 				$is_entry_detail = $this->is_entry_detail();
 				$is_form_editor  = $this->is_form_editor();
@@ -255,11 +279,19 @@ class GF_Field_Checkbox extends GF_Field {
 
 			$total = sizeof( $this->choices );
 			if ( $count < $total ) {
+<<<<<<< HEAD
+				$choices .= "<li class='gchoice_total'>" . sprintf( __( '%d of %d items shown. Edit field to view all', 'gravityforms' ), $count, $total ) . '</li>';
+			}
+		}
+
+		return apply_filters( 'gform_field_choices_' . $this->formId, apply_filters( 'gform_field_choices', $choices, $this ), $this );
+=======
 				$choices .= "<li class='gchoice_total'>" . sprintf( esc_html__( '%d of %d items shown. Edit field to view all', 'gravityforms' ), $count, $total ) . '</li>';
 			}
 		}
 
 		return gf_apply_filters( 'gform_field_choices', $this->formId, $choices, $this );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	}
 
@@ -278,6 +310,8 @@ class GF_Field_Checkbox extends GF_Field {
 		}
 	}
 
+<<<<<<< HEAD
+=======
 	public function get_value_export( $entry, $input_id = '', $use_text = false, $is_csv = false ) {
 		if ( empty( $input_id ) || absint( $input_id ) == $input_id ) {
 			$selected = array();
@@ -333,6 +367,7 @@ class GF_Field_Checkbox extends GF_Field {
 		return false;
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 GF_Fields::register( new GF_Field_Checkbox() );

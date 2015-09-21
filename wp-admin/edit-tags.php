@@ -20,11 +20,15 @@ if ( ! $tax )
 if ( ! current_user_can( $tax->cap->manage_terms ) )
 	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 
+<<<<<<< HEAD
+// $post_type is set when the WP_Terms_List_Table instance is created
+=======
 /**
  * $post_type is set when the WP_Terms_List_Table instance is created
  *
  * @global string $post_type
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $post_type;
 
 $wp_list_table = _get_list_table('WP_Terms_List_Table');
@@ -302,6 +306,15 @@ if ( isset( $_REQUEST['message'] ) && ( $msg = (int) $_REQUEST['message'] ) ) {
 }
 
 $class = ( isset( $_REQUEST['error'] ) ) ? 'error' : 'updated';
+<<<<<<< HEAD
+?>
+
+<div class="wrap nosubsub">
+<h2><?php echo esc_html( $title );
+if ( !empty($_REQUEST['s']) )
+	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( wp_unslash($_REQUEST['s']) ) ); ?>
+</h2>
+=======
 
 if ( is_plugin_active( 'wpcat2tag-importer/wpcat2tag-importer.php' ) ) {
 	$import_link = admin_url( 'admin.php?import=wpcat2tag' );
@@ -316,6 +329,7 @@ if ( is_plugin_active( 'wpcat2tag-importer/wpcat2tag-importer.php' ) ) {
 if ( !empty($_REQUEST['s']) )
 	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( wp_unslash($_REQUEST['s']) ) ); ?>
 </h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <?php if ( $message ) : ?>
 <div id="message" class="<?php echo $class; ?> notice is-dismissible"><p><?php echo $message; ?></p></div>
@@ -354,12 +368,20 @@ endif; ?>
 	?>
 </p>
 <?php if ( current_user_can( 'import' ) ) : ?>
+<<<<<<< HEAD
+<p><?php printf(__('Categories can be selectively converted to tags using the <a href="%s">category to tag converter</a>.'), 'import.php') ?></p>
+=======
 <p><?php printf( __( 'Categories can be selectively converted to tags using the <a href="%s">category to tag converter</a>.' ), esc_url( $import_link ) ) ?></p>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <?php endif; ?>
 </div>
 <?php elseif ( 'post_tag' == $taxonomy && current_user_can( 'import' ) ) : ?>
 <div class="form-wrap">
+<<<<<<< HEAD
+<p><?php printf(__('Tags can be selectively converted to categories using the <a href="%s">tag to category converter</a>.'), 'import.php') ;?></p>
+=======
 <p><?php printf( __( 'Tags can be selectively converted to categories using the <a href="%s">tag to category converter</a>.' ), esc_url( $import_link ) ) ;?></p>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 </div>
 <?php endif;
 

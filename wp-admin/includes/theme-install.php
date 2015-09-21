@@ -50,8 +50,11 @@ function install_themes_feature_list() {
  * Display search form for searching themes.
  *
  * @since 2.8.0
+<<<<<<< HEAD
+=======
  *
  * @param bool $type_selector
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function install_theme_search_form( $type_selector = true ) {
 	$type = isset( $_REQUEST['type'] ) ? wp_unslash( $_REQUEST['type'] ) : 'term';
@@ -134,10 +137,15 @@ function install_themes_dashboard() {
 </form>
 <?php
 }
+<<<<<<< HEAD
+// add_action('install_themes_dashboard', 'install_themes_dashboard');
+
+=======
 
 /**
  * @since 2.8.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function install_themes_upload() {
 ?>
 <p class="install-help"><?php _e('If you have a theme in a .zip format, you may install it by uploading it here.'); ?></p>
@@ -148,15 +156,22 @@ function install_themes_upload() {
 </form>
 	<?php
 }
+<<<<<<< HEAD
+// add_action('install_themes_upload', 'install_themes_upload', 10, 0);
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Prints a theme on the Install Themes pages.
  *
  * @deprecated 3.4.0
+<<<<<<< HEAD
+=======
  *
  * @global WP_Theme_Install_List_Table $wp_list_table
  *
  * @param object $theme
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function display_theme( $theme ) {
 	_deprecated_function( __FUNCTION__, '3.4' );
@@ -172,8 +187,11 @@ function display_theme( $theme ) {
  * Display theme content based on theme list.
  *
  * @since 2.8.0
+<<<<<<< HEAD
+=======
  *
  * @global WP_Theme_Install_List_Table $wp_list_table
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function display_themes() {
 	global $wp_list_table;
@@ -185,13 +203,23 @@ function display_themes() {
 	$wp_list_table->display();
 
 }
+<<<<<<< HEAD
+// add_action('install_themes_search', 'display_themes');
+// add_action('install_themes_featured', 'display_themes');
+// add_action('install_themes_new', 'display_themes');
+// add_action('install_themes_updated', 'display_themes');
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 /**
  * Display theme information in dialog box form.
  *
  * @since 2.8.0
+<<<<<<< HEAD
+=======
  *
  * @global WP_Theme_Install_List_Table $wp_list_table
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function install_theme_information() {
 	global $wp_list_table;
@@ -209,3 +237,7 @@ function install_theme_information() {
 	iframe_footer();
 	exit;
 }
+<<<<<<< HEAD
+add_action('install_themes_pre_theme-information', 'install_theme_information');
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

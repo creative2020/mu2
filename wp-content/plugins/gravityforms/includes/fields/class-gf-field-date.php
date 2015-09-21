@@ -10,7 +10,11 @@ class GF_Field_Date extends GF_Field {
 	public $type = 'date';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'Date', 'gravityforms' );
+=======
 		return esc_attr__( 'Date', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -69,7 +73,11 @@ class GF_Field_Date extends GF_Field {
 						$format_name = 'yyyy.mm.dd';
 						break;
 				}
+<<<<<<< HEAD
+				$message                  = $this->dateType == 'datepicker' ? sprintf( __( 'Please enter a valid date in the format (%s).', 'gravityforms' ), $format_name ) : __( 'Please enter a valid date.', 'gravityforms' );
+=======
 				$message                  = $this->dateType == 'datepicker' ? sprintf( esc_html__( 'Please enter a valid date in the format (%s).', 'gravityforms' ), $format_name ) : esc_html__( 'Please enter a valid date.', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$this->validation_message = empty( $this->errorMessage ) ? $message : $this->errorMessage;
 			}
 		}
@@ -124,15 +132,25 @@ class GF_Field_Date extends GF_Field {
 		$form_sub_label_placement  = rgar( $form, 'subLabelPlacement' );
 		$field_sub_label_placement = rgar( $this, 'subLabelPlacement' );
 		$is_sub_label_above        = $field_sub_label_placement == 'above' || ( empty( $field_sub_label_placement ) && $form_sub_label_placement == 'above' );
+<<<<<<< HEAD
+		$sub_label_class_attribute = $field_sub_label_placement == 'hidden_label' ? "class='hidden_sub_label'" : '';
+=======
 		$sub_label_class_attribute = $field_sub_label_placement == 'hidden_label' ? "class='hidden_sub_label screen-reader-text'" : '';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$month_input = GFFormsModel::get_input( $this, $this->id . '.1' );
 		$day_input   = GFFormsModel::get_input( $this, $this->id . '.2' );
 		$year_input  = GFFormsModel::get_input( $this, $this->id . '.3' );
 
+<<<<<<< HEAD
+		$month_sub_label = rgar( $month_input, 'customLabel' ) != '' ? $month_input['customLabel'] : _x( 'MM', 'Abbreviation: Month', 'gravityforms' );
+		$day_sub_label   = rgar( $day_input, 'customLabel' ) != '' ? $day_input['customLabel'] : __( 'DD', 'gravityforms' );
+		$year_sub_label  = rgar( $year_input, 'customLabel' ) != '' ? $year_input['customLabel'] : __( 'YYYY', 'gravityforms' );
+=======
 		$month_sub_label = rgar( $month_input, 'customLabel' ) != '' ? $month_input['customLabel'] : esc_html( _x( 'MM', 'Abbreviation: Month', 'gravityforms' ) );
 		$day_sub_label   = rgar( $day_input, 'customLabel' ) != '' ? $day_input['customLabel'] : esc_html__( 'DD', 'gravityforms' );
 		$year_sub_label  = rgar( $year_input, 'customLabel' ) != '' ? $year_input['customLabel'] : esc_html__( 'YYYY', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$month_placeholder_attribute = GFCommon::get_input_placeholder_attribute( $month_input );
 		$day_placeholder_attribute   = GFCommon::get_input_placeholder_attribute( $day_input );
@@ -454,7 +472,11 @@ class GF_Field_Date extends GF_Field {
 		return GFCommon::date_display( $value, $this->dateFormat );
 	}
 
+<<<<<<< HEAD
+	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format ) {
+=======
 	public function get_value_merge_tag( $value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format, $nl2br ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$format_modifier = empty( $modifier ) ? $this->dateFormat : $modifier;
 
 		return GFCommon::date_display( $value, $format_modifier );
@@ -462,7 +484,11 @@ class GF_Field_Date extends GF_Field {
 
 	private function get_month_dropdown( $name = '', $id = '', $selected_value = '', $tabindex = '', $disabled_text = '', $placeholder = '' ) {
 		if ( $placeholder == '' ) {
+<<<<<<< HEAD
+			$placeholder = __( 'Month', 'gravityforms' );
+=======
 			$placeholder = esc_html__( 'Month', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 
 		return $this->get_number_dropdown( $name, $id, $selected_value, $tabindex, $disabled_text, $placeholder, 1, 12 );
@@ -470,7 +496,11 @@ class GF_Field_Date extends GF_Field {
 
 	private function get_day_dropdown( $name = '', $id = '', $selected_value = '', $tabindex = '', $disabled_text = '', $placeholder = '' ) {
 		if ( $placeholder == '' ) {
+<<<<<<< HEAD
+			$placeholder = __( 'Day', 'gravityforms' );
+=======
 			$placeholder = esc_html__( 'Day', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 
 		return $this->get_number_dropdown( $name, $id, $selected_value, $tabindex, $disabled_text, $placeholder, 1, 31 );
@@ -478,7 +508,11 @@ class GF_Field_Date extends GF_Field {
 
 	private function get_year_dropdown( $name = '', $id = '', $selected_value = '', $tabindex = '', $disabled_text = '', $placeholder = '', $form ) {
 		if ( $placeholder == '' ) {
+<<<<<<< HEAD
+			$placeholder = __( 'Year', 'gravityforms' );
+=======
 			$placeholder = esc_html__( 'Year', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 		$year_min = apply_filters( 'gform_date_min_year', '1920', $form, $this );
 		$year_max = apply_filters( 'gform_date_max_year', date( 'Y' ) + 1, $form, $this );

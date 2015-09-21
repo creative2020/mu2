@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+/* globals _wpCustomizeHeader, _wpCustomizeBackground, _wpMediaViewsL10n, MediaElementPlayer */
+=======
 /* global _wpCustomizeHeader, _wpCustomizeBackground, _wpMediaViewsL10n, MediaElementPlayer */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 (function( exports, $ ){
 	var Container, focus, api = wp.customize;
 
@@ -68,6 +72,15 @@
 		params = params || {};
 		focus = function () {
 			var focusContainer;
+<<<<<<< HEAD
+			if ( construct.extended( api.Panel ) && construct.expanded() ) {
+				focusContainer = construct.container.find( '.control-panel-content:first' );
+			} else {
+				focusContainer = construct.container;
+			}
+			focusContainer.find( ':focusable:first' ).focus();
+			focusContainer[0].scrollIntoView( true );
+=======
 			if ( construct.extended( api.Panel ) && construct.expanded && construct.expanded() ) {
 				focusContainer = construct.container.find( 'ul.control-panel-content' );
 			} else if ( construct.extended( api.Section ) && construct.expanded && construct.expanded() ) {
@@ -78,6 +91,7 @@
 
 			// Note that we can't use :focusable due to a jQuery UI issue. See: https://github.com/jquery/jquery-ui/pull/1583
 			focusContainer.find( 'input, select, textarea, button, object, a[href], [tabindex]' ).filter( ':visible' ).first().focus();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		};
 		if ( params.completeCallback ) {
 			completeCallback = params.completeCallback;
@@ -159,6 +173,8 @@
 	Container = api.Class.extend({
 		defaultActiveArguments: { duration: 'fast', completeCallback: $.noop },
 		defaultExpandedArguments: { duration: 'fast', completeCallback: $.noop },
+<<<<<<< HEAD
+=======
 		containerType: 'container',
 		defaults: {
 			title: '',
@@ -169,10 +185,15 @@
 			active: true,
 			instanceNumber: null
 		},
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		/**
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
+		 * @param {String} id
+		 * @param {Object} options
+=======
 		 * @param {string}         id - The ID for the container.
 		 * @param {object}         options - Object containing one property: params.
 		 * @param {object}         options.params - Object containing the following properties.
@@ -182,10 +203,16 @@
 		 * @param {string=default} [options.params.type] - The type of the panel. See wp.customize.panelConstructor.
 		 * @param {string=}        [options.params.content] - The markup to be used for the panel container. If empty, a JS template is used.
 		 * @param {boolean=true}   [options.params.active] - Whether the panel is active or not.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		 */
 		initialize: function ( id, options ) {
 			var container = this;
 			container.id = id;
+<<<<<<< HEAD
+			container.params = {};
+			$.extend( container, options || {} );
+			container.container = $( container.params.content );
+=======
 			options = options || {};
 
 			options.params = _.defaults(
@@ -199,6 +226,7 @@
 			if ( 0 === container.container.length ) {
 				container.container = $( container.getContainer() );
 			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			container.deferred = {
 				embedded: new $.Deferred()
@@ -221,6 +249,13 @@
 				container.onChangeExpanded( expanded, args );
 			});
 
+<<<<<<< HEAD
+			container.attachEvents();
+
+			api.utils.bubbleChildValueChanges( container, [ 'priority', 'active' ] );
+
+			container.priority.set( isNaN( container.params.priority ) ? 100 : container.params.priority );
+=======
 			container.deferred.embedded.done( function () {
 				container.attachEvents();
 			});
@@ -228,6 +263,7 @@
 			api.utils.bubbleChildValueChanges( container, [ 'priority', 'active' ] );
 
 			container.priority.set( container.params.priority );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			container.active.set( container.params.active );
 			container.expanded.set( false );
 		},
@@ -286,6 +322,13 @@
 		 * @param {Object}  args.duration
 		 * @param {Object}  args.completeCallback
 		 */
+<<<<<<< HEAD
+		onChangeActive: function ( active, args ) {
+			var duration = ( 'resolved' === api.previewer.deferred.active.state() ? args.duration : 0 );
+			if ( ! $.contains( document, this.container ) ) {
+				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
+				this.container.toggle( active );
+=======
 		onChangeActive: function( active, args ) {
 			var duration, construct = this;
 			if ( args.unchanged ) {
@@ -299,10 +342,16 @@
 			if ( ! $.contains( document, construct.container[0] ) ) {
 				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
 				construct.container.toggle( active );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				if ( args.completeCallback ) {
 					args.completeCallback();
 				}
 			} else if ( active ) {
+<<<<<<< HEAD
+				this.container.stop( true, true ).slideDown( duration, args.completeCallback );
+			} else {
+				this.container.stop( true, true ).slideUp( duration, args.completeCallback );
+=======
 				construct.container.stop( true, true ).slideDown( duration, args.completeCallback );
 			} else {
 				if ( construct.expanded() ) {
@@ -315,6 +364,7 @@
 				} else {
 					construct.container.stop( true, true ).slideUp( duration, args.completeCallback );
 				}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		},
 
@@ -415,6 +465,9 @@
 		 * Bring the container into view and then expand this and bring it into view
 		 * @param {Object} [params]
 		 */
+<<<<<<< HEAD
+		focus: focus
+=======
 		focus: focus,
 
 		/**
@@ -437,6 +490,7 @@
 
 			return '<li></li>';
 		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	});
 
 	/**
@@ -446,6 +500,8 @@
 	 * @augments wp.customize.Class
 	 */
 	api.Section = Container.extend({
+<<<<<<< HEAD
+=======
 		containerType: 'section',
 		defaults: {
 			title: '',
@@ -458,10 +514,15 @@
 			panel: null,
 			customizeAction: ''
 		},
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		/**
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
+		 * @param {String} id
+		 * @param {Array}  options
+=======
 		 * @param {string}         id - The ID for the section.
 		 * @param {object}         options - Object containing one property: params.
 		 * @param {object}         options.params - Object containing the following properties.
@@ -473,6 +534,7 @@
 		 * @param {boolean=true}   [options.params.active] - Whether the section is active or not.
 		 * @param {string}         options.params.panel - The ID for the panel this section is associated with.
 		 * @param {string=}        [options.params.customizeAction] - Additional context information shown before the section title when expanded.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		 */
 		initialize: function ( id, options ) {
 			var section = this;
@@ -537,7 +599,11 @@
 			var section = this;
 
 			// Expand/Collapse accordion sections on click.
+<<<<<<< HEAD
+			section.container.find( '.accordion-section-title' ).on( 'click keydown', function( event ) {
+=======
 			section.container.find( '.accordion-section-title, .customize-section-back' ).on( 'click keydown', function( event ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 					return;
 				}
@@ -591,6 +657,12 @@
 		 */
 		onChangeExpanded: function ( expanded, args ) {
 			var section = this,
+<<<<<<< HEAD
+				content = section.container.find( '.accordion-section-content' ),
+				expand;
+
+			if ( expanded ) {
+=======
 				container = section.container.closest( '.wp-full-overlay-sidebar-content' ),
 				content = section.container.find( '.accordion-section-content' ),
 				overlay = section.container.closest( '.wp-full-overlay' ),
@@ -600,10 +672,16 @@
 				resizeContentHeight, expand, position, scroll;
 
 			if ( expanded && ! section.container.hasClass( 'open' ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 				if ( args.unchanged ) {
 					expand = args.completeCallback;
 				} else {
+<<<<<<< HEAD
+					expand = function () {
+						content.stop().slideDown( args.duration, args.completeCallback );
+						section.container.addClass( 'open' );
+=======
 					container.scrollTop( 0 );
 					resizeContentHeight = function() {
 						var matchMedia, offset;
@@ -640,6 +718,7 @@
 								content.css( 'margin-top', ( parseInt( content.css( 'margin-top' ), 10 ) - offset ) );
 							}
 						}, 100 ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					};
 				}
 
@@ -657,6 +736,14 @@
 						completeCallback: expand
 					});
 				} else {
+<<<<<<< HEAD
+					expand();
+				}
+
+			} else {
+				section.container.removeClass( 'open' );
+				content.slideUp( args.duration, args.completeCallback );
+=======
 					api.panel.each( function( panel ) {
 						panel.collapse();
 					});
@@ -679,6 +766,7 @@
 				if ( args.completeCallback ) {
 					args.completeCallback();
 				}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		}
 	});
@@ -863,6 +951,10 @@
 				overlay = section.closest( '.wp-full-overlay' ),
 				container = section.closest( '.wp-full-overlay-sidebar-content' ),
 				siblings = container.find( '.open' ),
+<<<<<<< HEAD
+				topPanel = overlay.find( '#customize-theme-controls > ul > .accordion-section > .accordion-section-title' ).add( '#customize-info > .accordion-section-title' ),
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				customizeBtn = section.find( '.customize-theme' ),
 				changeBtn = section.find( '.change-theme' ),
 				content = section.find( '.control-panel-content' );
@@ -892,6 +984,11 @@
 						args.completeCallback();
 					}
 				} );
+<<<<<<< HEAD
+				topPanel.attr( 'tabindex', '-1' );
+				changeBtn.attr( 'tabindex', '-1' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				customizeBtn.focus();
 			} else {
 				siblings.removeClass( 'open' );
@@ -904,6 +1001,10 @@
 						args.completeCallback();
 					}
 				} );
+<<<<<<< HEAD
+				topPanel.attr( 'tabindex', '0' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				customizeBtn.attr( 'tabindex', '0' );
 				changeBtn.focus();
 				container.scrollTop( 0 );
@@ -1105,6 +1206,13 @@
 	 * @augments wp.customize.Class
 	 */
 	api.Panel = Container.extend({
+<<<<<<< HEAD
+		/**
+		 * @since 4.1.0
+		 *
+		 * @param  {String} id
+		 * @param  {Object} options
+=======
 		containerType: 'panel',
 
 		/**
@@ -1119,6 +1227,7 @@
 		 * @param {string=default} [options.params.type] - The type of the panel. See wp.customize.panelConstructor.
 		 * @param {string=}        [options.params.content] - The markup to be used for the panel container. If empty, a JS template is used.
 		 * @param {boolean=true}   [options.params.active] - Whether the panel is active or not.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		 */
 		initialize: function ( id, options ) {
 			var panel = this;
@@ -1140,7 +1249,10 @@
 
 			if ( ! panel.container.parent().is( parentContainer ) ) {
 				parentContainer.append( panel.container );
+<<<<<<< HEAD
+=======
 				panel.renderContent();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 			panel.deferred.embedded.resolve();
 		},
@@ -1163,6 +1275,11 @@
 				}
 			});
 
+<<<<<<< HEAD
+			meta = panel.container.find( '.panel-meta:first' );
+
+			meta.find( '> .accordion-section-title' ).on( 'click keydown', function( event ) {
+=======
 			// Close panel.
 			panel.container.find( '.customize-panel-back' ).on( 'click keydown', function( event ) {
 				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
@@ -1178,16 +1295,29 @@
 			meta = panel.container.find( '.panel-meta:first' );
 
 			meta.find( '> .accordion-section-title .customize-help-toggle' ).on( 'click keydown', function( event ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 					return;
 				}
 				event.preventDefault(); // Keep this AFTER the key filter above
 
+<<<<<<< HEAD
+=======
 				meta = panel.container.find( '.panel-meta' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				if ( meta.hasClass( 'cannot-expand' ) ) {
 					return;
 				}
 
+<<<<<<< HEAD
+				var content = meta.find( '.accordion-section-content:first' );
+				if ( meta.hasClass( 'open' ) ) {
+					meta.toggleClass( 'open' );
+					content.slideUp( panel.defaultExpandedArguments.duration );
+				} else {
+					content.slideDown( panel.defaultExpandedArguments.duration );
+					meta.toggleClass( 'open' );
+=======
 				var content = meta.find( '.customize-panel-description:first' );
 				if ( meta.hasClass( 'open' ) ) {
 					meta.toggleClass( 'open' );
@@ -1197,6 +1327,7 @@
 					content.slideDown( panel.defaultExpandedArguments.duration );
 					meta.toggleClass( 'open' );
 					$( this ).attr( 'aria-expanded', true );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 			});
 
@@ -1255,6 +1386,16 @@
 			// Note: there is a second argument 'args' passed
 			var position, scroll,
 				panel = this,
+<<<<<<< HEAD
+				section = panel.container.closest( '.accordion-section' ),
+				overlay = section.closest( '.wp-full-overlay' ),
+				container = section.closest( '.wp-full-overlay-sidebar-content' ),
+				siblings = container.find( '.open' ),
+				topPanel = overlay.find( '#customize-theme-controls > ul > .accordion-section > .accordion-section-title' ).add( '#customize-info > .accordion-section-title' ),
+				backBtn = overlay.find( '.control-panel-back' ),
+				panelTitle = section.find( '.accordion-section-title' ).first(),
+				content = section.find( '.control-panel-content' );
+=======
 				section = panel.container.closest( '.accordion-section' ), // This is actually the panel.
 				overlay = section.closest( '.wp-full-overlay' ),
 				container = section.closest( '.wp-full-overlay-sidebar-content' ),
@@ -1264,12 +1405,17 @@
 				panelTitle = section.find( '.accordion-section-title' ).first(),
 				content = section.find( '.control-panel-content' ),
 				headerActionsHeight = $( '#customize-header-actions' ).height();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			if ( expanded ) {
 
 				// Collapse any sibling sections/panels
 				api.section.each( function ( section ) {
+<<<<<<< HEAD
+					if ( ! section.panel() ) {
+=======
 					if ( panel.id !== section.panel() ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						section.collapse( { duration: 0 } );
 					}
 				});
@@ -1283,7 +1429,11 @@
 					content.parent().show();
 					position = content.offset().top;
 					scroll = container.scrollTop();
+<<<<<<< HEAD
+					content.css( 'margin-top', ( $( '#customize-header-actions' ).height() - position - scroll ) );
+=======
 					content.css( 'margin-top', ( headerActionsHeight - position - scroll ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					section.addClass( 'current-panel' );
 					overlay.addClass( 'in-sub-panel' );
 					container.scrollTop( 0 );
@@ -1294,11 +1444,14 @@
 				topPanel.attr( 'tabindex', '-1' );
 				backBtn.attr( 'tabindex', '0' );
 				backBtn.focus();
+<<<<<<< HEAD
+=======
 
 				// Fix the top margin after reflow.
 				api.bind( 'pane-contents-reflowed', _.debounce( function() {
 					content.css( 'margin-top', ( parseInt( content.css( 'margin-top' ), 10 ) - ( content.offset().top - headerActionsHeight ) ) );
 				}, 100 ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			} else {
 				siblings.removeClass( 'open' );
 				section.removeClass( 'current-panel' );
@@ -1314,6 +1467,8 @@
 				panelTitle.focus();
 				container.scrollTop( 0 );
 			}
+<<<<<<< HEAD
+=======
 		},
 
 		/**
@@ -1336,6 +1491,7 @@
 			if ( template && panel.container ) {
 				panel.container.find( '.accordion-sub-container' ).html( template( panel.params ) );
 			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 	});
 
@@ -1509,6 +1665,8 @@
 		 * @param {Callback} args.completeCallback
 		 */
 		onChangeActive: function ( active, args ) {
+<<<<<<< HEAD
+=======
 			if ( args.unchanged ) {
 				if ( args.completeCallback ) {
 					args.completeCallback();
@@ -1516,6 +1674,7 @@
 				return;
 			}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			if ( ! $.contains( document, this.container ) ) {
 				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
 				this.container.toggle( active );
@@ -1886,6 +2045,8 @@
 	});
 
 	/**
+<<<<<<< HEAD
+=======
 	 * A control for selecting and cropping an image.
 	 *
 	 * @class
@@ -2200,6 +2361,7 @@
 	});
 
 	/**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @class
 	 * @augments wp.customize.Control
 	 * @augments wp.customize.Class
@@ -2649,11 +2811,15 @@
 				_( constructs ).each( function ( activeConstructs, type ) {
 					api[ type ].each( function ( construct, id ) {
 						var active = !! ( activeConstructs && activeConstructs[ id ] );
+<<<<<<< HEAD
+						construct.active( active );
+=======
 						if ( active ) {
 							construct.activate();
 						} else {
 							construct.deactivate();
 						}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					} );
 				} );
 			} );
@@ -3063,6 +3229,15 @@
 	});
 
 	api.controlConstructor = {
+<<<<<<< HEAD
+		color:      api.ColorControl,
+		media:      api.MediaControl,
+		upload:     api.UploadControl,
+		image:      api.ImageControl,
+		header:     api.HeaderControl,
+		background: api.BackgroundControl,
+		theme:      api.ThemeControl
+=======
 		color:         api.ColorControl,
 		media:         api.MediaControl,
 		upload:        api.UploadControl,
@@ -3072,6 +3247,7 @@
 		header:        api.HeaderControl,
 		background:    api.BackgroundControl,
 		theme:         api.ThemeControl
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	};
 	api.panelConstructor = {};
 	api.sectionConstructor = {
@@ -3087,15 +3263,25 @@
 			return;
 		}
 
+<<<<<<< HEAD
+		// Redirect to the fallback preview if any incompatibilities are found.
+		if ( ! $.support.postMessage || ( ! $.support.cors && api.settings.isCrossDomain ) )
+			return window.location = api.settings.url.fallback;
+=======
 		// Bail if any incompatibilities are found.
 		if ( ! $.support.postMessage || ( ! $.support.cors && api.settings.isCrossDomain ) ) {
 			return;
 		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		var parent, topFocus,
 			body = $( document.body ),
 			overlay = body.children( '.wp-full-overlay' ),
+<<<<<<< HEAD
+			title = $( '#customize-info .theme-name.site-title' ),
+=======
 			title = $( '#customize-info .panel-title.site-title' ),
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			closeBtn = $( '.customize-controls-close' ),
 			saveBtn = $( '#save' );
 
@@ -3110,14 +3296,23 @@
 		});
 
 		// Expand/Collapse the main customizer customize info.
+<<<<<<< HEAD
+		$( '#customize-info' ).find( '> .accordion-section-title' ).on( 'click keydown', function( event ) {
+=======
 		$( '.customize-info' ).find( '> .accordion-section-title .customize-help-toggle' ).on( 'click keydown', function( event ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 				return;
 			}
 			event.preventDefault(); // Keep this AFTER the key filter above
 
+<<<<<<< HEAD
+			var section = $( this ).parent(),
+				content = section.find( '.accordion-section-content:first' );
+=======
 			var section = $( this ).closest( '.accordion-section' ),
 				content = section.find( '.customize-panel-description:first' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			if ( section.hasClass( 'cannot-expand' ) ) {
 				return;
@@ -3126,11 +3321,17 @@
 			if ( section.hasClass( 'open' ) ) {
 				section.toggleClass( 'open' );
 				content.slideUp( api.Panel.prototype.defaultExpandedArguments.duration );
+<<<<<<< HEAD
+			} else {
+				content.slideDown( api.Panel.prototype.defaultExpandedArguments.duration );
+				section.toggleClass( 'open' );
+=======
 				$( this ).attr( 'aria-expanded', false );
 			} else {
 				content.slideDown( api.Panel.prototype.defaultExpandedArguments.duration );
 				section.toggleClass( 'open' );
 				$( this ).attr( 'aria-expanded', true );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		});
 
@@ -3364,7 +3565,10 @@
 			if ( wasReflowed && activeElement ) {
 				activeElement.focus();
 			}
+<<<<<<< HEAD
+=======
 			api.trigger( 'pane-contents-reflowed' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}, api );
 		api.bind( 'ready', api.reflowPaneContents );
 		api.reflowPaneContents = _.debounce( api.reflowPaneContents, 100 );
@@ -3438,6 +3642,21 @@
 			event.preventDefault();
 		});
 
+<<<<<<< HEAD
+		// Go back to the top-level Customizer accordion.
+		$( '#customize-header-actions' ).on( 'click keydown', '.control-panel-back', function( event ) {
+			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
+				return;
+			}
+
+			event.preventDefault(); // Keep this AFTER the key filter above
+			api.panel.each( function ( panel ) {
+				panel.collapse();
+			});
+		});
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		closeBtn.keydown( function( event ) {
 			if ( 9 === event.which ) // tab
 				return;
@@ -3446,6 +3665,15 @@
 			event.preventDefault();
 		});
 
+<<<<<<< HEAD
+		$('.collapse-sidebar').on( 'click keydown', function( event ) {
+			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
+				return;
+			}
+
+			overlay.toggleClass( 'collapsed' ).toggleClass( 'expanded' );
+			event.preventDefault();
+=======
 		$( '.collapse-sidebar' ).on( 'click', function() {
 			if ( 'true' === $( this ).attr( 'aria-expanded' ) ) {
 				$( this ).attr({ 'aria-expanded': 'false', 'aria-label': api.l10n.expandSidebar });
@@ -3454,6 +3682,7 @@
 			}
 
 			overlay.toggleClass( 'collapsed' ).toggleClass( 'expanded' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		});
 
 		$( '.customize-controls-preview-toggle' ).on( 'click keydown', function( event ) {
@@ -3571,6 +3800,8 @@
 			});
 		});
 
+<<<<<<< HEAD
+=======
 		// Change previewed URL to the homepage when changing the page_on_front.
 		api( 'show_on_front', 'page_on_front', function( showOnFront, pageOnFront ) {
 			var updatePreviewUrl = function() {
@@ -3592,6 +3823,7 @@
 			});
 		});
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		api.trigger( 'ready' );
 
 		// Make sure left column gets focus

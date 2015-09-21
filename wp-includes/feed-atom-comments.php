@@ -43,7 +43,11 @@ do_action( 'rss_tag_pre', 'atom-comments' );
 	<link rel="alternate" type="<?php bloginfo_rss('html_type'); ?>" href="<?php comments_link_feed(); ?>" />
 	<link rel="self" type="application/atom+xml" href="<?php echo esc_url( get_post_comments_feed_link('', 'atom') ); ?>" />
 	<id><?php echo esc_url( get_post_comments_feed_link('', 'atom') ); ?></id>
+<<<<<<< HEAD
+<?php } elseif(is_search()) { ?>
+=======
 <?php } elseif (is_search()) { ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	<link rel="alternate" type="<?php bloginfo_rss('html_type'); ?>" href="<?php echo home_url() . '?s=' . get_search_query(); ?>" />
 	<link rel="self" type="application/atom+xml" href="<?php echo get_search_comments_feed_link('', 'atom'); ?>" />
 	<id><?php echo get_search_comments_feed_link('', 'atom'); ?></id>

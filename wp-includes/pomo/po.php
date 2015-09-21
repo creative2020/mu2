@@ -355,7 +355,10 @@ class PO extends Gettext_Translations {
 	/**
 	 * @staticvar string   $last_line
 	 * @staticvar boolean  $use_last_line
+<<<<<<< HEAD
+=======
 	 * 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param     resource $f
 	 * @param     string   $action
 	 * @return boolean

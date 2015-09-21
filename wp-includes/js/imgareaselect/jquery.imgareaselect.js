@@ -1,6 +1,10 @@
 /*
  * imgAreaSelect jQuery plugin
+<<<<<<< HEAD
+ * version 0.9.10
+=======
  * version 0.9.10-monkey
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * Copyright (c) 2008-2013 Michal Wojciechowski (odyniec.net)
  *
@@ -189,7 +193,11 @@ $.imgAreaSelect = function (img, options) {
      * @return Viewport X
      */
     function evX(event) {
+<<<<<<< HEAD
+        return event.pageX - parOfs.left;
+=======
         return max(event.pageX || 0, touchCoords(event).x) - parOfs.left;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     }
 
     /**
@@ -200,6 +208,9 @@ $.imgAreaSelect = function (img, options) {
      * @return Viewport Y
      */
     function evY(event) {
+<<<<<<< HEAD
+        return event.pageY - parOfs.top;
+=======
         return max(event.pageY || 0, touchCoords(event).y) - parOfs.top;
     }
 
@@ -217,6 +228,7 @@ $.imgAreaSelect = function (img, options) {
             return { x: oev.touches[0].pageX, y: oev.touches[0].pageY };
         else
             return { x: 0, y: 0 };
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     }
 
     /**
@@ -502,8 +514,13 @@ $.imgAreaSelect = function (img, options) {
         if (options.autoHide || selection.width * selection.height == 0)
             hide($box.add($outer), function () { $(this).hide(); });
 
+<<<<<<< HEAD
+        $(document).unbind('mousemove', selectingMouseMove);
+        $box.mousemove(areaMouseMove);
+=======
         $(document).off('mousemove touchmove', selectingMouseMove);
         $box.on('mousemove touchmove', areaMouseMove);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         options.onSelectEnd(img, getSelection());
     }
@@ -516,6 +533,9 @@ $.imgAreaSelect = function (img, options) {
      * @return false
      */
     function areaMouseDown(event) {
+<<<<<<< HEAD
+        if (event.which != 1) return false;
+=======
         if (event.type == 'mousedown' && event.which != 1) return false;
 
     	/*
@@ -524,6 +544,7 @@ $.imgAreaSelect = function (img, options) {
     	 * mousedown/touchstart.
     	 */
     	areaMouseMove(event);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         adjust();
 
@@ -534,14 +555,30 @@ $.imgAreaSelect = function (img, options) {
             x1 = viewX(selection[/w/.test(resize) ? 'x2' : 'x1']);
             y1 = viewY(selection[/n/.test(resize) ? 'y2' : 'y1']);
 
+<<<<<<< HEAD
+            $(document).mousemove(selectingMouseMove)
+                .one('mouseup', docMouseUp);
+            $box.unbind('mousemove', areaMouseMove);
+=======
             $(document).on('mousemove touchmove', selectingMouseMove)
                 .one('mouseup touchend', docMouseUp);
             $box.off('mousemove touchmove', areaMouseMove);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
         }
         else if (options.movable) {
             startX = left + selection.x1 - evX(event);
             startY = top + selection.y1 - evY(event);
 
+<<<<<<< HEAD
+            $box.unbind('mousemove', areaMouseMove);
+
+            $(document).mousemove(movingMouseMove)
+                .one('mouseup', function () {
+                    options.onSelectEnd(img, getSelection());
+
+                    $(document).unbind('mousemove', movingMouseMove);
+                    $box.mousemove(areaMouseMove);
+=======
             $box.off('mousemove touchmove', areaMouseMove);
 
             $(document).on('mousemove touchmove', movingMouseMove)
@@ -550,6 +587,7 @@ $.imgAreaSelect = function (img, options) {
 
                     $(document).off('mousemove touchmove', movingMouseMove);
                     $box.on('mousemove touchmove', areaMouseMove);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
                 });
         }
         else
@@ -699,7 +737,11 @@ $.imgAreaSelect = function (img, options) {
      * Start selection
      */
     function startSelection() {
+<<<<<<< HEAD
+        $(document).unbind('mousemove', startSelection);
+=======
         $(document).off('mousemove touchmove', startSelection);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
         adjust();
 
         x2 = x1;
@@ -714,10 +756,16 @@ $.imgAreaSelect = function (img, options) {
 
         shown = true;
 
+<<<<<<< HEAD
+        $(document).unbind('mouseup', cancelSelection)
+            .mousemove(selectingMouseMove).one('mouseup', docMouseUp);
+        $box.unbind('mousemove', areaMouseMove);
+=======
         $(document).off('mouseup touchend', cancelSelection)
             .on('mousemove touchmove', selectingMouseMove)
             .one('mouseup touchend', docMouseUp);
         $box.off('mousemove touchmove', areaMouseMove);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         options.onSelectStart(img, getSelection());
     }
@@ -726,8 +774,13 @@ $.imgAreaSelect = function (img, options) {
      * Cancel selection
      */
     function cancelSelection() {
+<<<<<<< HEAD
+        $(document).unbind('mousemove', startSelection)
+            .unbind('mouseup', cancelSelection);
+=======
         $(document).off('mousemove touchmove', startSelection)
             .off('mouseup touchend', cancelSelection);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
         hide($box.add($outer));
 
         setSelection(selX(x1), selY(y1), selX(x1), selY(y1));
@@ -755,8 +808,12 @@ $.imgAreaSelect = function (img, options) {
         startY = y1 = evY(event);
 
         /* Selection will start when the mouse is moved */
+<<<<<<< HEAD
+        $(document).mousemove(startSelection).mouseup(cancelSelection);
+=======
         $(document).on({ 'mousemove touchmove': startSelection,
             'mouseup touchend': cancelSelection });
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         return false;
     }
@@ -1014,22 +1071,35 @@ $.imgAreaSelect = function (img, options) {
 
         if (options.disable || options.enable === false) {
             /* Disable the plugin */
+<<<<<<< HEAD
+            $box.unbind('mousemove', areaMouseMove).unbind('mousedown', areaMouseDown);
+            $(window).unbind('resize', windowResize);
+=======
             $box.off({ 'mousemove touchmove': areaMouseMove,
                 'mousedown touchstart': areaMouseDown });
             $(window).off('resize', windowResize);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
         }
         else {
             if (options.enable || options.disable === false) {
                 /* Enable the plugin */
                 if (options.resizable || options.movable)
+<<<<<<< HEAD
+                    $box.mousemove(areaMouseMove).mousedown(areaMouseDown);
+=======
                     $box.on({ 'mousemove touchmove': areaMouseMove,
                         'mousedown touchstart': areaMouseDown });
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
                 $(window).resize(windowResize);
             }
 
             if (!options.persistent)
+<<<<<<< HEAD
+                $img.add($outer).mousedown(imgMouseDown);
+=======
                 $img.add($outer).on('mousedown touchstart', imgMouseDown);
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
         }
 
         options.enable = options.disable = undefined;

@@ -20,9 +20,13 @@ var wpNavMenu;
 
 		options : {
 			menuItemDepthPerLevel : 30, // Do not use directly. Use depthToPx and pxToDepth instead.
+<<<<<<< HEAD
+			globalMaxDepth : 11
+=======
 			globalMaxDepth:  11,
 			sortableItems:   '> *',
 			targetTolerance: 0
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		},
 
 		menuList : undefined,	// Set in init.
@@ -89,10 +93,17 @@ var wpNavMenu;
 				childMenuItems : function() {
 					var result = $();
 					this.each(function(){
+<<<<<<< HEAD
+						var t = $(this), depth = t.menuItemDepth(), next = t.next();
+						while( next.length && next.menuItemDepth() > depth ) {
+							result = result.add( next );
+							next = next.next();
+=======
 						var t = $(this), depth = t.menuItemDepth(), next = t.next( '.menu-item' );
 						while( next.length && next.menuItemDepth() > depth ) {
 							result = result.add( next );
 							next = next.next( '.menu-item' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						}
 					});
 					return result;
@@ -390,11 +401,19 @@ var wpNavMenu;
 
 			// Refresh the accessibility when the user comes close to the item in any way
 			menu.on( 'mouseenter.refreshAccessibility focus.refreshAccessibility touchstart.refreshAccessibility' , '.menu-item' , function(){
+<<<<<<< HEAD
+				api.refreshAdvancedAccessibilityOfItem( $( this ).find( '.item-edit' ) );
+			} );
+
+			// We have to update on click as well because we might hover first, change the item, and then click.
+			menu.on( 'click', '.item-edit', function() {
+=======
 				api.refreshAdvancedAccessibilityOfItem( $( this ).find( 'a.item-edit' ) );
 			} );
 
 			// We have to update on click as well because we might hover first, change the item, and then click.
 			menu.on( 'click', 'a.item-edit', function() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				api.refreshAdvancedAccessibilityOfItem( $( this ) );
 			} );
 
@@ -439,7 +458,11 @@ var wpNavMenu;
 				totalMenuItems = $('#menu-to-edit li').length,
 				hasSameDepthSibling = menuItem.nextAll( '.menu-item-depth-' + depth ).length;
 
+<<<<<<< HEAD
+				menuItem.find( '.field-move' ).toggle( totalMenuItems > 1 ); 
+=======
 				menuItem.find( '.field-move' ).toggle( totalMenuItems > 1 );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// Where can they move this menu item?
 			if ( 0 !== position ) {
@@ -494,7 +517,11 @@ var wpNavMenu;
 				title = menus.subMenuFocus.replace( '%1$s', itemName ).replace( '%2$d', itemPosition ).replace( '%3$s', parentItemName );
 			}
 
+<<<<<<< HEAD
+			$this.prop('title', title).html( title );
+=======
 			$this.prop('title', title).text( title );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// Mark this item's accessibility as refreshed
 			$this.data( 'needs_accessibility_refresh', false );
@@ -511,16 +538,27 @@ var wpNavMenu;
 			$( '.menu-item-settings .field-move a' ).hide();
 
 			// Mark all menu items as unprocessed
+<<<<<<< HEAD
+			$( '.item-edit' ).data( 'needs_accessibility_refresh', true );
+
+			// All open items have to be refreshed or they will show no links
+			$( '.menu-item-edit-active .item-edit' ).each( function() {
+=======
 			$( 'a.item-edit' ).data( 'needs_accessibility_refresh', true );
 
 			// All open items have to be refreshed or they will show no links
 			$( '.menu-item-edit-active a.item-edit' ).each( function() {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				api.refreshAdvancedAccessibilityOfItem( this );
 			} );
 		},
 
 		refreshKeyboardAccessibility : function() {
+<<<<<<< HEAD
+			$( '.item-edit' ).off( 'focus' ).on( 'focus', function(){
+=======
 			$( 'a.item-edit' ).off( 'focus' ).on( 'focus', function(){
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$(this).off( 'keydown' ).on( 'keydown', function(e){
 
 					var arrows,
@@ -622,7 +660,10 @@ var wpNavMenu;
 			api.menuList.sortable({
 				handle: '.menu-item-handle',
 				placeholder: 'sortable-placeholder',
+<<<<<<< HEAD
+=======
 				items: api.options.sortableItems,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				start: function(e, ui) {
 					var height, width, parent, children, tempHolder;
 
@@ -663,7 +704,11 @@ var wpNavMenu;
 					ui.placeholder.width(width);
 
 					// Update the list of menu items.
+<<<<<<< HEAD
+					tempHolder = ui.placeholder.next();
+=======
 					tempHolder = ui.placeholder.next( '.menu-item' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					tempHolder.css( 'margin-top', helperHeight + 'px' ); // Set the margin to absorb the placeholder
 					ui.placeholder.detach(); // detach or jQuery UI will think the placeholder is a menu item
 					$(this).sortable( 'refresh' ); // The children aren't sortable. We should let jQ UI know.
@@ -722,6 +767,13 @@ var wpNavMenu;
 					var offset = ui.helper.offset(),
 						edge = api.isRTL ? offset.left + ui.helper.width() : offset.left,
 						depth = api.negateIfRTL * api.pxToDepth( edge - menuEdge );
+<<<<<<< HEAD
+					// Check and correct if depth is not within range.
+					// Also, if the dragged element is dragged upwards over
+					// an item, shift the placeholder to a child position.
+					if ( depth > maxDepth || offset.top < prevBottom ) depth = maxDepth;
+					else if ( depth < minDepth ) depth = minDepth;
+=======
 
 					// Check and correct if depth is not within range.
 					// Also, if the dragged element is dragged upwards over
@@ -731,6 +783,7 @@ var wpNavMenu;
 					} else if ( depth < minDepth ) {
 						depth = minDepth;
 					}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 					if( depth != currentDepth )
 						updateCurrentDepth(ui, depth);
@@ -747,12 +800,21 @@ var wpNavMenu;
 			function updateSharedVars(ui) {
 				var depth;
 
+<<<<<<< HEAD
+				prev = ui.placeholder.prev();
+				next = ui.placeholder.next();
+
+				// Make sure we don't select the moving item.
+				if( prev[0] == ui.item[0] ) prev = prev.prev();
+				if( next[0] == ui.item[0] ) next = next.next();
+=======
 				prev = ui.placeholder.prev( '.menu-item' );
 				next = ui.placeholder.next( '.menu-item' );
 
 				// Make sure we don't select the moving item.
 				if( prev[0] == ui.item[0] ) prev = prev.prev( '.menu-item' );
 				if( next[0] == ui.item[0] ) next = next.next( '.menu-item' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 				prevBottom = (prev.length) ? prev.offset().top + prev.height() : 0;
 				nextThreshold = (next.length) ? next.offset().top + next.height() / 3 : 0;
@@ -824,8 +886,11 @@ var wpNavMenu;
 				}
 			});
 			$('#add-custom-links input[type="text"]').keypress(function(e){
+<<<<<<< HEAD
+=======
 				$('#customlinkdiv').removeClass('form-invalid');
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				if ( e.keyCode === 13 ) {
 					e.preventDefault();
 					$( '#submit-customlinkdiv' ).click();
@@ -928,10 +993,15 @@ var wpNavMenu;
 
 			processMethod = processMethod || api.addMenuItemToBottom;
 
+<<<<<<< HEAD
+			if ( '' === url || 'http://' == url )
+				return false;
+=======
 			if ( '' === url || 'http://' == url ) {
 				$('#customlinkdiv').addClass('form-invalid');
 				return false;
 			}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			// Show the ajax spinner
 			$( '.customlinkdiv .spinner' ).addClass( 'is-active' );

@@ -33,7 +33,11 @@ class Text_Diff {
      *                           Normally an array of two arrays, each
      *                           containing the lines from a file.
      */
+<<<<<<< HEAD
+    function Text_Diff($engine, $params)
+=======
     function __construct( $engine, $params )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     {
         // Backward compatibility workaround.
         if (!is_string($engine)) {
@@ -55,6 +59,8 @@ class Text_Diff {
         $this->_edits = call_user_func_array(array($diff_engine, 'diff'), $params);
     }
 
+<<<<<<< HEAD
+=======
 	/**
 	 * PHP4 constructor.
 	 */
@@ -62,6 +68,7 @@ class Text_Diff {
 		self::__construct( $engine, $params );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     /**
      * Returns the array of differences.
      */
@@ -311,7 +318,11 @@ class Text_MappedDiff extends Text_Diff {
      * @param array $mapped_to_lines    This array should have the same number
      *                                  of elements as $to_lines.
      */
+<<<<<<< HEAD
+    function Text_MappedDiff($from_lines, $to_lines,
+=======
     function __construct($from_lines, $to_lines,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
                              $mapped_from_lines, $mapped_to_lines)
     {
         assert(count($from_lines) == count($mapped_from_lines));
@@ -335,6 +346,8 @@ class Text_MappedDiff extends Text_Diff {
         }
     }
 
+<<<<<<< HEAD
+=======
 	/**
 	 * PHP4 constructor.
 	 */
@@ -344,6 +357,7 @@ class Text_MappedDiff extends Text_Diff {
                              $mapped_from_lines, $mapped_to_lines );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -382,10 +396,14 @@ class Text_Diff_Op {
  */
 class Text_Diff_Op_copy extends Text_Diff_Op {
 
+<<<<<<< HEAD
+    function Text_Diff_Op_copy($orig, $final = false)
+=======
 	/**
 	 * PHP5 constructor.
 	 */
     function __construct( $orig, $final = false )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     {
         if (!is_array($final)) {
             $final = $orig;
@@ -394,6 +412,8 @@ class Text_Diff_Op_copy extends Text_Diff_Op {
         $this->final = $final;
     }
 
+<<<<<<< HEAD
+=======
 	/**
 	 * PHP4 constructor.
 	 */
@@ -401,6 +421,7 @@ class Text_Diff_Op_copy extends Text_Diff_Op {
 		self::__construct( $orig, $final );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     function &reverse()
     {
         $reverse = new Text_Diff_Op_copy($this->final, $this->orig);
@@ -417,15 +438,21 @@ class Text_Diff_Op_copy extends Text_Diff_Op {
  */
 class Text_Diff_Op_delete extends Text_Diff_Op {
 
+<<<<<<< HEAD
+    function Text_Diff_Op_delete($lines)
+=======
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $lines )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     {
         $this->orig = $lines;
         $this->final = false;
     }
 
+<<<<<<< HEAD
+=======
 	/**
 	 * PHP4 constructor.
 	 */
@@ -433,6 +460,7 @@ class Text_Diff_Op_delete extends Text_Diff_Op {
 		self::__construct( $lines );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     function &reverse()
     {
         $reverse = new Text_Diff_Op_add($this->orig);
@@ -449,15 +477,21 @@ class Text_Diff_Op_delete extends Text_Diff_Op {
  */
 class Text_Diff_Op_add extends Text_Diff_Op {
 
+<<<<<<< HEAD
+    function Text_Diff_Op_add($lines)
+=======
 	/**
 	 * PHP5 constructor.
 	 */
     function __construct( $lines )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     {
         $this->final = $lines;
         $this->orig = false;
     }
 
+<<<<<<< HEAD
+=======
 	/**
 	 * PHP4 constructor.
 	 */
@@ -465,6 +499,7 @@ class Text_Diff_Op_add extends Text_Diff_Op {
 		self::__construct( $lines );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     function &reverse()
     {
         $reverse = new Text_Diff_Op_delete($this->final);
@@ -481,15 +516,21 @@ class Text_Diff_Op_add extends Text_Diff_Op {
  */
 class Text_Diff_Op_change extends Text_Diff_Op {
 
+<<<<<<< HEAD
+    function Text_Diff_Op_change($orig, $final)
+=======
 	/**
 	 * PHP5 constructor.
 	 */
     function __construct( $orig, $final )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     {
         $this->orig = $orig;
         $this->final = $final;
     }
 
+<<<<<<< HEAD
+=======
 	/**
 	 * PHP4 constructor.
 	 */
@@ -497,6 +538,7 @@ class Text_Diff_Op_change extends Text_Diff_Op {
 		self::__construct( $orig, $final );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     function &reverse()
     {
         $reverse = new Text_Diff_Op_change($this->final, $this->orig);

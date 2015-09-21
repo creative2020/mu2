@@ -9,11 +9,14 @@
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
+<<<<<<< HEAD
+=======
 /**
  * @global string  $post_type
  * @global object  $post_type_object
  * @global WP_Post $post
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 global $post_type, $post_type_object, $post;
 
 if ( ! isset( $_GET['post_type'] ) ) {

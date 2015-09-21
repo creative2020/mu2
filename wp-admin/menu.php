@@ -18,6 +18,11 @@
  *     5: Icon for top level menu
  *
  * @global array $menu
+<<<<<<< HEAD
+ * @name $menu
+ * @var array
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 
 $menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'dashicons-dashboard' );
@@ -170,12 +175,17 @@ $menu[60] = array( __( 'Appearance' ), $appearance_cap, 'themes.php', '', 'menu-
 unset( $appearance_cap );
 
 // Add 'Editor' to the bottom of the Appearance menu.
+<<<<<<< HEAD
+if ( ! is_multisite() )
+	add_action('admin_menu', '_add_themes_utility_last', 101);
+=======
 if ( ! is_multisite() ) {
 	add_action('admin_menu', '_add_themes_utility_last', 101);
 }
 /**
  *
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function _add_themes_utility_last() {
 	// Must use API on the admin_menu hook, direct modification is only possible on/before the _admin_menu hook
 	add_submenu_page('themes.php', _x('Editor', 'theme editor'), _x('Editor', 'theme editor'), 'edit_themes', 'theme-editor.php');

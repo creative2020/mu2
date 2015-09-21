@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+=======
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -278,7 +283,11 @@
 	tinymce.addI18n = function(prefix, o) {
 		var I18n = tinymce.util.I18n, each = tinymce.each;
 
+<<<<<<< HEAD
+		if (typeof(prefix) == "string" && prefix.indexOf('.') === -1) {
+=======
 		if (typeof prefix == "string" && prefix.indexOf('.') === -1) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			I18n.add(prefix, o);
 			return;
 		}

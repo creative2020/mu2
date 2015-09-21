@@ -20,11 +20,19 @@
 function comment_exists($comment_author, $comment_date) {
 	global $wpdb;
 
+<<<<<<< HEAD
+	$comment_author = stripslashes($comment_author);
+	$comment_date = stripslashes($comment_date);
+
+	return $wpdb->get_var( $wpdb->prepare("SELECT comment_post_ID FROM $wpdb->comments
+			WHERE comment_author = %s AND comment_date = %s", $comment_author, $comment_date) );
+=======
 	return $wpdb->get_var( $wpdb->prepare("SELECT comment_post_ID FROM $wpdb->comments
 			WHERE comment_author = %s AND comment_date = %s",
 			stripslashes( $comment_author ),
 			stripslashes( $comment_date )
 	) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 /**
@@ -33,6 +41,10 @@ function comment_exists($comment_author, $comment_date) {
  * @since 2.0.0
  */
 function edit_comment() {
+<<<<<<< HEAD
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) )
 		wp_die ( __( 'You are not allowed to edit comments on this post.' ) );
 
@@ -79,7 +91,11 @@ function edit_comment() {
  * @since 2.0.0
  *
  * @param int $id ID of comment to retrieve.
+<<<<<<< HEAD
+ * @return bool|object Comment if found. False on failure.
+=======
  * @return object|false Comment if found. False on failure.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function get_comment_to_edit( $id ) {
 	if ( !$comment = get_comment($id) )
@@ -155,8 +171,12 @@ function get_pending_comments_num( $post_id ) {
  * Add avatars to relevant places in admin, or try to.
  *
  * @since 2.5.0
+<<<<<<< HEAD
+ * @uses $comment
+=======
  *
  * @global object $comment
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  *
  * @param string $name User name.
  * @return string Avatar with Admin name.
@@ -167,9 +187,12 @@ function floated_admin_avatar( $name ) {
 	return "$avatar $name";
 }
 
+<<<<<<< HEAD
+=======
 /**
  * @since 2.7.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function enqueue_comment_hotkeys_js() {
 	if ( 'true' == get_user_option( 'comment_shortcuts' ) )
 		wp_enqueue_script( 'jquery-table-hotkeys' );

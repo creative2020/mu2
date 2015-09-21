@@ -22,6 +22,8 @@ if ( is_multisite() && ! is_network_admin() ) {
 if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_themes' ) && ! current_user_can( 'update_plugins' ) )
 	wp_die( __( 'You do not have sufficient permissions to update this site.' ) );
 
+<<<<<<< HEAD
+=======
 /**
  *
  * @global string $wp_local_package
@@ -32,6 +34,7 @@ if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_themes' 
  *
  * @param object $update
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function list_core_update( $update ) {
  	global $wp_local_package, $wpdb, $wp_version;
   	static $first_pass = true;
@@ -114,9 +117,12 @@ function list_core_update( $update ) {
 
 }
 
+<<<<<<< HEAD
+=======
 /**
  * @since 2.7.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function dismissed_updates() {
 	$dismissed = get_core_updates( array( 'dismissed' => true, 'available' => false ) );
 	if ( $dismissed ) {
@@ -149,9 +155,13 @@ function dismissed_updates() {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
+ * @return null
+=======
  * @global string $wp_version
  * @global string $required_php_version
  * @global string $required_mysql_version
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function core_upgrade_preamble() {
 	global $wp_version, $required_php_version, $required_mysql_version;
@@ -177,7 +187,11 @@ function core_upgrade_preamble() {
 		}
 		echo '</h3>';
 	} else {
+<<<<<<< HEAD
+		echo '<div class="updated inline"><p>';
+=======
 		echo '<div class="notice notice-warning"><p>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		_e('<strong>Important:</strong> before updating, please <a href="https://codex.wordpress.org/WordPress_Backups">back up your database and files</a>. For help with updates, visit the <a href="https://codex.wordpress.org/Updating_WordPress">Updating WordPress</a> Codex page.');
 		echo '</p></div>';
 
@@ -213,10 +227,13 @@ function core_upgrade_preamble() {
 	dismissed_updates();
 }
 
+<<<<<<< HEAD
+=======
 /**
  *
  * @global string $wp_version
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function list_plugin_updates() {
 	global $wp_version;
 
@@ -245,7 +262,11 @@ function list_plugin_updates() {
 <table class="widefat" id="update-plugins-table">
 	<thead>
 	<tr>
+<<<<<<< HEAD
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all" /></th>
+=======
 		<td scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all" /></td>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<th scope="col" class="manage-column"><label for="plugins-select-all"><?php _e('Select All'); ?></label></th>
 	</tr>
 	</thead>
@@ -298,7 +319,11 @@ function list_plugin_updates() {
 
 	<tfoot>
 	<tr>
+<<<<<<< HEAD
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all-2" /></th>
+=======
 		<td scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all-2" /></td>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<th scope="col" class="manage-column"><label for="plugins-select-all-2"><?php _e( 'Select All' ); ?></label></th>
 	</tr>
 	</tfoot>
@@ -308,9 +333,12 @@ function list_plugin_updates() {
 <?php
 }
 
+<<<<<<< HEAD
+=======
 /**
  * @since 2.9.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function list_theme_updates() {
 	$themes = get_theme_updates();
 	if ( empty( $themes ) ) {
@@ -320,6 +348,10 @@ function list_theme_updates() {
 	}
 
 	$form_action = 'update-core.php?action=do-theme-upgrade';
+<<<<<<< HEAD
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 ?>
 <h3><?php _e( 'Themes' ); ?></h3>
 <p><?php _e( 'The following themes have new versions available. Check the ones you want to update and then click &#8220;Update Themes&#8221;.' ); ?></p>
@@ -330,7 +362,11 @@ function list_theme_updates() {
 <table class="widefat" id="update-themes-table">
 	<thead>
 	<tr>
+<<<<<<< HEAD
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all" /></th>
+=======
 		<td scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all" /></td>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<th scope="col" class="manage-column"><label for="themes-select-all"><?php _e('Select All'); ?></label></th>
 	</tr>
 	</thead>
@@ -349,7 +385,11 @@ function list_theme_updates() {
 
 	<tfoot>
 	<tr>
+<<<<<<< HEAD
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all-2" /></th>
+=======
 		<td scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all-2" /></td>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<th scope="col" class="manage-column"><label for="themes-select-all-2"><?php _e( 'Select All' ); ?></label></th>
 	</tr>
 	</tfoot>
@@ -359,9 +399,12 @@ function list_theme_updates() {
 <?php
 }
 
+<<<<<<< HEAD
+=======
 /**
  * @since 3.7.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function list_translation_updates() {
 	$updates = wp_get_translation_updates();
 	if ( ! $updates ) {
@@ -388,9 +431,13 @@ function list_translation_updates() {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
+ * @return null
+=======
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
  * @param bool $reinstall
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function do_core_upgrade( $reinstall = false ) {
 	global $wp_filesystem;
@@ -415,7 +462,11 @@ function do_core_upgrade( $reinstall = false ) {
 
 ?>
 	<div class="wrap">
+<<<<<<< HEAD
+	<h2><?php _e('Update WordPress'); ?></h2>
+=======
 	<h1><?php _e( 'Update WordPress' ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <?php
 
 	if ( false === ( $credentials = request_filesystem_credentials( $url, '', false, ABSPATH, array( 'version', 'locale' ), $allow_relaxed_file_ownership ) ) ) {
@@ -466,9 +517,12 @@ function do_core_upgrade( $reinstall = false ) {
 	<?php
 }
 
+<<<<<<< HEAD
+=======
 /**
  * @since 2.7.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function do_dismiss_core_update() {
 	$version = isset( $_POST['version'] )? $_POST['version'] : false;
 	$locale = isset( $_POST['locale'] )? $_POST['locale'] : 'en_US';
@@ -480,9 +534,12 @@ function do_dismiss_core_update() {
 	exit;
 }
 
+<<<<<<< HEAD
+=======
 /**
  * @since 2.7.0
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 function do_undismiss_core_update() {
 	$version = isset( $_POST['version'] )? $_POST['version'] : false;
 	$locale = isset( $_POST['locale'] )? $_POST['locale'] : 'en_US';
@@ -542,7 +599,11 @@ if ( 'upgrade-core' == $action ) {
 	require_once(ABSPATH . 'wp-admin/admin-header.php');
 	?>
 	<div class="wrap">
+<<<<<<< HEAD
+	<h2><?php _e('WordPress Updates'); ?></h2>
+=======
 	<h1><?php _e( 'WordPress Updates' ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	<?php
 	if ( $upgrade_error ) {
 		echo '<div class="error"><p>';
@@ -624,7 +685,11 @@ if ( 'upgrade-core' == $action ) {
 
 	require_once(ABSPATH . 'wp-admin/admin-header.php');
 	echo '<div class="wrap">';
+<<<<<<< HEAD
+	echo '<h2>' . esc_html__('Update Plugins') . '</h2>';
+=======
 	echo '<h1>' . __( 'Update Plugins' ) . '</h1>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	echo '<iframe src="', $url, '" style="width: 100%; height: 100%; min-height: 750px;" frameborder="0"></iframe>';
 	echo '</div>';
 	include(ABSPATH . 'wp-admin/admin-footer.php');
@@ -653,7 +718,11 @@ if ( 'upgrade-core' == $action ) {
 	require_once(ABSPATH . 'wp-admin/admin-header.php');
 	?>
 	<div class="wrap">
+<<<<<<< HEAD
+		<h2><?php echo esc_html__('Update Themes') ?></h2>
+=======
 		<h1><?php _e( 'Update Themes' ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<iframe src="<?php echo $url ?>" style="width: 100%; height: 100%; min-height: 750px;" frameborder="0"></iframe>
 	</div>
 	<?php

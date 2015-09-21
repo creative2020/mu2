@@ -601,7 +601,10 @@ class GFAPI {
 			return new WP_Error( 'invalid_form_id', __( 'The form for this entry does not exist', 'gravityforms' ) );
 		}
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$entry = apply_filters( 'gform_entry_pre_update', $entry, $original_entry );
 
 		// use values in the entry object if present
@@ -669,7 +672,12 @@ class GFAPI {
 
 		$form = GFFormsModel::get_form_meta( $form_id );
 
+<<<<<<< HEAD
+		$form = apply_filters( 'gform_form_pre_update_entry', $form, $entry, $entry_id );
+		$form = apply_filters( "gform_form_pre_update_entry_{$form_id}", $form, $entry, $entry_id );
+=======
 		$form = gf_apply_filters( 'gform_form_pre_update_entry', $form_id, $form, $entry, $entry_id );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		foreach ( $form['fields'] as $field ) {
 			/* @var GF_Field $field */
@@ -739,6 +747,9 @@ class GFAPI {
 			}
 		}
 
+<<<<<<< HEAD
+		do_action( 'gform_post_update_entry', $entry, $original_entry );
+=======
 		/**
 		 * Fires after the Entry is updated.
 		 *
@@ -746,6 +757,7 @@ class GFAPI {
 		 * @param array $original_entry The entry object before being updated.
 		 */
 		gf_do_action( 'gform_post_update_entry', $form_id, $entry, $original_entry );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		return true;
 	}
@@ -936,12 +948,16 @@ class GFAPI {
 
 		$field = GFFormsModel::get_field( $form, $input_id );
 
+<<<<<<< HEAD
+		$lead_detail_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}rg_lead_detail WHERE lead_id=%d AND CAST(field_number as DECIMAL(4,2))=%s", $entry_id, $input_id ) );
+=======
 		$input_id_min = (float) $input_id - 0.0001;
 		$input_id_max = (float) $input_id + 0.0001;
 
 		$lead_details_table_name = GFFormsModel::get_lead_details_table_name();
 
 		$lead_detail_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$lead_details_table_name} WHERE lead_id=%d AND field_number BETWEEN %s AND %s", $entry_id, $input_id_min, $input_id_max ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$result = true;
 		if ( ! isset( $entry[ $input_id ] ) || $entry[ $input_id ] != $value ){
@@ -1230,18 +1246,30 @@ class GFAPI {
 			}
 
 			if ( $event == 'form_submission' ) {
+<<<<<<< HEAD
+				if ( rgar( $notification, 'type' ) == 'user' && apply_filters( "gform_disable_user_notification_{$form['id']}", apply_filters( 'gform_disable_user_notification', false, $form, $entry ), $form, $entry ) ) {
+					GFCommon::log_debug( "GFAPI::send_notifications(): Notification is disabled by gform_disable_user_notification hook, not including notification (#{$notification['id']} - {$notification['name']})." );
+					//skip user notification if it has been disabled by a hook
+					continue;
+				} elseif ( rgar( $notification, 'type' ) == 'admin' && apply_filters( "gform_disable_admin_notification_{$form['id']}", apply_filters( 'gform_disable_admin_notification', false, $form, $entry ), $form, $entry ) ) {
+=======
 				if ( rgar( $notification, 'type' ) == 'user' && gf_apply_filters( 'gform_disable_user_notification', $form['id'], false, $form, $entry ) ) {
 					GFCommon::log_debug( "GFAPI::send_notifications(): Notification is disabled by gform_disable_user_notification hook, not including notification (#{$notification['id']} - {$notification['name']})." );
 					//skip user notification if it has been disabled by a hook
 					continue;
 				} elseif ( rgar( $notification, 'type' ) == 'admin' && gf_apply_filters( 'gform_disable_admin_notification', $form['id'], false, $form, $entry ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					GFCommon::log_debug( "GFAPI::send_notifications(): Notification is disabled by gform_disable_admin_notification hook, not including notification (#{$notification['id']} - {$notification['name']})." );
 					//skip admin notification if it has been disabled by a hook
 					continue;
 				}
 			}
 
+<<<<<<< HEAD
+			if ( apply_filters( "gform_disable_notification_{$form['id']}", apply_filters( 'gform_disable_notification', false, $notification, $form, $entry ), $notification, $form, $entry ) ) {
+=======
 			if ( gf_apply_filters( 'gform_disable_notification', $form['id'], false, $notification, $form, $entry ) ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				GFCommon::log_debug( "GFAPI::send_notifications(): Notification is disabled by gform_disable_notification hook, not including notification (#{$notification['id']} - {$notification['name']})." );
 				//skip notifications if it has been disabled by a hook
 				continue;
@@ -1271,6 +1299,9 @@ class GFAPI {
 		return GFCommon::current_user_can_any( $capabilities );
 	}
 
+<<<<<<< HEAD
+
+=======
 	// FIELDS -----------------------------------------------------
 
 	/**
@@ -1287,6 +1318,7 @@ class GFAPI {
 	public static function get_fields_by_type( $form, $types, $use_input_type = false ) {
 		return GFFormsModel::get_fields_by_type( $form, $types, $use_input_type );
 	}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	// HELPERS ----------------------------------------------------
 

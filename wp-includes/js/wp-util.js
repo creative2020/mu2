@@ -50,8 +50,12 @@ window.wp = window.wp || {};
 		 *
 		 * @param  {string} action The slug of the action to fire in WordPress.
 		 * @param  {object} data   The data to populate $_POST with.
+<<<<<<< HEAD
+		 * @return {$.promise}     A jQuery promise that represents the request.
+=======
 		 * @return {$.promise}     A jQuery promise that represents the request,
 		 *                         decorated with an abort() method.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		 */
 		post: function( action, data ) {
 			return wp.ajax.send({
@@ -66,11 +70,17 @@ window.wp = window.wp || {};
 		 *
 		 * @param  {string} action  The slug of the action to fire in WordPress.
 		 * @param  {object} options The options passed to jQuery.ajax.
+<<<<<<< HEAD
+		 * @return {$.promise}      A jQuery promise that represents the request.
+		 */
+		send: function( action, options ) {
+=======
 		 * @return {$.promise}      A jQuery promise that represents the request,
 		 *                          decorated with an abort() method.
 		 */
 		send: function( action, options ) {
 			var promise, deferred;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			if ( _.isObject( action ) ) {
 				options = action;
 			} else {
@@ -84,7 +94,11 @@ window.wp = window.wp || {};
 				context: this
 			});
 
+<<<<<<< HEAD
+			return $.Deferred( function( deferred ) {
+=======
 			deferred = $.Deferred( function( deferred ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				// Transfer success/error callbacks.
 				if ( options.success )
 					deferred.done( options.success );
@@ -95,7 +109,11 @@ window.wp = window.wp || {};
 				delete options.error;
 
 				// Use with PHP's wp_send_json_success() and wp_send_json_error()
+<<<<<<< HEAD
+				$.ajax( options ).done( function( response ) {
+=======
 				deferred.jqXHR = $.ajax( options ).done( function( response ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					// Treat a response of `1` as successful for backwards
 					// compatibility with existing handlers.
 					if ( response === '1' || response === 1 )
@@ -108,6 +126,9 @@ window.wp = window.wp || {};
 				}).fail( function() {
 					deferred.rejectWith( this, arguments );
 				});
+<<<<<<< HEAD
+			}).promise();
+=======
 			});
 
 			promise = deferred.promise();
@@ -117,6 +138,7 @@ window.wp = window.wp || {};
 			};
 
 			return promise;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		}
 	};
 

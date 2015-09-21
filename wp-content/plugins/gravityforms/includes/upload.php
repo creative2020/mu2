@@ -240,7 +240,12 @@ class GFAsyncUpload {
 
 		GFCommon::log_debug( sprintf( 'GFAsyncUpload::upload(): File upload complete. temp_filename: %s  uploaded_filename: %s ', $tmp_file_name, $uploaded_filename ) );
 
+<<<<<<< HEAD
+		do_action( 'gform_post_multifile_upload', $form, $field, $uploaded_filename, $tmp_file_name, $file_path );
+		do_action( "gform_post_multifile_upload_{$form['id']}", $form, $field, $uploaded_filename, $tmp_file_name, $file_path );
+=======
 		gf_do_action( 'gform_post_multifile_upload', $form['id'], $form, $field, $uploaded_filename, $tmp_file_name, $file_path );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		die( $output );
 	}

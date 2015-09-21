@@ -17,11 +17,15 @@
 class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	public $link;
 
+<<<<<<< HEAD
+	public function __construct($opt='') {
+=======
 	/**
 	 *
 	 * @param array $opt
 	 */
 	public function __construct( $opt = '' ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$this->method = 'ftpext';
 		$this->errors = new WP_Error();
 
@@ -62,10 +66,13 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 			$this->options['ssl'] = true;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return bool
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function connect() {
 		if ( isset($this->options['ssl']) && $this->options['ssl'] && function_exists('ftp_ssl_connect') )
 			$this->link = @ftp_ssl_connect($this->options['hostname'], $this->options['port'], FS_CONNECT_TIMEOUT);
@@ -384,10 +391,17 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	/**
 	 * @staticvar bool $is_windows
 	 * @param string $line
+<<<<<<< HEAD
+	 * @return string
+	 */
+	public function parselisting($line) {
+		static $is_windows;
+=======
 	 * @return array
 	 */
 	public function parselisting($line) {
 		static $is_windows = null;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		if ( is_null($is_windows) )
 			$is_windows = stripos( ftp_systype($this->link), 'win') !== false;
 
@@ -426,7 +440,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 			else
 				$b['type'] = 'f';
 			$b['perms'] = $lucifer[0];
+<<<<<<< HEAD
+=======
 			$b['permsn'] = $this->getnumchmodfromh( $b['perms'] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$b['number'] = $lucifer[1];
 			$b['owner'] = $lucifer[2];
 			$b['group'] = $lucifer[3];
@@ -515,9 +532,12 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 		return $ret;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function __destruct() {
 		if ( $this->link )
 			ftp_close($this->link);

@@ -52,7 +52,11 @@ $parent_file = 'tools.php';
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+<h2><?php echo esc_html( $title ); ?></h2>
+=======
 <h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 <?php if ( ! empty( $_GET['invalid'] ) ) : ?>
 	<div class="error"><p><strong><?php _e('ERROR:')?></strong> <?php printf( __('The <strong>%s</strong> importer is invalid or is not installed.'), esc_html( $_GET['invalid'] ) ); ?></p></div>
 <?php endif; ?>

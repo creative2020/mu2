@@ -10,7 +10,11 @@ class GF_Field_Hidden extends GF_Field {
 	public $type = 'hidden';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'Hidden', 'gravityforms' );
+=======
 		return esc_attr__( 'Hidden', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	public function is_conditional_logic_supported(){

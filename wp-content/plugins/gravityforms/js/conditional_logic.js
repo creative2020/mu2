@@ -3,7 +3,10 @@ var __gf_timeout_handle;
 
 function gf_apply_rules(formId, fields, isInit){
 	var rule_applied = 0;
+<<<<<<< HEAD
+=======
 	jQuery(document).trigger( 'gform_pre_conditional_logic', [ formId, fields, isInit ] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	for(var i=0; i < fields.length; i++){
 		gf_apply_field_rule(formId, fields[i], isInit, function(){
 			rule_applied++;

@@ -28,6 +28,26 @@ jQuery.fn.repeater = function( options ) {
 
     var self     = this,
         defaults = {
+<<<<<<< HEAD
+        template:       '',
+        limit:          5,
+        items:          [{}],
+        saveEvents:     'blur change',
+        saveElements:   'input, select',
+        addButtonMarkup:      '+',
+        removeButtonMarkup:   '-',
+        callbacks: {
+            save:            function() { },
+            beforeAdd:       function() { },
+            add:             function() { },
+            beforeAddNew:    function() { },
+            addNew:          function() { },
+            beforeRemove:    function() { },
+            remove:          function() { },
+            repeaterButtons: function() { return false; }
+        }
+    }
+=======
             template:           '',
             limit:              5,
             items:              [{}],
@@ -47,13 +67,17 @@ jQuery.fn.repeater = function( options ) {
                 repeaterButtons: function() { return false; }
             }
         };
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
     self.options   = jQuery.extend( true, {}, defaults, options );
     self.elem      = jQuery( this );
     self.items     = self.options.items;
     self.callbacks = self.options.callbacks;
     self._template = self.options.template;
+<<<<<<< HEAD
+=======
     self._baseObj  = self.items[0];
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
     self.init = function() {
 
@@ -94,6 +118,16 @@ jQuery.fn.repeater = function( options ) {
         if( ! self._template )
             self._template = self.elem.html();
 
+<<<<<<< HEAD
+        // move template html into "stash"
+        //jQuery( 'body' ).append( '<div id="' + self.elem.attr( 'id' ) + '-template" style="display:none">' + self._template + '</div>' );
+
+    }
+
+    self.getStashedTemplate = function() {
+        return jQuery( self.elem.attr( 'id' ) + '-repeater-template').html();
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     }
 
     self.addItem = function( item, index ) {
@@ -143,7 +177,11 @@ jQuery.fn.repeater = function( options ) {
         var cssClass = self.items.length >= self.options.limit && self.options.limit !== 0 ? 'inactive' : '',
             buttons = '<a class="add-item ' + cssClass + '" data-index="' + index + '">' + self.options.addButtonMarkup + '</a>';
 
+<<<<<<< HEAD
+        if( self.items.length > 1 )
+=======
         if( self.items.length > self.options.minItemCount )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
             buttons += '<a class="remove-item" data-index="' + index + '">' + self.options.removeButtonMarkup + '</a>';
 
         return '<div class="repeater-buttons">' +  buttons + '</div>';
@@ -169,6 +207,17 @@ jQuery.fn.repeater = function( options ) {
 
     }
 
+<<<<<<< HEAD
+    self.addNewItem = function( elem ) {
+
+        var index = jQuery( elem ).attr( 'data-index' );
+        index = parseInt( index );
+        self.callbacks.beforeAddNew( this, index );
+        self.items.splice( index + 1, 0, self.getBaseObject() );
+        self.callbacks.addNew( this, index );
+
+        self.refresh();
+=======
     self.addNewItem = function( elemOrItem, index ) {
 
         var isElem = self.isElement( elemOrItem ),
@@ -180,13 +229,20 @@ jQuery.fn.repeater = function( options ) {
         self.callbacks.addNew( self, index );
 
         self.refresh().save();
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         return self;
     }
 
+<<<<<<< HEAD
+    self.removeItem = function( elem ) {
+
+        var index = jQuery( elem ).attr( 'data-index' );
+=======
     self.removeItem = function( elemOrIndex ) {
 
         var index = self.isElement( elemOrIndex ) ? jQuery( elemOrIndex ).attr( 'data-index' ) : elemOrIndex;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
         self.callbacks.beforeRemove( self, index );
 
@@ -254,6 +310,17 @@ jQuery.fn.repeater = function( options ) {
      */
     self.getBaseObjectKeys = function() {
 
+<<<<<<< HEAD
+        var keys = [];
+
+        for( var i = 0; i < self.items.length; i++ ) {
+
+            if( typeof self.items[i] == 'undefined' )
+                continue;
+
+            for( var key in self.items[i] ) {
+                if( ! self.items[i].hasOwnProperty( key ) )
+=======
         var keys = [],
             items = self.items.length > 0 ? self.items : [ self._baseObj ];
 
@@ -264,6 +331,7 @@ jQuery.fn.repeater = function( options ) {
 
             for( var key in items[i] ) {
                 if( ! items[i].hasOwnProperty( key ) )
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
                     continue;
                 keys.push( key );
             }
@@ -298,6 +366,8 @@ jQuery.fn.repeater = function( options ) {
         return namespacedEvents.join( ' ' );
     }
 
+<<<<<<< HEAD
+=======
     /**
      * http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object
      * @param obj
@@ -318,5 +388,6 @@ jQuery.fn.repeater = function( options ) {
         }
     }
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     return self.init();
 };

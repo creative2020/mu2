@@ -37,19 +37,31 @@ columns = {
 	},
 
 	checked : function(column) {
+<<<<<<< HEAD
+		$('.column-' + column).show();
+=======
 		$('.column-' + column).removeClass( 'hidden' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		this.colSpanChange(+1);
 	},
 
 	unchecked : function(column) {
+<<<<<<< HEAD
+		$('.column-' + column).hide();
+=======
 		$('.column-' + column).addClass( 'hidden' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		this.colSpanChange(-1);
 	},
 
 	hidden : function() {
+<<<<<<< HEAD
+		return $('.manage-column').filter(':hidden').map(function() { return this.id; }).get().join(',');
+=======
 		return $( '.manage-column[id]' ).filter( ':hidden' ).map(function() {
 			return this.id;
 		}).get().join( ',' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	},
 
 	useCheckboxesForHidden : function() {
@@ -105,14 +117,24 @@ screenMeta = {
 
 	init: function() {
 		this.element = $('#screen-meta');
+<<<<<<< HEAD
+		this.toggles = $('.screen-meta-toggle a');
+=======
 		this.toggles = $( '#screen-meta-links' ).find( '.show-settings' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		this.page    = $('#wpcontent');
 
 		this.toggles.click( this.toggleEvent );
 	},
 
+<<<<<<< HEAD
+	toggleEvent: function( e ) {
+		var panel = $( this.href.replace(/.+#/, '#') );
+		e.preventDefault();
+=======
 	toggleEvent: function() {
 		var panel = $( '#' + $( this ).attr( 'aria-controls' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		if ( !panel.length )
 			return;
@@ -123,22 +145,38 @@ screenMeta = {
 			screenMeta.open( panel, $(this) );
 	},
 
+<<<<<<< HEAD
+	open: function( panel, link ) {
+
+		$('.screen-meta-toggle').not( link.parent() ).css('visibility', 'hidden');
+=======
 	open: function( panel, button ) {
 
 		$( '#screen-meta-links' ).find( '.screen-meta-toggle' ).not( button.parent() ).css( 'visibility', 'hidden' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		panel.parent().show();
 		panel.slideDown( 'fast', function() {
 			panel.focus();
+<<<<<<< HEAD
+			link.addClass('screen-meta-active').attr('aria-expanded', true);
+=======
 			button.addClass( 'screen-meta-active' ).attr( 'aria-expanded', true );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		});
 
 		$( document ).trigger( 'screen:options:open' );
 	},
 
+<<<<<<< HEAD
+	close: function( panel, link ) {
+		panel.slideUp( 'fast', function() {
+			link.removeClass('screen-meta-active').attr('aria-expanded', false);
+=======
 	close: function( panel, button ) {
 		panel.slideUp( 'fast', function() {
 			button.removeClass( 'screen-meta-active' ).attr( 'aria-expanded', false );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			$('.screen-meta-toggle').css('visibility', '');
 			panel.parent().hide();
 		});
@@ -370,6 +408,9 @@ $(document).ready( function() {
 	}
 
 	// Move .notice, .updated and .error alert boxes. Don't move boxes designed to be inline.
+<<<<<<< HEAD
+	$firstHeading = $( 'div.wrap h2:first' );
+=======
 	$firstHeading = $( '.wrap > h1:first' );
 
 	// Back compatibility: if there is no H1, apply to first H2.
@@ -377,6 +418,7 @@ $(document).ready( function() {
 		$firstHeading = $( '.wrap h2:first' );
 	}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$firstHeading.nextAll( 'div.updated, div.error, div.notice' ).addClass( 'below-h2' );
 	$( 'div.updated, div.error, div.notice' ).not( '.below-h2, .inline' ).insertAfter( $firstHeading );
 
@@ -485,12 +527,16 @@ $(document).ready( function() {
 				focusedRowActions.removeClass( 'visible' );
 			}, 30 );
 		}
+<<<<<<< HEAD
+	}, 'td.post-title, td.title, td.comment, .tags td.column-name, .bookmarks td.column-name, td.blogname, .users-network td.column-blogs, td.username, .dashboard-comment-wrap' );
+=======
 	}, '.has-row-actions' );
 
 	// Toggle list table rows on small screens
 	$( 'tbody' ).on( 'click', '.toggle-row', function() {
 		$( this ).closest( 'tr' ).toggleClass( 'is-expanded' );
 	});
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	$('#default-password-nag-no').click( function() {
 		setUserSetting('default_password_nag', 'hide');
@@ -752,10 +798,13 @@ $(document).ready( function() {
 			// Toggle sidebar when toggle is clicked
 			$( '#wp-admin-bar-menu-toggle' ).on( 'click.wp-responsive', function( event ) {
 				event.preventDefault();
+<<<<<<< HEAD
+=======
 
 				// close any open toolbar submenus
 				$adminbar.find( '.hover' ).removeClass( 'hover' );
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$wpwrap.toggleClass( 'wp-responsive-open' );
 				if ( $wpwrap.hasClass( 'wp-responsive-open' ) ) {
 					$(this).find('a').attr( 'aria-expanded', 'true' );
@@ -876,7 +925,11 @@ $(document).ready( function() {
 	window.wpResponsive.init();
 	setPinMenu();
 
+<<<<<<< HEAD
+	$document.on( 'wp-window-resized.pin-menu postboxes-columnchange.pin-menu postbox-toggled.pin-menu wp-collapse-menu.pin-menu wp-scroll-start.pin-menu', setPinMenu );
+=======
 	$document.on( 'wp-pin-menu wp-window-resized.pin-menu postboxes-columnchange.pin-menu postbox-toggled.pin-menu wp-collapse-menu.pin-menu wp-scroll-start.pin-menu', setPinMenu );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 });
 
 // Fire a custom jQuery event at the end of window resize

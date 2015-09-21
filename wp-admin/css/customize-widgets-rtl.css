@@ -14,10 +14,13 @@
 	display: none;
 }
 
+<<<<<<< HEAD
+=======
 .control-section.control-section-sidebar .accordion-section-content.ui-sortable {
 	overflow: visible;
 }
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 .customize-control-widget_form .widget-top {
 	-webkit-transition: opacity 0.5s;
 	transition: opacity 0.5s;
@@ -142,12 +145,16 @@
 
 .reordering .reorder-done {
 	display: block;
+<<<<<<< HEAD
+	color: #aa0000;
+=======
 	color: #0073aa;
 }
 
 .reordering .reorder-done:hover,
 .reordering .reorder-done:active {
 	color: #00a0d2;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 #customize-theme-controls .reordering .add-new-widget {
@@ -350,6 +357,19 @@ body.adding-widget .add-new-widget:before {
 
 #available-widgets {
 	position: absolute;
+<<<<<<< HEAD
+	overflow: auto;
+	top: 0;
+	bottom: 0;
+	right: -301px;
+	width: 300px;
+	margin: 0;
+	z-index: 1;
+	background: #fff !important;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+	border-left: 1px solid #dddddd;
+=======
 	top: 0;
 	bottom: 0;
 	right: -301px;
@@ -367,6 +387,7 @@ body.adding-widget .add-new-widget:before {
 .ios #available-widgets {
 	-webkit-transition: right 0s;
 	transition: right 0s;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 #available-widgets-list {
@@ -399,7 +420,10 @@ body.adding-widget .add-new-widget:before {
 #available-widgets .widget-tpl {
 	position: relative;
 	padding: 20px 60px 20px 15px;
+<<<<<<< HEAD
+=======
 	background: #fff;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	border-bottom: 1px solid #e4e4e4;
 	cursor: pointer;
 	display: none;
@@ -407,8 +431,12 @@ body.adding-widget .add-new-widget:before {
 
 #available-widgets .widget-tpl:hover,
 #available-widgets .widget-tpl.selected {
+<<<<<<< HEAD
+	background: #fafafa;
+=======
 	background: #eee;
 	border-bottom-color: #ccc;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 #available-widgets .widget-top,
@@ -436,7 +464,10 @@ body.adding-widget .add-new-widget:before {
 
 body.adding-widget #available-widgets {
 	right: 0;
+<<<<<<< HEAD
+=======
 	visibility: visible;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 body.adding-widget .wp-full-overlay-main {
@@ -601,12 +632,18 @@ body.adding-widget #customize-preview {
 #available-widgets [class*="tweet"] .widget-title:before,
 #available-widgets [class*="twitter"] .widget-title:before { content: "\f301"; }
 
+<<<<<<< HEAD
+
+@media screen and (max-height: 700px) and (min-width: 981px) {
+	.customize-control {
+=======
 #available-widgets .customize-section-title {
 	display: none;
 }
 
 @media screen and (max-height: 700px) and (min-width: 981px) {
 	.customize-control-widget {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		margin-bottom: 0;
 	}
 	.widget-top {
@@ -649,6 +686,12 @@ body.adding-widget #customize-preview {
 		width: 100%;
 	}
 
+<<<<<<< HEAD
+	#available-widgets-filter {
+		position: static;
+		width: 100%;
+		height: auto;
+=======
 	#available-widgets .customize-section-title {
 		display: block;
 		margin: 0;
@@ -690,5 +733,6 @@ body.adding-widget #customize-preview {
 
 	#available-widgets-list {
 		top: 140px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 }

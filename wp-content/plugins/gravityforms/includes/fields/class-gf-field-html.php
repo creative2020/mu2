@@ -9,7 +9,11 @@ class GF_Field_HTML extends GF_Field {
 	public $type = 'html';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'HTML', 'gravityforms' );
+=======
 		return esc_attr__( 'HTML', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -28,8 +32,13 @@ class GF_Field_HTML extends GF_Field {
 		$is_form_editor  = $this->is_form_editor();
 
 		$content = $is_entry_detail || $is_form_editor ? "<div class='gf-html-container'><span class='gf_blockheader'>
+<<<<<<< HEAD
+															<i class='fa fa-code fa-lg'></i> " . __( 'HTML Content', 'gravityforms' ) .
+															'</span><span>' . __( 'This is a content placeholder. HTML content is not displayed in the form admin. Preview this form to view the content.', 'gravityforms' ) . '</span></div>'
+=======
 															<i class='fa fa-code fa-lg'></i> " . esc_html__( 'HTML Content', 'gravityforms' ) .
 															'</span><span>' . esc_html__( 'This is a content placeholder. HTML content is not displayed in the form admin. Preview this form to view the content.', 'gravityforms' ) . '</span></div>'
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 														: $this->content;
 		$content = GFCommon::replace_variables_prepopulate( $content ); // adding support for merge tags
 		$content = do_shortcode( $content ); // adding support for shortcodes
@@ -51,10 +60,15 @@ class GF_Field_HTML extends GF_Field {
 
 	public function sanitize_settings() {
 		parent::sanitize_settings();
+<<<<<<< HEAD
+		$allowed_tags  = wp_kses_allowed_html( 'post' );
+		$this->content = wp_kses( $this->content, $allowed_tags );
+=======
 		if ( is_multisite() || ! current_user_can( 'manage_options' ) ) {
 			$allowed_tags  = wp_kses_allowed_html( 'post' );
 			$this->content = wp_kses( $this->content, $allowed_tags );
 		}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 }
 

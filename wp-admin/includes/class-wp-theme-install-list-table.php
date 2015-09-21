@@ -11,14 +11,19 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 
 	public $features = array();
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @return bool
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function ajax_user_can() {
 		return current_user_can( 'install_themes' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global array  $tabs
@@ -27,6 +32,7 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * @global string $type
 	 * @global array  $theme_field_defaults
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function prepare_items() {
 		include( ABSPATH . 'wp-admin/includes/theme-install.php' );
 
@@ -145,19 +151,25 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		) );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function no_items() {
 		_e( 'No themes match your request.' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global array $tabs
 	 * @global string $tab
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_views() {
 		global $tabs, $tab;
 
@@ -171,9 +183,12 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		return $display_tabs;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
 ?>
@@ -200,9 +215,12 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		$this->tablenav( 'bottom' );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function display_rows() {
 		$themes = $this->items;
 		foreach ( $themes as $theme ) {
@@ -218,8 +236,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	/**
 	 * Prints a theme from the WordPress.org API.
 	 *
+<<<<<<< HEAD
+=======
 	 * @global array $themes_allowedtags
 	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param object $theme An object that contains theme data returned by the WordPress.org API.
 	 *
 	 * Example theme data:
@@ -328,10 +349,17 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 					<div class="install-theme-info"></div>
 				</div>
 				<div class="wp-full-overlay-footer">
+<<<<<<< HEAD
+					<a href="#" class="collapse-sidebar" title="<?php esc_attr_e('Collapse Sidebar'); ?>">
+						<span class="collapse-sidebar-label"><?php _e('Collapse'); ?></span>
+						<span class="collapse-sidebar-arrow"></span>
+					</a>
+=======
 					<button type="button" class="collapse-sidebar button-secondary" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse Sidebar' ); ?>">
 						<span class="collapse-sidebar-arrow"></span>
 						<span class="collapse-sidebar-label"><?php _e( 'Collapse' ); ?></span>
 					</button>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				</div>
 			</div>
 			<div class="wp-full-overlay-main"></div>
@@ -361,8 +389,11 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	/**
 	 * Prints the info for a theme (to be used in the theme installer modal).
 	 *
+<<<<<<< HEAD
+=======
 	 * @global array $themes_allowedtags
 	 *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @param object $theme - A WordPress.org Theme API object.
 	 */
 	public function install_theme_info( $theme ) {
@@ -427,10 +458,15 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * @since 3.4.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @uses $tab Global; current tab within Themes->Install screen
+	 * @uses $type Global; type of search.
+=======
 	 * @global string $tab  Current tab within Themes->Install screen
 	 * @global string $type Type of search.
 	 *
 	 * @param array $extra_args Unused.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function _js_vars( $extra_args = array() ) {
 		global $tab, $type;

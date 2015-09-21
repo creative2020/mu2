@@ -20,6 +20,25 @@
     
 <div class="row">
     <div id="navbar" class="col-sm-12">
+<<<<<<< HEAD
+        
+                        
+                       
+						<?php wp_nav_menu( array(
+                'menu'              => 'navigation',
+                'theme_location'    => 'tt-main',
+                'depth'             => 2,
+                'container'         => 'div',
+                'container_class'   => 'collapse navbar-collapse',
+        'container_id'      => 'bs-example-navbar-collapse-1',
+                'menu_class'        => 'nav navbar-nav',
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker())
+            ); ?>
+            
+                        
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
     </div>
 </div>
     

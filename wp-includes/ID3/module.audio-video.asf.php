@@ -2010,4 +2010,8 @@ class getid3_asf extends getid3_handler {
 		return $string;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

@@ -16,12 +16,18 @@
  */
 class WP_Image_Editor_GD extends WP_Image_Editor {
 	/**
+<<<<<<< HEAD
+	 * @var resource
+	 */
+	protected $image; // GD Resource
+=======
 	 * GD Resource.
 	 *
 	 * @access protected
 	 * @var resource
 	 */
 	protected $image;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	public function __destruct() {
 		if ( $this->image ) {
@@ -34,12 +40,18 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * Checks to see if current environment supports GD.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
+	 * @access public
+	 *
+	 * @return boolean
+=======
 	 *
 	 * @static
 	 * @access public
 	 *
 	 * @param array $args
 	 * @return bool
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public static function test( $args = array() ) {
 		if ( ! extension_loaded('gd') || ! function_exists('gd_info') )
@@ -60,12 +72,19 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * Checks to see if editor supports the mime-type specified.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
+	 * @access public
+	 *
+	 * @param string $mime_type
+	 * @return boolean
+=======
 	 *
 	 * @static
 	 * @access public
 	 *
 	 * @param string $mime_type
 	 * @return bool
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public static function supports_mime_type( $mime_type ) {
 		$image_types = imagetypes();
@@ -87,7 +106,11 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @since 3.5.0
 	 * @access protected
 	 *
+<<<<<<< HEAD
+	 * @return boolean|WP_Error True if loaded successfully; WP_Error on failure.
+=======
 	 * @return bool|WP_Error True if loaded successfully; WP_Error on failure.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function load() {
 		if ( $this->image )
@@ -135,7 +158,10 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 *
 	 * @param int $width
 	 * @param int $height
+<<<<<<< HEAD
+=======
 	 * @return true
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	protected function update_size( $width = false, $height = false ) {
 		if ( ! $width )
@@ -160,8 +186,13 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 *
 	 * @param  int|null $max_w Image width.
 	 * @param  int|null $max_h Image height.
+<<<<<<< HEAD
+	 * @param  boolean  $crop
+	 * @return boolean|WP_Error
+=======
 	 * @param  bool     $crop
 	 * @return true|WP_Error
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function resize( $max_w, $max_h, $crop = false ) {
 		if ( ( $this->size['width'] == $max_w ) && ( $this->size['height'] == $max_h ) )
@@ -180,6 +211,8 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 		return new WP_Error( 'image_resize_error', __('Image resize failed.'), $this->file );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @param int $max_w
@@ -187,6 +220,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @param bool|array $crop
 	 * @return resource|WP_Error
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function _resize( $max_w, $max_h, $crop = false ) {
 		$dims = image_resize_dimensions( $this->size['width'], $this->size['height'], $max_w, $max_h, $crop );
 		if ( ! $dims ) {
@@ -272,6 +306,16 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @since 3.5.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @param int $src_x The start x position to crop from.
+	 * @param int $src_y The start y position to crop from.
+	 * @param int $src_w The width to crop.
+	 * @param int $src_h The height to crop.
+	 * @param int $dst_w Optional. The destination width.
+	 * @param int $dst_h Optional. The destination height.
+	 * @param boolean $src_abs Optional. If the source crop points are absolute.
+	 * @return boolean|WP_Error
+=======
 	 * @param int  $src_x   The start x position to crop from.
 	 * @param int  $src_y   The start y position to crop from.
 	 * @param int  $src_w   The width to crop.
@@ -280,6 +324,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @param int  $dst_h   Optional. The destination height.
 	 * @param bool $src_abs Optional. If the source crop points are absolute.
 	 * @return bool|WP_Error
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function crop( $src_x, $src_y, $src_w, $src_h, $dst_w = null, $dst_h = null, $src_abs = false ) {
 		// If destination width/height isn't specified, use same as
@@ -319,7 +364,11 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @access public
 	 *
 	 * @param float $angle
+<<<<<<< HEAD
+	 * @return boolean|WP_Error
+=======
 	 * @return true|WP_Error
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function rotate( $angle ) {
 		if ( function_exists('imagerotate') ) {
@@ -344,9 +393,15 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @since 3.5.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @param boolean $horz Flip along Horizontal Axis
+	 * @param boolean $vert Flip along Vertical Axis
+	 * @returns boolean|WP_Error
+=======
 	 * @param bool $horz Flip along Horizontal Axis
 	 * @param bool $vert Flip along Vertical Axis
 	 * @return true|WP_Error
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function flip( $horz, $vert ) {
 		$w = $this->size['width'];
@@ -449,7 +504,10 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @access public
 	 *
 	 * @param string $mime_type
+<<<<<<< HEAD
+=======
 	 * @return bool
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function stream( $mime_type = null ) {
 		list( $filename, $extension, $mime_type ) = $this->get_output_format( null, $mime_type );
@@ -476,7 +534,11 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @param string|stream $filename
 	 * @param callable $function
 	 * @param array $arguments
+<<<<<<< HEAD
+	 * @return boolean
+=======
 	 * @return bool
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	protected function make_image( $filename, $function, $arguments ) {
 		if ( wp_is_stream( $filename ) )

@@ -64,9 +64,13 @@ $gmt_time = microtime( true );
 if ( isset($keys[0]) && $keys[0] > $gmt_time )
 	die();
 
+<<<<<<< HEAD
+$doing_cron_transient = get_transient( 'doing_cron');
+=======
 
 // The cron lock: a unix timestamp from when the cron was spawned.
 $doing_cron_transient = get_transient( 'doing_cron' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 // Use global $doing_wp_cron lock otherwise use the GET lock. If no lock, trying grabbing a new lock.
 if ( empty( $doing_wp_cron ) ) {
@@ -81,10 +85,14 @@ if ( empty( $doing_wp_cron ) ) {
 	}
 }
 
+<<<<<<< HEAD
+// Check lock
+=======
 /*
  * The cron lock (a unix timestamp set when the cron was spawned),
  * must match $doing_wp_cron (the "key").
  */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 if ( $doing_cron_transient != $doing_wp_cron )
 	return;
 

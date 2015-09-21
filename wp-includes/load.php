@@ -12,6 +12,11 @@
  *
  * @since 2.1.0
  * @access private
+<<<<<<< HEAD
+ *
+ * @return null Will return null if register_globals PHP directive was disabled.
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_unregister_GLOBALS() {
 	if ( !ini_get( 'register_globals' ) )
@@ -384,13 +389,21 @@ function wp_set_wpdb_vars() {
 }
 
 /**
+<<<<<<< HEAD
+ * Access/Modify private global variable `$_wp_using_ext_object_cache`.
+ *
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * Toggle `$_wp_using_ext_object_cache` on and off without directly
  * touching global.
  *
  * @since 3.7.0
  *
+<<<<<<< HEAD
+=======
  * @global bool $_wp_using_ext_object_cache
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param bool $using Whether external object cache is being used.
  * @return bool The current 'using' setting.
  */
@@ -635,8 +648,11 @@ function wp_clone( $object ) {
  *
  * @since 1.5.1
  *
+<<<<<<< HEAD
+=======
  * @global WP_Screen $current_screen
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True if inside WordPress administration interface, false otherwise.
  */
 function is_admin() {
@@ -658,8 +674,11 @@ function is_admin() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
+=======
  * @global WP_Screen $current_screen
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True if inside WordPress blog administration pages.
  */
 function is_blog_admin() {
@@ -681,8 +700,11 @@ function is_blog_admin() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
+=======
  * @global WP_Screen $current_screen
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True if inside WordPress network administration pages.
  */
 function is_network_admin() {
@@ -705,8 +727,11 @@ function is_network_admin() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
+=======
  * @global WP_Screen $current_screen
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return bool True if inside WordPress user administration pages.
  */
 function is_user_admin() {
@@ -740,8 +765,11 @@ function is_multisite() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
+=======
  * @global int $blog_id
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @return int Blog id
  */
 function get_current_blog_id() {
@@ -762,10 +790,14 @@ function get_current_blog_id() {
  * @since 3.4.0
  * @access private
  *
+<<<<<<< HEAD
+ * @global $wp_locale The WordPress date and time locale object.
+=======
  * @global string    $text_direction
  * @global WP_Locale $wp_locale      The WordPress date and time locale object.
  *
  * @staticvar bool $loaded
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_load_translations_early() {
 	global $text_direction, $wp_locale;

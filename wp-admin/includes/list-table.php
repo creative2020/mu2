@@ -13,8 +13,11 @@
  * @access private
  * @since 3.1.0
  *
+<<<<<<< HEAD
+=======
  * @global string $hook_suffix
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param string $class The type of the list table, which is the class name.
  * @param array $args Optional. Arguments to pass to the class. Accepts 'screen'.
  * @return object|bool Object on success, false if the class does not exist.
@@ -101,11 +104,14 @@ class _WP_List_Table_Compat extends WP_List_Table {
 		}
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access protected
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	protected function get_column_info() {
 		$columns = get_column_headers( $this->_screen );
 		$hidden = get_hidden_columns( $this->_screen );
@@ -114,11 +120,14 @@ class _WP_List_Table_Compat extends WP_List_Table {
 		return array( $columns, $hidden, $sortable );
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 *
 	 * @return array
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_columns() {
 		return $this->_columns;
 	}

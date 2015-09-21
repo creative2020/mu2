@@ -14,8 +14,11 @@
  * wp-includes/ms-files.php (wp-content/blogs.php in MU).
  *
  * @since 3.0.0
+<<<<<<< HEAD
+=======
  *
  * @global wpdb $wpdb
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function ms_upload_constants() {
 	global $wpdb;
@@ -116,9 +119,12 @@ function ms_file_constants() {
  * we will have translations loaded and can trigger warnings easily.
  *
  * @since 3.0.0
+<<<<<<< HEAD
+=======
  *
  * @staticvar bool $subdomain_error
  * @staticvar bool $subdomain_error_warn
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function ms_subdomain_constants() {
 	static $subdomain_error = null;
@@ -155,3 +161,7 @@ function ms_subdomain_constants() {
 		define( 'VHOST', 'no' );
 	}
 }
+<<<<<<< HEAD
+add_action( 'init', 'ms_subdomain_constants' );
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

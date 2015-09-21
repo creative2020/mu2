@@ -175,7 +175,11 @@ if ( ! is_multisite() ) {
 <?php endif; ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+<h2><?php echo esc_html( $title ); ?></h2>
+=======
 <h1><?php echo esc_html( $title ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <form name="form" action="options-permalink.php" method="post">
 <?php wp_nonce_field('update-permalink') ?>

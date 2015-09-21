@@ -20,8 +20,11 @@ class WP_Customize_Control {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
+=======
 	 *
 	 * @static
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @access protected
 	 * @var int
 	 */
@@ -139,9 +142,15 @@ class WP_Customize_Control {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
+	 * @param WP_Customize_Manager $manager
+	 * @param string $id
+	 * @param array $args
+=======
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.
 	 * @param array                $args    Optional. Arguments to override class property defaults.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		$keys = array_keys( get_object_vars( $this ) );
@@ -217,7 +226,11 @@ class WP_Customize_Control {
 	 * @since 4.0.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @return bool Always true.
+=======
 	 * @return true Always true.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function active_callback() {
 		return true;
@@ -301,7 +314,13 @@ class WP_Customize_Control {
 	final public function get_content() {
 		ob_start();
 		$this->maybe_render();
+<<<<<<< HEAD
+		$template = trim( ob_get_contents() );
+		ob_end_clean();
+		return $template;
+=======
 		return trim( ob_get_clean() );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	/**
@@ -568,9 +587,15 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	 * @since 3.4.0
 	 * @uses WP_Customize_Control::__construct()
 	 *
+<<<<<<< HEAD
+	 * @param WP_Customize_Manager $manager
+	 * @param string $id
+	 * @param array $args
+=======
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.
 	 * @param array                $args    Optional. Arguments to override class property defaults.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		$this->statuses = array( '' => __('Default') );
@@ -678,9 +703,13 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 	 * @since 4.1.0
 	 * @since 4.2.0 Moved from WP_Customize_Upload_Control.
 	 *
+<<<<<<< HEAD
+	 * @param WP_Customize_Manager $manager {@see WP_Customize_Manager} instance.
+=======
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.
 	 * @param array                $args    Optional. Arguments to override class property defaults.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -716,10 +745,15 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
+<<<<<<< HEAD
+		$this->json['mime_type'] = $this->mime_type;
+		$this->json['button_labels'] = $this->button_labels;
+=======
 		$this->json['label'] = html_entity_decode( $this->label, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$this->json['mime_type'] = $this->mime_type;
 		$this->json['button_labels'] = $this->button_labels;
 		$this->json['canUpload'] = current_user_can( 'upload_files' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$value = $this->value();
 
@@ -814,7 +848,11 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 									</video>
 								</div>
 							<# } else { #>
+<<<<<<< HEAD
+								<img class="attachment-thumb type-icon" src="{{ data.attachment.icon }}" class="icon" draggable="false" />
+=======
 								<img class="attachment-thumb type-icon icon" src="{{ data.attachment.icon }}" draggable="false" />
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 								<p class="attachment-title">{{ data.attachment.title }}</p>
 							<# } #>
 						</div>
@@ -822,11 +860,17 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 				</div>
 			</div>
 			<div class="actions">
+<<<<<<< HEAD
+				<button type="button" class="button remove-button"><?php echo $this->button_labels['remove']; ?></button>
+				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button"><?php echo $this->button_labels['change']; ?></button>
+				<div style="clear:both"></div>
+=======
 				<# if ( data.canUpload ) { #>
 				<button type="button" class="button remove-button"><?php echo $this->button_labels['remove']; ?></button>
 				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button"><?php echo $this->button_labels['change']; ?></button>
 				<div style="clear:both"></div>
 				<# } #>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			</div>
 		<# } else { #>
 			<div class="current">
@@ -844,9 +888,13 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 				<# if ( data.defaultAttachment ) { #>
 					<button type="button" class="button default-button"><?php echo $this->button_labels['default']; ?></button>
 				<# } #>
+<<<<<<< HEAD
+				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button"><?php echo $this->button_labels['select']; ?></button>
+=======
 				<# if ( data.canUpload ) { #>
 				<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button"><?php echo $this->button_labels['select']; ?></button>
 				<# } #>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				<div style="clear:both"></div>
 			</div>
 		<# } #>
@@ -907,9 +955,15 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 * @since 3.4.0
 	 * @uses WP_Customize_Upload_Control::__construct()
 	 *
+<<<<<<< HEAD
+	 * @param WP_Customize_Manager $manager
+	 * @param string $id
+	 * @param array  $args
+=======
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.
 	 * @param array                $args    Optional. Arguments to override class property defaults.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -975,7 +1029,11 @@ class WP_Customize_Background_Image_Control extends WP_Customize_Image_Control {
 	 * @since 3.4.0
 	 * @uses WP_Customize_Image_Control::__construct()
 	 *
+<<<<<<< HEAD
+	 * @param WP_Customize_Manager $manager
+=======
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function __construct( $manager ) {
 		parent::__construct( $manager, 'background_image', array(
@@ -1001,6 +1059,8 @@ class WP_Customize_Background_Image_Control extends WP_Customize_Image_Control {
 }
 
 /**
+<<<<<<< HEAD
+=======
  * Customize Cropped Image Control class.
  *
  * @since 4.3.0
@@ -1122,6 +1182,7 @@ class WP_Customize_Site_Icon_Control extends WP_Customize_Cropped_Image_Control 
 }
 
 /**
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * Customize Header Image Control class.
  *
  * @since 3.4.0
@@ -1134,11 +1195,15 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 	public $default_headers;
 
 	/**
+<<<<<<< HEAD
+	 * @param WP_Customize_Manager $manager
+=======
 	 * Constructor.
 	 *
 	 * @since 3.4.0
 	 *
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function __construct( $manager ) {
 		parent::__construct( $manager, 'header_image', array(
@@ -1154,9 +1219,12 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function enqueue() {
 		wp_enqueue_media();
 		wp_enqueue_script( 'customize-views' );
@@ -1182,10 +1250,13 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 		parent::enqueue();
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global Custom_Image_Header $custom_image_header
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function prepare_control() {
 		global $custom_image_header;
 		if ( empty( $custom_image_header ) ) {
@@ -1198,13 +1269,26 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 		$this->uploaded_headers = $custom_image_header->get_uploaded_header_images();
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function print_header_image_template() {
 		?>
 		<script type="text/template" id="tmpl-header-choice">
 			<# if (data.random) { #>
+<<<<<<< HEAD
+					<button type="button" class="button display-options random">
+						<span class="dashicons dashicons-randomize dice"></span>
+						<# if ( data.type === 'uploaded' ) { #>
+							<?php _e( 'Randomize uploaded headers' ); ?>
+						<# } else if ( data.type === 'default' ) { #>
+							<?php _e( 'Randomize suggested headers' ); ?>
+						<# } #>
+					</button>
+=======
 			<button type="button" class="button display-options random">
 				<span class="dashicons dashicons-randomize dice"></span>
 				<# if ( data.type === 'uploaded' ) { #>
@@ -1213,11 +1297,16 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 					<?php _e( 'Randomize suggested headers' ); ?>
 				<# } #>
 			</button>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 			<# } else { #>
 
 			<# if (data.type === 'uploaded') { #>
+<<<<<<< HEAD
+				<div class="dashicons dashicons-no close"></div>
+=======
 				<button type="button" class="dashicons dashicons-no close"><span class="screen-reader-text"><?php _e( 'Remove image' ); ?></span></button>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			<# } #>
 
 			<button type="button" class="choice thumbnail"
@@ -1266,26 +1355,40 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 		<?php
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @return string|void
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function get_current_image_src() {
 		$src = $this->value();
 		if ( isset( $this->get_url ) ) {
 			$src = call_user_func( $this->get_url, $src );
 			return $src;
 		}
+<<<<<<< HEAD
+		return null;
+	}
+
+=======
 	}
 
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function render_content() {
 		$this->print_header_image_template();
 		$visibility = $this->get_current_image_src() ? '' : ' style="display:none" ';
 		$width = absint( get_theme_support( 'custom-header', 'width' ) );
 		$height = absint( get_theme_support( 'custom-header', 'height' ) );
 		?>
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		<div class="customize-control-content">
 			<p class="customizer-section-intro">
 				<?php
@@ -1306,11 +1409,19 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 				</div>
 			</div>
 			<div class="actions">
+<<<<<<< HEAD
+				<?php /* translators: Hide as in hide header image via the Customizer */ ?>
+				<button type="button"<?php echo $visibility ?> class="button remove"><?php _ex( 'Hide image', 'custom header' ); ?></button>
+				<?php /* translators: New as in add new header image via the Customizer */ ?>
+				<button type="button" class="button new"><?php _ex( 'Add new image', 'header image' ); ?></button>
+				<div style="clear:both"></div>
+=======
 				<?php if ( current_user_can( 'upload_files' ) ): ?>
 				<button type="button"<?php echo $visibility; ?> class="button remove" aria-label="<?php esc_attr_e( 'Hide header image' ); ?>"><?php _e( 'Hide image' ); ?></button>
 				<button type="button" class="button new" aria-label="<?php esc_attr_e( 'Add new header image' ); ?>"><?php _e( 'Add new image' ); ?></button>
 				<div style="clear:both"></div>
 				<?php endif; ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			</div>
 			<div class="choices">
 				<span class="customize-control-title header-previously-uploaded">
@@ -1419,11 +1530,19 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 				<h3 class="theme-name" id="{{ data.theme.id }}-name">
 					<?php
 					/* translators: %s: theme name */
+<<<<<<< HEAD
+					printf( __( '<span>Active:</span> %s' ), '{{ data.theme.name }}' );
+					?>
+				</h3>
+			<# } else { #>
+				<h3 class="theme-name" id="{{ data.theme.id }}-name">{{ data.theme.name }}</h3>
+=======
 					printf( __( '<span>Active:</span> %s' ), '{{{ data.theme.name }}}' );
 					?>
 				</h3>
 			<# } else { #>
 				<h3 class="theme-name" id="{{ data.theme.id }}-name">{{{ data.theme.name }}}</h3>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				<div class="theme-actions">
 					<button type="button" class="button theme-details"><?php _e( 'Theme Details' ); ?></button>
 				</div>
@@ -1452,9 +1571,12 @@ class WP_Widget_Area_Customize_Control extends WP_Customize_Control {
 		}
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @access public
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function render_content() {
 		?>
 		<span class="button-secondary add-new-widget" tabindex="0">
@@ -1495,10 +1617,13 @@ class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
 		}
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 *
 	 * @global array $wp_registered_widgets
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function render_content() {
 		global $wp_registered_widgets;
 		require_once ABSPATH . '/wp-admin/includes/widgets.php';
@@ -1529,6 +1654,8 @@ class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
 		return $this->manager->widgets->is_widget_rendered( $this->widget_id );
 	}
 }
+<<<<<<< HEAD
+=======
 
 /**
  * Customize Nav Menu Control Class.
@@ -1969,3 +2096,4 @@ class WP_Customize_New_Menu_Control extends WP_Customize_Control {
 		<?php
 	}
 }
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

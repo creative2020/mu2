@@ -1,6 +1,10 @@
 /*global ajaxurl, isRtl */
 var wpWidgets;
 (function($) {
+<<<<<<< HEAD
+
+wpWidgets = {
+=======
 	var $document = $( document );
 
 wpWidgets = {
@@ -10,6 +14,7 @@ wpWidgets = {
 	 * @var element|null
 	 */
 	hoveredSidebar: null,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 	init : function() {
 		var rem, the_id,
@@ -29,13 +34,19 @@ wpWidgets = {
 			} else {
 				$wrap.addClass('closed');
 			}
+<<<<<<< HEAD
+=======
 
 			$document.triggerHandler( 'wp-pin-menu' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		});
 
 		$('#widgets-left .sidebar-name').click( function() {
 			$(this).closest('.widgets-holder-wrap').toggleClass('closed');
+<<<<<<< HEAD
+=======
 			$document.triggerHandler( 'wp-pin-menu' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		});
 
 		$(document.body).bind('click.widgets-toggle', function(e) {
@@ -99,8 +110,12 @@ wpWidgets = {
 			distance: 2,
 			helper: 'clone',
 			zIndex: 100,
+<<<<<<< HEAD
+			containment: 'document',
+=======
 			containment: '#wpwrap',
 			refreshPositions: true,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			start: function( event, ui ) {
 				var chooser = $(this).find('.widgets-chooser');
 
@@ -124,6 +139,8 @@ wpWidgets = {
 			}
 		});
 
+<<<<<<< HEAD
+=======
 		/**
 		 * Opens and closes previously closed Sidebars when Widgets are dragged over/out of them.
 		 */
@@ -163,15 +180,20 @@ wpWidgets = {
 			}
 		} );
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		sidebars.sortable({
 			placeholder: 'widget-placeholder',
 			items: '> .widget',
 			handle: '> .widget-top > .widget-title',
 			cursor: 'move',
 			distance: 2,
+<<<<<<< HEAD
+			containment: 'document',
+=======
 			containment: '#wpwrap',
 			tolerance: 'pointer',
 			refreshPositions: true,
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			start: function( event, ui ) {
 				var height, $this = $(this),
 					$wrap = $this.parent(),
@@ -195,9 +217,12 @@ wpWidgets = {
 					$widget = ui.item,
 					id = the_id;
 
+<<<<<<< HEAD
+=======
 				// Reset the var to hold a previously closed sidebar.
 				wpWidgets.hoveredSidebar = null;
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				if ( $widget.hasClass('deleting') ) {
 					wpWidgets.save( $widget, 1, 0, 1 ); // delete widget
 					$widget.remove();
@@ -229,7 +254,11 @@ wpWidgets = {
 
 					wpWidgets.save( $widget, 0, 0, 1 );
 					$widget.find('input.add_new').val('');
+<<<<<<< HEAD
+					$( document ).trigger( 'widget-added', [ $widget ] );
+=======
 					$document.trigger( 'widget-added', [ $widget ] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 
 				$sidebar = $widget.parent();
@@ -436,7 +465,11 @@ wpWidgets = {
 				if ( r && r.length > 2 ) {
 					$( 'div.widget-content', widget ).html( r );
 					wpWidgets.appendTitle( widget );
+<<<<<<< HEAD
+					$( document ).trigger( 'widget-updated', [ widget ] );
+=======
 					$document.trigger( 'widget-updated', [ widget ] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				}
 			}
 			if ( order ) {
@@ -501,7 +534,11 @@ wpWidgets = {
 		// No longer "new" widget
 		widget.find( 'input.add_new' ).val('');
 
+<<<<<<< HEAD
+		$( document ).trigger( 'widget-added', [ widget ] );
+=======
 		$document.trigger( 'widget-added', [ widget ] );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		/*
 		 * Check if any part of the sidebar is visible in the viewport. If it is, don't scroll.
@@ -541,6 +578,12 @@ wpWidgets = {
 	clearWidgetSelection: function() {
 		$( '#widgets-left' ).removeClass( 'chooser' );
 		$( '.widget-in-question' ).removeClass( 'widget-in-question' );
+<<<<<<< HEAD
+	}
+};
+
+$(document).ready( function(){ wpWidgets.init(); } );
+=======
 	},
 
 	/**
@@ -558,5 +601,6 @@ wpWidgets = {
 };
 
 $document.ready( function(){ wpWidgets.init(); } );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 })(jQuery);

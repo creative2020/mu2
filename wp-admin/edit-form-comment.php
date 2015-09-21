@@ -13,7 +13,11 @@ if ( !defined('ABSPATH') )
 <form name="post" action="comment.php" method="post" id="post">
 <?php wp_nonce_field('update-comment_' . $comment->comment_ID) ?>
 <div class="wrap">
+<<<<<<< HEAD
+<h2><?php _e('Edit Comment'); ?></h2>
+=======
 <h1><?php _e( 'Edit Comment' ); ?></h1>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <div id="poststuff">
 <input type="hidden" name="action" value="editedcomment" />
@@ -21,6 +25,41 @@ if ( !defined('ABSPATH') )
 <input type="hidden" name="comment_post_ID" value="<?php echo esc_attr( $comment->comment_post_ID ); ?>" />
 
 <div id="post-body" class="metabox-holder columns-2">
+<<<<<<< HEAD
+<div id="post-body-content" class="edit-form-section">
+<div id="namediv" class="stuffbox">
+<h3><label for="name"><?php _e( 'Author' ) ?></label></h3>
+<div class="inside">
+<table class="form-table editcomment">
+<tbody>
+<tr>
+	<td class="first"><?php _e( 'Name:' ); ?></td>
+	<td><input type="text" name="newcomment_author" size="30" value="<?php echo esc_attr( $comment->comment_author ); ?>" id="name" /></td>
+</tr>
+<tr>
+	<td class="first">
+	<?php
+		if ( $comment->comment_author_email ) {
+			printf( __( 'E-mail (%s):' ), get_comment_author_email_link( __( 'send e-mail' ), '', '' ) );
+		} else {
+			_e( 'E-mail:' );
+		}
+?></td>
+	<td><input type="text" name="newcomment_author_email" size="30" value="<?php echo $comment->comment_author_email; ?>" id="email" /></td>
+</tr>
+<tr>
+	<td class="first">
+	<?php
+		if ( ! empty( $comment->comment_author_url ) && 'http://' != $comment->comment_author_url ) {
+			$link = '<a href="' . $comment->comment_author_url . '" rel="external nofollow" target="_blank">' . __('visit site') . '</a>';
+			$author = get_comment_author( $comment->comment_ID );
+			/** This filter is documented in wp-includes/comment-template.php */
+			printf( __( 'URL (%s):' ), apply_filters( 'get_comment_author_link', $link, $author, $comment->comment_ID ) );
+		} else {
+			_e( 'URL:' );
+		} ?></td>
+	<td><input type="text" id="newcomment_author_url" name="newcomment_author_url" size="30" class="code" value="<?php echo esc_attr($comment->comment_author_url); ?>" /></td>
+=======
 <div id="post-body-content" class="edit-form-section edit-comment-section">
 <div id="namediv" class="stuffbox">
 <div class="inside">
@@ -43,17 +82,24 @@ if ( !defined('ABSPATH') )
 	<td>
 		<input type="text" id="newcomment_author_url" name="newcomment_author_url" size="30" class="code" value="<?php echo esc_attr($comment->comment_author_url); ?>" />
 	</td>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 </tr>
 </tbody>
 </table>
 <br />
+<<<<<<< HEAD
+=======
 </fieldset>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 </div>
 </div>
 
 <div id="postdiv" class="postarea">
 <?php
+<<<<<<< HEAD
+=======
 	echo '<label for="content" class="screen-reader-text">' . __( 'Comment' ) . '</label>';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	$quicktags_settings = array( 'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,close' );
 	wp_editor( $comment->comment_content, 'content', array( 'media_buttons' => false, 'tinymce' => false, 'quicktags' => $quicktags_settings ) );
 	wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
@@ -76,12 +122,26 @@ if ( !defined('ABSPATH') )
 
 <div id="misc-publishing-actions">
 
+<<<<<<< HEAD
+<div class="misc-pub-section misc-pub-comment-status" id="comment-status-radio">
+<label class="approved"><input type="radio"<?php checked( $comment->comment_approved, '1' ); ?> name="comment_status" value="1" /><?php /* translators: comment type radio button */ _ex('Approved', 'adjective') ?></label><br />
+<label class="waiting"><input type="radio"<?php checked( $comment->comment_approved, '0' ); ?> name="comment_status" value="0" /><?php /* translators: comment type radio button */ _ex('Pending', 'adjective') ?></label><br />
+<label class="spam"><input type="radio"<?php checked( $comment->comment_approved, 'spam' ); ?> name="comment_status" value="spam" /><?php /* translators: comment type radio button */ _ex('Spam', 'adjective'); ?></label>
+</div>
+
+<?php if ( $ip = get_comment_author_IP() ) : ?>
+<div class="misc-pub-section misc-pub-comment-author-ip">
+	<?php _e( 'IP address:' ); ?> <strong><a href="<?php echo esc_url( sprintf( 'http://whois.arin.net/rest/ip/%s', $ip ) ); ?>"><?php echo esc_html( $ip ); ?></a></strong>
+</div>
+<?php endif; ?>
+=======
 <fieldset class="misc-pub-section misc-pub-comment-status" id="comment-status-radio">
 <legend class="screen-reader-text"><?php _e( 'Comment status' ); ?></legend>
 <label class="approved"><input type="radio"<?php checked( $comment->comment_approved, '1' ); ?> name="comment_status" value="1" /><?php /* translators: comment type radio button */ _ex('Approved', 'adjective') ?></label><br />
 <label class="waiting"><input type="radio"<?php checked( $comment->comment_approved, '0' ); ?> name="comment_status" value="0" /><?php /* translators: comment type radio button */ _ex('Pending', 'adjective') ?></label><br />
 <label class="spam"><input type="radio"<?php checked( $comment->comment_approved, 'spam' ); ?> name="comment_status" value="spam" /><?php /* translators: comment type radio button */ _ex('Spam', 'adjective'); ?></label>
 </fieldset>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 <div class="misc-pub-section curtime misc-pub-curtime">
 <?php
@@ -90,12 +150,17 @@ $datef = __( 'M j, Y @ H:i' );
 $stamp = __('Submitted on: <b>%1$s</b>');
 $date = date_i18n( $datef, strtotime( $comment->comment_date ) );
 ?>
+<<<<<<< HEAD
+<span id="timestamp"><?php printf($stamp, $date); ?></span>&nbsp;<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><?php _e('Edit') ?></a>
+<div id='timestampdiv' class='hide-if-js'><?php touch_time(('editcomment' == $action), 0); ?></div>
+=======
 <span id="timestamp"><?php printf( $stamp, $date ); ?></span>
 <a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><span aria-hidden="true"><?php _e( 'Edit' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit date and time' ); ?></span></a>
 <fieldset id='timestampdiv' class='hide-if-js'>
 <legend class="screen-reader-text"><?php _e( 'Date and time' ); ?></legend>
 <?php touch_time( ( 'editcomment' === $action ), 0 ); ?>
 </fieldset>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 </div>
 
 <?php
@@ -109,11 +174,15 @@ if ( current_user_can( 'edit_post', $post_id ) ) {
 ?>
 
 <div class="misc-pub-section misc-pub-response-to">
+<<<<<<< HEAD
+	<?php printf( __( 'In response to: <b>%s</b>' ), $post_link ); ?>
+=======
 	<?php printf(
 		/* translators: post link */
 		__( 'In response to: %s' ),
 		'<b>' . $post_link . '</b>'
 	); ?>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 </div>
 
 <?php
@@ -123,6 +192,12 @@ if ( $comment->comment_parent ) :
 	$name        = get_comment_author( $parent->comment_ID );
 ?>
 <div class="misc-pub-section misc-pub-reply-to">
+<<<<<<< HEAD
+	<?php printf( __( 'In reply to: <b><a href="%1$s">%2$s</a></b>' ), $parent_link, $name ); ?>
+</div>
+<?php endif; ?>
+
+=======
 	<?php printf(
 		/* translators: comment link */
 		__( 'In reply to: %s' ),
@@ -143,6 +218,7 @@ if ( $comment->comment_parent ) :
 	 echo apply_filters( 'edit_comment_misc_actions', '', $comment );
 ?>
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 </div> <!-- misc actions -->
 <div class="clear"></div>
 </div>

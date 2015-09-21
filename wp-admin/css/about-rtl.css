@@ -23,8 +23,12 @@
 }
 
 .about-wrap div.updated,
+<<<<<<< HEAD
+.about-wrap div.error {
+=======
 .about-wrap div.error,
 .about-wrap .notice {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	display: none !important;
 }
 
@@ -42,10 +46,13 @@
 	vertical-align: middle;
 }
 
+<<<<<<< HEAD
+=======
 .about-wrap .jetpack-video-wrapper {
 	margin-bottom: 0;
 }
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 /* WordPress Version Badge */
 
 .wp-badge {
@@ -101,7 +108,10 @@
 
 .about-wrap h1 {
 	margin: 0.2em 0 0 200px;
+<<<<<<< HEAD
+=======
 	padding: 0;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	color: #32373c;
 	line-height: 1.2em;
 	font-size: 2.8em;
@@ -121,7 +131,10 @@
 .about-wrap code,
 .about-wrap ol li p {
 	font-size: 14px;
+<<<<<<< HEAD
+=======
 	font-weight: normal;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .about-wrap .about-description,
@@ -140,6 +153,23 @@
 
 /* 1.2 - Structure */
 
+<<<<<<< HEAD
+.about-wrap .two-col > div {
+	position: relative;
+	width: 47.6%;
+	margin-left: 4.799999999%;
+	float: right;
+}
+
+.about-wrap .three-col > div {
+	position: relative;
+	width: 29.95%;
+	margin-left: 4.999999999%;
+	float: right;
+}
+
+.about-wrap [class$=col] .last-feature {
+=======
 .about-wrap [class$=col] .col {
 	float: right;
 	position: relative;
@@ -156,6 +186,7 @@
 
 .about-wrap .two-col .col:nth-of-type(2n),
 .about-wrap .three-col .col:nth-of-type(3n) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	margin-left: 0;
 }
 
@@ -241,6 +272,18 @@
 	max-width: 95%;
 }
 
+<<<<<<< HEAD
+.about-wrap .feature-section .col:nth-of-type(odd) {
+	float: right;
+	margin: 40px 0 0 5%;
+	width: 48%;
+}
+
+.about-wrap .feature-section .col:nth-of-type(even) {
+	float: left;
+	margin: 40px 0 0;
+	width: 46%;
+=======
 .about-wrap .feature-section .media-container {
 	border: 1px solid #ddd;
 	overflow: hidden;
@@ -258,13 +301,18 @@
 
 .about-wrap .feature-section:not(.under-the-hood) .col {
 	margin-top: 40px;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 }
 
 .about-wrap .changelog {
 	margin-bottom: 40px;
 }
 
+<<<<<<< HEAD
+.about-wrap .changelog.feature-section > div {
+=======
 .about-wrap .changelog.feature-section .col {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	margin-top: 40px;
 }
 
@@ -379,20 +427,38 @@
 		border-bottom: none;
 	}
 
+<<<<<<< HEAD
+	.about-wrap .one-col > div,
+	.about-wrap .two-col > div,
+	.about-wrap .three-col > div,
+	.about-wrap .two-col .col:nth-of-type(n) {
+=======
 	.about-wrap [class$=col] .col {
 		float: none;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		width: 100%;
 		margin: 40px 0 0;
 		padding: 0 0 40px;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	}
 
+<<<<<<< HEAD
+	.about-wrap .two-col .col h3 {
+		margin-top: 0;
+	}
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	.about-wrap .three-col img {
 		display: block;
 		margin: 0 auto;
 	}
 
+<<<<<<< HEAD
+	.about-wrap .feature-list div {
+=======
 	.about-wrap .feature-list .col {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		margin: 0;
 		padding: 0;
 		border-bottom: none;
@@ -439,6 +505,16 @@
 		border-bottom: 1px solid #ccc;
 	}
 
+<<<<<<< HEAD
+	.about-wrap .three-col div,
+	.about-wrap .headline-feature .feature-section div {
+		width: 100% !important;
+		float: none !important;
+	}
+
+	.about-wrap .dfw p {
+		max-width: 90%;
+=======
 	.about-wrap .feature-section .svg-container {
 		padding-top: 20px;
 		padding-bottom: 20px;
@@ -448,6 +524,7 @@
 	.about-wrap .headline-feature .feature-section .col {
 		width: 100% !important;
 		float: none !important;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 }
 

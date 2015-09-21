@@ -24,4 +24,8 @@ made publicly available to all getID3() users.
 The licensee may not sub-license getID3() itself, meaning that any
 commercially released product containing all or parts of getID3() must
 have added functionality beyond what is available in getID3();
+<<<<<<< HEAD
 getID3() itself may not be re-licensed by the licensee.
+=======
+getID3() itself may not be re-licensed by the licensee.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

@@ -11,7 +11,11 @@ class GF_Field_Password extends GF_Field {
 	public $type = 'password';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'Password', 'gravityforms' );
+=======
 		return esc_attr__( 'Password', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -44,14 +48,22 @@ class GF_Field_Password extends GF_Field {
 		$confirm  = rgpost( 'input_' . $this->id . '_2' );
 		if ( $password != $confirm ) {
 			$this->failed_validation  = true;
+<<<<<<< HEAD
+			$this->validation_message = __( 'Your passwords do not match.', 'gravityforms' );
+=======
 			$this->validation_message = esc_html__( 'Your passwords do not match.', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		} elseif ( $this->passwordStrengthEnabled && ! empty( $this->minPasswordStrength ) && ! empty( $password ) ) {
 			$strength = $_POST[ 'input_' . $this->id . '_strength' ];
 
 			$levels = array( 'short' => 1, 'bad' => 2, 'good' => 3, 'strong' => 4 );
 			if ( $levels[ $strength ] < $levels[ $this->minPasswordStrength ] ) {
 				$this->failed_validation  = true;
+<<<<<<< HEAD
+				$this->validation_message = empty( $this->errorMessage ) ? __( 'Your password does not meet the required strength. <br/>Hint: To make it stronger, use upper and lower case letters, numbers and symbols like ! " ? $ % ^ & ).', 'gravityforms' ) : $this->errorMessage;
+=======
 				$this->validation_message = empty( $this->errorMessage ) ? sprintf( esc_html__( 'Your password does not meet the required strength. %sHint: To make it stronger, use upper and lower case letters, numbers and symbols like ! " ? $ %% ^ & ).', 'gravityforms' ), '<br />' ) : $this->errorMessage;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		}
 	}
@@ -65,7 +77,11 @@ class GF_Field_Password extends GF_Field {
 		$form_id         = $form['id'];
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
+<<<<<<< HEAD
+		$is_admin = $is_entry_detail || $is_form_editor;
+=======
 		$is_admin        = $is_entry_detail || $is_form_editor;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$id       = (int) $this->id;
 		$field_id = $is_entry_detail || $is_form_editor || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
@@ -75,7 +91,11 @@ class GF_Field_Password extends GF_Field {
 		$form_sub_label_placement  = rgar( $form, 'subLabelPlacement' );
 		$field_sub_label_placement = $this->subLabelPlacement;
 		$is_sub_label_above        = $field_sub_label_placement == 'above' || ( empty( $field_sub_label_placement ) && $form_sub_label_placement == 'above' );
+<<<<<<< HEAD
+		$sub_label_class_attribute = $field_sub_label_placement == 'hidden_label' ? "class='hidden_sub_label'" : '';
+=======
 		$sub_label_class_attribute = $field_sub_label_placement == 'hidden_label' ? "class='hidden_sub_label screen-reader-text'" : '';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$disabled_text = $is_form_editor ? 'disabled="disabled"' : '';
 
@@ -83,7 +103,11 @@ class GF_Field_Password extends GF_Field {
 		$last_tabindex  = $this->get_tabindex();
 
 		$strength_style           = ! $this->passwordStrengthEnabled ? "style='display:none;'" : '';
+<<<<<<< HEAD
+		$strength_indicator_label = __( 'Strength indicator', 'gravityforms' );
+=======
 		$strength_indicator_label = esc_html__( 'Strength indicator', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$strength                 = $this->passwordStrengthEnabled || $is_admin ? "<div id='{$field_id}_strength_indicator' class='gfield_password_strength' {$strength_style}>
 																			{$strength_indicator_label}
 																		</div>
@@ -102,11 +126,19 @@ class GF_Field_Password extends GF_Field {
 		$enter_password_field_input   = GFFormsModel::get_input( $this, $this->id . '' );
 		$confirm_password_field_input = GFFormsModel::get_input( $this, $this->id . '.2' );
 
+<<<<<<< HEAD
+		$enter_password_label   = rgar( $enter_password_field_input, 'customLabel' ) != '' ? $enter_password_field_input['customLabel'] : __( 'Enter Password', 'gravityforms' );
+		$enter_password_label   = apply_filters( "gform_password_{$form_id}", apply_filters( 'gform_password', $enter_password_label, $form_id ), $form_id );
+
+		$confirm_password_label   = rgar( $confirm_password_field_input, 'customLabel' ) != '' ? $confirm_password_field_input['customLabel'] : __( 'Confirm Password', 'gravityforms' );
+		$confirm_password_label = apply_filters( "gform_password_confirm_{$form_id}", apply_filters( 'gform_password_confirm', $confirm_password_label, $form_id ), $form_id );
+=======
 		$enter_password_label = rgar( $enter_password_field_input, 'customLabel' ) != '' ? $enter_password_field_input['customLabel'] : esc_html__( 'Enter Password', 'gravityforms' );
 		$enter_password_label = gf_apply_filters( 'gform_password', $form_id, $enter_password_label, $form_id );
 
 		$confirm_password_label = rgar( $confirm_password_field_input, 'customLabel' ) != '' ? $confirm_password_field_input['customLabel'] : esc_html__( 'Confirm Password', 'gravityforms' );
 		$confirm_password_label = gf_apply_filters( 'gform_password_confirm', $form_id, $confirm_password_label, $form_id );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 
 		$enter_password_placeholder_attribute   = GFCommon::get_input_placeholder_attribute( $enter_password_field_input );
@@ -153,7 +185,11 @@ class GF_Field_Password extends GF_Field {
 
 	public static function delete_passwords( $entry, $form ) {
 
+<<<<<<< HEAD
+		$password_fields = GFCommon::get_fields_by_type( $form , array( 'password' ) );
+=======
 		$password_fields = GFAPI::get_fields_by_type( $form, array( 'password' ) );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		foreach ( $password_fields as $password_field ) {
 			GFAPI::update_entry_field( $entry['id'], $password_field['id'], '' );

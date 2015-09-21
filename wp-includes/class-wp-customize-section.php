@@ -24,8 +24,11 @@ class WP_Customize_Section {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
+=======
 	 *
 	 * @static
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 * @access protected
 	 * @var int
 	 */
@@ -209,7 +212,11 @@ class WP_Customize_Section {
 	 * @since 4.1.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @return bool Always true.
+=======
 	 * @return true Always true.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 */
 	public function active_callback() {
 		return true;
@@ -223,6 +230,12 @@ class WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
+<<<<<<< HEAD
+		$array = wp_array_slice_assoc( (array) $this, array( 'title', 'description', 'priority', 'panel', 'type' ) );
+		$array['content'] = $this->get_content();
+		$array['active'] = $this->active();
+		$array['instanceNumber'] = $this->instance_number;
+=======
 		$array = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'panel', 'type' ) );
 		$array['title'] = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content'] = $this->get_content();
@@ -236,6 +249,7 @@ class WP_Customize_Section {
 			$array['customizeAction'] = __( 'Customizing' );
 		}
 
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		return $array;
 	}
 
@@ -260,7 +274,11 @@ class WP_Customize_Section {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Get the section's content template for insertion into the Customizer pane.
+=======
 	 * Get the section's content for insertion into the Customizer pane.
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	 *
 	 * @since 4.1.0
 	 *
@@ -269,7 +287,13 @@ class WP_Customize_Section {
 	final public function get_content() {
 		ob_start();
 		$this->maybe_render();
+<<<<<<< HEAD
+		$template = trim( ob_get_contents() );
+		ob_end_clean();
+		return $template;
+=======
 		return trim( ob_get_clean() );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	/**
@@ -304,6 +328,26 @@ class WP_Customize_Section {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Render the section, and the controls that have been added to it.
+	 *
+	 * @since 3.4.0
+	 */
+	protected function render() {
+		$classes = 'accordion-section control-section control-section-' . $this->type;
+		?>
+		<li id="accordion-section-<?php echo esc_attr( $this->id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
+			<h3 class="accordion-section-title" tabindex="0">
+				<?php echo esc_html( $this->title ); ?>
+				<span class="screen-reader-text"><?php _e( 'Press return or enter to expand' ); ?></span>
+			</h3>
+			<ul class="accordion-section-content">
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<li class="customize-section-description-container">
+						<p class="description customize-section-description"><?php echo $this->description; ?></p>
+					</li>
+				<?php endif; ?>
+=======
 	 * Render the section UI in a subclass.
 	 *
 	 * Sections are now rendered in JS by default, see {@see WP_Customize_Section::print_template()}.
@@ -368,6 +412,7 @@ class WP_Customize_Section {
 						</div>
 					<# } #>
 				</li>
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			</ul>
 		</li>
 		<?php
@@ -407,6 +452,32 @@ class WP_Customize_Themes_Section extends WP_Customize_Section {
 			<h3 class="accordion-section-title">
 				<?php
 				if ( $this->manager->is_theme_active() ) {
+<<<<<<< HEAD
+					/* translators: %s: theme name */
+					printf( __( '<span>Active theme</span> %s' ), $this->title );
+				} else {
+					/* translators: %s: theme name */
+					printf( __( '<span>Previewing theme</span> %s' ), $this->title );
+				}
+				?>
+
+				<button type="button" class="button change-theme"><?php _ex( 'Change', 'theme' ); ?></button>
+			</h3>
+			<div class="customize-themes-panel control-panel-content themes-php">
+				<h2>
+					<?php _e( 'Themes' ); ?>
+					<span class="title-count theme-count"><?php echo count( $this->controls ) + 1 /* Active theme */; ?></span>
+				</h2>
+
+				<h3 class="accordion-section-title customize-section-title">
+					<?php
+					if ( $this->manager->is_theme_active() ) {
+						/* translators: %s: theme name */
+						printf( __( '<span>Active theme</span> %s' ), $this->title );
+					} else {
+						/* translators: %s: theme name */
+						printf( __( '<span>Previewing theme</span> %s' ), $this->title );
+=======
 					echo '<span class="customize-action">' . __( 'Active theme' ) . '</span> ' . $this->title;
 				} else {
 					echo '<span class="customize-action">' . __( 'Previewing theme' ) . '</span> ' . $this->title;
@@ -427,6 +498,7 @@ class WP_Customize_Themes_Section extends WP_Customize_Section {
 						echo '<span class="customize-action">' . __( 'Active theme' ) . '</span> ' . $this->title;
 					} else {
 						echo '<span class="customize-action">' . __( 'Previewing theme' ) . '</span> ' . $this->title;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 					}
 					?>
 					<button type="button" class="button customize-theme"><?php _e( 'Customize' ); ?></button>
@@ -502,6 +574,8 @@ class WP_Customize_Sidebar_Section extends WP_Customize_Section {
 		return $this->manager->widgets->is_sidebar_rendered( $this->sidebar_id );
 	}
 }
+<<<<<<< HEAD
+=======
 
 /**
  * Customize Menu Section Class
@@ -575,3 +649,4 @@ class WP_Customize_New_Menu_Section extends WP_Customize_Section {
 		<?php
 	}
 }
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836

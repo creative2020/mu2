@@ -231,9 +231,13 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 					jQuery("#TB_load").remove();
 					jQuery("#TB_window").css({'visibility':'visible'});
 				}else{
+<<<<<<< HEAD
+					jQuery("#TB_ajaxContent").load(url += "&random=" + (new Date().getTime()),function(){//to do a post change this load method
+=======
 					var load_url = url;
 					load_url += -1 === url.indexOf('?') ? '?' : '&';
 					jQuery("#TB_ajaxContent").load(load_url += "random=" + (new Date().getTime()),function(){//to do a post change this load method
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 						tb_position();
 						jQuery("#TB_load").remove();
 						tb_init("#TB_ajaxContent a.thickbox");

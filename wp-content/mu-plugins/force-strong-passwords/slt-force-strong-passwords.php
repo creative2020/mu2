@@ -1,12 +1,20 @@
 <?php
 
 /*
+<<<<<<< HEAD
+Plugin Name: Force Strong Passwords
+Description: Forces users to use something strong when updating their passwords.
+Version: 1.3.3
+Author: Steve Taylor
+Author URI: http://sltaylor.co.uk
+=======
 Plugin Name: Force Strong Passwords - WPE Edition
 Plugin URI: https://github.com/boogah/Force-Strong-Passwords/
 Description: Forces users to use something strong when updating their passwords.
 Version: 1.3.3-bugfix
 Author: Jason Cosper
 Author URI: http://jasoncosper.com/
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 License: GPLv2
 */
 
@@ -89,6 +97,10 @@ function slt_fsp_validate_profile_update( $errors, $update, $user_data ) {
 	return slt_fsp_validate_strong_password( $errors, $user_data );
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 // Functionality used by both user profile and reset password validation
 function slt_fsp_validate_strong_password( $errors, $user_data ) {
 	$password_ok = true;
@@ -128,6 +140,9 @@ function slt_fsp_validate_strong_password( $errors, $user_data ) {
 			// Check the strength passed from the zxcvbn meter
 			$compare_strong = html_entity_decode( __( 'Strong' ), ENT_QUOTES, 'UTF-8');
 			$compare_medium = html_entity_decode( __( 'Medium' ), ENT_QUOTES, 'UTF-8');
+<<<<<<< HEAD
+			if ( ! in_array( $_POST['slt-fsp-pass-strength-result'] , array(null, $compare_strong, $compare_medium))) {
+=======
 			$compare_strong_es = html_entity_decode( __( 'Fuerte' ), ENT_QUOTES, 'UTF-8');
 			$compare_strong_id = html_entity_decode( __( 'Kuat' ), ENT_QUOTES, 'UTF-8');
 			$compare_strong_sk = html_entity_decode( __( 'Silné' ), ENT_QUOTES, 'UTF-8');
@@ -173,6 +188,7 @@ function slt_fsp_validate_strong_password( $errors, $user_data ) {
 			$compare_strong_ro = html_entity_decode( __( 'Puternică' ), ENT_QUOTES, 'UTF-8');
 			$compare_strong_sq = html_entity_decode( __( 'I fortë' ), ENT_QUOTES, 'UTF-8');
 			if ( ! in_array( $_POST['slt-fsp-pass-strength-result'] , array(null, $compare_strong, $compare_medium, $compare_strong_es, $compare_strong_id, $compare_strong_sk, $compare_strong_da, $compare_strong_eo, $compare_strong_de, $compare_strong_bg, $compare_strong_az, $compare_strong_hu, $compare_strong_hy, $compare_strong_tl, $compare_strong_fa, $compare_strong_pl, $compare_strong_nb, $compare_strong_nn, $compare_strong_sv, $compare_strong_it, $compare_strong_tr, $compare_strong_ca, $compare_strong_ps, $compare_strong_zh, $compare_strong_lt, $compare_strong_el, $compare_strong_ko, $compare_strong_th, $compare_strong_ru, $compare_strong_sr, $compare_strong_et, $compare_strong_fi, $compare_strong_cy, $compare_strong_oc, $compare_strong_he, $compare_strong_zh, $compare_strong_is, $compare_strong_eu, $compare_strong_sl, $compare_strong_ug, $compare_strong_my, $compare_strong_hr, $compare_strong_gd, $compare_strong_uk, $compare_strong_ja, $compare_strong_ro, $compare_strong_sq))) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 				$password_ok = false;
 			}
 

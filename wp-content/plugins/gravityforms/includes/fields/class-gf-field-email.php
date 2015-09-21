@@ -10,7 +10,11 @@ class GF_Field_Email extends GF_Field {
 	public $type = 'email';
 
 	public function get_form_editor_field_title() {
+<<<<<<< HEAD
+		return __( 'Email', 'gravityforms' );
+=======
 		return esc_attr__( 'Email', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	}
 
 	function get_form_editor_field_settings() {
@@ -47,12 +51,20 @@ class GF_Field_Email extends GF_Field {
 
 		if ( ! $is_blank && ! GFCommon::is_valid_email( $email ) ) {
 			$this->failed_validation  = true;
+<<<<<<< HEAD
+			$this->validation_message = empty( $this->errorMessage ) ? __( 'Please enter a valid email address.', 'gravityforms' ) : $this->errorMessage;
+=======
 			$this->validation_message = empty( $this->errorMessage ) ? esc_html__( 'Please enter a valid email address.', 'gravityforms' ) : $this->errorMessage;
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		} elseif ( $this->emailConfirmEnabled && ! empty( $email ) ) {
 			$confirm = is_array( $value ) ? rgar( $value, 1 ) : rgpost( 'input_' . $this->id . '_2' );
 			if ( $confirm != $email ) {
 				$this->failed_validation  = true;
+<<<<<<< HEAD
+				$this->validation_message = __( 'Your emails do not match.', 'gravityforms' );
+=======
 				$this->validation_message = esc_html__( 'Your emails do not match.', 'gravityforms' );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 			}
 		}
 	}
@@ -65,8 +77,13 @@ class GF_Field_Email extends GF_Field {
 			$value = array_values( $value );
 		}
 
+<<<<<<< HEAD
+		$form_id  = $form['id'];
+		$id       = intval( $this->id );
+=======
 		$form_id  = absint( $form['id'] );
 		$id       = absint( $this->id );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 		$field_id = $is_entry_detail || $is_form_editor || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
 		$form_id  = ( $is_entry_detail || $is_form_editor ) && empty( $form_id ) ? rgget( 'id' ) : $form_id;
 
@@ -79,17 +96,28 @@ class GF_Field_Email extends GF_Field {
 		$form_sub_label_placement  = rgar( $form, 'subLabelPlacement' );
 		$field_sub_label_placement = $this->subLabelPlacement;
 		$is_sub_label_above        = $field_sub_label_placement == 'above' || ( empty( $field_sub_label_placement ) && $form_sub_label_placement == 'above' );
+<<<<<<< HEAD
+		$sub_label_class_attribute = $field_sub_label_placement == 'hidden_label' ? "class='hidden_sub_label'" : '';
+=======
 		$sub_label_class_attribute = $field_sub_label_placement == 'hidden_label' ? "class='hidden_sub_label screen-reader-text'" : '';
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$html_input_type = RGFormsModel::is_html5_enabled() ? 'email' : 'text';
 
 		$enter_email_field_input = GFFormsModel::get_input( $this, $this->id . '' );
 		$confirm_field_input     = GFFormsModel::get_input( $this, $this->id . '.2' );
 
+<<<<<<< HEAD
+		$enter_email_label   = rgar( $enter_email_field_input, 'customLabel' ) != '' ? $enter_email_field_input['customLabel'] : __( 'Enter Email', 'gravityforms' );
+		$enter_email_label   = apply_filters( "gform_email_{$form_id}", apply_filters( 'gform_email', $enter_email_label, $form_id ), $form_id );
+		$confirm_email_label = rgar( $confirm_field_input, 'customLabel' ) != '' ? $confirm_field_input['customLabel'] : __( 'Confirm Email', 'gravityforms' );
+		$confirm_email_label = apply_filters( "gform_email_confirm_{$form_id}", apply_filters( 'gform_email_confirm', $confirm_email_label, $form_id ), $form_id );
+=======
 		$enter_email_label   = rgar( $enter_email_field_input, 'customLabel' ) != '' ? $enter_email_field_input['customLabel'] : esc_html__( 'Enter Email', 'gravityforms' );
 		$enter_email_label   = gf_apply_filters( 'gform_email', $form_id, $enter_email_label, $form_id );
 		$confirm_email_label = rgar( $confirm_field_input, 'customLabel' ) != '' ? $confirm_field_input['customLabel'] : esc_html__( 'Confirm Email', 'gravityforms' );
 		$confirm_email_label = gf_apply_filters( 'gform_email_confirm', $form_id, $confirm_email_label, $form_id );
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 
 		$single_placeholder_attribute        = $this->get_field_placeholder_attribute();
 		$enter_email_placeholder_attribute   = $this->get_input_placeholder_attribute( $enter_email_field_input );

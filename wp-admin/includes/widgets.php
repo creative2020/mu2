@@ -10,9 +10,12 @@
  * Display list of the available widgets.
  *
  * @since 2.5.0
+<<<<<<< HEAD
+=======
  *
  * @global array $wp_registered_widgets
  * @global array $wp_registered_widget_controls
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function wp_list_widgets() {
 	global $wp_registered_widgets, $wp_registered_widget_controls;
@@ -54,8 +57,11 @@ function wp_list_widgets() {
  *
  * @since 3.1.0
  * @access private
+<<<<<<< HEAD
+=======
  *
  * @return int
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  */
 function _sort_name_callback( $a, $b ) {
 	return strnatcasecmp( $a['name'], $b['name'] );
@@ -104,10 +110,13 @@ function wp_list_widget_controls( $sidebar, $sidebar_name = '' ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
  * @global array $wp_registered_widgets
  *
  * @staticvar int $i
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $params
  * @return array
  */
@@ -132,6 +141,9 @@ function wp_list_widget_controls_dynamic_sidebar( $params ) {
 	return $params;
 }
 
+<<<<<<< HEAD
+function next_widget_id_number($id_base) {
+=======
 /**
  *
  * @global array $wp_registered_widgets
@@ -140,6 +152,7 @@ function wp_list_widget_controls_dynamic_sidebar( $params ) {
  * @return int
  */
 function next_widget_id_number( $id_base ) {
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	global $wp_registered_widgets;
 	$number = 1;
 
@@ -159,10 +172,13 @@ function next_widget_id_number( $id_base ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
+=======
  * @global array $wp_registered_widgets
  * @global array $wp_registered_widget_controls
  * @global array $sidebars_widgets
  *
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
  * @param array $sidebar_args
  * @return array
  */

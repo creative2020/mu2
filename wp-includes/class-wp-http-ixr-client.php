@@ -46,9 +46,12 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 		$this->timeout = $timeout;
 	}
 
+<<<<<<< HEAD
+=======
 	/**
 	 * @return bool
 	 */
+>>>>>>> c4ed0da5825345f6b0fe3527d88a7e02d1806836
 	public function query() {
 		$args = func_get_args();
 		$method = array_shift($args);
