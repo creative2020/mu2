@@ -170,28 +170,6 @@ add_shortcode( 'tt_posts', 'tt_posts' ); // echo do_shortcode('[tt_posts limit="
 function tt_posts ( $atts ) {
 
 	// Attributes
-<<<<<<< HEAD
-<<<<<<< HEAD
-	extract( shortcode_atts(
-		array(
-			'name' => 'post',
-            'cat' => '-1',
-            'cat_name' => '',
-            'limit' => '10',
-            'type' => 'post',
-            'layout' => 'norm',
-            'style' => 'col-sm-offset-4',
-            'orderby' => '',
-            'order' => 'DSC',
-            'term' => '',
-            'taxonomy' => 'Type',
-            'img' => 'y',
-		), $atts )
-	);
-    
-=======
-=======
->>>>>>> origin/master
 	extract( shortcode_atts( [
 		'name' => 'post',
 		'cat' => '-1',
@@ -206,10 +184,6 @@ function tt_posts ( $atts ) {
 		'taxonomy' => 'Type',
 	], $atts ) );
 
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 /////////////////////////////////////// Variables
 $user_ID = get_current_user_id();
 $user_data = get_user_meta( $user_ID );
@@ -275,5 +249,6 @@ if ( $the_query->have_posts() ) {
 wp_reset_postdata();
 return $output;
 }}
+
 
 ////////////////////////////////////////////////////////
